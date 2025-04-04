@@ -1,0 +1,82 @@
+.footer_container {
+    max-width: 100vw;
+    display: flex;
+    margin: 6rem;
+}
+
+.footer_container_left {
+    width: 35%;
+}
+
+.footer_container_right {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15%;
+}
+
+.footer_logo {
+    background-image: url('../images/logo.png');
+    background-size: cover;
+    background-position: center;
+    height: 6.5rem;
+    width: 15rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer_address_font {
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+}
+
+.footer_social {
+    margin: 2rem 0;
+}
+
+.social_icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: transparent;
+    margin-right: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 1.5px 1.5px 3px;
+}
+
+.linkeDin {
+    color: #136bc5;
+}
+
+.insta {
+    color: #c8325c;
+}
+
+.youTube {
+    color: #ff0808;
+    background-color: white;
+}
+
+.twitter {
+    color: #080808;
+}
+
+.footer_links_parent {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_links_parent h1 {
+    font-size: 1.6rem;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.footer_links_parent a {
+    text-decoration: none;
+    text-align: left;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 600;
+}

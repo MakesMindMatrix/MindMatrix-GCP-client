@@ -1,0 +1,65 @@
+.slotCard_container {
+    background-color: white;
+    width: 48%;
+    margin: 1%;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #0000005b;
+}
+
+.slot_content_box {
+    display: flex;
+    align-items: center;
+}
+
+.slot_seatsLeft {
+    padding: 0.7rem 1.2rem;
+    border-radius: 100px;
+    border: 1px solid #808080;
+}
+
+.slot_icon {
+    font-size: 1.5rem;
+}
+
+.slot_timing,
+.slot_attendees {
+    color: #808080de;
+    margin-left: 0.7rem;
+    font-weight: 400;
+}
+
+.expeced_attendees,
+.slot_remarks {
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.slot_form input {
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.slot_form textarea {
+    width: 100%;
+    height: 5rem;
+    resize: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 0.7rem;
+}
+
+.slot_select_btn {
+    width: 100%;
+    background-color: #0080ff;
+    border: none;
+    color: white;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}

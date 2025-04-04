@@ -1,0 +1,32 @@
+.circle_container_parent {
+    height: 12rem;
+    width: 12rem;
+    background-color: #e6e6e6;
+    border-radius: 50%;
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+.circle_container {
+    height: 11rem;
+    width: 11rem;
+    /* background-image: url('https://plus.unsplash.com/premium_photo-1668790459146-87918c7f8e1d?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: relative;
+}
+.circle_container:hover {
+    transform: translateY(-5px);
+    /* background: #ffffff4a; */
+    box-shadow: 2px 2px 20px 5px #cfcfcf;
+}
+.circle_overlay {
+    position: absolute;
+    height: 11rem;
+    width: 11rem;
+    border-radius: 50%;
+    background-color: #00000070;
+}

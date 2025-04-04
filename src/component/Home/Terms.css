@@ -1,0 +1,25 @@
+.terms_heading{
+    text-align: left;
+    font-size: 1.8rem;
+    line-height: 3.5rem;
+    margin: 1rem 3rem;
+}
+
+.terms_subHeading{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 1rem 3rem;
+    color: gray;
+}
+.terms_subHeading_child{
+    text-align: left;
+    font-size: 1.3rem;
+    line-height: 1rem;
+    margin: 1rem 5rem;
+    color: gray;
+}
+.bottom_term{
+    margin: 2rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+}

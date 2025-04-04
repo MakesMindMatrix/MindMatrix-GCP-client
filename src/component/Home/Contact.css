@@ -1,0 +1,25 @@
+.contact_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact_card{
+    background-color: white;
+    height: 20rem;
+    width: 40rem;
+    box-shadow: 2px 2px 5px #00000069;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.contact_heading{
+    color: #000000d0;
+    font-weight: 500;
+}
+.contact_subHeading{
+    margin: 0.5rem 0;
+    color: #000000d0;
+    font-weight: 500;
+}

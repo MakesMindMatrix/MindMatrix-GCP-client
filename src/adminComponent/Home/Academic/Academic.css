@@ -1,0 +1,10 @@
+.academic_container{
+    display: flex;
+    height: 150vh;
+}
+
+@media screen and (max-width: 768px) {
+    .academic_container{
+        flex-direction: column;
+    }
+}

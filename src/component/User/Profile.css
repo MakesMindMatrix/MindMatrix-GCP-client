@@ -1,0 +1,224 @@
+.profile_container {
+    height: auto;
+    max-width: 100vw;
+    display: flex;
+    margin: 0 6rem;
+}
+
+.profile_container_left {
+    width: 30vw;
+}
+
+.profile_container_right {
+    width: 70vw;
+}
+.academic_heading{
+    text-align: left;
+    margin-bottom: 0.3rem;
+    font: 500 1.6vmax "Montserrat";
+}
+.academic_subHeading{
+    text-align: left;
+    margin-bottom: 2.2rem;
+    color: rgba(0, 0, 0, 0.418);
+    font: 500 1vmax "Montserrat";
+}
+.course_report_container {
+    width: 90%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px #00000031;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.course_report_heading {
+    font-size: 1.5rem;
+    margin: 0.8rem 0;
+}
+
+.course_topic_card_parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.course_topic_card {
+    width: 40%;
+    height: 12rem;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #00000070;
+}
+
+.course_report_subHeading {
+    font-size: 1.2rem;
+    display: block;
+    margin: 0.2rem;
+}
+
+
+
+
+
+
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fb;
+    color: #333;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin: 0 0 15px;
+    font-size: 1.2rem;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.task-card {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-card h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.task-card p {
+    margin: 10px 0 0;
+    font-size: 2rem;
+}
+
+.chart-container {
+    height: 200px;
+    margin-top: 20px;
+}
+
+.meetings ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.meetings li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.meetings li:last-child {
+    border-bottom: none;
+}
+
+.progress-bar {
+    height: 12px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0;
+}
+
+.progress-bar span {
+    display: block;
+    height: 100%;
+    width: 60%; /* Match the progress dynamically */
+    background: #4facfe;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.developed-areas .area {
+    margin-bottom: 15px;
+}
+
+.developed-areas .area h4 {
+    margin: 0 0 5px;
+    font-size: 0.9rem;
+}
+
+.bar-container {
+    width: 100%;
+    background: #e9ecef;
+    height: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.bar-container .bar {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.curiosity-bar { width: 80%; background: #4facfe; }
+.creativity-bar { width: 70%; background: #00f2fe; }
+.problem-solving-bar { width: 75%; background: #4facfe; }
+.teamwork-bar { width: 85%; background: #00f2fe; }
+.adaptability-bar { width: 90%; background: #4facfe; }
+
+.course-progress {
+    margin-top: 20px;
+}
+
+.course-progress h4 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.position-chart {
+    margin-top: 20px;
+    height: 200px;
+}
+
+
+.iframe-custom{
+    height: 50vh;
+    width: 100vw;
+}

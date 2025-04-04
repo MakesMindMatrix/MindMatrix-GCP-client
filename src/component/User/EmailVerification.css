@@ -1,0 +1,78 @@
+/* .emailVerification_container{
+    display: flex;
+    padding: 2rem;
+}
+.emailVerification_left {
+    border-radius: 5px;
+    background-image: url('../../images/Learning_Icon.png');
+    background-position: center;
+    background-size: cover;
+    height: 94vh;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+
+.verify_modal_container {
+    /* display: none; */
+    background-color: white;
+    width: 60rem;
+    height: 40rem;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    box-shadow: 10px 10px 30px -10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+  }
+  .modal_para {
+    margin: 1.5rem 0;
+  }
+  .inputBOx {
+    height: 5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #f5f7f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2.5rem 0;
+  }
+  .inputBOx input {
+    margin: 1.5rem 0;
+  }
+  .modal_btn {
+    border: none;
+    cursor: pointer;
+    background-color: #0f8693;
+    color: white;
+    height: 5rem;
+    width: 40rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 3px #0f86933d;
+    margin-top: 1.5rem;
+  }
+  .modal_btn:active {
+    box-shadow: 0 1px #0f86933d;
+    transform: translateY(2px);
+  }
+  .close_btn {
+    cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    /* height: 3rem; */
+    /* width: 2.3rem; */
+    /* background-image: url("../Image/Vector.png"); */
+    /* border-radius: 100px; */
+  }
+  

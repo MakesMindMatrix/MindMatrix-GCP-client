@@ -1,0 +1,13 @@
+.report_container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+.report_container_left{
+    width: 70%;
+    background-color: azure;
+}
+.report_container_right{
+    width: 30%;
+    background-color: aquamarine;
+}

@@ -1,0 +1,33 @@
+.headerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 10rem;
+}
+.logo{
+    background-image: url('../../../images/logo.png');
+    background-size: cover;
+    background-position: center;
+    height: 7.5rem;
+    width: 17rem;
+}
+.auth{
+    padding: 1.3rem 2.2rem;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-decoration: none;
+}
+.login_btn{
+    color: white;
+    background-color: #4C8074;
+    border: 2px solid #4C8074;
+    font-family: "Kanit", sans-serif;
+}
+.register_btn{
+    color: #4C8074;
+    border: 3px solid #4C8074;
+    background-color: white;
+    font-family: "Kanit", sans-serif;
+    margin-left: 2rem;
+}

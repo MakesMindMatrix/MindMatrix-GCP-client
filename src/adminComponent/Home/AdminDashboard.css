@@ -1,0 +1,27 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  @media (min-width: 768px) {
+    .dashboard-container {
+      flex-direction: row;
+    }
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 10px;
+    }
+  }
+  
+  .main-content h1 {
+    margin-top: 0;
+  }

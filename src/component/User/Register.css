@@ -1,0 +1,138 @@
+.register_logo {
+    background-image: url('../../images/logo.png');
+    background-position: center;
+    background-size: cover;
+    height: 10rem;
+    width: 23rem !important;
+}
+
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    padding: 2vmax;
+    height: 100%;
+    width: 35vw;
+    transition: all 0.5s;
+}
+
+.signUpForm>div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.signUpForm>div>input, .signUpForm>div>select {
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 0.9vmax "Roboto Flex";
+    outline: none;
+}
+
+.signUpForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+/* #registerImage > img {
+    width: 3vmax;
+    border-radius: 100%;
+  } */
+  /* #registerImage > input {
+    display: flex;
+    padding: 0%;
+  }
+  
+  #registerImage > input::file-selector-button {
+    cursor: pointer;
+    width: 100%;
+    z-index: 2;
+    height: 5vh;
+    border: none;
+    margin: 0%;
+    font: 400 0.8vmax cursive;
+    transition: all 0.5s;
+    padding: 0 1vmax;
+    color: rgba(0, 0, 0, 0.623);
+    background-color: rgb(255, 255, 255);
+  }
+  
+  #registerImage > input::file-selector-button:hover {
+    background-color: rgb(235, 235, 235);
+  } */
+
+.signUpBtn {
+  border: none;
+  background-color: #4C8070;
+  color: white;
+  font: 300 0.9vmax "Roboto";
+  width: 100%;
+  padding: 0.8vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+
+.signUpBtn:hover {
+  background-color: #79b09f;
+}
+.redirect_text{
+  font: 500 1.3vmax "Montserrat";
+}
+
+@media screen and (max-width: 650px) {
+  .login_left {
+    display: none;
+  }
+
+  .login_right {
+    width: 100%;
+  }
+
+  .signUpForm {
+    width: 60vw;
+    padding: 0;
+  }
+  .signUpForm>div>input {
+    font: 300 2.5vmax normal;
+    padding: 1vmax 5vmax;
+  }
+  .signUpForm>div>svg {
+    font-size: 2.6vmax;
+  }
+  .signUpForm>a {
+    font: 500 2.2vmax "Gill Sans";
+  }
+  .signUpBtn{
+    font: 300 2.5vmax "Roboto";
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .signUpForm {
+    width: 80vw;
+  }
+  .signUpForm>div>input {
+    font: 300 2.8vmax normal;
+    padding: 1vmax 5vmax;
+  }
+  .signUpForm>div>svg {
+    font-size: 2.8vmax;
+  }
+  .signUpForm>a {
+    font: 500 2.4vmax "Gill Sans";
+  }
+  .signUpBtn{
+    font: 300 2.7vmax "Roboto";
+  }
+}
