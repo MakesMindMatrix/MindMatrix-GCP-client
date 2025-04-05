@@ -30,7 +30,7 @@ jobs:
           IMAGE_NAME: frontend
           PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
         run: |-
-          docker build --build-arg VITE_BACKEND_BASE_URL=${{ secrets.VITE_BACKEND_URL }} -t asia-south1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest -f Dockerfile .
+          docker build --build-arg VITE_BACKEND_BASE_URL=${{ secrets.BACKEND_URL }} -t asia-south1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest -f Dockerfile .
           docker push asia-south1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest
 
       - name: Deploy to cloud run
@@ -39,5 +39,5 @@ jobs:
             --image asia-south1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCR_REPO_NAME }}/frontend:latest \
             --platform managed \
             --port=8080 \
-            --region us-central1 \
+            --region asia-south1 \
             --allow-unauthenticated \
