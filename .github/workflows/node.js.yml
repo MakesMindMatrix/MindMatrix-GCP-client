@@ -41,3 +41,4 @@ jobs:
             --port=8080 \
             --region asia-south1 \
             --allow-unauthenticated \
+            --set-env-vars "VITE_BACKEND_BASE_URL=${{secrets.BACKEND_URL}}"
