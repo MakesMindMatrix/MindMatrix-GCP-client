@@ -8,11 +8,10 @@ export const login = (email, password) => async (dispatch) => {
         dispatch({ type: LOGIN_REQUEST });
         console.log(email,password)
 
-        const config = { headers: { "Content-Type": "application/json"}}
+        const config = { headers: { "Content-Type": "application/json"}, withCredentials: true}
         const { data } = await axios.post(`${BASE_URL}/api/v1/login`,
             { email, password },
-            config,
-            { withCredentials: true }
+            config
         )
         console.log(data)
         dispatch({ type: LOGIN_SUCCESS, payload: data.user })
