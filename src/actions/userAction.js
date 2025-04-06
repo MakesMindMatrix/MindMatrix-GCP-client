@@ -55,9 +55,9 @@ export const loadUser = () => async (dispatch) => {
     try {
         dispatch({ type: LOAD_USER_REQUEST });
 
-        const config = { headers: { "Content-Type": "application/json" } };
-
-        const { data } = await axios.get(`${BASE_URL}/api/v1/me`, config)
+        const { data } = await axios.get(`${BASE_URL}/api/v1/me`, {
+            withCredentials: true
+          })
         // console.log(data)
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
     } catch (error) {
