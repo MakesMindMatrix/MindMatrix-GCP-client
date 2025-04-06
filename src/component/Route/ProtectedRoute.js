@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useSelector((state) => state.user);
   const location = useLocation();
+  console.log(isAuthenticated)
 
   // If still loading, do not render anything to prevent premature redirection
   if (loading) {
