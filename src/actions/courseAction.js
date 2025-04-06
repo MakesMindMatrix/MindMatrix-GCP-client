@@ -8,7 +8,7 @@ export const myCourseAction = (email) => async (dispatch) => {
     try {
         dispatch({ type: MY_COURSES_REQUEST });
 
-        const config = { headers: { "Content-Type": "application/json" } };
+        const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/student_InterlibCourses/${email}`, config);
         console.log(data)
@@ -24,7 +24,7 @@ export const allCourse = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_COURSES_REQUEST })
 
-        const config = { headers: { "Content-Type": "application/json" } };
+        const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/all_InterlibCourses`, config);
 
