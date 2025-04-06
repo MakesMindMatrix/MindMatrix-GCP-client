@@ -8,7 +8,7 @@ export const login = (email, password) => async (dispatch) => {
         console.log(email,password)
 
         const config = { headers: { "Content-Type": "application/json"}}
-        const { data } = await axios.post('/api/v1/login',
+        const { data } = await axios.post('https://second-brain-backend-416303935037.us-central1.run.app/api/v1/login',
             { email, password },
             config
             // { withCredentials: true }
@@ -57,7 +57,7 @@ export const loadUser = () => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get('/api/v1/me', config)
+        const { data } = await axios.get('https://second-brain-backend-416303935037.us-central1.run.app/api/v1/me', config)
         // console.log(data)
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
     } catch (error) {
@@ -68,7 +68,7 @@ export const loadUser = () => async (dispatch) => {
 // // Log out user
 export const logout = () => async (dispatch) => {
     try {
-        await axios.get('/api/v1/logout', { withCredentials: true })
+        await axios.get('https://second-brain-backend-416303935037.us-central1.run.app/api/v1/logout', { withCredentials: true })
 
         dispatch({ type: LOGOUT_SUCCESS })
     } catch (error) {
