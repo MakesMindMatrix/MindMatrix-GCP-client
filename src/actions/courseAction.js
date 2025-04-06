@@ -2,6 +2,7 @@ import { GET_BATCH_FAIL } from '../constants/adminConstant';
 import { ALL_COURSES_FAIL, ALL_COURSES_REQUEST, ALL_COURSES_SUCCESS, MY_COURSES_FAIL, MY_COURSES_REQUEST, MY_COURSES_SUCCESS, CLEAR_ERRORS, ENROLL_COURSE_REQUEST, ENROLL_COURSE_SUCCESS, ENROLL_COURSE_FAIL, SSO_LOGIN_REQUEST, SSO_LOGIN_SUCCESS, SSO_LOGIN_FAIL, USER_REPORT_REQUEST, USER_REPORT_SUCCESS, USER_REPORT_FAIL, COURSE_DATA_REQUEST, COURSE_DATA_SUCCESS, COURSE_DATA_FAIL, COURSE_LANDING_PAGE_DATA_REQUEST, COURSE_LANDING_PAGE_DATA_SUCCESS, COURSE_LANDING_PAGE_DATA_FAIL, PAYMENT_DATA_FAIL, PAYMENT_DATA_REQUEST, PAYMENT_DATA_SUCCESS, GET_PAYMENT_DATA_REQUEST, GET_PAYMENT_DATA_SUCCESS, COURSE_PAYMENT_REQUEST, COURSE_PAYMENT_SUCCESS, COURSE_PAYMENT_FAIL, COURSE_PAYMENT_STATUS_FAIL, COURSE_PAYMENT_STATUS_REQUEST, COURSE_PAYMENT_STATUS_SUCCESS } from '../constants/courseConstant'
 import axios from "axios"
 
+const BASE_URL=process.env.REACT_APP_BACKEND_URL
 // Action for get my course
 export const myCourseAction = (email) => async (dispatch) => {
     try {
@@ -9,7 +10,7 @@ export const myCourseAction = (email) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get(`/api/v1/student_InterlibCourses/${email}`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/student_InterlibCourses/${email}`, config);
         console.log(data)
 
         dispatch({ type: MY_COURSES_SUCCESS, payload: data.data });
@@ -25,7 +26,7 @@ export const allCourse = () => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get('/api/v1/all_InterlibCourses', config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/all_InterlibCourses`, config);
 
         dispatch({ type: ALL_COURSES_SUCCESS, payload: data.data });
     } catch (error) {
@@ -41,7 +42,7 @@ export const enrollCourse = (enrollCourse) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.post('/api/v1/enrollStudentOn_Interlib', enrollCourse, config);
+        const { data } = await axios.post(`${BASE_URL}/api/v1/enrollStudentOn_Interlib`, enrollCourse, config);
         console.log(data)
         dispatch({ type: ENROLL_COURSE_SUCCESS, payload: data.success })
     } catch (error) {
@@ -56,7 +57,7 @@ export const report = (batch_id) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.post('/api/v1/leaderBoard', batch_id, config);
+        const { data } = await axios.post(`${BASE_URL}/api/v1/leaderBoard`, batch_id, config);
 
         dispatch({ type: USER_REPORT_SUCCESS, payload: data })
     } catch (error) {
@@ -71,7 +72,7 @@ export const SSOLogin = (email) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.get(`/api/v1/interlibLogin/${email}`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/interlibLogin/${email}`, config);
 
         dispatch({ type: SSO_LOGIN_SUCCESS, payload: data })
     } catch (error) {
@@ -86,7 +87,7 @@ export const courseDataAction = (email) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.get(`/api/v1/my-course/${email}`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/my-course/${email}`, config);
         // console.log(data)
         dispatch({ type: COURSE_DATA_SUCCESS, payload: data })
     } catch (error) {
@@ -100,7 +101,7 @@ export const courseLandingPageDataAction = () => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.get(`/api/v1/all-course-data`, config)
+        const { data } = await axios.get(`${BASE_URL}/api/v1/all-course-data`, config)
 
         dispatch({ type: COURSE_LANDING_PAGE_DATA_SUCCESS, payload: data })
     } catch (error) {
@@ -115,7 +116,7 @@ export const paymentDataAction = (paymentData) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.post(`/api/v1/payment`, paymentData, config)
+        const { data } = await axios.post(`${BASE_URL}/api/v1/payment`, paymentData, config)
 
         dispatch({ type: PAYMENT_DATA_SUCCESS, payload: data })
     } catch (error) {
@@ -130,7 +131,7 @@ export const getPaymentDataAction = (batchId) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.post(`/api/v1/get-payment`, batchId, config)
+        const { data } = await axios.post(`${BASE_URL}/api/v1/get-payment`, batchId, config)
 
         dispatch({ type: GET_PAYMENT_DATA_SUCCESS, payload: data })
     } catch (error) {
@@ -144,7 +145,7 @@ export const coursePaymentAction = (courseData) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.post(`/api/v1/create-payment`, courseData, config)
+        const { data } = await axios.post(`${BASE_URL}/api/v1/create-payment`, courseData, config)
         console.log(data)
         dispatch({ type: COURSE_PAYMENT_SUCCESS, payload: data })
     } catch (error) {
@@ -158,7 +159,7 @@ export const coursePaymentStatusAction = (id) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.post(`/api/v1/status/${id}`, config)
+        const { data } = await axios.post(`${BASE_URL}/api/v1/status/${id}`, config)
 
         dispatch({ type: COURSE_PAYMENT_STATUS_SUCCESS, payload: data })
     } catch (error) {

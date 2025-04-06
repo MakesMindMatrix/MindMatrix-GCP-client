@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ALL_SLOT_FAIL, ALL_SLOT_REQUEST, ALL_SLOT_SUCCESS, UPDATE_SLOT_FAIL, UPDATE_SLOT_REQUEST, UPDATE_SLOT_SUCCESS } from "../constants/collegeConstant";
 
+const BASE_URL=process.env.REACT_APP_BACKEND_URL
 // Action for get all slots
 export const allSlotsAction = () => async (dispatch) => {
     try {
@@ -8,7 +9,7 @@ export const allSlotsAction = () => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get(`/api/v1/slot`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/slot`, config);
 
         dispatch({ type: ALL_SLOT_SUCCESS, payload: data });
     } catch (error) {
@@ -27,7 +28,7 @@ export const updateSlotAction = (slotData, email) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.put(`/api/v1/slot/`, dataSLot, config);
+        const { data } = await axios.put(`${BASE_URL}/api/v1/slot/`, dataSLot, config);
         console.log(data)
         dispatch({ type: UPDATE_SLOT_SUCCESS, payload: data });
     } catch (error) {

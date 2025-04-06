@@ -43,6 +43,7 @@ import CoursePayment from './component/Course/CoursePayment.js'
 const App = () => {
   const { loading } = useSelector((state) => state.user);
 
+  console.log(process.env.REACT_APP_BACKEND_URL)
   React.useEffect(() => {
     WebFont.load({
       google: {

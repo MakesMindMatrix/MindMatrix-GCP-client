@@ -1,6 +1,7 @@
 import { LOGIN_REQUEST, LOGIN_FAIL, LOGIN_SUCCESS, REGISTER_USER_REQUEST, REGISTER_USER_FAIL, REGISTER_USER_SUCCESS, CLEAR_ERRORS, LOAD_USER_FAIL, LOAD_USER_SUCCESS, LOAD_USER_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL, UPDATE_USER_FAIL, UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, VERIFICATION_CODE_REQUEST, VERIFICATION_CODE_SUCCESS, VERIFICATION_CODE_FAIL, VERIFY_CODE_REQUEST, VERIFY_CODE_SUCCESS, VERIFY_CODE_FAIL } from "../constants/userConstant"
 import axios from "axios"
 
+const BASE_URL=process.env.REACT_APP_BACKEND_URL
 // Action for login
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -8,7 +9,7 @@ export const login = (email, password) => async (dispatch) => {
         console.log(email,password)
 
         const config = { headers: { "Content-Type": "application/json"}}
-        const { data } = await axios.post('https://second-brain-backend-416303935037.us-central1.run.app/api/v1/login',
+        const { data } = await axios.post(`${BASE_URL}/api/v1/login`,
             { email, password },
             config
             // { withCredentials: true }
@@ -27,7 +28,7 @@ export const register = (userData) => async (dispatch) => {
 
         const config = { headers: { withCredentials: true } };
 
-        const { data } = await axios.post('/api/v1/register', userData, config)
+        const { data } = await axios.post(`${BASE_URL}/api/v1/register`, userData, config)
         dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user })
     } catch (error) {
         dispatch({ type: REGISTER_USER_FAIL, payload: error.response.data.message })
@@ -41,7 +42,7 @@ export const updateUser = (userData) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.post('/api/v1/updateUser', userData, config)
+        const { data } = await axios.post(`${BASE_URL}/api/v1/updateUser`, userData, config)
         console.log(data)
         dispatch({ type: UPDATE_USER_SUCCESS, payload: data })
     } catch (error) {
@@ -57,7 +58,7 @@ export const loadUser = () => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get('https://second-brain-backend-416303935037.us-central1.run.app/api/v1/me', config)
+        const { data } = await axios.get(`${BASE_URL}/api/v1/me`, config)
         // console.log(data)
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
     } catch (error) {
@@ -68,7 +69,7 @@ export const loadUser = () => async (dispatch) => {
 // // Log out user
 export const logout = () => async (dispatch) => {
     try {
-        await axios.get('https://second-brain-backend-416303935037.us-central1.run.app/api/v1/logout', { withCredentials: true })
+        await axios.get(`${BASE_URL}/api/v1/logout`, { withCredentials: true })
 
         dispatch({ type: LOGOUT_SUCCESS })
     } catch (error) {
@@ -83,7 +84,7 @@ export const forgotPassword = (email) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.post(`/api/v1/password/forgot`, email, config);
+        const { data } = await axios.post(`${BASE_URL}/api/v1/password/forgot`, email, config);
 
         dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
     } catch (error) {
@@ -103,7 +104,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
         const config = { headers: { "Content-Type": "application/json" } };
 
         const { data } = await axios.put(
-            `/api/v1/password/reset/${token}`,
+            `${BASE_URL}/api/v1/password/reset/${token}`,
             passwords,
             config
         );
@@ -126,7 +127,7 @@ export const sendVerificationCode = (verificationData) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.post(`/api/v1/sendCode`, verificationData, config);
+        const { data } = await axios.post(`${BASE_URL}/api/v1/sendCode`, verificationData, config);
 
         dispatch({ type: VERIFICATION_CODE_SUCCESS, payload: data.message });
     } catch (error) {
@@ -145,7 +146,7 @@ export const verifyCode = (verificationData) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" }};
 
-        const { data } = await axios.post(`/api/v1/verifyUser`, verificationData, config);
+        const { data } = await axios.post(`${BASE_URL}/api/v1/verifyUser`, verificationData, config);
 
         dispatch({ type: VERIFY_CODE_SUCCESS, payload: data.success });
     } catch (error) {
