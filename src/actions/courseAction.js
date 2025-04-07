@@ -93,7 +93,12 @@ export const courseDataAction = (email) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.get(`${BASE_URL}/api/v1/my-course/${email}`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/my-course/${email}`, {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            withCredentials: true
+          });
         // console.log(data)
         dispatch({ type: COURSE_DATA_SUCCESS, payload: data })
     } catch (error) {
