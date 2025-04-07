@@ -7,7 +7,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, register } from '../../actions/userAction';
 import Loader from '../layout/Loader/Loader';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -133,7 +133,6 @@ const Register = () => {
                             </form>
                         </div>
                     </div>
-                    <ToastContainer style={{ fontSize: "1.35rem" }} />
                 </>
             )}
         </>

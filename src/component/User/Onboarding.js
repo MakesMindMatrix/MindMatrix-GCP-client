@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, sendVerificationCode, updateUser } from '../../actions/userAction';
 import { getBranch, getCollege, getUniversity } from '../../actions/academicDataAction';
 import Loader from '../layout/Loader/Loader'
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import EmailVerification from './EmailVerification';
 
 const Onboarding = () => {
@@ -247,7 +247,6 @@ console.log(user)
                             </form>
                         </div>
                     </div>
-                    <ToastContainer style={{ fontSize: "1.35rem" }} />
                 </>
             )}
         </>

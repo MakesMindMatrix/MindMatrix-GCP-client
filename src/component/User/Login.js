@@ -6,7 +6,7 @@ import { clearErrors, login } from '../../actions/userAction';
 import Loader from "../layout/Loader/Loader"
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -26,20 +26,27 @@ const Login = () => {
 
     useEffect(() => {
         if (error) {
+            toast.error(error);
             console.log(error)
-            toast.error(error)
-            dispatch(clearErrors())
+            dispatch(clearErrors());
         }
-        if (isAuthenticated && user?.role === "College") {
-            navigate('/college-dashboard')
-        } else if (!(user?.phone) && isAuthenticated) {
-            navigate('/onboarding')
-        } else if (isAuthenticated && user?.role === "Admin") {
-            navigate('/admin-dashboard')
-        } else if (isAuthenticated) {
-            navigate('/dashboard')
+    }, [dispatch, error]);
+    
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            if (user?.role === "College") {
+                navigate("/college-dashboard");
+            } else if (!user?.phone) {
+                navigate("/onboarding");
+            } else if (user?.role === "Admin") {
+                navigate("/admin-dashboard");
+            } else {
+                navigate("/dashboard");
+            }
         }
-    }, [dispatch, error, isAuthenticated, navigate, user?.phone, user?.role])
+    }, [isAuthenticated, user, navigate]);
+    
     return (
         <>
             {loading ? <Loader /> : (
@@ -78,7 +85,6 @@ const Login = () => {
                             </form>
                         </div>
                     </div>
-                    <ToastContainer style={{ fontSize: "1.35rem" }} />
                 </>
             )}
         </>
