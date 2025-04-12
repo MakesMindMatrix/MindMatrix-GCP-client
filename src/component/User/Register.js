@@ -14,8 +14,8 @@ const Register = () => {
     // const alert = useAlert()
     const navigate = useNavigate()
 
-    const { error, loading, isAuthenticated } = useSelector((state) => state.user)
-
+    const { error, loading, registerSuccess, user: userData } = useSelector((state) => state.user)
+    console.log(userData)
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -24,16 +24,23 @@ const Register = () => {
     const { name, email, password } = user;
 
     useEffect(() => {
-        if (error) {
+        if (error?.message) {
             // alert.error(error)
+            console.log(error)
             toast.error(error)
             dispatch(clearErrors())
         }
 
-        if (isAuthenticated) {
+        if (error?.redirect) {
+            toast.info(error.message)
+            setTimeout(() => navigate('/login'), 100);
+        }
+
+        if (registerSuccess) {
+            console.log(registerSuccess)
             navigate('/onboarding')
         }
-    }, [dispatch, error, isAuthenticated, navigate])
+    }, [dispatch, error, registerSuccess, navigate])
 
     const registerSubmit = (e) => {
         e.preventDefault()
@@ -44,10 +51,10 @@ const Register = () => {
 
             case !email:
                 return toast.warning("Please fill the email before submit")
-                
+
             case !password:
-                return toast.warning("Please fill the password before submit")    
-        
+                return toast.warning("Please fill the password before submit")
+
             default:
                 break;
         }

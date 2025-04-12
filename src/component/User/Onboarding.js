@@ -19,7 +19,7 @@ const Onboarding = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const { loading: loadingProfile ,isUpdated, error } = useSelector((state) => state.profile)
+    const { loading: loadingProfile, isUpdated, error } = useSelector((state) => state.profile)
     const { loading: lodingUser, user } = useSelector((state) => state.user)
     const { loading, collegeData, universityData, branchData } = useSelector((state) => state.academicData)
     const { loading: loadingVerify, codeVerified } = useSelector((state) => state.verification)
@@ -41,46 +41,46 @@ const Onboarding = () => {
         e.preventDefault();
         setUpdateData({ ...updateData, [e.target.name]: e.target.value })
     }
-console.log(user)
+    console.log(user)
     const onboardingSubmit = (e) => {
         e.preventDefault();
 
         // if (user.isverified) {
-            switch (true) {
-                case !phone:
-                    return toast.warning("please fill the phone field before submit");
+        switch (true) {
+            case !phone:
+                return toast.warning("please fill the phone field before submit");
 
-                case !university:
-                    return toast.warning(
-                        "please select the university field before submit"
-                    );
+            case !university:
+                return toast.warning(
+                    "please select the university field before submit"
+                );
 
-                case !college:
-                    return toast.warning("please select the college field before submit");
+            case !college:
+                return toast.warning("please select the college field before submit");
 
-                case !roll_no:
-                    return toast.warning("please fill the USN No field before submit");
+            case !roll_no:
+                return toast.warning("please fill the USN No field before submit");
 
-                case !branch:
-                    return toast.warning("please select the branch field before submit");
+            case !branch:
+                return toast.warning("please select the branch field before submit");
 
-                case !semester:
-                    return toast.warning("please select the semester field before submit");
+            case !semester:
+                return toast.warning("please select the semester field before submit");
 
-                default:
-                    break;
-            }
-            const myForm = new FormData()
+            default:
+                break;
+        }
+        const myForm = new FormData()
 
-            myForm.set("email", user.email)
-            myForm.set("phone", phone)
-            myForm.set("university", university)
-            myForm.set("college", college)
-            myForm.set("branch", branch)
-            myForm.set("roll_no", roll_no)
-            myForm.set("semester", semester)
+        myForm.set("email", user.email)
+        myForm.set("phone", phone)
+        myForm.set("university", university)
+        myForm.set("college", college)
+        myForm.set("branch", branch)
+        myForm.set("roll_no", roll_no)
+        myForm.set("semester", semester)
 
-            dispatch(updateUser(myForm))
+        dispatch(updateUser(myForm))
         // }
     }
 
@@ -119,7 +119,7 @@ console.log(user)
     }, [dispatch, error, isUpdated, navigate, university, codeVerified])
     return (
         <>
-            {loading && loadingProfile && lodingUser && loadingVerify? <Loader /> : (
+            {loading && loadingProfile && lodingUser && loadingVerify ? <Loader /> : (
                 <>
                     <div className='onboarding_container'>
                         <EmailVerification
@@ -145,7 +145,7 @@ console.log(user)
                                         value={user?.email}
                                         disabled
                                     />
-                                    <button onClick={sendCodeHandler} className="verify_btn">{showForm ? "verified" : "verify"}</button>
+                                    <button onClick={sendCodeHandler} className="verify_btn">{showForm ? "Verified" : "verify"}</button>
                                 </div>
 
                                 {showForm ? (
@@ -239,11 +239,10 @@ console.log(user)
                                                 <option value="8">Eighth</option>
                                             </select>
                                         </div>
+                                        <input type='submit' value="Go to my Dashboard" className='signUpBtn' />
                                     </>
                                 ) : ""}
-
-                                <input type='submit' value="Register" className='signUpBtn' />
-                                <h2>Do you have an account?<Link to='/login'>Sign In</Link></h2>
+                                {/* <h2>Do you have an account?<Link to='/login'>Sign In</Link></h2> */}
                             </form>
                         </div>
                     </div>

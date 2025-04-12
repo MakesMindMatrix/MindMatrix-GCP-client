@@ -13,7 +13,6 @@ export const userReducer = (state = { user: null, isAuthenticated: false, loadin
         isAuthenticated: false
       };
     case LOGIN_SUCCESS:
-    case REGISTER_USER_SUCCESS:
     case LOAD_USER_SUCCESS:
       return {
         ...state,
@@ -21,6 +20,13 @@ export const userReducer = (state = { user: null, isAuthenticated: false, loadin
         isAuthenticated: true,
         user: action.payload
       };
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        registerSuccess: true,
+        user: action.payload
+      }
     case LOGOUT_SUCCESS:
       return {
         loading: false,
@@ -114,7 +120,7 @@ export const profileReducer = (state = {}, action) => {
         ...state,
         loading: false,
         error: action.payload
-      }  
+      }
 
     case CLEAR_ERRORS:
       return {
@@ -148,15 +154,15 @@ export const verificationReducer = (state = {}, action) => {
         ...state,
         loading: false,
         codeVerified: action.payload
-      }  
+      }
 
     case VERIFICATION_CODE_FAIL:
-    case VERIFY_CODE_FAIL:  
+    case VERIFY_CODE_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload
-      }  
+      }
 
     case CLEAR_ERRORS:
       return {
