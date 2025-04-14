@@ -32,6 +32,7 @@ const Dashboard = () => {
   const { loading, enroll_course, my_course, rec_course, report_data } = useSelector((state) => state.myCourse)
   const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment)
   // const { courseLandingPageData } = useSelector((state) => state.courseLandingPage)
+  console.log(my_course)
 
   const [confirmModal, setConfirmModal] = useState(false)
   const [paymentModal, setPaymentModal] = useState(false)
