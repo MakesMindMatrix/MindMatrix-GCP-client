@@ -2,6 +2,8 @@ import { LOGIN_REQUEST, LOGIN_FAIL, LOGIN_SUCCESS, REGISTER_USER_REQUEST, REGIST
 import axios from "axios"
 
 const BASE_URL=process.env.REACT_APP_BACKEND_URL
+
+// console.log(BASE_URL)
 // Action for login
 export const login = (email, password) => async (dispatch) => {
     try {
