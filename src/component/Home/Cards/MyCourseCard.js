@@ -7,7 +7,6 @@ import CourseData from '../../Data/MyCourseData'
 const MyCourseCard = ({ data }) => {
   const { sso } = useSelector((state) => state.SSO)
   const { report_data } = useSelector((state) => state.myCourse)
-  console.log(data)
  
   const course_progress = report_data && report_data.filter((elm) => elm.courseName === data.course_name)
 

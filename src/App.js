@@ -41,8 +41,7 @@ import CoursePayment from './component/Course/CoursePayment.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
 const App = () => {
-  const { loading, user } = useSelector((state) => state.user);
-  console.log(user)
+  const { loading } = useSelector((state) => state.user);
 
   console.log(process.env.REACT_APP_BACKEND_URL)
   React.useEffect(() => {
