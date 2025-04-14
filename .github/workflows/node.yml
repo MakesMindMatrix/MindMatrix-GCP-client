@@ -38,7 +38,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy mindmatrix-frontend \
+          gcloud run deploy mindmatrix-frontend-staging \
             --image asia-south1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCR_REPO_NAME }}/frontend-staging:latest \
             --platform managed \
             --port=8080 \
