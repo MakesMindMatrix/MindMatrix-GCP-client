@@ -23,22 +23,22 @@ jobs:
         uses: "google-github-actions/setup-gcloud@v2"
 
       - name: configure Docker
-        run: gcloud auth configure-docker asia-south1-docker.pkg.dev
+        run: gcloud auth configure-docker asia-northeast1-docker.pkg.dev
 
       - name: Build
         env:
           IMAGE_NAME: frontend
           PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
         run: |-
-          docker build --build-arg REACT_APP_BACKEND_URL=${{ secrets.REACT_APP_BACKEND_URL }} -t asia-south1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest -f Dockerfile .
-          docker push asia-south1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest
+          docker build --build-arg REACT_APP_BACKEND_URL=${{ secrets.REACT_APP_BACKEND_URL }} -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest -f Dockerfile .
+          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest
 
       - name: Deploy to cloud run
         run: |
           gcloud run deploy mindmatrix-frontend \
-            --image asia-south1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCR_REPO_NAME }}/frontend:latest \
+            --image asia-northeast1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCR_REPO_NAME }}/frontend:latest \
             --platform managed \
             --port=8080 \
-            --region asia-south1 \
+            --region asia-northeast1 \
             --allow-unauthenticated \
             --set-env-vars "REACT_APP_BACKEND_URL=${{secrets.REACT_APP_BACKEND_URL}}"
