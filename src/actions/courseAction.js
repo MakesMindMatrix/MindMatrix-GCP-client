@@ -152,7 +152,7 @@ export const coursePaymentAction = (courseData) => async (dispatch) => {
     try {
         dispatch({ type: COURSE_PAYMENT_REQUEST })
 
-        const config = { headers: { "Content-Type": "application/json" } }
+        const config = { headers: { "Content-Type": "application/json" }, withCredentials: true }
 
         const { data } = await axios.post(`${BASE_URL}/api/v1/create-payment`, courseData, config)
         console.log(data)
