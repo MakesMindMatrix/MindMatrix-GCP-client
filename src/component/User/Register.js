@@ -32,6 +32,7 @@ const Register = () => {
         }
 
         if (error?.redirect) {
+            console.log(error?.redirect)
             toast.info(error.message)
             setTimeout(() => navigate('/login'), 100);
         }

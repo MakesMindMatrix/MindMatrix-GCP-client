@@ -32,7 +32,7 @@ export const register = (userData) => async (dispatch) => {
         const { data } = await axios.post(`${BASE_URL}/api/v1/register`, userData, config)
         dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user })
     } catch (error) {
-        dispatch({ type: REGISTER_USER_FAIL, payload: error.response.data.message })
+        dispatch({ type: REGISTER_USER_FAIL, payload: error.response.data })
     }
 }
 
