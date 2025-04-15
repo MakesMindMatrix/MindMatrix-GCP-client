@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, login } from '../../actions/userAction';
 import Loader from "../layout/Loader/Loader"
@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
     // const alert = useAlert()
 
     const { error, loading, isAuthenticated, user } = useSelector((state) => state.user)
@@ -38,14 +39,16 @@ const Login = () => {
             if (user?.role === "College") {
                 navigate("/college-dashboard");
             } else if (!user?.phone) {
-                navigate("/onboarding");
+                // navigate("/onboarding");
+                const from = location.state?.from?.pathname || "/onboarding";
+                navigate("/onboarding", { state: { from }, replace: true });
             } else if (user?.role === "Admin") {
                 navigate("/admin-dashboard");
             } else {
                 navigate("/dashboard");
             }
         }
-    }, [isAuthenticated, user, navigate]);
+    }, [isAuthenticated, user, navigate, location.state?.from?.pathname]);
     
     return (
         <>

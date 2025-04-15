@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Register.css'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -13,6 +13,8 @@ const Register = () => {
     const dispatch = useDispatch()
     // const alert = useAlert()
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/onboarding"
 
     const { error, loading, registerSuccess, user: userData } = useSelector((state) => state.user)
     console.log(userData)
@@ -32,15 +34,17 @@ const Register = () => {
         }
 
         if (error?.redirect) {
+            console.log(error?.redirect)
             toast.info(error.message)
             setTimeout(() => navigate('/login'), 100);
         }
 
         if (registerSuccess) {
-            console.log(registerSuccess)
-            navigate('/onboarding')
+            console.log(registerSuccess, from)
+            // navigate('/onboarding')
+            navigate(from, { replace: true });
         }
-    }, [dispatch, error, registerSuccess, navigate])
+    }, [dispatch, error, registerSuccess, navigate, from])
 
     const registerSubmit = (e) => {
         e.preventDefault()

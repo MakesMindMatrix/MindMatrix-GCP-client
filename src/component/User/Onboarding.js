@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Onboarding.css'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineMail } from "react-icons/md";
 import { FiSmartphone } from "react-icons/fi";
 import { LiaUniversitySolid } from "react-icons/lia";
@@ -24,7 +24,7 @@ const Onboarding = () => {
     const { loading, collegeData, universityData, branchData } = useSelector((state) => state.academicData)
     const { loading: loadingVerify, codeVerified } = useSelector((state) => state.verification)
 
-    console.log(branchData, universityData, collegeData)
+    // console.log(branchData, universityData, collegeData)
 
     const [updateData, setUpdateData] = useState({
         phone: "",
@@ -41,7 +41,7 @@ const Onboarding = () => {
         e.preventDefault();
         setUpdateData({ ...updateData, [e.target.name]: e.target.value })
     }
-    console.log(user)
+    // console.log(user)
     const onboardingSubmit = (e) => {
         e.preventDefault();
 

@@ -82,6 +82,7 @@ const App = () => {
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
         <Route path="/payment" element={<CoursePayment />} />
+        <Route path="/link" element={<Link />} />
 
         {/* Normal User Routes */}
         <Route element={<ProtectedRoute />}>
@@ -109,3 +110,13 @@ const App = () => {
 
 export default App;
 
+
+const Link = () => {
+  return (
+    <>
+      <div style={{height: '100vh', width: '100vw'}}>
+        <iframe src="https://trygcp.dev/e/build-with-ai-avk-college-for-women" allow="identity-credentials-get" title='test' height={'100%'} width={'100%'} />
+      </div>
+    </>
+  )
+}

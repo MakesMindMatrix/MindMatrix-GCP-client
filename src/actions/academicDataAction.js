@@ -10,7 +10,7 @@ export const getUniversity = () => async (dispatch) => {
         const config = { headers: { "Content-Type": "application/json" } };
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/getUniversity`, config);
-        console.log(data)
+
         dispatch({ type: GET_UNIVERSITY_SUCCESS, payload: data });
     } catch (error) {
         dispatch({ type: GET_UNIVERSITY_FAIL, payload: error.response.data.message })
