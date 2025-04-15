@@ -115,7 +115,7 @@ const Link = () => {
   return (
     <>
       <div style={{height: '100vh', width: '100vw'}}>
-        <iframe src="https://trygcp.dev/e/build-with-ai-avk-college-for-women" title='test' height={'100%'} width={'100%'} />
+        <iframe src="https://trygcp.dev/e/build-with-ai-avk-college-for-women" allow="identity-credentials-get" title='test' height={'100%'} width={'100%'} />
       </div>
     </>
   )
