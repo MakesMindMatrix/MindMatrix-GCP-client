@@ -123,7 +123,7 @@ export const paymentDataAction = (paymentData) => async (dispatch) => {
     try {
         dispatch({ type: PAYMENT_DATA_REQUEST })
 
-        const config = { headers: { "Content-Type": "application/json" } }
+        const config = { headers: { "Content-Type": "application/json", withCredentials: true } }
 
         const { data } = await axios.post(`${BASE_URL}/api/v1/payment`, paymentData, config)
 
@@ -138,7 +138,7 @@ export const getPaymentDataAction = (batchId) => async (dispatch) => {
     try {
         dispatch({ type: GET_PAYMENT_DATA_REQUEST })
 
-        const config = { headers: { "Content-Type": "application/json" } }
+        const config = { headers: { "Content-Type": "application/json", withCredentials: true } }
 
         const { data } = await axios.post(`${BASE_URL}/api/v1/get-payment`, batchId, config)
 
