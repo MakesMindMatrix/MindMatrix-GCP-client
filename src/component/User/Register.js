@@ -16,7 +16,7 @@ const Register = () => {
     const location = useLocation()
     const from = location.state?.from?.pathname || "/onboarding"
 
-    const { error, loading, registerSuccess, user: userData } = useSelector((state) => state.user)
+    const { error, loading, isAuthenticated, user: userData } = useSelector((state) => state.user)
     console.log(userData)
     const [user, setUser] = useState({
         name: "",
@@ -39,12 +39,12 @@ const Register = () => {
             setTimeout(() => navigate('/login'), 100);
         }
 
-        if (registerSuccess) {
-            console.log(registerSuccess, from)
+        if (isAuthenticated) {
+            console.log(isAuthenticated, from)
             // navigate('/onboarding')
             navigate(from, { replace: true });
         }
-    }, [dispatch, error, registerSuccess, navigate, from])
+    }, [dispatch, error, isAuthenticated, navigate, from])
 
     const registerSubmit = (e) => {
         e.preventDefault()

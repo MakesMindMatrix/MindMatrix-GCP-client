@@ -24,7 +24,7 @@ export const userReducer = (state = { user: null, isAuthenticated: false, loadin
       return {
         ...state,
         loading: false,
-        registerSuccess: true,
+        isAuthenticated: true,
         user: action.payload
       }
     case LOGOUT_SUCCESS:

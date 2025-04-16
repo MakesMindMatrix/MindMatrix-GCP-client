@@ -42,7 +42,7 @@ const Onboarding = () => {
         setUpdateData({ ...updateData, [e.target.name]: e.target.value })
     }
     // console.log(user)
-    const onboardingSubmit = (e) => {
+    const onboardingSubmit = async (e) => {
         e.preventDefault();
 
         // if (user.isverified) {
@@ -80,7 +80,8 @@ const Onboarding = () => {
         myForm.set("roll_no", roll_no)
         myForm.set("semester", semester)
 
-        dispatch(updateUser(myForm))
+        const result = await dispatch(updateUser(myForm))
+        console.log(result)
         // }
     }
 
@@ -112,8 +113,9 @@ const Onboarding = () => {
             setShowForm(true)
             toast.success("Email verified successfully")
         }
-
+        console.log(isUpdated?.user?.phone, isUpdated?.success)
         if (isUpdated?.user?.phone && isUpdated?.success) {
+            console.log("came inside")
             navigate('/dashboard')
         }
     }, [dispatch, error, isUpdated, navigate, university, codeVerified])

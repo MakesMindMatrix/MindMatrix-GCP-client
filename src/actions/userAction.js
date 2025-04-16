@@ -41,7 +41,7 @@ export const updateUser = (userData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_USER_REQUEST })
 
-        const config = { headers: { "Content-Type": "application/json" } };
+        const config = { headers: { "Content-Type": "application/json" }, withCredentials: true };
 
         const { data } = await axios.post(`${BASE_URL}/api/v1/updateUser`, userData, config)
         console.log(data)
