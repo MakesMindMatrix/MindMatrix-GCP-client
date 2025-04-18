@@ -80,20 +80,26 @@ const Onboarding = () => {
         myForm.set("roll_no", roll_no)
         myForm.set("semester", semester)
 
-        const result = await dispatch(updateUser(myForm))
-        console.log(result)
+        dispatch(updateUser(myForm))
+        // console.log(result)
         // }
     }
 
-    const sendCodeHandler = (e) => {
+    const sendCodeHandler = async (e) => {
         e.preventDefault()
 
         setShowModal(true)
-        dispatch(sendVerificationCode({
+        const result = await dispatch(sendVerificationCode({
             email: user.email,
             secretCode: user.secret,
             name: user.name
         }))
+        if(result?.success === true){
+            toast.success(result.message)
+        } else {
+            console.log(result)
+            toast.warning("Facing issue in sending mail")
+        }
     }
 
     useEffect(() => {
@@ -113,9 +119,9 @@ const Onboarding = () => {
             setShowForm(true)
             toast.success("Email verified successfully")
         }
-        console.log(isUpdated?.user?.phone, isUpdated?.success)
+        // console.log(isUpdated?.user?.phone, isUpdated?.success)
         if (isUpdated?.user?.phone && isUpdated?.success) {
-            console.log("came inside")
+            // console.log("came inside")
             navigate('/dashboard')
         }
     }, [dispatch, error, isUpdated, navigate, university, codeVerified])

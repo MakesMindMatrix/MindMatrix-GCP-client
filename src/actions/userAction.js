@@ -109,7 +109,6 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
             passwords,
             config
         );
-        console.log(data)
 
         dispatch({ type: RESET_PASSWORD_SUCCESS, payload: data.success });
     } catch (error) {
@@ -131,6 +130,8 @@ export const sendVerificationCode = (verificationData) => async (dispatch) => {
         const { data } = await axios.post(`${BASE_URL}/api/v1/sendCode`, verificationData, config);
 
         dispatch({ type: VERIFICATION_CODE_SUCCESS, payload: data.message });
+        console.log(data)
+        return data
     } catch (error) {
         dispatch({
             type: VERIFICATION_CODE_FAIL,
@@ -141,15 +142,16 @@ export const sendVerificationCode = (verificationData) => async (dispatch) => {
 
 // Verify user code
 export const verifyCode = (verificationData) => async (dispatch) => {
-    console.log(verificationData)
     try {
         dispatch({ type: VERIFY_CODE_REQUEST });
 
         const config = { headers: { "Content-Type": "application/json" }};
 
         const { data } = await axios.post(`${BASE_URL}/api/v1/verifyUser`, verificationData, config);
-
+    
         dispatch({ type: VERIFY_CODE_SUCCESS, payload: data.success });
+
+        return data;
     } catch (error) {
         dispatch({
             type: VERIFY_CODE_FAIL,

@@ -16,8 +16,8 @@ const Register = () => {
     const location = useLocation()
     const from = location.state?.from?.pathname || "/onboarding"
 
-    const { error, loading, isAuthenticated, user: userData } = useSelector((state) => state.user)
-    console.log(userData)
+    const { error, loading, isAuthenticated } = useSelector((state) => state.user)
+    // console.log(userData)
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -28,19 +28,19 @@ const Register = () => {
     useEffect(() => {
         if (error?.message) {
             // alert.error(error)
-            console.log(error)
+            // console.log(error)
             toast.error(error)
             dispatch(clearErrors())
         }
 
         if (error?.redirect) {
-            console.log(error?.redirect)
-            toast.info(error.message)
+            // console.log(error?.redirect)
+            // toast.info(error.message)
             setTimeout(() => navigate('/login'), 100);
         }
 
         if (isAuthenticated) {
-            console.log(isAuthenticated, from)
+            // console.log(isAuthenticated, from)
             // navigate('/onboarding')
             navigate(from, { replace: true });
         }
