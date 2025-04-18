@@ -41,6 +41,12 @@ const Onboarding = () => {
         e.preventDefault();
         setUpdateData({ ...updateData, [e.target.name]: e.target.value })
     }
+
+    const countNum = (num) => {
+        return String(num).split('').reduce(
+            (count, digit) => count + 1, 0
+        )
+    }
     // console.log(user)
     const onboardingSubmit = async (e) => {
         e.preventDefault();
@@ -49,6 +55,9 @@ const Onboarding = () => {
         switch (true) {
             case !phone:
                 return toast.warning("please fill the phone field before submit");
+
+            case countNum(phone) > 10:
+                return toast.warning("Phone number can't be more than 10 digits")    
 
             case !university:
                 return toast.warning(
@@ -117,7 +126,7 @@ const Onboarding = () => {
         }
         if (codeVerified) {
             setShowForm(true)
-            toast.success("Email verified successfully")
+            // toast.success("Email verified successfully")
         }
         // console.log(isUpdated?.user?.phone, isUpdated?.success)
         if (isUpdated?.user?.phone && isUpdated?.success) {
@@ -153,7 +162,9 @@ const Onboarding = () => {
                                         value={user?.email}
                                         disabled
                                     />
-                                    <button onClick={sendCodeHandler} className="verify_btn">{showForm ? "Verified" : "verify"}</button>
+                                    {/* <button onClick={sendCodeHandler} className="verify_btn"> */}
+                                    {showForm ? <h1 className="verify_btn">Verified</h1> : <button className="verify_btn" onClick={sendCodeHandler}>verify</button>}
+                                    {/* </button> */}
                                 </div>
 
                                 {showForm ? (

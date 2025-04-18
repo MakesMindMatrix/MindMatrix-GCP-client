@@ -37,6 +37,7 @@ import CollegeDashboard from './collegeComponent/CollegeDashboard/CollegeDashboa
 import PaymentSuccess from './component/User/PaymentSuccess.js';
 import PaymentFailure from './component/User/PaymentFailure.js';
 import CoursePayment from './component/Course/CoursePayment.js'
+import DashboardTest from './component/Home/DashboardTest.js';
 // import Footer from './component/layout/Footer/Footer.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
@@ -77,6 +78,7 @@ const App = () => {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/courses/:course-name" element={<CourseLandingPage />} />
+        <Route path="/dashboard-test" element={<DashboardTest />} />
 
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />
