@@ -3,6 +3,7 @@ import './EmailVerification.css'
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useDispatch } from 'react-redux';
 import { verifyCode } from '../../actions/userAction';
+import { toast } from 'react-toastify';
 
 const EmailVerification = ({ showModal, setShowModal, user }) => {
     const dispatch = useDispatch()
@@ -11,15 +12,31 @@ const EmailVerification = ({ showModal, setShowModal, user }) => {
         secretCode: ""
     })
 
-    const handleSubmit = (e) => {
+    const countNum = (num) => {
+        return String(num).split('').reduce(
+            (count, digit) => count + 1, 0
+        )
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        dispatch(verifyCode(verifyData))
-        setShowModal(false)
+        if (countNum(verifyData.secretCode) > 6) {
+            return toast.error("You can't enter more than 6 digit code")
+        } else {
+            const result = await dispatch(verifyCode(verifyData))
+            setShowModal(false)
+            
+            if (result?.success === true) {
+                toast.success(result.message)
+            } else {
+                toast.error(result.message)
+            }
+        }
     }
 
     const handleChangeData = (e) => {
-        setVerifyData({ secretCode: e.target.value, email: user.email,  })
+        setVerifyData({ secretCode: e.target.value, email: user.email, })
     }
     return (
         <>
@@ -51,7 +68,7 @@ const EmailVerification = ({ showModal, setShowModal, user }) => {
                 </h3>
                 <button
                     className="modal_btn"
-                onClick={handleSubmit}
+                    onClick={handleSubmit}
                 >
                     Verify
                 </button>

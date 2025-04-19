@@ -41,14 +41,23 @@ const Onboarding = () => {
         e.preventDefault();
         setUpdateData({ ...updateData, [e.target.name]: e.target.value })
     }
+
+    const countNum = (num) => {
+        return String(num).split('').reduce(
+            (count, digit) => count + 1, 0
+        )
+    }
     // console.log(user)
-    const onboardingSubmit = (e) => {
+    const onboardingSubmit = async (e) => {
         e.preventDefault();
 
         // if (user.isverified) {
         switch (true) {
             case !phone:
                 return toast.warning("please fill the phone field before submit");
+
+            case countNum(phone) > 10:
+                return toast.warning("Phone number can't be more than 10 digits")    
 
             case !university:
                 return toast.warning(
@@ -81,18 +90,25 @@ const Onboarding = () => {
         myForm.set("semester", semester)
 
         dispatch(updateUser(myForm))
+        // console.log(result)
         // }
     }
 
-    const sendCodeHandler = (e) => {
+    const sendCodeHandler = async (e) => {
         e.preventDefault()
 
         setShowModal(true)
-        dispatch(sendVerificationCode({
+        const result = await dispatch(sendVerificationCode({
             email: user.email,
             secretCode: user.secret,
             name: user.name
         }))
+        if(result?.success === true){
+            toast.success(result.message)
+        } else {
+            console.log(result)
+            toast.warning("Facing issue in sending mail")
+        }
     }
 
     useEffect(() => {
@@ -110,10 +126,11 @@ const Onboarding = () => {
         }
         if (codeVerified) {
             setShowForm(true)
-            toast.success("Email verified successfully")
+            // toast.success("Email verified successfully")
         }
-
+        // console.log(isUpdated?.user?.phone, isUpdated?.success)
         if (isUpdated?.user?.phone && isUpdated?.success) {
+            // console.log("came inside")
             navigate('/dashboard')
         }
     }, [dispatch, error, isUpdated, navigate, university, codeVerified])
@@ -145,7 +162,9 @@ const Onboarding = () => {
                                         value={user?.email}
                                         disabled
                                     />
-                                    <button onClick={sendCodeHandler} className="verify_btn">{showForm ? "Verified" : "verify"}</button>
+                                    {/* <button onClick={sendCodeHandler} className="verify_btn"> */}
+                                    {showForm ? <h1 className="verify_btn">Verified</h1> : <button className="verify_btn" onClick={sendCodeHandler}>verify</button>}
+                                    {/* </button> */}
                                 </div>
 
                                 {showForm ? (
