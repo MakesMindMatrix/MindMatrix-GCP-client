@@ -1,9 +1,9 @@
 import React from 'react'
 import './RecCard.css'
-import Gai from '../images/GAI.jpg'
+// import Gai from '../images/GAI.jpg'
 
 const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
-    
+    // console.log(data)
     const handleEnroll = () => {
         if (data.batch_price > 0) {
             setPaymentCourseData({
@@ -29,7 +29,7 @@ const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData,
             >
                 <div
                     style={{
-                        backgroundImage: `url(${Gai})`,
+                        backgroundImage: `url(${data?.image})`,
                     }}
                     className='course_card_img'
                 ></div>
