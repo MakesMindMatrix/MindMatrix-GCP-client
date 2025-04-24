@@ -44,14 +44,14 @@ import DashboardTest from './component/Home/DashboardTest.js';
 const App = () => {
   const { loading } = useSelector((state) => state.user);
 
-  console.log(process.env.REACT_APP_BACKEND_URL)
+  // const token = document.cookie.split('; ').find(row => row.startsWith('token=')) || localStorage.getItem('token');
   React.useEffect(() => {
     WebFont.load({
       google: {
         families: ["Roboto Flex", "Montserrat"]
       }
     });
-
+    
     store.dispatch(loadUser());
   }, []);
 
@@ -77,7 +77,7 @@ const App = () => {
         <Route path="/verify-payment" element={<PaymentVerification />} />
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
-        <Route path="/courses/:course-name" element={<CourseLandingPage />} />
+        <Route path="/courses/:courseName" element={<CourseLandingPage />} />
         <Route path="/dashboard-test" element={<DashboardTest />} />
 
         {/* Payment gateway routes */}

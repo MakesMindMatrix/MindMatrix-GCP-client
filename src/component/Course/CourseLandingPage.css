@@ -6,7 +6,6 @@
 .course_hero {
     position: relative;
     height: 90vh;
-    background-image: url('./iot-landing-page.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -133,7 +132,6 @@
 .course_instructor_img {
     height: 100%;
     width: 90%;
-    background-image: url('./instructor.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;

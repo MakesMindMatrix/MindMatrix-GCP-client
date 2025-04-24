@@ -210,7 +210,8 @@ const Dashboard = () => {
                 {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Recommended couses for you</h1>}
                 <div className='dash_rec_container'>
                   {rec_course && rec_course.map((elm, index) => {
-                    return <RecCard data={elm} key={index} setConfirmModal={setConfirmModal} enrollCourseData={enrollCourseData} setEnrollCourseData={setEnrollCourseData} setPaymentModal={setPaymentModal} setPaymentCourseData={setPaymentCourseData} />
+                    return <RecCard data={elm} key={index}/>
+                    // return <RecCard data={elm} key={index} setConfirmModal={setConfirmModal} enrollCourseData={enrollCourseData} setEnrollCourseData={setEnrollCourseData} setPaymentModal={setPaymentModal} setPaymentCourseData={setPaymentCourseData} />
                   })}
                 </div>
 

@@ -1,33 +1,78 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './CourseLandingPage.css'
 import Navbar from '../layout/Navbar/Navbar'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { FaUniversity } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
 import { FaBook } from "react-icons/fa6";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { IoSettings } from "react-icons/io5";
+import { useSelector, useDispatch } from 'react-redux';
+import Loader from '../layout/Loader/Loader';
+import { courseLandingPageDataAction } from '../../actions/courseAction';
 
 const CourseLandingPage = () => {
+
+  const dispatch = useDispatch();
+  const {courseName} = useParams();
+  const { loading: userLoading, isAuthenticated} = useSelector((state) => state.user)
+  const {loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(courseLandingPageDataAction())
+    }
+
+    // if (enroll_course) {
+    //   window.location.href = `${sso}`
+    // }
+    // dispatch(allCourse())
+  }, [dispatch, isAuthenticated])
+
+
+  const slugify = (name) => 
+    name
+      .toLowerCase()
+      .replace(/ /g, '-')    // Replace spaces with hyphens
+      .replace(/[^\w-]+/g, ''); // Remove non-alphanumeric characters
+
+  if (loading || userLoading || !courseLandingPageData || !courseLandingPageData.CourseInfo) {
+    return <Loader />;
+  }
+
+  // Find course by slug
+  const course = courseLandingPageData.CourseInfo.find(
+    c => slugify(c.course_name) === courseName
+  );
+  const heroImage = course.hero_section?.hero_image || '/iot-landing-page.jpg';
+  // console.log(heroImage);
+  const instructorImage = course.instructor_section?.instructor_image || '/instructor.png';
+  console.log("Fetched course:", course);
+  
   return (
+    <>
+      {loading && userLoading ? <Loader /> : (
     <>
       <div className='CourseLandingPage_container'>
         <Navbar />
         {/* Hero section */}
-        <div className='course_hero'>
+        {/* heroImage */}
+        <div className='course_hero' style={{ backgroundImage: `url(${heroImage})` }}>
           <div className='course_hero_overlay'>
-            <h1 className='course_hero_heading'>IoT for Smart Infrastructure</h1>
-            <p className='course_hero_para'>Join our VTU-accredited, 1-credit course on IoT for Smart Infrastructure. Learn how to design, optimize, and automate with IoT technology, and advance your skills for a smarter, connected future.</p>
-            <Link className='course_hero_btn'>Enroll Now</Link>
+            <h1 className='course_hero_heading'>{course.hero_section?.hero_title ?? "Default Hero Title"}</h1>
+            <p className='course_hero_para'>{course.hero_section?.hero_description ?? "Default Hero Description"}</p>
+            <Link className='course_hero_btn'>{course.hero_section?.hero_button_content ?? "Default Hero Button"}</Link>
           </div>
         </div>
 
         {/* About course section */}
         <div className='course_about'>
           <div className='course_about_left'>
-            <h1 className='course_about_left_heading'>About the Course</h1>
-            <h2 className='course_about_left_para'>Step into the future with IoT for Smart Infrastructure, an electrifying VTU-approved Ability Enhancement Course designed specifically for 3rd-semester Electronics and Communication students. Dive deep into the cutting-edge world of IoT, uncovering its transformative applications and the smart systems revolutionizing our infrastructure. This 14-week immersive experience, brimming with real-world case studies, offers you the chance to earn 1 VTU credit.* Get inspired by how industry giants are spearheading IoT innovations, driving unprecedented levels of efficiency, safety, and sustainability. Ignite your passion for technology and be part of the Smart Infrastructure revolution!</h2>
+            {/* course.about_section.title */}
+            <h1 className='course_about_left_heading'>{course.about_section?.title ?? "Default About Title"}</h1> 
+            {/* course.about_section.description */}
+            <h2 className='course_about_left_para'>{course.about_section?.description ?? "Default About Description"}</h2>
             {/* <h2>*please refer to the latest VTU curriculum for details</h2> */}
           </div>
 
@@ -108,12 +153,16 @@ const CourseLandingPage = () => {
           <h1 className='course_instructor_heading'>Course Instructor</h1>
           <div className='course_instructor_box'>
             <div className='course_instructor_box_left'>
-              <div className='course_instructor_img'></div>
+              {/* instructorImage */}
+              <div className='course_instructor_img' style={{ backgroundImage: `url(${instructorImage})` }}></div>
             </div>
             <div className='course_instructor_box_right'>
-              <h3 className='course_instructor_designation'>industry Specialist - IoT</h3>
-              <h1 className='instructor_name'>Manoj Kaulgud</h1>
-              <p className='instructor_description'>Manoj Kaulgud is a Mechanical Engineer with 38 years of industrial experience. He has worked with many Automative industries such as Hindustan Motors, Tata Motors and Rexroth. He has played many roles in his career such as purchase engineer, new product development engineer and quality engineer. His Expertise is in quality functions, and he has also worked extensively on the new technology absorption and played a key role in implementing IoT in industry. He has in-depth knowledge of IoT and its applications. He has been working as full time trainer now and is training fresh engineers about new technologies used and implemented in industry</p>
+              {/* course.instructor_section.instructor_designation */}
+              <h3 className='course_instructor_designation'>{course.instructor_section?.instructor_designation ?? "Default Instructor Designation"}</h3>
+              {/* course.instructor_section.instructor_name */}
+              <h1 className='instructor_name'>{course.instructor_section?.instructor_name ?? "Default Instructor Name"}</h1>
+              {/* course.instructor_section.instructor_description */}
+              <p className='instructor_description'>{course.instructor_section?.instructor_description ?? "Default Instructor Description"}</p>
             </div>
           </div>
         </div>
@@ -122,7 +171,17 @@ const CourseLandingPage = () => {
         <div className='course_curriculum'>
           <div className='course_curriculum_left'>
             <h1 className='course_curriculum_heading'>Course Curriculum</h1>
-
+            {course.curriculum_section.modules && course.curriculum_section.modules.length > 0 ? (
+              course.curriculum_section.modules.map((module, idx) => (
+                <div className='module_box' key={idx}>
+                  <h1 className='course_module_heading'>{module.title}</h1>
+                  <p className='course_module_para'>{module.description}</p>
+                </div>
+              ))
+            ) : (
+              <h1>No modules available.</h1>
+            )}
+          {/* 
             <div className='module_box'>
               <h1 className='course_module_heading'>Module 1: IoT & Smart Infrastructure</h1>
               <p className='course_module_para'>IoT basics, significance in smart infrastructure, Sensors, communication, cloud, edge computing,Security & Privacy issues and best practices.</p>
@@ -146,13 +205,15 @@ const CourseLandingPage = () => {
             <div className='module_box'>
               <h1 className='course_module_heading'>Module 5: IoT for Smart Grids & Energy</h1>
               <p className='course_module_para'>IoT's role in smart grids, Smart meters, optimization, Successful grid projects, AI, blockchain and 5G.</p>
-            </div>
+            </div> */}
           </div>
           <div className='course_curriculum_right'>
             <div className='course_curriculum_img'></div>
           </div>
         </div>
       </div>
+    </>
+          )}
     </>
   )
 }
