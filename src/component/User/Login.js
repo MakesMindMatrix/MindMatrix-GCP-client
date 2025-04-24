@@ -25,6 +25,10 @@ const Login = () => {
         dispatch(login(loginEmail, loginPassword))
     }
 
+    const loginGoogleAuth = () => {
+        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/login`;
+    }
+
     useEffect(() => {
         if (error) {
             toast.error(error);
@@ -86,6 +90,7 @@ const Login = () => {
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
+                            <button onClick={loginGoogleAuth}>SignIn with Google</button>
                         </div>
                     </div>
                 </>
