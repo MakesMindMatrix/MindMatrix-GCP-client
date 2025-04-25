@@ -1,16 +1,29 @@
 import React, { useEffect } from 'react'
 import './CourseLandingPage.css'
 import Navbar from '../layout/Navbar/Navbar'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-import { FaUniversity } from "react-icons/fa";
-import { FaClock } from "react-icons/fa";
-import { FaBook } from "react-icons/fa6";
-import { IoNotificationsSharp } from "react-icons/io5";
-import { IoSettings } from "react-icons/io5";
+// import { FaUniversity } from "react-icons/fa";
+// import { FaClock } from "react-icons/fa";
+// import { FaBook } from "react-icons/fa6";
+// import { IoNotificationsSharp } from "react-icons/io5";
+// import { IoSettings } from "react-icons/io5";
+import { FaCheckCircle } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
 import { courseLandingPageDataAction } from '../../actions/courseAction';
+import CurriculumSection from './CurriculumSection';
+
+const whatYouGetPoints = [
+  "Access to all course materials",
+  "Hands-on projects and assignments",
+  "Certificate on completion",
+  "24/7 discussion forums",
+  "Expert instructor support",
+  "Downloadable resources",
+  "Lifetime access",
+  "Regular updates"
+];
 
 const CourseLandingPage = () => {
 
@@ -48,7 +61,7 @@ const CourseLandingPage = () => {
   const heroImage = course.hero_section?.hero_image || '/iot-landing-page.jpg';
   const instructorImage = course.instructor_section?.instructor_image || '/instructor.png';
   const curriculumImage = course.curriculum_section?.curriculum_image || '/iot-image.jpg';
-  console.log(heroImage, instructorImage, curriculumImage);
+  // console.log(heroImage, instructorImage, curriculumImage);
   console.log("Fetched course:", course);
   
   return (
@@ -58,35 +71,84 @@ const CourseLandingPage = () => {
       <div className='CourseLandingPage_container'>
         <Navbar />
         {/* Hero section */}
+        <section className="hero-section">
+          <div className="hero-content">
+            <div className="hero-left">
+              <h1 className="hero-title">{course.hero_section?.hero_title || "Default Hero Title"}</h1>
+              <p className="hero-description">
+                {course.about_section?.description || "Default About Description"}
+              </p>
+              <button className="hero-enroll-btn">{course.hero_section?.hero_button_content || "Default Hero Button"}</button>
+            </div>
+            <div className="hero-right">
+              <img
+                className="hero-image"
+                src= {heroImage}
+                alt="Course Hero"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div className="course-details-wrapper">
+          <section className="what-you-get-section">
+            <h2 className="what-you-get-title">What you get?</h2>
+            <ul className="what-you-get-list">
+              {whatYouGetPoints.map((point, i) => (
+                <li className="what-you-get-item" key={i}>
+                  <FaCheckCircle className="tick-icon" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <aside className="instructor-section">
+            <h2 className="instructor-title">Your Course Instructor</h2>
+            <div className="instructor-profile">
+              <img
+                className="instructor-photo"
+                src= {instructorImage}
+                alt="Instructor"
+              />
+              <div className="instructor-info">
+                <div className="instructor-name">{course.instructor_section?.instructor_name || "Default Instructor Name"}</div>
+                <div className="instructor-designation">{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</div>
+                <div className="instructor-description">
+                  {course.instructor_section?.instructor_description || "Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description"}
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
         {/* heroImage */}
-        <div className='course_hero' style={{ backgroundImage: `url(${heroImage})` }}>
+        {/* <div className='course_hero' style={{ backgroundImage: `url(${heroImage})` }}>
           <div className='course_hero_overlay'>
             <h1 className='course_hero_heading'>{course.hero_section?.hero_title || "Default Hero Title"}</h1>
             <p className='course_hero_para'>{course.hero_section?.hero_description || "Default Hero Description"}</p>
             <Link className='course_hero_btn'>{course.hero_section?.hero_button_content || "Default Hero Button"}</Link>
           </div>
-        </div>
+        </div> */}
 
         {/* About course section */}
-        <div className='course_about'>
+        {/* <div className='course_about'>
           <div className='course_about_left'>
-            {/* course.about_section.title */}
+            
             <h1 className='course_about_left_heading'>{course.about_section?.title || "Default About Title"}</h1> 
-            {/* course.about_section.description */}
+            
             <h2 className='course_about_left_para'>{course.about_section?.description || "Default About Description"}</h2>
-            {/* <h2>*please refer to the latest VTU curriculum for details</h2> */}
-          </div>
+            
+          </div> */}
 
-          <div className='course_about_right'>
-            {course.about_section.about_details && course.about_section.about_details.length > 0 ? (
-              course.about_section.about_details.map((title, idx) => (
+          {/* <div className='course_about_right'> */}
+            {/* {course.about_section.about_details && course.about_section.about_details.length > 0 ? ( */}
+              {/* course.about_section.about_details.map((title, idx) => (
                 <div className='about_details_box' key={idx}>
                   <h1>{title}</h1>
                 </div>
               ))
             ) : (
-              <h1>No Titles available.</h1>
-            )}
+              <h1>No Titles available.</h1> */}
+            {/* )} */}
             {/* <div className='about_details_box'>
               <FaUniversity className='details_icon'/>
               <h1>VTU approved 1-credit course</h1>
@@ -111,8 +173,8 @@ const CourseLandingPage = () => {
               <IoSettings className='details_icon'/>
               <h1>Tailored for 3rd-semester Electronics and Communication students</h1>
             </div>*/}
-          </div> 
-        </div>
+          {/* </div> 
+        </div> */}
 
         {/* Pre-requisites section */}
         {/* <div className='course_PreRequisite'>
@@ -159,28 +221,26 @@ const CourseLandingPage = () => {
         </div> */}
 
         {/* Course instructor section */}
-        <div className='course_instructor'>
+        {/* <div className='course_instructor'>
           <h1 className='course_instructor_heading'>Course Instructor</h1>
           <div className='course_instructor_box'>
             <div className='course_instructor_box_left'>
-              {/* instructorImage */}
               <div className='course_instructor_img' style={{ backgroundImage: `url(${instructorImage})` }}></div>
             </div>
             <div className='course_instructor_box_right'>
-              {/* course.instructor_section.instructor_designation */}
               <h3 className='course_instructor_designation'>{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</h3>
-              {/* course.instructor_section.instructor_name */}
               <h1 className='instructor_name'>{course.instructor_section?.instructor_name || "Default Instructor Name"}</h1>
-              {/* course.instructor_section.instructor_description */}
               <p className='instructor_description'>{course.instructor_section?.instructor_description || "Default Instructor Description"}</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Course curriculum section */}
         <div className='course_curriculum'>
           <div className='course_curriculum_left'>
             <h1 className='course_curriculum_heading'>Course Curriculum</h1>
+            <CurriculumSection modules={course.curriculum_section.modules} />
+            {/* <h1 className='course_curriculum_heading'>Course Curriculum</h1>
             {course.curriculum_section.modules && course.curriculum_section.modules.length > 0 ? (
               course.curriculum_section.modules.map((module, idx) => (
                 <div className='module_box' key={idx}>
@@ -190,32 +250,7 @@ const CourseLandingPage = () => {
               ))
             ) : (
               <h1>No modules available.</h1>
-            )}
-          {/* 
-            <div className='module_box'>
-              <h1 className='course_module_heading'>Module 1: IoT & Smart Infrastructure</h1>
-              <p className='course_module_para'>IoT basics, significance in smart infrastructure, Sensors, communication, cloud, edge computing,Security & Privacy issues and best practices.</p>
-            </div>
-
-            <div className='module_box'>
-              <h1 className='course_module_heading'>Module 2: IoT in Smart Cities</h1>
-              <p className='course_module_para'>IoT's role in smart cities, Applications in Transport, buildings, grids and waste management, Insights from global projects, Emerging tech, AI, 5G.</p>
-            </div>
-
-            <div className='module_box'>
-              <h1 className='course_module_heading'>Module 3: IoT in Smart Buildings</h1>
-              <p className='course_module_para'>Smart buildings overview, Automation, energy management, Successful implementations and 5G integration.</p>
-            </div>
-
-            <div className='module_box'>
-              <h1 className='course_module_heading'>Module 4: IoT in Smart Transportation</h1>
-              <p className='course_module_para'>IoT's role in transportation, Sensors, ITS, V2V, V2I, Smart transport projects and Autonomous vehicles</p>
-            </div>
-
-            <div className='module_box'>
-              <h1 className='course_module_heading'>Module 5: IoT for Smart Grids & Energy</h1>
-              <p className='course_module_para'>IoT's role in smart grids, Smart meters, optimization, Successful grid projects, AI, blockchain and 5G.</p>
-            </div> */}
+            )} */}
           </div>
           <div className='course_curriculum_right'>
             <div className='course_curriculum_img' style={{ backgroundImage: `url(${curriculumImage})` }}></div>
