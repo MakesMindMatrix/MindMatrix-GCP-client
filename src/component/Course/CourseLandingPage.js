@@ -46,8 +46,9 @@ const CourseLandingPage = () => {
     c => slugify(c.course_name) === courseName
   );
   const heroImage = course.hero_section?.hero_image || '/iot-landing-page.jpg';
-  // console.log(heroImage);
   const instructorImage = course.instructor_section?.instructor_image || '/instructor.png';
+  const curriculumImage = course.curriculum_section?.curriculum_image || '/iot-image.jpg';
+  console.log(heroImage, instructorImage, curriculumImage);
   console.log("Fetched course:", course);
   
   return (
@@ -60,9 +61,9 @@ const CourseLandingPage = () => {
         {/* heroImage */}
         <div className='course_hero' style={{ backgroundImage: `url(${heroImage})` }}>
           <div className='course_hero_overlay'>
-            <h1 className='course_hero_heading'>{course.hero_section?.hero_title ?? "Default Hero Title"}</h1>
-            <p className='course_hero_para'>{course.hero_section?.hero_description ?? "Default Hero Description"}</p>
-            <Link className='course_hero_btn'>{course.hero_section?.hero_button_content ?? "Default Hero Button"}</Link>
+            <h1 className='course_hero_heading'>{course.hero_section?.hero_title || "Default Hero Title"}</h1>
+            <p className='course_hero_para'>{course.hero_section?.hero_description || "Default Hero Description"}</p>
+            <Link className='course_hero_btn'>{course.hero_section?.hero_button_content || "Default Hero Button"}</Link>
           </div>
         </div>
 
@@ -70,14 +71,23 @@ const CourseLandingPage = () => {
         <div className='course_about'>
           <div className='course_about_left'>
             {/* course.about_section.title */}
-            <h1 className='course_about_left_heading'>{course.about_section?.title ?? "Default About Title"}</h1> 
+            <h1 className='course_about_left_heading'>{course.about_section?.title || "Default About Title"}</h1> 
             {/* course.about_section.description */}
-            <h2 className='course_about_left_para'>{course.about_section?.description ?? "Default About Description"}</h2>
+            <h2 className='course_about_left_para'>{course.about_section?.description || "Default About Description"}</h2>
             {/* <h2>*please refer to the latest VTU curriculum for details</h2> */}
           </div>
 
           <div className='course_about_right'>
-            <div className='about_details_box'>
+            {course.about_section.about_details && course.about_section.about_details.length > 0 ? (
+              course.about_section.about_details.map((title, idx) => (
+                <div className='about_details_box' key={idx}>
+                  <h1>{title}</h1>
+                </div>
+              ))
+            ) : (
+              <h1>No Titles available.</h1>
+            )}
+            {/* <div className='about_details_box'>
               <FaUniversity className='details_icon'/>
               <h1>VTU approved 1-credit course</h1>
             </div>
@@ -100,8 +110,8 @@ const CourseLandingPage = () => {
             <div className='about_details_box'>
               <IoSettings className='details_icon'/>
               <h1>Tailored for 3rd-semester Electronics and Communication students</h1>
-            </div>
-          </div>
+            </div>*/}
+          </div> 
         </div>
 
         {/* Pre-requisites section */}
@@ -158,11 +168,11 @@ const CourseLandingPage = () => {
             </div>
             <div className='course_instructor_box_right'>
               {/* course.instructor_section.instructor_designation */}
-              <h3 className='course_instructor_designation'>{course.instructor_section?.instructor_designation ?? "Default Instructor Designation"}</h3>
+              <h3 className='course_instructor_designation'>{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</h3>
               {/* course.instructor_section.instructor_name */}
-              <h1 className='instructor_name'>{course.instructor_section?.instructor_name ?? "Default Instructor Name"}</h1>
+              <h1 className='instructor_name'>{course.instructor_section?.instructor_name || "Default Instructor Name"}</h1>
               {/* course.instructor_section.instructor_description */}
-              <p className='instructor_description'>{course.instructor_section?.instructor_description ?? "Default Instructor Description"}</p>
+              <p className='instructor_description'>{course.instructor_section?.instructor_description || "Default Instructor Description"}</p>
             </div>
           </div>
         </div>
@@ -208,7 +218,7 @@ const CourseLandingPage = () => {
             </div> */}
           </div>
           <div className='course_curriculum_right'>
-            <div className='course_curriculum_img'></div>
+            <div className='course_curriculum_img' style={{ backgroundImage: `url(${curriculumImage})` }}></div>
           </div>
         </div>
       </div>
