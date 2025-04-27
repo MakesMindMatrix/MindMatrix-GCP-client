@@ -66,6 +66,9 @@ const Register = () => {
 
         dispatch(register(user))
     }
+    const registerGoogleAuth = () => {
+        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/register`;
+    }
 
     const registerDataChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -142,6 +145,7 @@ const Register = () => {
                                 <input type='submit' value="Register" className='signUpBtn' />
                                 <h2 className='redirect_text'>Do you have an account? <Link to='/login'>Sign In</Link></h2>
                             </form>
+                            <button onClick={registerGoogleAuth}>SignUp with Google</button>
                         </div>
                     </div>
                 </>
