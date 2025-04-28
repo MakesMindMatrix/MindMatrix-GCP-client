@@ -8,6 +8,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -36,7 +37,7 @@ const Login = () => {
             dispatch(clearErrors());
         }
     }, [dispatch, error]);
-    
+
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -53,7 +54,7 @@ const Login = () => {
             }
         }
     }, [isAuthenticated, user, navigate, location.state?.from?.pathname]);
-    
+
     return (
         <>
             {loading ? <Loader /> : (
@@ -90,7 +91,10 @@ const Login = () => {
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
-                            <button onClick={loginGoogleAuth}>SignIn with Google</button>
+                            <button className="googleAuthBtn" onClick={loginGoogleAuth}>
+                                <FcGoogle className="googleAuthIcon"/>
+                                <span style={{marginLeft: "1rem"}}>SignIn with Google</span>
+                            </button>
                         </div>
                     </div>
                 </>

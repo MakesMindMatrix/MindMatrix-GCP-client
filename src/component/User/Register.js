@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, register } from '../../actions/userAction';
 import Loader from '../layout/Loader/Loader';
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -145,7 +146,11 @@ const Register = () => {
                                 <input type='submit' value="Register" className='signUpBtn' />
                                 <h2 className='redirect_text'>Do you have an account? <Link to='/login'>Sign In</Link></h2>
                             </form>
-                            <button onClick={registerGoogleAuth}>SignUp with Google</button>
+
+                            <button className="googleAuthBtn" onClick={registerGoogleAuth}>
+                                <FcGoogle className="googleAuthIcon" />
+                                <span style={{ marginLeft: "1rem" }}>SignUp with Google</span>
+                            </button>
                         </div>
                     </div>
                 </>
