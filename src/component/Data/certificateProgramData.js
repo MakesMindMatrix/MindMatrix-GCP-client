@@ -18,7 +18,7 @@ const certificateProgramData = [
         url: Prompt_Engg,
     },
     {
-        course_name: "Data Analytics",
+        course_name: "Data Analytics",
         course_desription: "",
         course_price: "",
         course_start_date: "",
