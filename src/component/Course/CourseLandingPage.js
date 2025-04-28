@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './CourseLandingPage.css'
 import Navbar from '../layout/Navbar/Navbar'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 // import { FaUniversity } from "react-icons/fa";
 // import { FaClock } from "react-icons/fa";
@@ -11,8 +11,9 @@ import { useParams } from 'react-router-dom'
 import { FaCheckCircle } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
-import { courseLandingPageDataAction } from '../../actions/courseAction';
+import { coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
 import CurriculumSection from './CurriculumSection';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 const whatYouGetPoints = [
   "Access to all course materials",
@@ -27,49 +28,136 @@ const whatYouGetPoints = [
 
 const CourseLandingPage = () => {
 
+  const location = useLocation();
+  const courseData = location.state.data;
   const dispatch = useDispatch();
-  const {courseName} = useParams();
-  const { loading: userLoading, isAuthenticated} = useSelector((state) => state.user)
-  const {loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
 
+
+  // const {courseName} = useParams();
+  const { loading: userLoading, isAuthenticated, user} = useSelector((state) => state.user);
+  const {loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
+  const { enroll_course} = useSelector((state) => state.myCourse)
+  const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
+  const { sso } = useSelector((state) => state.SSO);
+  
+  
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [paymentModal, setPaymentModal] = useState(false);
+  const [paymentCourseData, setPaymentCourseData] = useState({
+    batch_id: "",
+    course_name: "",
+    batch_price: "",
+    description: ""
+  });
+  const [enrollCourseData, setEnrollCourseData] = useState({
+    name: user.name,
+    email: user.email,
+    batch_id: ''
+  });
+  
+  // const userEmail = user.email
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(courseLandingPageDataAction())
+      dispatch(getCourseInfoByBatchId(courseData.external_batch_id))
     }
 
-    // if (enroll_course) {
-    //   window.location.href = `${sso}`
-    // }
+    if (enroll_course) {
+      window.location.href = `${sso}`
+    }
     // dispatch(allCourse())
-  }, [dispatch, isAuthenticated])
+  }, [courseData.external_batch_id, dispatch, enroll_course, isAuthenticated, sso]);
 
-
-  const slugify = (name) => 
-    name
-      .toLowerCase()
-      .replace(/ /g, '-')    // Replace spaces with hyphens
-      .replace(/[^\w-]+/g, ''); // Remove non-alphanumeric characters
-
-  if (loading || userLoading || !courseLandingPageData || !courseLandingPageData.CourseInfo) {
+  // Load until all data is fetched
+  if (loading || userLoading || !courseLandingPageData ) {
     return <Loader />;
-  }
+  };
 
-  // Find course by slug
-  const course = courseLandingPageData.CourseInfo.find(
-    c => slugify(c.course_name) === courseName
-  );
+  // Get course from store
+  const course = courseLandingPageData;
+  console.log("Fetched course:", course);
+
+  // Links for Images
   const heroImage = course.hero_section?.hero_image || '/iot-landing-page.jpg';
   const instructorImage = course.instructor_section?.instructor_image || '/instructor.png';
   const curriculumImage = course.curriculum_section?.curriculum_image || '/iot-image.jpg';
-  // console.log(heroImage, instructorImage, curriculumImage);
-  console.log("Fetched course:", course);
+  const paymentImage = "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
   
+  const handleEnrollConfirmation = () => {
+    dispatch(enrollCourse(enrollCourseData))
+    setConfirmModal(false)
+  };
+  const handleEnroll = () => {
+    if (courseData.batch_price > 0) {
+        setPaymentCourseData({
+            batch_id: courseData.external_batch_id,
+            course_name: courseData.course_name,
+            batch_price: courseData.batch_price,
+            description: courseData.course_description
+        })
+        setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+        setPaymentModal(true)
+        // navigate(`/payment/${data.external_batch_id}/${data.course_name}/${data.batch_price}`)
+    } else {
+        setConfirmModal(true)
+        setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+    }
+  };
+
+  const handlePayment = () => {
+    dispatch(coursePaymentAction({
+      courseName: paymentCourseData.course_name,
+      coursePrice: paymentCourseData.batch_price,
+      batchId: paymentCourseData.batch_id
+    }))
+  };
+
+  const tokenUrl = coursePayment?.response.redirectUrl;
+  if (coursePayment) {
+    console.log(tokenUrl);
+    window.PhonePeCheckout.transact({
+      tokenUrl,
+      type: "IFRAME",
+      callback: (response) => {
+        if (response === "USER_CANCEL") {
+          console.log("Transaction Cancelled");
+        } else if (response === "CONCLUDED") {
+          dispatch(coursePaymentStatusAction(coursePayment.merchantOrderId))
+          dispatch(enrollCourse(enrollCourseData))
+          console.log("Transaction Completed");
+        }
+      },
+    });
+  };
+  
+  console.log(coursePaymentStatus);
   return (
     <>
       {loading && userLoading ? <Loader /> : (
     <>
       <div className='CourseLandingPage_container'>
         <Navbar />
+
+        
+        {/* Confirm modal */}
+        <div className='confirmModal_container' style={confirmModal ? { display: 'flex' } : { display: 'none' }}>
+          <h1 className='confirmModal_heading'>Do you want to enroll in this course</h1>
+          <div className='confirmModal_button_parent'>
+            <button className='confirmModal_button' onClick={handleEnrollConfirmation}>Yes</button>
+            <button className='confirmModal_button' onClick={() => setConfirmModal(false)}>No</button>
+          </div>
+        </div>
+        {/* Payment modal */}
+        <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
+          <div className='pymentModal_container'>
+            <IoIosCloseCircle className='payment_close_btn' onClick={() => setPaymentModal(false)} />
+            <div className='paymentModal_image' style={{ backgroundImage: `url(${paymentImage})`, }}></div>
+            <h1 className='paymentModal_heading'>{paymentCourseData.course_name}</h1>
+            <h1 className='paymentModal_price'>Course price - ₹{paymentCourseData.batch_price}</h1>
+            <p className='paymentModal_description'>{paymentCourseData.description}</p>
+            <button className='paymentModal_btn' onClick={handlePayment}>Pay Now</button>
+          </div>
+        </div>
+
         {/* Hero section */}
         <section className="hero-section">
           <div className="hero-content">
@@ -78,7 +166,7 @@ const CourseLandingPage = () => {
               <p className="hero-description">
                 {course.about_section?.description || "Default About Description"}
               </p>
-              <button className="hero-enroll-btn">{course.hero_section?.hero_button_content || "Default Hero Button"}</button>
+              <button className="hero-enroll-btn" onClick={handleEnroll}>{course.hero_section?.hero_button_content || "Default Hero Button"}</button>
             </div>
             <div className="hero-right">
               <img
@@ -114,7 +202,7 @@ const CourseLandingPage = () => {
                 <div className="instructor-name">{course.instructor_section?.instructor_name || "Default Instructor Name"}</div>
                 <div className="instructor-designation">{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</div>
                 <div className="instructor-description">
-                  {course.instructor_section?.instructor_description || "Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description"}
+                  {course.instructor_section?.instructor_description || "Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description"}
                 </div>
               </div>
             </div>
@@ -238,7 +326,7 @@ const CourseLandingPage = () => {
         {/* Course curriculum section */}
         <div className='course_curriculum'>
           <div className='course_curriculum_left'>
-            <h1 className='course_curriculum_heading'>Course Curriculum</h1>
+            <h1 className='course_curriculum_heading'>Program Details</h1>
             <CurriculumSection modules={course.curriculum_section.modules} />
             {/* <h1 className='course_curriculum_heading'>Course Curriculum</h1>
             {course.curriculum_section.modules && course.curriculum_section.modules.length > 0 ? (

@@ -34,7 +34,7 @@ const RecCard = ({ data}) => {
     const handleViewMore = () => {
         const courseSlug = slugify(data.course_name);
         console.log("Course URL: /courses/", courseSlug);
-        navigate(`/courses/${courseSlug}`);
+        navigate(`/courses/${courseSlug}`, {state: {data}});
     }
         
     return (

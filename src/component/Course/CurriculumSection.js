@@ -18,7 +18,7 @@ const CurriculumSection = ({ modules }) => {
               className={`curriculum_module_header${openIndex === idx ? ' active' : ''}`}
               onClick={() => handleToggle(idx)}
             >
-              <span>{`Module - ${idx + 1}: ${module.title}`}</span>
+              <span>{`${module.title}`}</span>
               <RiArrowDropDownLine className={`arrow${openIndex === idx ? ' active' : ''}`} />
             </button>
             <div

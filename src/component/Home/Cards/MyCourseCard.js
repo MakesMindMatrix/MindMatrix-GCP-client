@@ -1,7 +1,6 @@
 import React from 'react'
 import './MyCourseCard.css'
 import { useSelector } from 'react-redux'
-import Gai from '../images/GAI.jpg'
 import CourseData from '../../Data/MyCourseData'
 
 const MyCourseCard = ({ data }) => {
@@ -17,7 +16,7 @@ const MyCourseCard = ({ data }) => {
     return elm.batch_id === data.external_batch_id
   })
 
-  const image = filterImage.length > 0 ? filterImage[0].image_url : Gai
+  const image = filterImage.length > 0 ? filterImage[0].image_url : "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg"
 
   const handleEnroll = () => {
     window.location.href = `${sso}&external_batch_id=${data.external_batch_id}`

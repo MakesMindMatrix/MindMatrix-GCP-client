@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import './Dashboard.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +7,8 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import Navbar from '../layout/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
-import { allCourse, courseDataAction, courseLandingPageDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, SSOLogin } from '../../actions/courseAction';
+// import { allCourse, courseDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, SSOLogin } from '../../actions/courseAction';
+import { allCourse, courseDataAction, SSOLogin } from '../../actions/courseAction';
 import liveSkillData from '../Data/liveSkillData'
 import courseData from '../Data/courseData'
 import NewsData from '../Data/NewsData';
@@ -21,8 +22,8 @@ import LeaderboardCard from './Cards/LeaderboardCard';
 import NewsCard from './Cards/NewsCard';
 import certificateProgramData from '../Data/certificateProgramData';
 import LiveSessionCard from './Cards/LiveSessionCard';
-import { IoIosCloseCircle } from "react-icons/io";
-import Gai from './images/GAI.jpg'
+// import { IoIosCloseCircle } from "react-icons/io";
+// import Gai from './images/GAI.jpg'
 
 const Dashboard = () => {
   const dispatch = useDispatch()
@@ -30,61 +31,62 @@ const Dashboard = () => {
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user)
   const { sso } = useSelector((state) => state.SSO)
   const { loading, enroll_course, my_course, rec_course, report_data } = useSelector((state) => state.myCourse)
-  const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment)
+  // const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment)
   // const { courseLandingPageData } = useSelector((state) => state.courseLandingPage)
   // console.log(my_course)
 
-  const [confirmModal, setConfirmModal] = useState(false)
-  const [paymentModal, setPaymentModal] = useState(false)
-  const [paymentCourseData, setPaymentCourseData] = useState({
-    batch_id: "",
-    course_name: "",
-    batch_price: "",
-    description: ""
-  })
-  const [enrollCourseData, setEnrollCourseData] = useState({
-    name: user.name,
-    email: user.email,
-    batch_id: ''
-  })
+  // const [confirmModal, setConfirmModal] = useState(false)
+  // const [paymentModal, setPaymentModal] = useState(false)
+  // const [paymentCourseData, setPaymentCourseData] = useState({
+  //   batch_id: "",
+  //   course_name: "",
+  //   batch_price: "",
+  //   description: ""
+  // })
+  // const [enrollCourseData, setEnrollCourseData] = useState({
+  //   name: user.name,
+  //   email: user.email,
+  //   batch_id: ''
+  // })
 
   const userEmail = user.email
-  const handleEnrollConfirmation = () => {
-    dispatch(enrollCourse(enrollCourseData))
-    setConfirmModal(false)
-  }
-  console.log(coursePaymentStatus)
+  // const handleEnrollConfirmation = () => {
+  //   dispatch(enrollCourse(enrollCourseData))
+  //   setConfirmModal(false)
+  // }
+  // console.log(coursePaymentStatus)
+  // setPaymentCourseData(false);
 
-  const handleEnroll = () => {
-    dispatch(coursePaymentAction({
-      courseName: paymentCourseData.course_name,
-      coursePrice: paymentCourseData.batch_price,
-      batchId: paymentCourseData.batch_id
-    }))
-  }
-  const tokenUrl = coursePayment?.response.redirectUrl
-  if (coursePayment) {
-    console.log(tokenUrl)
-    window.PhonePeCheckout.transact({
-      tokenUrl,
-      type: "IFRAME",
-      callback: (response) => {
-        if (response === "USER_CANCEL") {
-          console.log("Transaction Cancelled");
-        } else if (response === "CONCLUDED") {
-          dispatch(coursePaymentStatusAction(coursePayment.merchantOrderId))
-          dispatch(enrollCourse(enrollCourseData))
-          console.log("Transaction Completed");
-        }
-      },
-    });
-  }
+  // const handleEnroll = () => {
+  //   dispatch(coursePaymentAction({
+  //     courseName: paymentCourseData.course_name,
+  //     coursePrice: paymentCourseData.batch_price,
+  //     batchId: paymentCourseData.batch_id
+  //   }))
+  // }
+  // const tokenUrl = coursePayment?.response.redirectUrl
+  // if (coursePayment) {
+  //   console.log(tokenUrl)
+  //   window.PhonePeCheckout.transact({
+  //     tokenUrl,
+  //     type: "IFRAME",
+  //     callback: (response) => {
+  //       if (response === "USER_CANCEL") {
+  //         console.log("Transaction Cancelled");
+  //       } else if (response === "CONCLUDED") {
+  //         dispatch(coursePaymentStatusAction(coursePayment.merchantOrderId))
+  //         dispatch(enrollCourse(enrollCourseData))
+  //         console.log("Transaction Completed");
+  //       }
+  //     },
+  //   });
+  // }
 
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(courseDataAction(userEmail))
       dispatch(SSOLogin(userEmail))
-      dispatch(courseLandingPageDataAction())
+      // dispatch(courseLandingPageDataAction())
     }
 
     if (enroll_course) {
@@ -159,15 +161,15 @@ const Dashboard = () => {
             </div>
 
             {/* Confirm modal */}
-            <div className='confirmModal_container' style={confirmModal ? { display: 'flex' } : { display: 'none' }}>
+            {/* <div className='confirmModal_container' style={confirmModal ? { display: 'flex' } : { display: 'none' }}>
               <h1 className='confirmModal_heading'>Do you want to enroll in this course</h1>
               <div className='confirmModal_button_parent'>
                 <button className='confirmModal_button' onClick={handleEnrollConfirmation}>Yes</button>
                 <button className='confirmModal_button' onClick={() => setConfirmModal(false)}>No</button>
               </div>
-            </div>
+            </div> */}
             {/* Payment modal */}
-            <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
+            {/* <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
               <div className='pymentModal_container'>
                 <IoIosCloseCircle className='payment_close_btn' onClick={() => setPaymentModal(false)} />
                 <div className='paymentModal_image' style={{ backgroundImage: `url(${Gai})`, }}></div>
@@ -176,8 +178,9 @@ const Dashboard = () => {
                 <p className='paymentModal_description'>{paymentCourseData.description}</p>
                 <button className='paymentModal_btn' onClick={handleEnroll}>Pay Now</button>
               </div>
+            </div> */}
 
-            </div>
+            {/* Current course progress leaderboard */}
             <div className='dash_body'>
               <div className='das_body_left'>
                 {report_data && report_data.length > 1 ? (
@@ -201,7 +204,8 @@ const Dashboard = () => {
                 {my_course && my_course.length > 0 && <h1 className='main_heading'>My Courses</h1>}
                 <div className='dash_my_course_container'>
                   {my_course && my_course.map((elm, index) => {
-                    return <MyCourseCard data={elm} key={index} setConfirmModal={setConfirmModal} enrollCourseData={enrollCourseData} setEnrollCourseData={setEnrollCourseData} />
+                    return <MyCourseCard data={elm} key={index} />
+                    // return <MyCourseCard data={elm} key={index} setConfirmModal={setConfirmModal} enrollCourseData={enrollCourseData} setEnrollCourseData={setEnrollCourseData} />
                   })}
                 </div>
 
