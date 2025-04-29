@@ -97,7 +97,7 @@ export const courseDataAction = (email) => async (dispatch) => {
             },
             withCredentials: true
           });
-        // console.log(data)
+        console.log(data)
         dispatch({ type: COURSE_DATA_SUCCESS, payload: data })
     } catch (error) {
         dispatch({ type: COURSE_DATA_FAIL, payload: error.response.data.message })
@@ -110,11 +110,24 @@ export const courseLandingPageDataAction = () => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } }
 
-        const { data } = await axios.get(`${BASE_URL}/api/v1/all-course-data`, config)
+        const { data } = await axios.get(`${BASE_URL}/api/v1/course-info`, config)
 
         dispatch({ type: COURSE_LANDING_PAGE_DATA_SUCCESS, payload: data })
     } catch (error) {
         dispatch({ type: COURSE_LANDING_PAGE_DATA_FAIL, payload: error.response.data.message })
+    }
+}
+
+export const getCourseInfoByBatchId = (batchId) => async (dispatch) => {
+    try {
+        dispatch({ type: COURSE_LANDING_PAGE_DATA_REQUEST })
+
+        const config = { headers: { "Content-Type": "application/json" } }
+
+        const { data } = await axios.get(`${BASE_URL}/api/v1/course-info/${batchId}`, config)
+        dispatch({ type: COURSE_LANDING_PAGE_DATA_SUCCESS, payload: data.CourseInfo })
+    } catch (error) {
+        dispatch({ type: COURSE_LANDING_PAGE_DATA_FAIL, payload: error.response?.data?.message || "An error occurted" })
     }
 }
 

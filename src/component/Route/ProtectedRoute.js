@@ -1,5 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+// import { toast } from "react-toastify";
+import Loader from "../layout/Loader/Loader";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useSelector((state) => state.user);
@@ -7,10 +9,11 @@ const ProtectedRoute = ({ children }) => {
 
   // If still loading, do not render anything to prevent premature redirection
   if (loading) {
-    return <div>Loading...</div>; // Replace with a proper loader
+    return <Loader />; // Replace with a proper loader
   }
 
   if (!isAuthenticated) {
+    // toast.error("Please login to access this resource");
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

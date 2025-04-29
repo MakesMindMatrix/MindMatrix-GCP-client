@@ -8,6 +8,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 import { clearErrors, login, register } from '../../actions/userAction';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const LoginSignUp = () => {
   const navigate = useNavigate()
@@ -32,6 +35,10 @@ const LoginSignUp = () => {
     const [avatar, setAvatar] = useState("/Profile.png")
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png")
 
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      };
+       
     useEffect(() => {
         if (error) {
             alert.error(error)
@@ -60,12 +67,29 @@ const LoginSignUp = () => {
           loginTab.current.classList.add("shiftToLeft")
       }
   }
-  const loginSubmit = () => {
-      dispatch(login(loginEmail, loginPassword))
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    if (!validateEmail(loginEmail)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+    if (loginPassword.length < 8) {
+      toast.error('Password must be at least 8 characters long');
+      return;
+    }
+    dispatch(login(loginEmail, loginPassword))
   }
 
   const registerSubmit = (e) => {
       e.preventDefault() 
+      if (!validateEmail(email)) {
+        toast.error('Please enter a valid email address');
+        return;
+      }
+      if (password.length < 8) {
+        toast.error('Password must be at least 8 characters long');
+        return;
+      }
       const myForm = new FormData();
       myForm.set("name", name)
       myForm.set("email", email)
@@ -96,6 +120,7 @@ const LoginSignUp = () => {
     <>
             {loading ? <Loader /> : (
                 <>
+                    <ToastContainer position="top-right" autoClose={3000} />
                     <div className='loginSignUp_container'>
                         <div className='LoginSignUp_box'>
                             <div>
@@ -125,6 +150,9 @@ const LoginSignUp = () => {
                                         value={loginPassword}
                                         onChange={(e) => setLoginPassword(e.target.value)}
                                     />
+                                    <small style={{ color: 'red', display: 'block', marginTop: '2px', fontSize: '12px' }}>
+                                        Password must be at least 8 characters long
+                                    </small>
                                 </div>
 
                                 <Link to="/password/forgot">Forget Password?</Link>
@@ -168,6 +196,9 @@ const LoginSignUp = () => {
                                         value={password}
                                         onChange={registerDataChange}
                                     />
+                                    <small style={{ color: 'red', display: 'block', marginTop: '2px', fontSize: '12px' }}>
+                                        Password must be at least 8 characters long
+                                    </small>
                                 </div>
 
                                 <div id='registerImage'>
