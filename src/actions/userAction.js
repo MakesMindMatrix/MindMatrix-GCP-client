@@ -8,7 +8,6 @@ const BASE_URL=process.env.REACT_APP_BACKEND_URL
 export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: LOGIN_REQUEST });
-        console.log(email,password)
 
         const config = { headers: { "Content-Type": "application/json"}, withCredentials: true}
         const { data } = await axios.post(`${BASE_URL}/api/v1/login`,
@@ -60,9 +59,10 @@ export const loadUser = () => async (dispatch) => {
         const { data } = await axios.get(`${BASE_URL}/api/v1/me`, {
             withCredentials: true
           })
-        // console.log(data)
+        console.log(data?.message)
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
     } catch (error) {
+        console.log(error.response.data?.message || "Failed to load user");
         dispatch({ type: LOAD_USER_FAIL, payload: error.response.data.message })
     }
 }
