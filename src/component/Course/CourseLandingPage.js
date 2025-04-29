@@ -15,16 +15,16 @@ import { coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourse
 import CurriculumSection from './CurriculumSection';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-const whatYouGetPoints = [
-  "Access to all course materials",
-  "Hands-on projects and assignments",
-  "Certificate on completion",
-  "24/7 discussion forums",
-  "Expert instructor support",
-  "Downloadable resources",
-  "Lifetime access",
-  "Regular updates"
-];
+// const whatYouGetPoints = [
+//   "Access to all course materials",
+//   "Hands-on projects and assignments",
+//   "Certificate on completion",
+//   "24/7 discussion forums",
+//   "Expert instructor support",
+//   "Downloadable resources",
+//   "Lifetime access",
+//   "Regular updates"
+// ];
 
 const CourseLandingPage = () => {
 
@@ -62,7 +62,7 @@ const CourseLandingPage = () => {
     }
 
     if (enroll_course) {
-      window.location.href = `${sso}`
+      window.location.href = `${sso}&external_batch_id=${courseData.external_batch_id}`
     }
     // dispatch(allCourse())
   }, [courseData.external_batch_id, dispatch, enroll_course, isAuthenticated, sso]);
@@ -164,7 +164,7 @@ const CourseLandingPage = () => {
             <div className="hero-left">
               <h1 className="hero-title">{course.hero_section?.hero_title || "Default Hero Title"}</h1>
               <p className="hero-description">
-                {course.about_section?.description || "Default About Description"}
+                {course.hero_section?.hero_description || "Default About Description"}
               </p>
               <button className="hero-enroll-btn" onClick={handleEnroll}>{course.hero_section?.hero_button_content || "Default Hero Button"}</button>
             </div>
@@ -181,14 +181,26 @@ const CourseLandingPage = () => {
         <div className="course-details-wrapper">
           <section className="what-you-get-section">
             <h2 className="what-you-get-title">What you get?</h2>
-            <ul className="what-you-get-list">
+            {course.what_you_get_section.points && course.what_you_get_section.points.length > 0 ? (
+                <ul className="what-you-get-list">
+                {course.what_you_get_section.points.map((point, i) => (
+                  <li className="what-you-get-item" key={i}>
+                    <FaCheckCircle className="tick-icon" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <h1>No points available.</h1>
+            )}
+            {/* <ul className="what-you-get-list">
               {whatYouGetPoints.map((point, i) => (
                 <li className="what-you-get-item" key={i}>
                   <FaCheckCircle className="tick-icon" />
                   <span>{point}</span>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </section>
           <aside className="instructor-section">
             <h2 className="instructor-title">Your Course Instructor</h2>
