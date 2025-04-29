@@ -22,6 +22,18 @@ const Login = () => {
 
     const loginSubmit = (e) => {
         e.preventDefault()
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(loginEmail)) {
+            toast.error('Please enter a valid email address');
+            return;
+        }
+
+        // Password validation
+        if (loginPassword.length < 8) {
+            toast.error('Password must be at least 8 characters long');
+            return;
+        }
         dispatch(login(loginEmail, loginPassword))
     }
 
@@ -80,8 +92,8 @@ const Login = () => {
                                         onChange={(e) => setLoginPassword(e.target.value)}
                                     />
                                 </div>
-
-                                <Link to="/password/forgot">Forget Password?</Link>
+                                <p className='loginNote'>Note: Your password must be at least 8 characters long</p>
+                                <Link to="/password/forgot" className='forgetPassword'>Forget Password?</Link>
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>

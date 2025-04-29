@@ -107,6 +107,37 @@
   background-color: #79b09f;
 }
 
+.loginNote {
+  color: #666;
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  font-style: italic;
+  padding-left: 5px;
+  border-left: 3px solid #e0e0e0;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.loginEmail input:invalid,
+.loginPassword input:invalid {
+  border-color: #ff4444;
+}
+
+.loginEmail input:invalid:focus,
+.loginPassword input:invalid:focus {
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+.forgetPassword {
+  color: #666;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  font-style: italic;
+  padding-left: 5px;
+  border-left: 3px solid #e0e0e0;
+  text-align: justify;
+  text-justify: inter-word;
+}
 @media screen and (max-width: 650px) {
   .login_left {
     display: none;
