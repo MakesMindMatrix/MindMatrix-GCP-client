@@ -13,7 +13,7 @@ const UpcomingCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourse
             >
                 <div
                     style={{
-                        backgroundImage: `url(${data?.url})`,
+                        backgroundImage: `url(${data?.url})`,height: "20rem"
                     }}
                     className='course_card_img'
                 ></div>

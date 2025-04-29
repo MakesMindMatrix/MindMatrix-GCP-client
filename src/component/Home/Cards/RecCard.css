@@ -1,47 +1,19 @@
-.course_card {
-    width: 25rem;
-    height: 25rem;
-    background: #f8f8f8;
-    border-radius: 2rem;
-    border: 0.1rem solid #EBEDF4;
-    padding: 1.5rem;
-    margin: 1.5rem 1rem;
-    transition: transform 150ms ease-in-out;
-    box-shadow: 1px 1px 10px 0px #cfcfcf;
+.coursePrice_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-
-.course_card:hover {
-    transform: translateY(-15px);
-    background: #ffffffef;
-    box-shadow: 2px 2px 20px 5px #cfcfcf;
+.courseDate_box{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    /* justify-content: center; */
 }
-
-.course_card_img {
-    background-size: cover;
-    height: 16rem;
-    border-radius: 1rem;
-    padding: 1rem;
+.courseDate_box h2{
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
 }
-
-.course_name {
-    font-size: 1.5rem;
-    text-align: left;
-    font-weight: 500;
-    color: black;
-    padding: 0.5rem 0;
-}
-
-.enroll_button {
-    /* margin: 1rem; */
-    border: none;
-    background-color: #4C8070;
-    color: white;
-    font: 300 0.9vmax "Roboto";
-    width: 100%;
-    padding: 0.8vmax;
-    cursor: pointer;
-    transition: all 0.5s;
-    border-radius: 4px;
-    outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+.course_description{
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }
