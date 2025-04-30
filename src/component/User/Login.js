@@ -100,7 +100,7 @@ const Login = () => {
                                         className={emailHasError ? "input-error" : ""}
                                     />
                                 </div>
-                                <div className='loginPasswordContainer'>
+                                <div className='PasswordContainer'>
                                     <div className='loginPassword'>
                                         <RiLockPasswordLine />
                                         <input
@@ -112,7 +112,7 @@ const Login = () => {
                                             className={passwordHasError ? "input-error" : ""}
                                         />
                                     </div>
-                                    <p className='loginNote'>Note: Your password must be at least 8 characters long</p>
+                                    <p className='PasswordNote'>Note: Your password must be at least 8 characters long</p>
                                 </div>
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <Link to="/password/forgot" className='forget-password-link'>Forget Password?</Link>

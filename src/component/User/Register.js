@@ -24,24 +24,20 @@ const Register = () => {
         password: ""
     })
     const { name, email, password } = user;
+    const [emailTouched, setEmailTouched] = useState(false)
+    const [passwordTouched, setPasswordTouched] = useState(false)
 
     useEffect(() => {
         if (error?.message) {
-            // alert.error(error)
-            // console.log(error)
             toast.error(error)
             dispatch(clearErrors())
         }
 
         if (error?.redirect) {
-            // console.log(error?.redirect)
-            // toast.info(error.message)
             setTimeout(() => navigate('/login'), 100);
         }
 
         if (isAuthenticated) {
-            // console.log(isAuthenticated, from)
-            // navigate('/onboarding')
             navigate(from, { replace: true });
         }
     }, [dispatch, error, isAuthenticated, navigate, from])
@@ -63,13 +59,34 @@ const Register = () => {
                 break;
         }
 
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            toast.error('Please enter a valid email address');
+            return;
+        }
 
+        // Password validation
+        if (password.length < 8) {
+            toast.error('Password must be at least 8 characters long');
+            return;
+        }
         dispatch(register(user))
     }
 
     const registerDataChange = (e) => {
+        if(e.target.name === "email"){
+            setEmailTouched(true);
+        }
+        if(e.target.name === "password"){
+            setPasswordTouched(true);
+        }
         setUser({ ...user, [e.target.name]: e.target.value })
     }
+
+    // Determine if fields have errors (only if they've been touched)
+    const emailHasError = emailTouched && user.email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user.email);
+    const passwordHasError = passwordTouched && user.password.length > 0 && user.password.length < 8;
     return (
         <>
             {loading ? <Loader /> : (
@@ -104,20 +121,24 @@ const Register = () => {
                                         name='email'
                                         value={email}
                                         onChange={registerDataChange}
+                                        className={emailHasError ? "input-error" : ""}
                                     />
                                 </div>
-                                <div className='signUpPassword'>
-                                    <RiLockPasswordLine />
-                                    <input
-                                        type='password'
-                                        placeholder='Password'
-                                        required
-                                        name='password'
-                                        value={password}
-                                        onChange={registerDataChange}
-                                    />
+                                <div className='PasswordContainer'>
+                                    <div className='signUpPassword'>
+                                        <RiLockPasswordLine />
+                                        <input
+                                            type='password'
+                                            placeholder='Password'
+                                            required
+                                            name='password'
+                                            value={password}
+                                            onChange={registerDataChange}
+                                            className={passwordHasError ? "input-error" : ""}
+                                        />
+                                    </div>
+                                    <p className='PasswordNote'>Note: Your password must be at least 8 characters long</p>
                                 </div>
-
                                 {/* <div className='signUpPassword'>
                             <LockOpenIcon />
                             <input
@@ -140,7 +161,7 @@ const Register = () => {
                             />
                         </div> */}
                                 <input type='submit' value="Register" className='signUpBtn' />
-                                <h2 className='redirect_text'>Do you have an account? <Link to='/login'>Sign In</Link></h2>
+                                <h2 className='redirect_text'>Already have an account? <Link to='/login'>Sign In</Link></h2>
                             </form>
                         </div>
                     </div>

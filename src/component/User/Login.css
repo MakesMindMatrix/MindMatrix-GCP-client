@@ -139,7 +139,7 @@
   box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.08);
 }
 
-.loginPasswordContainer {
+.PasswordContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -147,7 +147,7 @@
 }
 
 /* Password note styling */
-.loginNote {
+.PasswordNote {
   width: 100%;
   text-align: center;
   color: #373e43;
@@ -158,16 +158,7 @@
   background: rgba(76,128,112,0.05);
   border-radius: 4px;
 }
-/* .loginNote {
-  color: #666;
-  font-size: 1.4rem;
-  margin: 0.5rem 0;
-  font-style: italic;
-  padding-left: 5px;
-  border-left: 3px solid #e0e0e0;
-  text-align: justify;
-  text-justify: inter-word;
-} */
+
 .loginPassword {
   width: 100%;
   display: flex;
@@ -175,13 +166,6 @@
   position: relative;
 }
 
-/* Ensure password input has same width as email input */
-/* .loginPassword input {
-  width: 100%;
-  padding: 1vmax 4vmax;
-  padding-right: 1vmax;
-  box-sizing: border-box;
-} */
 /* Only highlight fields red when they have content and are invalid */
 .loginEmail input,
 .loginPassword input {
@@ -217,39 +201,6 @@
   text-decoration: underline;
 }
 
-/* .loginForm .forgot-password-link:hover,
-.loginForm .forgot-password-link:focus {
-  color: #295c4b;
-  background: #eaf4f0;
-  text-decoration: underline;
-} */
-
-/* "Forgot Password?" link styling */
-/* .loginForm .forgot-password-link {
-  color: #4C8070;
-  font-size: 1.2rem;
-  font-weight: 500;
-  text-decoration: none;
-  margin-top: 0.2rem;
-  margin-bottom: 1rem;
-  align-self: flex-end;
-  transition: color 0.2s;
-  display: inline-block;
-  padding: 2px 4px;
-  border-radius: 3px;
-} */
-
-/* .forgetPassword {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  text-align: right;
-  color: #4C8070;
-  font-size: 1.15rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s;
-} */
 @media screen and (max-width: 650px) {
   .login_left {
     display: none;
