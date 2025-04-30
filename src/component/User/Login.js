@@ -117,9 +117,7 @@ const Login = () => {
                                             className={passwordHasError ? "input-error" : ""}
                                         />
                                     </div>
-                                    console.log("Before Note");
                                     <p className='PasswordNote'>Note: Your password must be at least 8 characters long</p>
-                                    console.log("After Note");
                                 </div>
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <Link to="/password/forgot" className='forget-password-link'>Forget Password?</Link>
