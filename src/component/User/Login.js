@@ -20,9 +20,23 @@ const Login = () => {
 
     const [loginEmail, setLoginEmail] = useState('')
     const [loginPassword, setLoginPassword] = useState('')
+    const [emailTouched, setEmailTouched] = useState(false)
+    const [passwordTouched, setPasswordTouched] = useState(false)
 
     const loginSubmit = (e) => {
         e.preventDefault()
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(loginEmail)) {
+            toast.error('Please enter a valid email address');
+            return;
+        }
+
+        // Password validation
+        if (loginPassword.length < 8) {
+            toast.error('Password must be at least 8 characters long');
+            return;
+        }
         dispatch(login(loginEmail, loginPassword))
     }
 
@@ -54,6 +68,21 @@ const Login = () => {
         }
     }, [isAuthenticated, user, navigate, location.state?.from?.pathname]);
 
+    // Handlers to track if fields have been touched
+    const handleEmailChange = (e) => {
+        setLoginEmail(e.target.value);
+        setEmailTouched(true);
+    };
+
+    const handlePasswordChange = (e) => {
+        setLoginPassword(e.target.value);
+        setPasswordTouched(true);
+    };
+
+    // Determine if fields have errors (only if they've been touched)
+    const emailHasError = emailTouched && loginEmail.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginEmail);
+    const passwordHasError = passwordTouched && loginPassword.length > 0 && loginPassword.length < 8;
+
     return (
         <>
             {loading ? <Loader /> : (
@@ -72,22 +101,26 @@ const Login = () => {
                                         placeholder='Email'
                                         required
                                         value={loginEmail}
-                                        onChange={(e) => setLoginEmail(e.target.value)}
+                                        onChange={handleEmailChange}
+                                        className={emailHasError ? "input-error" : ""}
                                     />
                                 </div>
-                                <div className='loginPassword'>
-                                    <RiLockPasswordLine />
-                                    <input
-                                        type='password'
-                                        placeholder='Password'
-                                        required
-                                        value={loginPassword}
-                                        onChange={(e) => setLoginPassword(e.target.value)}
-                                    />
+                                <div className='PasswordContainer'>
+                                    <div className='loginPassword'>
+                                        <RiLockPasswordLine />
+                                        <input
+                                            type='password'
+                                            placeholder='Password'
+                                            required
+                                            value={loginPassword}
+                                            onChange={handlePasswordChange}
+                                            className={passwordHasError ? "input-error" : ""}
+                                        />
+                                    </div>
+                                    <p className='PasswordNote'>Note: Your password must be at least 8 characters long</p>
                                 </div>
-
-                                <Link to="/password/forgot">Forget Password?</Link>
                                 <input type='submit' value="Login" className='loginBtn' />
+                                <Link to="/password/forgot" className='forget-password-link'>Forget Password?</Link>
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
                             <button className="googleAuthBtn" onClick={loginGoogleAuth}>
