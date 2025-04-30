@@ -8,6 +8,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -39,13 +40,17 @@ const Login = () => {
         dispatch(login(loginEmail, loginPassword))
     }
 
+    const loginGoogleAuth = () => {
+        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/login`;
+    }
+
     useEffect(() => {
         if (error) {
             toast.error(error);
             dispatch(clearErrors());
         }
     }, [dispatch, error]);
-    
+
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -62,7 +67,7 @@ const Login = () => {
             }
         }
     }, [isAuthenticated, user, navigate, location.state?.from?.pathname]);
-    
+
     // Handlers to track if fields have been touched
     const handleEmailChange = (e) => {
         setLoginEmail(e.target.value);
@@ -118,6 +123,10 @@ const Login = () => {
                                 <Link to="/password/forgot" className='forget-password-link'>Forget Password?</Link>
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
+                            <button className="googleAuthBtn" onClick={loginGoogleAuth}>
+                                <FcGoogle className="googleAuthIcon"/>
+                                <span style={{marginLeft: "1rem"}}>SignIn with Google</span>
+                            </button>
                         </div>
                     </div>
                 </>
