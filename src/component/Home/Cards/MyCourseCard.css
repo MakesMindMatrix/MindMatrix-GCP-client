@@ -49,7 +49,7 @@
 
 .reportData_box h1 {
     font-size: 1.2rem;
-    margin: 1rem 0;
+    margin: 0.8rem 0;
 }
 
 .reportData_box span {
@@ -63,7 +63,7 @@
 
 .course_name {
     font-size: 1.5rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     text-align: left;
     font-weight: 700;
     color: black;
@@ -71,6 +71,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+    margin: 1rem 0;
     /* padding: 0.5rem 0; */
 }
 
@@ -136,6 +137,7 @@ progress::-webkit-progress-value {
     /* width: 100%; */
     padding: 0.6vmax 0.8vmax;
     cursor: pointer;
+    margin-top: 1rem;
     transition: all 0.5s;
     border-radius: 100px;
     outline: none;

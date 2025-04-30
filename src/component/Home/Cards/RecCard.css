@@ -15,5 +15,8 @@
 }
 .course_description{
     font-size: 1rem;
+    color: black;
     margin-top: 0.5rem;
+    font-weight: 500;
+    line-height: 1.3rem;
 }

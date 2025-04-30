@@ -46,7 +46,7 @@ const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData,
                     <p className='course_description'>{data?.course_description}</p>
                     <div className='courseDate_box'>
                         <FaRegCalendarMinus />
-                        <h2>Starts on {startDate}</h2>
+                        <h2>Starts on <span style={{color: '#4CBB90'}}>{startDate}</span></h2>
                     </div>
 
                     <div className='coursePrice_box'>

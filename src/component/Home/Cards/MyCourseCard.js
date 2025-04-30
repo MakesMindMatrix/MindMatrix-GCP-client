@@ -64,17 +64,17 @@ const MyCourseCard = ({ data }) => {
 
           <div className='reportData_box'>
             <h1>Tasks Submitted</h1>
-            <h2><span>{taskSubmitted}</span>/ {totalTasks}</h2>
+            <h2><span style={{backgroundColor: "#E3FFEB", borderColor: "#78C58E"}}>{taskSubmitted}</span>/ {totalTasks}</h2>
           </div>
           
           <div className='reportData_box'>
             <h1>Topics Completed</h1>
-            <h2><span>{topicCompleted}</span>/ {totalTopics}</h2>
+            <h2><span style={{backgroundColor: "#E2F5FF", borderColor: "#7ECEF8"}}>{topicCompleted}</span>/ {totalTopics}</h2>
           </div>
 
           <div className='reportData_box'>
             <h1>Position</h1>
-            <h2><span>{position}</span>/ {totalStudent}</h2>
+            <h2><span style={{backgroundColor: "#FFEEDB", borderColor: "#E09749"}}>{position}</span>/ {totalStudent}</h2>
           </div>
 
           {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Resume</button> : null}
