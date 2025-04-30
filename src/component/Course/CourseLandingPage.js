@@ -35,14 +35,16 @@ const CourseLandingPage = () => {
 
   // const {courseName} = useParams();
   const { loading: userLoading, isAuthenticated, user} = useSelector((state) => state.user);
-  const {loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
-  const { enroll_course} = useSelector((state) => state.myCourse)
+  const { loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
+  const { loading: courseLoading, enroll_course} = useSelector((state) => state.myCourse)
   const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
   const { sso } = useSelector((state) => state.SSO);
   
   
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
+  const [enrolling, setEnrolling] = useState(false);
+  
   const [paymentCourseData, setPaymentCourseData] = useState({
     batch_id: "",
     course_name: "",
@@ -61,16 +63,25 @@ const CourseLandingPage = () => {
       dispatch(getCourseInfoByBatchId(courseData.external_batch_id))
     }
 
-    if (enroll_course) {
-      window.location.href = `${sso}&external_batch_id=${courseData.external_batch_id}`
+    if (enroll_course && enrolling) {
+      setEnrolling(true);
+
+      setTimeout(() => {
+        window.location.href = `${sso}&external_batch_id=${courseData.external_batch_id}`  
+      },500);
     }
     // dispatch(allCourse())
-  }, [courseData.external_batch_id, dispatch, enroll_course, isAuthenticated, sso]);
+  }, [courseData.external_batch_id, dispatch, enroll_course, enrolling, isAuthenticated, sso]);
 
   // Load until all data is fetched
   if (loading || userLoading || !courseLandingPageData ) {
     return <Loader />;
   };
+
+  // Show loader when enrolling or during course loading
+  if (enrolling || courseLoading) {
+    return <Loader />;
+  }
 
   // Get course from store
   const course = courseLandingPageData;
@@ -83,8 +94,9 @@ const CourseLandingPage = () => {
   const paymentImage = "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
   
   const handleEnrollConfirmation = () => {
-    dispatch(enrollCourse(enrollCourseData))
-    setConfirmModal(false)
+    setConfirmModal(false);
+    setEnrolling(true);
+    dispatch(enrollCourse(enrollCourseData));
   };
   const handleEnroll = () => {
     if (courseData.batch_price > 0) {
@@ -104,6 +116,7 @@ const CourseLandingPage = () => {
   };
 
   const handlePayment = () => {
+    setEnrolling(true);
     dispatch(coursePaymentAction({
       courseName: paymentCourseData.course_name,
       coursePrice: paymentCourseData.batch_price,
@@ -114,6 +127,8 @@ const CourseLandingPage = () => {
   const tokenUrl = coursePayment?.response.redirectUrl;
   if (coursePayment) {
     console.log(tokenUrl);
+    // Reset enrolling state when payment modal appears
+    setEnrolling(false);
     window.PhonePeCheckout.transact({
       tokenUrl,
       type: "IFRAME",
@@ -121,6 +136,7 @@ const CourseLandingPage = () => {
         if (response === "USER_CANCEL") {
           console.log("Transaction Cancelled");
         } else if (response === "CONCLUDED") {
+          setEnrolling(true);
           dispatch(coursePaymentStatusAction(coursePayment.merchantOrderId))
           dispatch(enrollCourse(enrollCourseData))
           console.log("Transaction Completed");
