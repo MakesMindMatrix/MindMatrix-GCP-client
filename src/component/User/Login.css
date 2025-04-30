@@ -28,7 +28,7 @@
 .login_right {
   height: 75vh;
   width: 50%;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
 }
@@ -132,6 +132,18 @@
 
 .loginBtn:hover {
   background-color: #79b09f;
+}
+.googleAuthBtn{
+  padding: 1rem 1.2rem;
+  border: 1px solid black;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.googleAuthIcon{
+  font-size: 2rem;
 }
 
 .input-error {

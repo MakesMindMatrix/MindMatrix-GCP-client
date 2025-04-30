@@ -107,7 +107,6 @@ const Onboarding = () => {
             toast.success(result.message)
         } else {
             console.log(result)
-            toast.warning("Facing issue in sending mail")
         }
     }
 
