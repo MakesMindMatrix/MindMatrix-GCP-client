@@ -3,15 +3,15 @@ import './Dashboard.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import Slider from "react-slick";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { MdKeyboardArrowLeft } from "react-icons/md";
+// import { MdKeyboardArrowRight } from "react-icons/md";
+// import { MdKeyboardArrowLeft } from "react-icons/md";
 import Navbar from '../layout/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
-import { allCourse, courseDataAction, courseLandingPageDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, SSOLogin } from '../../actions/courseAction';
+import { allCourse, courseDataAction, SSOLogin } from '../../actions/courseAction';
 // import liveSkillData from '../Data/liveSkillData'
 // import { allCourse, courseDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, SSOLogin } from '../../actions/courseAction';
-import { allCourse, courseDataAction, SSOLogin } from '../../actions/courseAction';
-import liveSkillData from '../Data
+// import { allCourse, courseDataAction, SSOLogin } from '../../actions/courseAction';
+// import liveSkillData from '../Data'
 import courseData from '../Data/courseData'
 // import NewsData from '../Data/NewsData';
 import Loader from '../layout/Loader/Loader'
@@ -24,9 +24,9 @@ import UpcomingCard from './Cards/UpcomingCard';
 // import NewsCard from './Cards/NewsCard';
 import certificateProgramData from '../Data/certificateProgramData';
 // import LiveSessionCard from './Cards/LiveSessionCard';
-import { IoIosCloseCircle } from "react-icons/io";
-import Gai from './images/GAI.jpg'
-import LiveSessionCard from './Cards/LiveSessionCard';
+// import { IoIosCloseCircle } from "react-icons/io";
+// import Gai from './images/GAI.jpg'
+// import LiveSessionCard from './Cards/LiveSessionCard';
 // import { IoIosCloseCircle } from "react-icons/io";
 // import Gai from './images/GAI.jpg'
 
@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user)
   const { sso } = useSelector((state) => state.SSO)
-  const { loading, enroll_course, my_course, rec_course, report_data } = useSelector((state) => state.myCourse)
+  const { loading, enroll_course, my_course, rec_course } = useSelector((state) => state.myCourse)
   // const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment)
   // const { courseLandingPageData } = useSelector((state) => state.courseLandingPage)
   // console.log(my_course)
@@ -101,55 +101,55 @@ const Dashboard = () => {
   }, [dispatch, isAuthenticated, userEmail, enroll_course, sso])
 
   // Carousel next arrow
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <MdKeyboardArrowRight className={className} onClick={onClick} style={{ ...style, color: "grey" }} />
-    );
-  }
+  // function SampleNextArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <MdKeyboardArrowRight className={className} onClick={onClick} style={{ ...style, color: "grey" }} />
+  //   );
+  // }
 
-  // Carousel prev arrow
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <MdKeyboardArrowLeft className={className} onClick={onClick} style={{ ...style, color: "grey" }} />
-    );
-  }
+  // // Carousel prev arrow
+  // function SamplePrevArrow(props) {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <MdKeyboardArrowLeft className={className} onClick={onClick} style={{ ...style, color: "grey" }} />
+  //   );
+  // }
 
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    autoplay: false,
-    arrows: true,
-    autoplaySpeed: 3000,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    rows: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-          rows: 1,
-        },
-      },
-    ],
-  };
+  // var settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   initialSlide: 0,
+  //   autoplay: false,
+  //   arrows: true,
+  //   autoplaySpeed: 3000,
+  //   nextArrow: <SampleNextArrow />,
+  //   prevArrow: <SamplePrevArrow />,
+  //   rows: 1,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         infinite: true,
+  //         dots: false,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         initialSlide: 1,
+  //         rows: 1,
+  //       },
+  //     },
+  //   ],
+  // };
   return (
     <>
       {loading && userLoading ? <Loader /> : (
