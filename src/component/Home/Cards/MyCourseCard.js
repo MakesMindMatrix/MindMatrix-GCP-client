@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './MyCourseCard.css'
 import { useSelector } from 'react-redux'
-import Gai from '../images/GAI.jpg'
-import CourseData from '../../Data/MyCourseData'
+import axios from 'axios'
+const BASE_URL=process.env.REACT_APP_BACKEND_URL
 
 const MyCourseCard = ({ data }) => {
   const { sso } = useSelector((state) => state.SSO)
   const { report_data } = useSelector((state) => state.myCourse)
-
+ 
+  const [courseInfo,setCourseInfo] = useState(null);
   const course_progress = report_data && report_data.filter((elm) => elm.courseName === data.course_name)
   console.log(course_progress)
 
@@ -29,18 +30,29 @@ const MyCourseCard = ({ data }) => {
     totalStudent = elm.totalStudent
   })
 
-  const filterImage = CourseData.filter((elm) => {
-    return elm.batch_id === data.external_batch_id
-  })
+  useEffect(() => {
+    const fetchCourseInfo = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/v1/course-info/${data.external_batch_id}`, {
+          headers: { "Content-Type": "application/json" },
+        });
+        setCourseInfo(response.data.CourseInfo);
+      } catch (error) {
+        setCourseInfo(null);
+      }
+    };
+    fetchCourseInfo();
+  }, [data.external_batch_id]);
 
-  const image = filterImage.length > 0 ? filterImage[0].image_url : Gai
+  console.log("Fetched course :", data.external_batch_id, courseInfo?.course_card_image);
+  const image = courseInfo?.course_card_image || "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
 
   const handleEnroll = () => {
     window.location.href = `${sso}&external_batch_id=${data.external_batch_id}`
     // &external_batch_id=GAIBME2401
     // console.log(`${sso}&external_batch_id=${data.external_batch_id}`)
   }
-  // percentage = 10
+
 
   return (
     <>

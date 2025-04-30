@@ -13,7 +13,7 @@
     align-items: center;
     margin: auto;
     padding: 2vmax;
-    height: 100%;
+    height: 90%;
     width: 35vw;
     transition: all 0.5s;
 }
@@ -31,15 +31,41 @@
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.267);
     border-radius: 4px;
-    font: 300 0.9vmax "Roboto Flex";
+    font: 300 0.9vmax cursive;
     outline: none;
 }
 
-.signUpForm > div > svg {
+.signUpForm>div>div>input, .signUpForm>div>div>select {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
+}
+
+.signUpForm>div>svg {
   position: absolute;
   transform: translateX(1vmax);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
+}
+
+.signUpForm>div>div>svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+
+.signUpPassword {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 /* #registerImage > img {
@@ -69,11 +95,30 @@
     background-color: rgb(235, 235, 235);
   } */
 
+  /* Only highlight fields red when they have content and are invalid */
+  .signUpEmail input,
+  .signUpPassword input {
+    border: 1.5px solid #bfc7ce;
+  }
+
+  .signUpEmail input:focus,
+  .signUpPassword input:focus {
+    border-color: #4C8070;
+    box-shadow: 0 0 0 2px rgba(76, 128, 112, 0.1);
+  }
+
+  .signUpEmail input.input-error,
+  .signUpPassword input.input-error {
+    border-color: #ff4444;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.08);
+  }
+
 .signUpBtn {
   border: none;
   background-color: #4C8070;
   color: white;
   font: 300 0.9vmax "Roboto";
+  font-size: 1.5rem;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -81,6 +126,7 @@
   border-radius: 4px;
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  margin-bottom: 1rem;
 }
 
 .signUpBtn:hover {
@@ -107,7 +153,14 @@
     font: 300 2.5vmax normal;
     padding: 1vmax 5vmax;
   }
+  .signUpForm>div>div>input {
+    font: 300 2.5vmax normal;
+    padding: 1vmax 5vmax;
+  }
   .signUpForm>div>svg {
+    font-size: 2.6vmax;
+  }
+  .signUpForm>div>div>svg {
     font-size: 2.6vmax;
   }
   .signUpForm>a {
@@ -126,7 +179,14 @@
     font: 300 2.8vmax normal;
     padding: 1vmax 5vmax;
   }
+  .signUpForm>div>div>input {
+    font: 300 2.8vmax normal;
+    padding: 1vmax 5vmax;
+  }
   .signUpForm>div>svg {
+    font-size: 2.8vmax;
+  }
+  .signUpForm>div>div>svg {
     font-size: 2.8vmax;
   }
   .signUpForm>a {

@@ -19,4 +19,21 @@
     margin-top: 0.5rem;
     font-weight: 500;
     line-height: 1.3rem;
+    padding: 0.5rem 0;
+}
+
+/* .enroll_button { */
+.view_button {
+    /* margin: 1rem; */
+    border: none;
+    background-color: #4C8070;
+    color: white;
+    font: 300 0.9vmax "Roboto";
+    width: 100%;
+    padding: 0.8vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }

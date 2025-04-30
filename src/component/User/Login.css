@@ -7,7 +7,7 @@
 .login_left {
   /* background-color: #4C8074; */
   border-radius: 5px;
-  background-image: url('../../images/Learning_Icon.png');
+  background-image: url('../../images/Learning_Icon_new.png');
   background-position: center;
   background-size: cover;
   height: 94vh;
@@ -70,6 +70,23 @@
   outline: none;
 }
 
+.loginForm>div>div>input {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
+}
+
+/* .loginForm>div>input,
+.loginForm .loginPasswordContainer input {
+  border: 1.5px solid #bfc7ce; 
+  transition: border-color 0.2s;
+} */
+
 .loginForm>div>svg {
   position: absolute;
   transform: translateX(1vmax);
@@ -77,23 +94,32 @@
   color: rgba(0, 0, 0, 0.623);
 }
 
-.loginForm>a {
+.loginForm>div>div>svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+/* .loginForm>a {
   color: rgba(0, 0, 0, 0.651);
   text-decoration: none;
   align-self: flex-end;
   transition: all 0.5s;
   font: 500 0.8vmax "Gill Sans";
+  font-size: ;
 }
 
 .loginForm>a:hover {
   color: black;
-}
+} */
 
 .loginBtn {
   border: none;
   background-color: #4C8070;
   color: white;
   font: 300 0.9vmax "Roboto";
+  font-size: 1.5rem;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -101,6 +127,7 @@
   border-radius: 4px;
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  margin-bottom: 1rem;
 }
 
 .loginBtn:hover {
@@ -120,6 +147,73 @@
   font-size: 2rem;
 }
 
+.input-error {
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.08);
+}
+
+.PasswordContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Password note styling */
+.PasswordNote {
+  width: 100%;
+  text-align: center;
+  color: #373e43;
+  font-size: 1.2rem;
+  margin: 0.4rem 0 1rem 0;
+  font-style: italic;
+  padding: 0.3rem 0;
+  background: rgba(76,128,112,0.05);
+  border-radius: 4px;
+}
+
+.loginPassword {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Only highlight fields red when they have content and are invalid */
+.loginEmail input,
+.loginPassword input {
+  border: 1.5px solid #bfc7ce;
+}
+
+.loginEmail input:focus,
+.loginPassword input:focus {
+  border-color: #4C8070;
+  box-shadow: 0 0 0 2px rgba(76, 128, 112, 0.1);
+}
+
+.loginEmail input.input-error,
+.loginPassword input.input-error {
+  border-color: #ff4444;
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.08);
+}
+
+/* Forgot Password styling - bigger and positioned on the right */
+.forget-password-link {
+  color: #35584e;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  align-self: flex-end;
+  transition: color 0.2s;
+  margin-bottom: 1rem;
+}
+
+.forget-password-link:hover,
+.forget-password-link:focus {
+  color: #295c4b;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 650px) {
   .login_left {
     display: none;
@@ -137,7 +231,14 @@
     font: 300 2.5vmax normal;
     padding: 1vmax 5vmax;
   }
+  .loginForm>div>div>input {
+    font: 300 2.5vmax normal;
+    padding: 1vmax 5vmax;
+  }
   .loginForm>div>svg {
+    font-size: 2.6vmax;
+  }
+  .loginForm>div>div>svg {
     font-size: 2.6vmax;
   }
   .loginForm>a {
@@ -145,6 +246,9 @@
   }
   .loginBtn{
     font: 300 2.5vmax "Roboto";
+  }
+  .forget-password-link {
+    font-size: 2.2vmax;
   }
 }
 
@@ -156,7 +260,14 @@
     font: 300 2.8vmax normal;
     padding: 1vmax 5vmax;
   }
+  .loginForm>div>div>input {
+    font: 300 2.8vmax normal;
+    padding: 1vmax 5vmax;
+  }
   .loginForm>div>svg {
+    font-size: 2.8vmax;
+  }
+  .loginForm>div>div>svg {
     font-size: 2.8vmax;
   }
   .loginForm>a {
@@ -164,5 +275,8 @@
   }
   .loginBtn{
     font: 300 2.7vmax "Roboto";
+  }
+  .forget-password-link {
+    font-size: 2.4vmax;
   }
 }
