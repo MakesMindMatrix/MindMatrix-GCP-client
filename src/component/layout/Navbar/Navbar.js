@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <>
             <div className='dashboardNav_container'>
-                <div className='nav_logo'></div>    
+                <div className='nav_logo'></div>
                 {/* <div className='user_icon'></div> */}
                 <div className="nav_right">
                     <Link className='nav_link_parent' to='/dashboard'>
@@ -32,10 +32,10 @@ const Navbar = () => {
                         <span className='nav_link_text'>All Courses</span>
                     </Link> */}
 
-                    <Link className='nav_link_parent' to='/profile'>
-                    {/* <HiOutlineUserCircle className='nav_link_icon'/> */}
-                    <span className='nav_link_text'>Profile</span>
-                </Link>
+                    {/* <Link className='nav_link_parent' to='/profile'> */}
+                        {/* <HiOutlineUserCircle className='nav_link_icon'/> */}
+                        {/* <span className='nav_link_text'>Profile</span> */}
+                    {/* </Link> */}
 
                     <Link className='nav_link_parent' onClick={handleLogOut}>
                         {/* <IoLogOutOutline className='nav_link_icon' /> */}
