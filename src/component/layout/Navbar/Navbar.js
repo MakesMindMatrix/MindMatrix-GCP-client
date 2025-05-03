@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <>
             <div className='dashboardNav_container'>
-                <div className='nav_logo'></div>
+                <Link to='/'><div className='nav_logo'></div></Link>
                 {/* <div className='user_icon'></div> */}
                 <div className="nav_right">
                     <Link className='nav_link_parent' to='/dashboard'>

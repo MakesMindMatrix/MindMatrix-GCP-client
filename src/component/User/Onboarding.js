@@ -111,6 +111,14 @@ const Onboarding = () => {
     }
 
     useEffect(() => {
+        if (
+            user?.isverified &&
+            user?.phone 
+        ) {
+            navigate('/dashboard');
+            return;
+        }
+
         if (error) {
             alert(error)
             console.log("Error", error)
@@ -132,7 +140,7 @@ const Onboarding = () => {
             // console.log("came inside")
             navigate('/dashboard')
         }
-    }, [dispatch, error, isUpdated, navigate, university, codeVerified])
+    }, [dispatch, error, isUpdated, navigate, university, codeVerified, user?.isverified, user?.phone])
     return (
         <>
             {loading && loadingProfile && lodingUser && loadingVerify ? <Loader /> : (
