@@ -12,6 +12,8 @@ import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
     const dispatch = useDispatch()
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get('msg');
     // const alert = useAlert()
     const navigate = useNavigate()
     const location = useLocation()
@@ -41,7 +43,11 @@ const Register = () => {
         if (isAuthenticated) {
             navigate(from, { replace: true });
         }
-    }, [dispatch, error, isAuthenticated, navigate, from])
+
+        if(msg === "user_not_found"){
+            toast.error("User not found, please signup to continue");
+        }
+    }, [dispatch, error, isAuthenticated, navigate, from,msg])
 
     const registerSubmit = (e) => {
         e.preventDefault()
