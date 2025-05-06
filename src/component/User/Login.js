@@ -48,12 +48,12 @@ const Login = () => {
 
     useEffect(() => {
         if (error) {
-            toast.error(error);
+            toast.error(error,{ toastId: 'error' });
             dispatch(clearErrors());
         }
 
         if (msg === 'user_exists') {
-            toast.error('User already exists, please login to continue');
+            toast.error('User already exists, please login to continue',{ toastId: 'user_exists' });
         }
     }, [dispatch, error,msg]);
 
