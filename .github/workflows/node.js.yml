@@ -30,7 +30,7 @@ jobs:
           IMAGE_NAME: frontend
           PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
         run: |-
-          docker build --build-arg REACT_APP_BACKEND_URL=${{ secrets.REACT_APP_BACKEND_URL }} -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest -f Dockerfile .
+          docker build --build-arg REACT_APP_BACKEND_URL=${{ secrets.REACT_APP_BACKEND_URL }} --build-arg REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }} -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest -f Dockerfile .
           docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/${{ vars.GCR_REPO_NAME }}/$IMAGE_NAME:latest
 
       - name: Deploy to cloud run
