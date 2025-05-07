@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, register } from '../../actions/userAction';
 import Loader from '../layout/Loader/Loader';
 import { toast } from "react-toastify";
-import { FcGoogle } from "react-icons/fc";
+import GoogleButton from 'react-google-button';
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -149,35 +149,20 @@ const Register = () => {
                                     </div>
                                     <p className='PasswordNote'>Note: Your password must be at least 8 characters long</p>
                                 </div>
-                                {/* <div className='signUpPassword'>
-                            <LockOpenIcon />
-                            <input
-                                type='password'
-                                placeholder='Confirm Password'
-                                required
-                                name='password'
-                                // value={password}
-                                // onChange={registerDataChange}
-                            />
-                        </div> */}
-
-                                {/* <div id='registerImage'>
-                            <img src={avatarPreview} alt='avatar preview' />
-                            <input
-                                type='file'
-                                name='avatar'
-                                accept='image/*'
-                                onChange={registerDataChange}
-                            />
-                        </div> */}
                                 <input type='submit' value="Register" className='signUpBtn' />
+                                <div className='googleAuthBtn'>
+                                    <GoogleButton
+                                        label="Sign up with Google"
+                                        onClick={registerGoogleAuth}
+                                    />
+                                </div>
                                 <h2 className='redirect_text'>Already have an account? <Link to='/login'>Sign In</Link></h2>
                             </form>
-
+{/* 
                             <button className="googleAuthBtn" onClick={registerGoogleAuth}>
                                 <FcGoogle className="googleAuthIcon" />
                                 <span style={{ marginLeft: "1rem" }}>SignUp with Google</span>
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </>

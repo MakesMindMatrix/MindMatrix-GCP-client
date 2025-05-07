@@ -9,10 +9,10 @@
 .signUpForm {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     margin: auto;
-    padding: 2vmax;
+    padding: 1vmax;
     height: 90%;
     width: 35vw;
     transition: all 0.5s;
@@ -118,7 +118,7 @@
   background-color: #4C8070;
   color: white;
   font: 300 0.9vmax "Roboto";
-  font-size: 1.5rem;
+  font-size: 2rem;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -167,7 +167,10 @@
     font: 500 2.2vmax "Gill Sans";
   }
   .signUpBtn{
-    font: 300 2.5vmax "Roboto";
+    font: 300 2.4vmax "Roboto";
+  }
+  .signUpForm>h2 {
+    font-size: 2.2vmax;
   }
 }
 
@@ -193,6 +196,9 @@
     font: 500 2.4vmax "Gill Sans";
   }
   .signUpBtn{
-    font: 300 2.7vmax "Roboto";
+    font: 300 2.4vmax "Roboto";
+  }
+  .signUpForm>h2 {
+    font-size: 2.4vmax;
   }
 }
