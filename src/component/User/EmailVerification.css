@@ -35,6 +35,10 @@
   }
   .modal_para {
     margin: 1.5rem 0;
+    font-size: 1.5rem;
+  }
+  .modal_mail{
+    font-size: 1.5rem;
   }
   .inputBOx {
     height: 5rem;
@@ -48,6 +52,9 @@
   }
   .inputBOx input {
     margin: 1.5rem 0;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #f5f7f9;
   }
   .modal_btn {
     border: none;
@@ -59,10 +66,15 @@
     border-radius: 0.5rem;
     box-shadow: 0 3px #0f86933d;
     margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
   }
   .modal_btn:active {
     box-shadow: 0 1px #0f86933d;
     transform: translateY(2px);
+  }
+  .modal_btn:hover {
+    background-color: #0f8693;
   }
   .close_btn {
     cursor: pointer;
