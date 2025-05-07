@@ -43,19 +43,31 @@ const Login = () => {
     }
 
     const loginGoogleAuth = () => {
-        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/login`;
+        const params = new URLSearchParams({
+            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+            redirect_uri: `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/login/callback`,
+            response_type: 'code',
+            scope: [
+                'https://www.googleapis.com/auth/userinfo.email',
+                'https://www.googleapis.com/auth/userinfo.profile'
+            ].join(' '),
+            access_type: 'offline',
+            prompt: 'consent'
+        });
+
+        window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
     }
 
     useEffect(() => {
         if (error) {
-            toast.error(error,{ toastId: 'error' });
+            toast.error(error, { toastId: 'error' });
             dispatch(clearErrors());
         }
 
         if (msg === 'user_exists') {
-            toast.error('User already exists, please login to continue',{ toastId: 'user_exists' });
+            toast.error('User already exists, please login to continue', { toastId: 'user_exists' });
         }
-    }, [dispatch, error,msg]);
+    }, [dispatch, error, msg]);
 
 
     useEffect(() => {
@@ -130,8 +142,8 @@ const Login = () => {
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
                             <button className="googleAuthBtn" onClick={loginGoogleAuth}>
-                                <FcGoogle className="googleAuthIcon"/>
-                                <span style={{marginLeft: "1rem"}}>SignIn with Google</span>
+                                <FcGoogle className="googleAuthIcon" />
+                                <span style={{ marginLeft: "1rem" }}>SignIn with Google</span>
                             </button>
                         </div>
                     </div>
