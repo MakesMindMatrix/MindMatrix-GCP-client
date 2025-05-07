@@ -12,6 +12,7 @@
     # Inject backend URL into build
     ARG REACT_APP_BACKEND_URL
     ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
+    ENV REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID
     
     # Build the React app
     RUN npm run build && ls -la build
