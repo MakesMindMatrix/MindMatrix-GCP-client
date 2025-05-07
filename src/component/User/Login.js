@@ -14,6 +14,8 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useLocation()
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get('msg');
     // const alert = useAlert()
 
     const { error, loading, isAuthenticated, user } = useSelector((state) => state.user)
@@ -46,10 +48,14 @@ const Login = () => {
 
     useEffect(() => {
         if (error) {
-            toast.error(error);
+            toast.error(error,{ toastId: 'error' });
             dispatch(clearErrors());
         }
-    }, [dispatch, error]);
+
+        if (msg === 'user_exists') {
+            toast.error('User already exists, please login to continue',{ toastId: 'user_exists' });
+        }
+    }, [dispatch, error,msg]);
 
 
     useEffect(() => {
