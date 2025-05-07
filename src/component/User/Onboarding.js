@@ -38,8 +38,16 @@ const Onboarding = () => {
     const [showForm, setShowForm] = useState(user?.isverified)
     const { phone, university, college, branch, roll_no, semester } = updateData;
     const registerDataChange = (e) => {
-        e.preventDefault();
-        setUpdateData({ ...updateData, [e.target.name]: e.target.value })
+        const { name, value } = e.target;
+
+        if (name === "phone") {
+          // Remove non-digits and limit to 10 characters
+          const digits = value.replace(/\D/g, '').slice(0, 10);
+          setUpdateData(prev => ({ ...prev, [name]: digits }));
+        } else {
+          // Handle other fields normally
+          setUpdateData(prev => ({ ...prev, [name]: value }));
+        }
     }
 
     const countNum = (num) => {
@@ -54,27 +62,27 @@ const Onboarding = () => {
         // if (user.isverified) {
         switch (true) {
             case !phone:
-                return toast.warning("please fill the phone field before submit");
+                return toast.warning("Please fill the phone field before submit");
 
-            case countNum(phone) > 10:
-                return toast.warning("Phone number can't be more than 10 digits")    
+            case countNum(phone) < 10:
+                return toast.warning("Phone number can't be less than 10 digits")    
 
             case !university:
                 return toast.warning(
-                    "please select the university field before submit"
+                    "Please select the university field before submit"
                 );
 
             case !college:
-                return toast.warning("please select the college field before submit");
+                return toast.warning("Please select the college field before submit");
 
             case !roll_no:
-                return toast.warning("please fill the USN No field before submit");
+                return toast.warning("Please fill the USN No field before submit");
 
             case !branch:
-                return toast.warning("please select the branch field before submit");
+                return toast.warning("Please select the branch field before submit");
 
             case !semester:
-                return toast.warning("please select the semester field before submit");
+                return toast.warning("Please select the semester field before submit");
 
             default:
                 break;
@@ -170,7 +178,7 @@ const Onboarding = () => {
                                         disabled
                                     />
                                     {/* <button onClick={sendCodeHandler} className="verify_btn"> */}
-                                    {showForm ? <h1 className="verify_btn">Verified</h1> : <button className="verify_btn" onClick={sendCodeHandler}>verify</button>}
+                                    {showForm ? <h1 className="verify_btn">Verified</h1> : <button className="verify_btn" onClick={sendCodeHandler}>Verify</button>}
                                     {/* </button> */}
                                 </div>
 
@@ -179,12 +187,15 @@ const Onboarding = () => {
                                         <div className='signUpEmail'>
                                             <FiSmartphone />
                                             <input
-                                                type='number'
+                                                type='text'
                                                 placeholder='Phone'
                                                 required
                                                 name='phone'
                                                 value={phone}
                                                 onChange={registerDataChange}
+                                                maxLength={10}
+                                                inputMode='numeric'
+                                                pattern='\d{10}'
                                             />
                                         </div>
 
