@@ -7,6 +7,7 @@ import Footer from '../layout/Footer/Footer'
 
 const LandingPage = () => {
     const [opneNav, setOpenNav] = useState(false);
+    // const { } = ((state) => state.user)
     return (
         <>
             <div className='landingpage_container'>
