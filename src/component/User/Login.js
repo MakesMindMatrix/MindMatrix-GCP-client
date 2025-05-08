@@ -8,7 +8,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { FcGoogle } from "react-icons/fc";
+import GoogleButton from 'react-google-button'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -140,12 +140,18 @@ const Login = () => {
                                 </div>
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <Link to="/password/forgot" className='forget-password-link'>Forget Password?</Link>
+                                <div className='googleAuthBtn'>
+                                    <GoogleButton
+                                        label="Sign in with Google"
+                                        onClick={loginGoogleAuth}
+                                    />
+                                </div>
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
-                            <button className="googleAuthBtn" onClick={loginGoogleAuth}>
+                            {/* <button className="googleAuthBtn" onClick={loginGoogleAuth}>
                                 <FcGoogle className="googleAuthIcon" />
                                 <span style={{ marginLeft: "1rem" }}>SignIn with Google</span>
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </>
