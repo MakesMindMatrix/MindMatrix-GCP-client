@@ -7,6 +7,7 @@ import Footer from '../layout/Footer/Footer'
 
 const LandingPage = () => {
     const [opneNav, setOpenNav] = useState(false);
+    // const { } = ((state) => state.user)
     return (
         <>
             <div className='landingpage_container'>
@@ -281,7 +282,7 @@ export const courseCardData = [
         description:
             "Gain expertise in the rapidly evolving field of Generative AI and stay ahead of the curve.",
         slug: "gen-ai-skill-badge",
-        price: "Comming soon"
+        price: "Coming soon"
     },
 ];
 

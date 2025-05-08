@@ -8,12 +8,14 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { FcGoogle } from "react-icons/fc";
+import GoogleButton from 'react-google-button'
 
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useLocation()
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get('msg');
     // const alert = useAlert()
 
     const { error, loading, isAuthenticated, user } = useSelector((state) => state.user)
@@ -39,17 +41,34 @@ const Login = () => {
         }
         dispatch(login(loginEmail, loginPassword))
     }
-
+    console.log(process.env.REACT_APP_BACKEND_URL)
+    console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
     const loginGoogleAuth = () => {
-        window.location.href = `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/login`;
+        const params = new URLSearchParams({
+            client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+            redirect_uri: `${process.env.REACT_APP_BACKEND_URL}/api/v1/google/login/callback`,
+            response_type: 'code',
+            scope: [
+                'https://www.googleapis.com/auth/userinfo.email',
+                'https://www.googleapis.com/auth/userinfo.profile'
+            ].join(' '),
+            access_type: 'offline',
+            prompt: 'consent'
+        });
+
+        window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
     }
 
     useEffect(() => {
         if (error) {
-            toast.error(error);
+            toast.error(error, { toastId: 'error' });
             dispatch(clearErrors());
         }
-    }, [dispatch, error]);
+
+        if (msg === 'user_exists') {
+            toast.error('User already exists, please login to continue', { toastId: 'user_exists' });
+        }
+    }, [dispatch, error, msg]);
 
 
     useEffect(() => {
@@ -121,12 +140,18 @@ const Login = () => {
                                 </div>
                                 <input type='submit' value="Login" className='loginBtn' />
                                 <Link to="/password/forgot" className='forget-password-link'>Forget Password?</Link>
+                                <div className='googleAuthBtn'>
+                                    <GoogleButton
+                                        label="Sign in with Google"
+                                        onClick={loginGoogleAuth}
+                                    />
+                                </div>
                                 <h2 className='redirect_text'>Don't have an account? <Link to='/register'>Sign Up</Link></h2>
                             </form>
-                            <button className="googleAuthBtn" onClick={loginGoogleAuth}>
-                                <FcGoogle className="googleAuthIcon"/>
-                                <span style={{marginLeft: "1rem"}}>SignIn with Google</span>
-                            </button>
+                            {/* <button className="googleAuthBtn" onClick={loginGoogleAuth}>
+                                <FcGoogle className="googleAuthIcon" />
+                                <span style={{ marginLeft: "1rem" }}>SignIn with Google</span>
+                            </button> */}
                         </div>
                     </div>
                 </>

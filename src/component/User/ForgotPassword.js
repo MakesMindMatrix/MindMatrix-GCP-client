@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 // import { useAlert } from "react-alert";
 // import Loader from '../layout/Loader/Loader';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const ForgotPassword = () => {
     const dispatch = useDispatch();
@@ -18,10 +18,22 @@ const ForgotPassword = () => {
     );
 
     const [email, setEmail] = useState("");
+    const [emailTouched, setEmailTouched] = useState(false)
 
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          );
+      };
     const forgotPasswordSubmit = (e) => {
         e.preventDefault();
-
+        
+        if(!validateEmail(email)) {
+            toast.error('Please enter a valid email address');
+            return;
+        }
         // const myForm = new FormData();
 
         // myForm.set("email", email);
@@ -38,6 +50,13 @@ const ForgotPassword = () => {
             toast.success(message);
         }
     }, [dispatch, error, message]);
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        setEmailTouched(true);
+    };
+
+    const emailHasError = emailTouched && email.length > 0 && !validateEmail(email);
     return (
         <>
             <div className='login_container'>
@@ -54,16 +73,17 @@ const ForgotPassword = () => {
                                 placeholder='Email'
                                 required
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={handleEmailChange}
+                                className={emailHasError ? "input-error" : ""}
                             />
                         </div>
 
                         <input type='submit' value="Send Reset Link" className='loginBtn' />
-                        <h2>Do you have an account?<Link to='/register'>Sign Up</Link></h2>
+                        <h2 className='register_redirect'>Do you have an account?<Link to='/register'>Sign Up</Link></h2>
                     </form>
                 </div>
             </div>
-            <ToastContainer style={{ fontSize: "1.35rem" }} />
+            {/* <ToastContainer style={{ fontSize: "1.35rem" }} /> */}
         </>
     )
 }
