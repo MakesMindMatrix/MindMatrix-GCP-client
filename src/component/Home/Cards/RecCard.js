@@ -62,7 +62,7 @@ const RecCard = ({ data}) => {
                     </div>
 
                     <div className='coursePrice_box'>
-                        <h2>₹50</h2>
+                        <h2>₹ {data?.batch_price}</h2>
                         {/* {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null} */}
                     </div>
                 </div>
