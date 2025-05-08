@@ -12,8 +12,8 @@
     justify-content: space-around;
     align-items: center;
     margin: auto;
-    padding: 1vmax;
-    height: 90%;
+    height: 100%;
+    /* padding: 1vmax; */
     width: 35vw;
     transition: all 0.5s;
 }
@@ -118,7 +118,7 @@
   background-color: #4C8070;
   color: white;
   font: 300 0.9vmax "Roboto";
-  font-size: 2rem;
+  font-size: 1.8rem;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -133,7 +133,9 @@
   background-color: #79b09f;
 }
 .redirect_text{
-  font: 500 1.3vmax "Montserrat";
+  margin-top: 1rem;
+  font: 500 1.2vmax "Montserrat";
+
 }
 
 @media screen and (max-width: 650px) {

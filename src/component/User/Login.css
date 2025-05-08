@@ -47,8 +47,7 @@
   justify-content: space-around;
   align-items: center;
   margin: auto;
-  padding: 1vmax;
-  height: 90%;
+  height: 100%;
   width: 35vw;
   transition: all 0.5s;
 }
@@ -119,7 +118,7 @@
   background-color: #4C8070;
   color: white;
   font: 300 0.9vmax "Roboto";
-  font-size: 2rem;
+  font-size: 1.8rem;
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -137,6 +136,7 @@
 .googleAuthBtn{
   display: flex;
   justify-content: center;
+  transition: all;
   font-size: 2rem;
   /* cursor: pointer; */
 }
