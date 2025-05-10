@@ -3,6 +3,7 @@ import './HomePage.css'
 import { FaQuestion } from "react-icons/fa";
 import { HiLightBulb } from "react-icons/hi";
 import { FaMedal } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     return (
@@ -15,8 +16,9 @@ const HomePage = () => {
                         <div className='heroImg2'></div>
                         <div className='heroImg3'></div>
                         <div className='heroImg4'></div>
-                        <h1><span className='headingColor'>Your career companion</span> from day one to the dream job</h1>
-                        <p>Unlocking the Potential for Tomorrow's Leaders</p>
+                        <h1><span className='headingColor'>Your career companion</span> from day one to your dream job</h1>
+                        <p>Unlocking the Potentials for Tomorrow</p>
+                        <Link className='heroBtn' to='https://staging.mindmatrix.io/register'>Start today</Link>
                     </div>
                 </div>
 
@@ -48,6 +50,7 @@ const HomePage = () => {
                 {/* Quick quiz */}
                 <div className='quick_quiz_section'>
                     <h1>Not sure where to start?<br /> Take the next step for your career.</h1>
+                    <button>Let's Begin</button>
 
                     <div>
                         {QuickQuizData.map((elm, index) => {
@@ -64,11 +67,30 @@ const HomePage = () => {
                             return <CertifiedCard data={elm} />
                         })}
                     </div>
+
+                    <div>
+                        <div>
+                            <h1>6K+</h1>
+                            <h2>Studnets</h2>
+                        </div>
+
+                        <div></div>
+
+                        <div>
+                            <h1>100+</h1>
+                            <h2>Courses</h2>
+                        </div>
+
+                        <div></div>
+                        <div>
+
+                        </div>
+                    </div>
                 </div>
 
                 {/* Career companion */}
                 <div className='career_companion_section'>
-                    <h1>More than just static courses,<br /><span className='headingColor' style={{fontSize: '3.2rem'}}>A career companion</span></h1>
+                    <h1>More than just static courses,<br /><span className='headingColor'>A career companion</span></h1>
 
                     <div className='career_companion_card_box'>
                         <div className='career_companion_card_one'>
@@ -119,7 +141,7 @@ const HomePage = () => {
 
                 {/* Students */}
                 <div className='students_section'>
-                    <h1><span className='headingColor'>Real results</span> from real students</h1>
+                    <h1><span className='headingColor'>Real results</span> from<br /> real students</h1>
 
                     <div className='students_content_box'>
                         <div className='students_content_image_box'>
@@ -139,10 +161,10 @@ const HomePage = () => {
                 {/* Start journey */}
                 <div className='start_journey_section'>
                     <div className='start_journey_box'>
-                        <h1>Ready to <span className='headingColor'>start your journey with MIndMatrix?</span></h1>
+                        <h1>Ready to <span className='headingColor'>start your journey with MindMatrix?</span></h1>
                         <div>
                             {/* <button>Take the Quiz</button> */}
-                            <button>Explore Courses</button>
+                            <button>Explore Programs</button>
                         </div>
                     </div>
                 </div>
@@ -195,7 +217,7 @@ const LearningPhilosophyCard = ({ data }) => {
 
     return (
         <>
-            <div className='learning_philosophy_card_container' style={bg_image ? { backgroundImage: `url(${bg_image})` } : null}>
+            <div className='learning_philosophy_card_container' style={bg_image ? { backgroundImage: `url(${bg_image})`, padding: '2rem'} : null}>
                 <h1>{heading}</h1>
                 <p>{para}</p>
             </div>
@@ -299,11 +321,11 @@ export const LearningPathwayData = [
 export const QuickQuizData = [
     {
         "heading": "Register",
-        "subHeading": "Start with a quick and fun quiz to help us understand your interests, skills, and goals.",
+        "subHeading": "Start your personalised journeny with your interests, skills, and career goals.",
         "icon": <FaQuestion />
     },
     {
-        "heading": "Get Course Recommendations",
+        "heading": "Get Personalised Learning Recommendations",
         "subHeading": "Based on your quiz results, we’ll suggest courses tailored just for you. Choose the best fit for your learning journey.",
         "icon": <HiLightBulb />
     },
