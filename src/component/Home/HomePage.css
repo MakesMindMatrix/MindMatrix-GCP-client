@@ -12,9 +12,6 @@
     height: 100vh;
     max-width: 100vw;
     padding: 8rem 8rem;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
 }
 
 .hero_section div h1 {
@@ -33,7 +30,7 @@
     margin: 4rem 0;
 }
 
-.hero_section div .heroBtn{
+.hero_section div .heroBtn {
     padding: 1.2rem 1.8rem;
     border: none;
     color: white;
@@ -237,6 +234,32 @@
     margin: 0 auto;
 }
 
+.curriculum_section_data {
+    padding: 0 8rem;
+    /* margin: 4rem 0; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.curriculum_section_data_line {
+    /* height: 100%; */
+    width: 1px;
+    background-color: #0000007e;
+}
+
+/* .curriculum_section_data div:nth-child(1) {} */
+
+.curriculum_section_data div h1 {
+    font-weight: 600;
+    font-size: 4rem;
+    font-family: "Inter", sans-serif;
+}
+
+.curriculum_section_data div h2 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+}
 
 /* Career companion Section */
 .career_companion_section {
@@ -300,6 +323,7 @@
     background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774458/Frame_1707480596_svowvu.png');
     background-size: 100%;
     background-position: center;
+    background-repeat: no-repeat;
     width: 72%;
     height: 80%;
     border-radius: 10px;
@@ -468,9 +492,9 @@
 .students_content_image_box .students_content_image {
     background-size: cover;
     background-position: center;
-    height: 12rem;
+    height: 15rem;
     width: 12rem;
-    border-radius: 50%;
+    border-radius: 10px;
     margin: 2.5rem;
 }
 
@@ -484,8 +508,9 @@
 
 .students_content_image_box .students_content_image:nth-child(3) {
     background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student3_psapoe.png');
-    height: 15rem;
+    height: 22rem;
     width: 15rem;
+    border: 1px solid white;
 }
 
 .students_content_image_box .students_content_image:nth-child(4) {
@@ -568,7 +593,7 @@
 .footer_section {
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: #111324;
     color: white;
     padding: 4rem 10rem;
 }
@@ -622,6 +647,14 @@
     border-radius: 10px;
 }
 
+.learning_philosophy_card_icon {
+    background-position: center;
+    background-size: cover;
+    /* background-color: #13828F; */
+    height: 10rem;
+    width: 15rem;
+}
+
 .quickQuizCard_container {
     margin: 1.5rem;
 }
@@ -658,7 +691,7 @@
     font-size: 4rem;
 }
 
-.quick_quiz_section .quickQuizCard_container:nth-child(2) div svg{
+.quick_quiz_section .quickQuizCard_container:nth-child(2) div svg {
     font-size: 5.5rem;
 }
 
@@ -697,4 +730,250 @@
     border-radius: 10px;
     background-position: center;
     background-size: cover;
+}
+
+@media (max-width: 1150px) {
+    .learning_pathway_card_container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .learningPathwayCard_container {
+        margin: 2rem;
+    }
+}
+
+/* Desktop responsiveness */
+@media (max-width: 998px) {
+    .hero_section {
+        padding: 8rem 6rem;
+    }
+
+    .hero_section div h1 {
+        font-size: 4.5rem;
+    }
+
+    .heroImg1 {
+        right: 32%;
+    }
+
+    .heroImg2 {
+        right: 2rem;
+    }
+
+    .heroImg3 {
+        right: 37%;
+    }
+
+    .heroImg4 {
+        right: 8rem;
+    }
+
+
+    /* Learning Section */
+    .learning_section_card {
+        height: 18rem;
+        margin: 0.5rem;
+        padding: 2rem;
+    }
+
+    .learning_section_card:nth-child(1) {
+        width: 42%;
+    }
+
+    .learning_section_card:nth-child(2) {
+        width: 38%;
+    }
+
+    .learning_section_card:nth-child(3) {
+        width: 38%;
+    }
+
+    .learning_section_card:nth-child(4) {
+        width: 42%;
+    }
+
+    .learning_section_card p {
+        font-size: 2.5rem;
+    }
+
+    .learning_section_card p {
+        width: 85%;
+        font-size: 1.6rem;
+    }
+
+    .learning_philosophy_card_icon {
+        height: 9rem;
+        width: 16rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero_section {
+        height: auto;
+    }
+
+    .hero_section div h1 {
+        width: 100%;
+    }
+
+    .heroImg1 {
+        display: none;
+    }
+
+    .heroImg2 {
+        display: none;
+    }
+
+    .heroImg3 {
+        display: none;
+    }
+
+    .heroImg4 {
+        display: none;
+    }
+
+    .learning_section_card p {
+        width: 90%;
+    }
+
+    .learning_philosophy_card_icon {
+        height: 8rem;
+        width: 18rem;
+    }
+
+    .quick_quiz_section>div {
+        display: block;
+    }
+
+    .quickQuizCard_container {
+        background-color: white;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+
+    .quickQuizCard_container h1 {
+        color: black;
+        font-weight: 500;
+    }
+
+    .quickQuizCard_container div {
+        display: none;
+    }
+
+    .career_companion_card_box {
+        width: 80%;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .learning_section {
+        height: auto;
+        padding: 0 2rem;
+    }
+
+    .learning_section_card {
+        height: 7rem;
+        background-color: #111324;
+    }
+
+    .learning_section_card p {
+        display: none;
+    }
+
+    .learning_philosophy_card_icon {
+        height: 3.5rem;
+        width: 4rem;
+    }
+
+    .learning_section_card_container {
+        display: inline-block;
+    }
+
+    .learning_section_card:nth-child(1) {
+        width: 65%;
+        float: right;
+    }
+
+    .learning_section_card:nth-child(2) {
+        width: 65%;
+        float: left;
+    }
+
+    .learning_section_card:nth-child(3) {
+        width: 65%;
+        float: right;
+    }
+
+    .learning_section_card:nth-child(4) {
+        width: 65%;
+        float: left;
+    }
+
+    .career_companion_card_two,
+    .career_companion_card_three,
+    .career_companion_card_four,
+    .career_companion_card_five {
+        height: 30rem;
+    }
+
+    .companion_card_two_bottom {
+        background-size: 37%;
+        background-repeat: no-repeat;
+    }
+
+    .companion_card_three_bottom {
+        background-size: 45%;
+        background-repeat: no-repeat;
+    }
+
+    .companion_card_four_top {
+        height: 60%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+    }
+
+    .companion_card_five_bottom {
+        height: 55%;
+        background-size: 34%;
+        background-repeat: no-repeat;
+    }
+
+    .career_companion_card_three {
+        flex-direction: row;
+    }
+
+    .career_companion_card_five {
+        position: static;
+    }
+
+    .career_companion_card_box div:nth-child(2),
+    .career_companion_card_box div:nth-child(3) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .career_companion_card_box div:nth-child(2) div,
+    .career_companion_card_box div:nth-child(3) div {
+        width: 100%;
+    }
+
+    .footer_section {
+        padding: 4rem 12rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer_child {
+        margin: 0 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer_section {
+        padding: 4rem 12rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -4,6 +4,7 @@ import { FaQuestion } from "react-icons/fa";
 import { HiLightBulb } from "react-icons/hi";
 import { FaMedal } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import Testimonial from '../layout/Testimonial/Testimonial';
 
 const HomePage = () => {
     return (
@@ -60,7 +61,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Curriculum */}
-                <div className='curriculum_section'>
+                {/* <div className='curriculum_section'>
                     <h1><span className='headingColor'>Certified & Curriculum</span> aligned</h1>
                     <div>
                         {CertifiedData.map((elm) => {
@@ -68,25 +69,26 @@ const HomePage = () => {
                         })}
                     </div>
 
-                    <div>
+                    <div className='curriculum_section_data'>
                         <div>
                             <h1>6K+</h1>
                             <h2>Studnets</h2>
                         </div>
 
-                        <div></div>
+                        <div className='curriculum_section_data_line'></div>
 
                         <div>
                             <h1>100+</h1>
-                            <h2>Courses</h2>
+                            <h2>Colleges</h2>
                         </div>
 
-                        <div></div>
+                        <div className='curriculum_section_data_line'></div>
                         <div>
-
+                            <h1>10+</h1>
+                            <h2>Years</h2>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Career companion */}
                 <div className='career_companion_section'>
@@ -102,7 +104,7 @@ const HomePage = () => {
                             <div className='companion_card_one_right'></div>
                         </div>
 
-                        <div style={{display: 'flex'}}>
+                        <div style={{ display: 'flex' }}>
                             <div className='career_companion_card_two'>
                                 <div className='companion_card_two_top'>
                                     <h1>Skill Gap Assessment</h1>
@@ -119,7 +121,7 @@ const HomePage = () => {
                                 <div className='companion_card_three_bottom'></div>
                             </div>
                         </div>
-                        <div style={{display: 'flex'}}>
+                        <div style={{ display: 'flex' }}>
                             <div className='career_companion_card_four'>
                                 <div className='companion_card_four_top'></div>
                                 <div className='companion_card_four_bottom'>
@@ -140,7 +142,8 @@ const HomePage = () => {
                 </div>
 
                 {/* Students */}
-                <div className='students_section'>
+                <Testimonial />
+                {/* <div className='students_section'>
                     <h1><span className='headingColor'>Real results</span> from<br /> real students</h1>
 
                     <div className='students_content_box'>
@@ -156,7 +159,7 @@ const HomePage = () => {
                         <h1 className='students_content_Name'>Aryan Gupta</h1>
                         <h2 className='students_content_designation'>Junior SDE, Zomato</h2>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Start journey */}
                 <div className='start_journey_section'>
@@ -217,16 +220,28 @@ const LearningPhilosophyCard = ({ data }) => {
 
     return (
         <>
-            <div className='learning_philosophy_card_container' style={bg_image ? { backgroundImage: `url(${bg_image})`, padding: '2rem'} : null}>
-                <h1>{heading}</h1>
-                <p>{para}</p>
+            <div className='learning_philosophy_card_container' style={bg_image ? { backgroundImage: `url(${bg_image})`, padding: '2rem' } : null}>
+                {icon ? (
+                    <div style={{ display: "flex" }}>
+                        <div>
+                            <h1>{heading}</h1>
+                            <p>{para}</p>
+                        </div>
+                        <div className='learning_philosophy_card_icon' style={{ backgroundImage: `url(${icon})` }}></div>
+                    </div>
+                ) : (
+                    <div>
+                        <h1>{heading}</h1>
+                        <p>{para}</p>
+                    </div>
+                )}
             </div>
         </>
     )
 }
 
 const LearningPathwayCard = ({ data }) => {
-    const { image, courseCode, heading, para } = data
+    const { image, heading, para } = data
     return (
         <>
             <div className='learningPathwayCard_container'>
@@ -260,26 +275,26 @@ const CertifiedCard = ({ data }) => {
     return (
         <>
             <div className='Certified_card_container'>
-                    <img src={image} />
-                    <h1>{heading}</h1>
+                <img alt='Certificate Program' src={image} />
+                <h1>{heading}</h1>
             </div>
         </>
     )
 }
 
-const CareerCompanionCard = () => {
-    return (
-        <>
+// const CareerCompanionCard = () => {
+//     return (
+//         <>
 
-        </>
-    )
-}
+//         </>
+//     )
+// }
 
 export const LearningPhilosophyData = [
     {
         "heading": "Knowledge",
         "para": "Build a strong foundation with industry-relevant concepts",
-        "Icon": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774571/860b67f5df5a4c77008208029e7716efa3ac6680_h6qgek.png"
+        "icon": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774571/860b67f5df5a4c77008208029e7716efa3ac6680_h6qgek.png"
     },
     {
         "heading": "Skill",
@@ -288,12 +303,12 @@ export const LearningPhilosophyData = [
     {
         "heading": "Ability",
         "para": "Develop critical thinking and creative problem-solving",
-        "Icon": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774570/d249c138a016f297c196d5d74c5de8d92e134b39_lat7mj.png"
+        "icon": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774570/d249c138a016f297c196d5d74c5de8d92e134b39_lat7mj.png"
     },
     {
         "heading": "Behaviour",
         "para": "Master teamwork, communication, and adaptability.",
-        "bg_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525907/Hero4_kgvcia.jpg"
+        "bg_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747050526/Info_Block_duin4k.png"
     },
 ]
 

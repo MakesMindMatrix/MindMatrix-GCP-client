@@ -1,0 +1,84 @@
+.carousel-wrapper {
+    background-color: #111324;
+    color: white;
+    padding: 60px 5rem;
+    text-align: center;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.carousel-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.highlight {
+    color: #2dd4bf;
+}
+
+.carousel-slider {
+    width: 100%;
+}
+
+.slide-wrapper {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.image-slide {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    transform: scale(0.9);
+    height: 100%;
+}
+
+.slick-center .image-slide {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.student-image {
+    height: 15rem;
+    width: 12rem;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: border 0.3s ease;
+}
+
+.slick-center .student-image {
+    border-color: white;
+    border: 1px solid white;
+}
+
+.testimonial-content {
+    display: none;
+    margin-top: 20px;
+    /* max-width: 700px; */
+}
+
+.slick-center .testimonial-content {
+    display: block;
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 16px;
+    color: #d1d5db;
+    margin-bottom: 10px;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.testimonial-role {
+    font-size: 14px;
+    color: #9ca3af;
+}
