@@ -23,8 +23,12 @@
 }
 
 .slide-wrapper {
-    padding: 10px;
     box-sizing: border-box;
+    padding: 3rem;
+    display: flex !important;
+    /* Slick requires this */
+    justify-content: center;
+    align-items: center;
 }
 
 .image-slide {
@@ -58,7 +62,7 @@
 .testimonial-content {
     display: none;
     margin-top: 20px;
-    /* max-width: 700px; */
+    width: 50vw;
 }
 
 .slick-center .testimonial-content {

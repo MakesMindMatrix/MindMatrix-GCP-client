@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    .hero-carousel-image{
+        width: 30rem;
+        height: 20rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .hero-carousel-image{
+        width: 22rem;
+        height: 15rem;
+    }
+}
+/* style={{width: '30rem', height: '20rem'}} */

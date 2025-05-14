@@ -5,6 +5,8 @@ import { HiLightBulb } from "react-icons/hi";
 import { FaMedal } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import Testimonial from '../layout/Testimonial/Testimonial';
+import Hero from '../layout/Hero/Hero';
+import LearningPathway from '../layout/LearningPathway/LearningPathway';
 
 const HomePage = () => {
     return (
@@ -21,6 +23,9 @@ const HomePage = () => {
                         <p>Unlocking the Potentials for Tomorrow</p>
                         <Link className='heroBtn' to='https://staging.mindmatrix.io/register'>Start today</Link>
                     </div>
+                </div>
+                <div className='hero_carousel'>
+                    <Hero />
                 </div>
 
                 {/* Learning */}
@@ -47,6 +52,9 @@ const HomePage = () => {
                         })}
                     </div>
                 </div>
+                <div className='learningPathway_carousel'>
+                    <LearningPathway />
+                </div>
 
                 {/* Quick quiz */}
                 <div className='quick_quiz_section'>
@@ -61,7 +69,7 @@ const HomePage = () => {
                 </div>
 
                 {/* Curriculum */}
-                {/* <div className='curriculum_section'>
+                <div className='curriculum_section'>
                     <h1><span className='headingColor'>Certified & Curriculum</span> aligned</h1>
                     <div>
                         {CertifiedData.map((elm) => {
@@ -88,7 +96,7 @@ const HomePage = () => {
                             <h2>Years</h2>
                         </div>
                     </div>
-                </div> */}
+                </div>
 
                 {/* Career companion */}
                 <div className='career_companion_section'>

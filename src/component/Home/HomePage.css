@@ -79,6 +79,10 @@
     background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525907/Hero4_kgvcia.jpg');
 }
 
+.hero_carousel {
+    display: none;
+}
+
 /* Learning Section */
 .learning_section {
     background-image: linear-gradient(90deg, #053237bb, #2f7984be);
@@ -183,6 +187,9 @@
 .learning_pathway_card_container {
     display: flex;
     justify-content: space-between;
+}
+.learningPathway_carousel{
+    display: none;
 }
 
 /* Quick quiz Section */
@@ -665,7 +672,7 @@
     font-size: 1.3rem;
     font-weight: 500;
     text-align: left;
-    margin: 0.7rem 0;
+    height: 3.5rem;
 }
 
 .quickQuizCard_subHeading {
@@ -806,6 +813,15 @@
         height: 9rem;
         width: 16rem;
     }
+
+    .learning_pathway_section {
+        padding: 8rem 10rem;
+    }
+
+    .curriculum_section>div {
+        width: auto;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -833,6 +849,14 @@
         display: none;
     }
 
+    .hero_carousel {
+        display: initial;
+    }
+
+    .learning_section>h1 {
+        font-weight: 500;
+    }
+
     .learning_section_card p {
         width: 90%;
     }
@@ -840,6 +864,10 @@
     .learning_philosophy_card_icon {
         height: 8rem;
         width: 18rem;
+    }
+
+    .learning_pathway_section {
+        padding: 8rem 4rem;
     }
 
     .quick_quiz_section>div {
@@ -870,7 +898,11 @@
 @media (max-width: 600px) {
     .learning_section {
         height: auto;
-        padding: 0 2rem;
+        padding: 2rem 2rem;
+    }
+
+    .learning_section>h1 {
+        font-size: 4rem;
     }
 
     .learning_section_card {
@@ -909,6 +941,26 @@
     .learning_section_card:nth-child(4) {
         width: 65%;
         float: left;
+    }
+
+    .learning_pathway_card_container{
+        display: none;
+    }
+    .learningPathway_carousel{
+        display: block;
+        width: 100%;
+    }
+    .curriculum_section {
+        padding: 8rem 6rem;
+    }
+
+    .curriculum_section>div {
+        flex-wrap: wrap;
+    }
+
+    .Certified_card_container {
+        width: 40%;
+        margin: 1.5rem;
     }
 
     .career_companion_card_two,
