@@ -38,6 +38,9 @@
     border-radius: 100px;
     text-decoration: none;
     cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
 }
 
 .hero_section div div {
@@ -188,7 +191,8 @@
     display: flex;
     justify-content: space-between;
 }
-.learningPathway_carousel{
+
+.learningPathway_carousel {
     display: none;
 }
 
@@ -669,10 +673,15 @@
 .quickQuizCard_number,
 .quickQuizCard_heading {
     color: white;
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 600;
     text-align: left;
     height: 3.5rem;
+}
+
+.quickQuizCard_heading {
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
 }
 
 .quickQuizCard_subHeading {
@@ -818,7 +827,7 @@
         padding: 8rem 10rem;
     }
 
-    .curriculum_section>div {
+    .curriculum_section>div:nth-child(1) {
         width: auto;
     }
 
@@ -889,6 +898,10 @@
         display: none;
     }
 
+    .curriculum_section>div:nth-child(2) {
+        width: 90%;
+    }
+
     .career_companion_card_box {
         width: 80%;
     }
@@ -943,19 +956,25 @@
         float: left;
     }
 
-    .learning_pathway_card_container{
+    .learning_pathway_card_container {
         display: none;
     }
-    .learningPathway_carousel{
+
+    .learningPathway_carousel {
         display: block;
         width: 100%;
     }
+
     .curriculum_section {
         padding: 8rem 6rem;
     }
 
     .curriculum_section>div {
         flex-wrap: wrap;
+    }
+
+    .curriculum_section>div:nth-child(2) {
+        width: 100%;
     }
 
     .Certified_card_container {
