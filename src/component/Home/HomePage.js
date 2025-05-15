@@ -324,20 +324,26 @@ export const LearningPathwayData = [
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
         "courseCode": "Gen AI",
-        "heading": "Generative AI Learning Program",
-        "para": "Learn AI concepts, algorithms, and models like GANs and transformers. Hands-on experience in building AI-driven applications across industries."
+        "heading": "GenAI Explorer – Year 1",
+        "para": "Discover the fundamentals of Generative AI and learn how to communicate with LLMs through prompt engineering."
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway2_yf0now.png",
         "courseCode": "IoT",
-        "heading": "IoT for Smart Infrastructure",
-        "para": "Explore IoT applications in smart infrastructure, including devices, communication protocols, and real-world use cases like smart cities and energy management."
+        "heading": "GenAI Developer – Year 2",
+        "para": "Dive deeper into Gemini, Vertex AI, and Google Cloud to start building smart, scalable AI solutions."
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
         "courseCode": "Programming",
-        "heading": "User Experience Management in Android Development",
-        "para": "Learn UX principles for Android apps, focusing on usability, accessibility, and user-centered design to enhance engagement."
+        "heading": "GenAI Integrator – Year 3",
+        "para": "Apply GenAI to real-world domains—Logistics, Retail, Healthcare, and App Development."
+    },
+    {
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
+        "courseCode": "Programming",
+        "heading": "GenAI Builder – Year 4",
+        "para": "Combine domain mastery with full-stack AI project development. Build solutions that solve real problems."
     },
 ]
 

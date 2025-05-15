@@ -189,7 +189,8 @@
 
 .learning_pathway_card_container {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .learningPathway_carousel {
@@ -637,6 +638,7 @@
 .learningPathwayCard_container {
     width: 29rem;
     padding: 2rem;
+    margin: 2rem;
     border: 1px solid gray;
     border-radius: 20px;
 }
@@ -971,8 +973,9 @@
 
     .curriculum_section>div {
         flex-wrap: wrap;
+        width: 100%;
     }
-
+    
     .curriculum_section>div:nth-child(2) {
         width: 100%;
     }
@@ -1042,6 +1045,9 @@
 }
 
 @media (max-width: 500px) {
+    .curriculum_section_data{
+        padding: 0 4rem;
+    }
     .footer_section {
         padding: 4rem 12rem;
         flex-wrap: wrap;
