@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion';
 import './HomePage.css'
 import { FaQuestion } from "react-icons/fa";
 import { HiLightBulb } from "react-icons/hi";
@@ -10,6 +11,25 @@ import LearningPathway from '../layout/LearningPathway/LearningPathway';
 import Navbar from '../layout/Navbar/Navbar';
 
 const HomePage = () => {
+    const controls = useAnimation();
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    controls.start({ y: 0, opacity: 1 });
+                }
+            },
+            { threshold: 0.5 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [controls]);
     return (
         <>
             <div className='homePage_container'>
@@ -68,6 +88,66 @@ const HomePage = () => {
                             return <QuickQuizCard data={elm} index={index} />
                         })}
                     </div> */}
+                    <div style={{ height: '200vh', position: 'relative', background: '#f0f0f0' }}>
+                        {/* Section A - background */}
+                        <div
+                            style={{
+                                position: 'sticky',
+                                top: 0,
+                                height: '100vh',
+                                width: '100%',
+                                // background: '#1e1e1e',
+                                color: 'white',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                zIndex: 1,
+                            }}
+                            className='quick_quiz_section_one'
+                        >
+                            <div className='quick_quiz_section_one_left'>
+                                <h1>Learners</h1>
+                                <button>Register</button>
+                            </div>
+                            <div className='quick_quiz_section_one_right'>
+                                {LearningData.map((elm) => {
+                                    return <LearnerCard data={elm} />
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Section B - comes over Section A */}
+                        <motion.div
+                            ref={sectionRef}
+                            initial={{ y: 200, opacity: 0 }}
+                            animate={controls}
+                            transition={{ duration: 1 }}
+                            style={{
+                                position: 'absolute',
+                                top: '100vh',
+                                width: '100%',
+                                height: '100vh',
+                                // background: '#fff',
+                                zIndex: 2,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: '0 -10px 30px rgba(0,0,0,0.3)',
+                            }}
+                            className='quick_quiz_section_two'
+                        >
+                            <div className='quick_quiz_section_two_left'>
+                                <h1>Industries</h1>
+                                <button>Explore</button>
+                            </div>
+                            <div className='quick_quiz_section_two_right'>
+                                {IndustryData.map((elm) => {
+                                    return <IndustryCard data={elm} />
+                                })}
+                            </div>
+                        </motion.div>
+                    </div>
+
                 </div>
 
                 {/* Curriculum */}
@@ -280,6 +360,30 @@ const QuickQuizCard = ({ data, index }) => {
     )
 }
 
+const IndustryCard = ({ data }) => {
+    const { para, image } = data
+    return (
+        <>
+            <div className='industryCard_container'>
+                <div className='industryCard_container_image' style={{ backgroundImage: `url('${image}')` }}></div>
+                <h1>{para}</h1>
+            </div>
+        </>
+    )
+}
+
+const LearnerCard = ({ data }) => {
+    const { para, image } = data
+    return (
+        <>
+            <div className='LearnerCard_container'>
+                <div className='learningCard_container_image' style={{ backgroundImage: `url('${image}')` }}></div>
+                <h1>{para}</h1>
+            </div>
+        </>
+    )
+}
+
 const CertifiedCard = ({ data }) => {
     const { image, heading } = data
     return (
@@ -291,14 +395,6 @@ const CertifiedCard = ({ data }) => {
         </>
     )
 }
-
-// const CareerCompanionCard = () => {
-//     return (
-//         <>
-
-//         </>
-//     )
-// }
 
 export const LearningPhilosophyData = [
     {
@@ -385,4 +481,33 @@ export const CertifiedData = [
         heading: "Sri Siddhartha Institute of Technology"
     },
 ]
-export const CareerCompanionData = []
+
+export const LearningData = [
+    {
+        "para": "Tailored journeys matching your ambitions and pace.",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+    },
+    {
+        "para": "Hands-on experiences with real tools",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+    },
+    {
+        "para": "Comprehensive career-readiness beyond academics",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+    },
+]
+
+export const IndustryData = [
+    {
+        "para": "Your pathway to leading companies.",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+    },
+    {
+        "para": "Precision hiring of future-ready talent",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+    },
+    {
+        "para": "Simplified, smart recruitment process",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+    },
+]

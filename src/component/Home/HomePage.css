@@ -206,16 +206,16 @@
     border-radius: 25px;
 }
 
-.quick_quiz_section>h1 {
+/* .quick_quiz_section>h1 {
     font-size: 3.8rem;
     font-weight: 600;
     font-family: "Inter", sans-serif;
     color: white;
     text-align: left;
     margin-left: 1rem;
-}
+} */
 
-.quick_quiz_section>button {
+/* .quick_quiz_section>button {
     padding: 1.2rem 1.8rem;
     border: none;
     border-radius: 100px;
@@ -223,10 +223,42 @@
     color: white;
     border: 1px solid white;
     margin: 3rem 1rem 2rem 1rem;
+} */
+
+/* .quick_quiz_section>div {
+    display: flex;
+} */
+
+.quick_quiz_section_one,
+.quick_quiz_section_two {
+    background-image: linear-gradient(90deg, #053237, #2F7884);
 }
 
-.quick_quiz_section>div {
-    display: flex;
+.quick_quiz_section_one_left>h1,
+.quick_quiz_section_two_left>h1 {
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    color: white;
+}
+
+.quick_quiz_section_one_left>button,
+.quick_quiz_section_two_left>button {
+    background-color: transparent;
+    padding: 1.2rem 1.6rem;
+    border-radius: 100px;
+    border: 1px solid white;
+    color: white;
+    display: block;
+}
+
+.quick_quiz_section_one_left,
+.quick_quiz_section_two_left {
+    width: 30%;
+}
+
+.quick_quiz_section_one_right,
+.quick_quiz_section_two_right {
+    width: 70%;
 }
 
 /* Curriculum Section */
@@ -718,6 +750,27 @@
     color: #111324;
 }
 
+.industryCard_container,
+.LearnerCard_container {
+    display: flex;
+    align-items: center;
+    margin: 1rem
+}
+
+.industryCard_container>h1,
+.LearnerCard_container>h1 {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+}
+
+.learningCard_container_image,
+.industryCard_container_image {
+    height: 15rem;
+    min-width: 30rem;
+    background-size: cover;
+    background-position: center;
+}
+
 /* Certified Card */
 .Certified_card_container {
     /* background-color: #416266; */
@@ -975,7 +1028,7 @@
         flex-wrap: wrap;
         width: 100%;
     }
-    
+
     .curriculum_section>div:nth-child(2) {
         width: 100%;
     }
@@ -1045,9 +1098,10 @@
 }
 
 @media (max-width: 500px) {
-    .curriculum_section_data{
+    .curriculum_section_data {
         padding: 0 4rem;
     }
+
     .footer_section {
         padding: 4rem 12rem;
         flex-wrap: wrap;
