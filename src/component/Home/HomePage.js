@@ -7,11 +7,13 @@ import { Link } from 'react-router-dom';
 import Testimonial from '../layout/Testimonial/Testimonial';
 import Hero from '../layout/Hero/Hero';
 import LearningPathway from '../layout/LearningPathway/LearningPathway';
+import Navbar from '../layout/Navbar/Navbar';
 
 const HomePage = () => {
     return (
         <>
             <div className='homePage_container'>
+                <Navbar />
                 {/* Hero */}
                 <div className='hero_section'>
                     <div>
@@ -58,14 +60,14 @@ const HomePage = () => {
 
                 {/* Quick quiz */}
                 <div className='quick_quiz_section'>
-                    <h1>Not sure where to start?<br /> Take the next step for your career.</h1>
+                    {/* <h1>Not sure where to start?<br /> Take the next step for your career.</h1>
                     <button>Let's Begin</button>
 
                     <div>
                         {QuickQuizData.map((elm, index) => {
                             return <QuickQuizCard data={elm} index={index} />
                         })}
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Curriculum */}

@@ -1,17 +1,23 @@
 .dashboardNav_container {
     display: flex;
-    padding: 2rem 6rem;
+    padding: 1rem 3rem;
+    left: 2.5vw;
+    top: 2.5vw;
     align-items: center;
-    max-width: 100vw;
+    width: 95vw;
     justify-content: space-between;
+    background-color: #D1E9ED;
+    position: fixed;
+    z-index: 999;
+    border-radius: 100px;
 }
 
 .nav_logo {
     background-image: url('../../Home/images/logo.png');
     background-position: center;
     background-size: cover;
-    height: 6rem;
-    width: 14rem;
+    height: 4rem;
+    width: 9rem;
     /* margin: 1rem; */
 }
 
