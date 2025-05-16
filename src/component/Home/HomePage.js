@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, useViewportScroll, useTransform } from 'framer-motion';
 import './HomePage.css'
 import { FaQuestion } from "react-icons/fa";
 import { HiLightBulb } from "react-icons/hi";
@@ -14,6 +14,30 @@ const HomePage = () => {
     const controls = useAnimation();
     const sectionRef = useRef(null);
 
+    // Get scroll progress
+    const { scrollYProgress } = useViewportScroll();
+
+    // Map scroll progress to blur value (string like "blur(5px)")
+    const blurFilter = useTransform(scrollYProgress, [0.0, 0.400, 0.514], ['blur(0px)', 'blur(0px)', 'blur(10px)'], { clamp: false });
+
+
+    // const blurString = useTransform(blurFilter, (v) => `blur(${v}px)`);
+
+
+    // useEffect(() => {
+    //     const unsubscribeY = scrollY.onChange((v) => {
+    //         console.log('ScrollY (px):', v);
+    //     });
+
+    //     const unsubscribeProgress = scrollYProgress.onChange((v) => {
+    //         console.log('ScrollYProgress (0 to 1):', v.toFixed(3));
+    //     });
+
+    //     return () => {
+    //         unsubscribeY();
+    //         unsubscribeProgress();
+    //     };
+    // }, [scrollY, scrollYProgress]);
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -52,7 +76,7 @@ const HomePage = () => {
 
                 {/* Learning */}
                 <div className='learning_section'>
-                    <h1>Our learning philosophy</h1>
+                    <h1>Our learning philosophy for <span style={{ fontStyle: "italic", fontWeight: 'normal' }}>holistic</span> developement</h1>
                     <div className='learning_section_card_container'>
                         {LearningPhilosophyData.map((elm) => {
                             return <div className='learning_section_card' >
@@ -90,10 +114,10 @@ const HomePage = () => {
                     </div> */}
                     <div style={{ height: '200vh', position: 'relative', background: '#f0f0f0' }}>
                         {/* Section A - background */}
-                        <div
+                        <motion.div
                             style={{
                                 position: 'sticky',
-                                top: 0,
+                                top: '75px',
                                 height: '85vh',
                                 width: '100%',
                                 // background: '#1e1e1e',
@@ -102,6 +126,7 @@ const HomePage = () => {
                                 // alignItems: 'center',
                                 // justifyContent: 'center',
                                 zIndex: 1,
+                                filter: blurFilter,
                             }}
                             className='quick_quiz_section_one'
                         >
@@ -114,7 +139,7 @@ const HomePage = () => {
                                     return <LearnerCard data={elm} />
                                 })}
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Section B - comes over Section A */}
                         <motion.div
