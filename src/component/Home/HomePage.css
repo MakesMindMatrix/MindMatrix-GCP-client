@@ -9,9 +9,9 @@
 }
 
 .hero_section {
-    height: 100vh;
+    height: 90vh;
     max-width: 100vw;
-    padding: 8rem 8rem;
+    padding: 12rem 8rem 5rem 8rem;
 }
 
 .hero_section div h1 {
@@ -61,7 +61,7 @@
 
 .heroImg2 {
     width: 25rem;
-    top: 10rem;
+    top: 12rem;
     right: 8rem;
     background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525908/Hero2_mx0anj.jpg');
 }
@@ -199,11 +199,11 @@
 
 /* Quick quiz Section */
 .quick_quiz_section {
-    background-image: linear-gradient(90deg, #053237bb, #2f7984be);
-    padding: 8rem 6rem;
+    /* background-image: linear-gradient(90deg, #053237bb, #2f7984be); */
+    /* padding: 8rem 6rem; */
     width: 90%;
     margin: 0 auto;
-    border-radius: 25px;
+    /* border-radius: 25px; */
 }
 
 /* .quick_quiz_section>h1 {
@@ -232,23 +232,31 @@
 .quick_quiz_section_one,
 .quick_quiz_section_two {
     background-image: linear-gradient(90deg, #053237, #2F7884);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 25px;
+    padding: 4vh 6vw;
 }
 
 .quick_quiz_section_one_left>h1,
 .quick_quiz_section_two_left>h1 {
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 3rem;
     font-family: "Inter", sans-serif;
     color: white;
+    margin-top: 3rem;
+    text-align: left;
 }
 
 .quick_quiz_section_one_left>button,
 .quick_quiz_section_two_left>button {
     background-color: transparent;
-    padding: 1.2rem 1.6rem;
+    padding: 1rem 1.6rem;
     border-radius: 100px;
     border: 1px solid white;
     color: white;
     display: block;
+    margin: 1.5rem 0;
 }
 
 .quick_quiz_section_one_left,
@@ -258,7 +266,7 @@
 
 .quick_quiz_section_one_right,
 .quick_quiz_section_two_right {
-    width: 70%;
+    width: 65%;
 }
 
 /* Curriculum Section */
@@ -759,16 +767,21 @@
 
 .industryCard_container>h1,
 .LearnerCard_container>h1 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     margin-left: 1rem;
+    color: white;
+    font-weight: 300;
+    font-family: "Inter", sans-serif;
+    text-align: left;
 }
 
 .learningCard_container_image,
 .industryCard_container_image {
-    height: 15rem;
-    min-width: 30rem;
-    background-size: cover;
+    height: 24.2vh;
+    min-width: 20vw;
+    background-size: 100%;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Certified Card */
@@ -934,6 +947,30 @@
         padding: 8rem 4rem;
     }
 
+    .quick_quiz_section_one,
+    .quick_quiz_section_two {
+        flex-direction: column;
+    }
+
+    .quick_quiz_section_one_right,
+    .quick_quiz_section_two_right,
+    .quick_quiz_section_one_left,
+    .quick_quiz_section_two_left {
+        width: 100%;
+    }
+
+    .learningCard_container_image,
+    .industryCard_container_image {
+        min-width: 26vw;
+        height: 20vh;
+    }
+
+    .industryCard_container>h1,
+    .LearnerCard_container>h1 {
+        font-size: 1.8rem;
+        margin-left: 2rem;
+    }
+
     .quick_quiz_section>div {
         display: block;
     }
@@ -1020,6 +1057,12 @@
         width: 100%;
     }
 
+    .learningCard_container_image,
+    .industryCard_container_image {
+        min-width: 37vw;
+        height: 18vh;
+    }
+
     .curriculum_section {
         padding: 8rem 6rem;
     }
@@ -1098,6 +1141,25 @@
 }
 
 @media (max-width: 500px) {
+
+    .industryCard_container,
+    .LearnerCard_container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .learningCard_container_image,
+    .industryCard_container_image {
+        min-width: 35vw;
+        height: 16vh;
+    }
+
+    .industryCard_container>h1,
+    .LearnerCard_container>h1 {
+        margin: 0;
+    }
+
     .curriculum_section_data {
         padding: 0 4rem;
     }

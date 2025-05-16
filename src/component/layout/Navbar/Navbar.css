@@ -1,10 +1,10 @@
 .dashboardNav_container {
     display: flex;
     padding: 1rem 3rem;
-    left: 2.5vw;
+    left: 5vw;
     top: 2.5vw;
     align-items: center;
-    width: 95vw;
+    width: 90vw;
     justify-content: space-between;
     background-color: #D1E9ED;
     position: fixed;

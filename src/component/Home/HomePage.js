@@ -94,19 +94,19 @@ const HomePage = () => {
                             style={{
                                 position: 'sticky',
                                 top: 0,
-                                height: '100vh',
+                                height: '85vh',
                                 width: '100%',
                                 // background: '#1e1e1e',
                                 color: 'white',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
+                                // display: 'flex',
+                                // alignItems: 'center',
+                                // justifyContent: 'center',
                                 zIndex: 1,
                             }}
                             className='quick_quiz_section_one'
                         >
                             <div className='quick_quiz_section_one_left'>
-                                <h1>Learners</h1>
+                                <h1>For Learners</h1>
                                 <button>Register</button>
                             </div>
                             <div className='quick_quiz_section_one_right'>
@@ -124,20 +124,20 @@ const HomePage = () => {
                             transition={{ duration: 1 }}
                             style={{
                                 position: 'absolute',
-                                top: '100vh',
+                                top: '115vh',
                                 width: '100%',
-                                height: '100vh',
+                                height: '85vh',
                                 // background: '#fff',
                                 zIndex: 2,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
+                                // display: 'flex',
+                                // alignItems: 'center',
+                                // justifyContent: 'center',
                                 boxShadow: '0 -10px 30px rgba(0,0,0,0.3)',
                             }}
                             className='quick_quiz_section_two'
                         >
                             <div className='quick_quiz_section_two_left'>
-                                <h1>Industries</h1>
+                                <h1>For Industries</h1>
                                 <button>Explore</button>
                             </div>
                             <div className='quick_quiz_section_two_right'>
