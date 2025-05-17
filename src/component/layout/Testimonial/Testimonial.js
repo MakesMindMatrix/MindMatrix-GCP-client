@@ -13,7 +13,7 @@ const testimonials = [
     image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747467851/WhatsApp_Image_2025-05-17_at_13.01.18_5d108613_yl3dn3.jpg",
   },
   {
-    name: "Priya Sharma",
+    name: "Abhishek",
     role: "Data Analyst, TCS",
     text: `Session on Generative AI by the MindMatrix team was really useful for us in Biomedical Engineering. We discovered many tools we weren’t aware of earlier and learned how to interact with AI. It was exciting to explore ways to match tools with our own creativity. My friends and I had a lot of fun — it was a great session. Thank you, MindMatrix!`,
     image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747467851/WhatsApp_Image_2025-05-17_at_12.56.32_9d1daf0e_giuw9p.jpg",
@@ -103,7 +103,7 @@ const Testimonial = () => {
                 <img src={student.image} alt={student.name} className="student-image" />
                 <div className="testimonial-content">
                   <p className="testimonial-text">“{student.text}”</p>
-                  <p className="testimonial-name">{student.name}</p>
+                  <p className="testimonial-name" style={{color: 'white'}}>{student.name}</p>
                   {/* <p className="testimonial-role">{student.role}</p> */}
                 </div>
               </div>

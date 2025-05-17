@@ -46,16 +46,17 @@ const HomePage = () => {
                     <div className="nav_right">
 
                         <Link
-                            to="/login"
-                            className="btnOne auth_btn"
-                        >
-                            Login
-                        </Link>
-                        <Link
                             to="/register"
                             className="btnTwo auth_btn"
                         >
                             Sign Up
+                        </Link>
+
+                        <Link
+                            to="/login"
+                            className="btnOne auth_btn"
+                        >
+                            Login
                         </Link>
                     </div>
                 </div>
@@ -76,7 +77,7 @@ const HomePage = () => {
 
                 {/* Learning */}
                 <div className='learning_section'>
-                    <h1>Our learning philosophy for <span style={{ fontStyle: "italic", fontWeight: '300' }}>holistic</span> developement</h1>
+                    <h1>Our learning philosophy for <br /><span style={{ fontStyle: "italic", fontWeight: '400', color: "#13828F" }}>holistic developement</span></h1>
                     <div className='learning_section_card_container'>
                         {LearningPhilosophyData.map((elm) => {
                             return <div className='learning_section_card' >
@@ -89,8 +90,8 @@ const HomePage = () => {
 
                 {/* Learning Pathway */}
                 <div className='learning_pathway_section'>
-                    <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that align with your career <span style={{fontStyle: "italic"}}>aspirations</span></h1>
-                    <p>Explore our most popular programs <span class="arrow ">→</span></p>
+                    <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that align with your career <span style={{ fontStyle: "italic" }}>aspirations</span></h1>
+                    <Link>Explore our most popular programs <span class="arrow ">→</span></Link>
 
                     <div className='learning_pathway_card_container'>
                         {LearningPathwayData.map((elm) => {
@@ -163,7 +164,7 @@ const HomePage = () => {
                         >
                             <div className='quick_quiz_section_two_left'>
                                 <h1>For Industries</h1>
-                                <button>Explore</button>
+                                {/* <button>Explore</button> */}
                             </div>
                             <div className='quick_quiz_section_two_right'>
                                 {IndustryData.map((elm) => {
@@ -177,7 +178,7 @@ const HomePage = () => {
 
                 {/* Curriculum */}
                 <div className='curriculum_section'>
-                    <h1><span className='headingColor'>Certified & Curriculum</span> aligned</h1>
+                    <h1 style={{ fontSize: '4.8rem' }}><span className='headingColor'>Certified & Curriculum</span> aligned</h1>
                     <div>
                         {CertifiedData.map((elm) => {
                             return <CertifiedCard data={elm} />
@@ -214,7 +215,7 @@ const HomePage = () => {
                             <div className='companion_card_one_left'>
                                 <h1>Aligned with Academic Schedules</h1>
                                 <p>Our courses fit perfectly with your school or college timetable, so you can learn without any extra hassle</p>
-                                <button>See How</button>
+                                {/* <button>See How</button> */}
                             </div>
                             <div className='companion_card_one_right'></div>
                         </div>
@@ -282,7 +283,7 @@ const HomePage = () => {
                         <h1>Ready to <span className='headingColor'>start your journey with MindMatrix?</span></h1>
                         <div>
                             {/* <button>Take the Quiz</button> */}
-                            <button>Explore Programs</button>
+                            <Link to='register'>Explore Programs</Link>
                         </div>
                     </div>
                 </div>
@@ -296,11 +297,11 @@ const HomePage = () => {
                     </div>
 
                     <div className='footer_child'>
-                        <h1>In this website</h1>
+                        <h1>CONSUMER POLICY</h1>
                         <ul>
-                            <li>Courses</li>
-                            <li>How It Works</li>
-                            <li>About Us</li>
+                            <li><Link to='/terms-conditions'>Terms & Conditions</Link></li>
+                            <li><Link to='/cancellations-return-policy'>Cancellations policy</Link></li>
+                            <li><Link to='/privacy-policy'>Privacy policy</Link></li>
                         </ul>
                     </div>
 
@@ -317,7 +318,7 @@ const HomePage = () => {
                         <h1>Contact</h1>
                         <ul>
                             <li>Email</li>
-                            <li>9845190286</li>
+                            <li>9611546444</li>
                             <li>HSR Layout, Bengaluru</li>
                         </ul>
                     </div>
@@ -430,11 +431,13 @@ export const LearningPhilosophyData = [
     {
         "heading": "Skill",
         "para": "Apply what you learn through hands-on projects.",
+        "bg_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747484826/SKILL_ihxife.png"
     },
     {
         "heading": "Ability",
         "para": "Develop critical thinking and creative problem-solving",
-        "icon": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774570/d249c138a016f297c196d5d74c5de8d92e134b39_lat7mj.png"
+        // "icon": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774570/d249c138a016f297c196d5d74c5de8d92e134b39_lat7mj.png"
+        "bg_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747484827/abilitY_x0b0zi.png"
     },
     {
         "heading": "Behaviour",
@@ -445,7 +448,7 @@ export const LearningPhilosophyData = [
 
 export const LearningPathwayData = [
     {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
         "courseCode": "Gen AI",
         "heading": "GenAI Explorer – Year 1",
         "para": "Discover the fundamentals of Generative AI and learn how to communicate with LLMs through prompt engineering."
@@ -457,13 +460,13 @@ export const LearningPathwayData = [
         "para": "Dive deeper into Gemini, Vertex AI, and Google Cloud to start building smart, scalable AI solutions."
     },
     {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
         "courseCode": "Programming",
         "heading": "GenAI Integrator – Year 3",
         "para": "that align with your career aspirations ; Name of the program card a little small"
     },
     {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
         "courseCode": "Programming",
         "heading": "GenAI Builder – Year 4",
         "para": "Combine domain mastery with full-stack AI project development. Build solutions that solve real problems."
@@ -490,8 +493,8 @@ export const QuickQuizData = [
 
 export const CertifiedData = [
     {
-        image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746437752/vtuLogo_dohduj.png",
-        heading: "Visvesvaraya Technological University, Aligned"
+        image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486152/Bangalore_Institute_of_Technology_logo_phtkun.png",
+        heading: "Bangalore institute of technology, Bangalore"
     },
     {
         image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746437752/srideviLogo_f36wmv.png",

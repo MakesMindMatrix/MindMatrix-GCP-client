@@ -31,17 +31,19 @@ const LandingPage = () => {
                         <Link to="contact" className="contact_btn">
                             Contact Us
                         </Link>
-                        <Link
-                            to="https://learn.mindmatrix.io/users/sign_in"
-                            className="login_button"
-                        >
-                            Login
-                        </Link>
+
                         <Link
                             to="https://learn.mindmatrix.io/users/sign_up"
                             className="register_button"
                         >
                             Sign Up
+                        </Link>
+
+                        <Link
+                            to="https://learn.mindmatrix.io/users/sign_in"
+                            className="login_button"
+                        >
+                            Login
                         </Link>
                     </div>
                 </div>
@@ -52,16 +54,17 @@ const LandingPage = () => {
                     <div className="nav_right">
 
                         <Link
-                            to="/login"
-                            className="btnOne auth_btn"
-                        >
-                            Login
-                        </Link>
-                        <Link
                             to="/register"
                             className="btnTwo auth_btn"
                         >
                             Sign Up
+                        </Link>
+
+                        <Link
+                            to="/login"
+                            className="btnOne auth_btn"
+                        >
+                            Login
                         </Link>
                     </div>
                 </div>
@@ -197,7 +200,7 @@ const LandingPageCourseCard = ({ data, index }) => {
             >
                 <h1 className="cardHeading">{data.courseName}</h1>
                 <p className="cardPara">{data.description}</p>
-                <p className="cardPara" style={{fontSize: '1.8rem'}}>{data.price}</p>
+                <p className="cardPara" style={{ fontSize: '1.8rem' }}>{data.price}</p>
             </Link>
         </>
     );

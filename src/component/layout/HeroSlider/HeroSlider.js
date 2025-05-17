@@ -18,6 +18,12 @@ const HeroSlider = () => {
         {
             "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747466666/_11A0034_bo6sea.jpg"
         },
+        {
+            "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747484516/_11A0131_npbiiw.jpg"
+        },
+        {
+            "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747484508/Copy_of_IMG_4556_mrrjtm.jpg"
+        },
     ]
 
     const settings = {
