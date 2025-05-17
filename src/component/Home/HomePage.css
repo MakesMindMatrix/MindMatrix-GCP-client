@@ -779,9 +779,9 @@
 
 .learningCard_container_image,
 .industryCard_container_image {
-    height: 24.2vh;
-    min-width: 19vw;
-    background-size: 100%;
+    height: 24vh;
+    min-width: 15vw;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }

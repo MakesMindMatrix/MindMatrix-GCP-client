@@ -20,24 +20,6 @@ const HomePage = () => {
     // Map scroll progress to blur value (string like "blur(5px)")
     const blurFilter = useTransform(scrollYProgress, [0.0, 0.400, 0.514], ['blur(0px)', 'blur(0px)', 'blur(10px)'], { clamp: false });
 
-
-    // const blurString = useTransform(blurFilter, (v) => `blur(${v}px)`);
-
-
-    // useEffect(() => {
-    //     const unsubscribeY = scrollY.onChange((v) => {
-    //         console.log('ScrollY (px):', v);
-    //     });
-
-    //     const unsubscribeProgress = scrollYProgress.onChange((v) => {
-    //         console.log('ScrollYProgress (0 to 1):', v.toFixed(3));
-    //     });
-
-    //     return () => {
-    //         unsubscribeY();
-    //         unsubscribeProgress();
-    //     };
-    // }, [scrollY, scrollYProgress]);
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -57,7 +39,25 @@ const HomePage = () => {
     return (
         <>
             <div className='homePage_container'>
-                <Navbar />
+                {/* Navbar */}
+                <div className="navbar">
+                    <div className="logo"></div>
+                    <div className="nav_right">
+
+                        <Link
+                            to="/login"
+                            className="btnOne auth_btn"
+                        >
+                            Login
+                        </Link>
+                        <Link
+                            to="/register"
+                            className="btnTwo auth_btn"
+                        >
+                            Sign Up
+                        </Link>
+                    </div>
+                </div>
                 {/* Hero */}
                 <div className='hero_section'>
                     <div>
@@ -112,7 +112,7 @@ const HomePage = () => {
                             return <QuickQuizCard data={elm} index={index} />
                         })}
                     </div> */}
-                    <div style={{ height: '200vh', position: 'relative', background: '#f0f0f0' }}>
+                    <div style={{ height: '200vh', position: 'relative', background: 'transparent' }}>
                         {/* Section A - background */}
                         <motion.div
                             style={{
@@ -510,29 +510,29 @@ export const CertifiedData = [
 export const LearningData = [
     {
         "para": "Tailored journeys matching your ambitions and pace.",
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747461170/learner_1_apozgx.png"
     },
     {
         "para": "Hands-on experiences with real tools",
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747462732/learner2_t2tsuu.png"
     },
     {
         "para": "Comprehensive career-readiness beyond academics",
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747462768/learner3_sci9uz.png"
     },
 ]
 
 export const IndustryData = [
     {
         "para": "Your pathway to leading companies.",
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747461155/industry1_mhec7y.png"
     },
     {
         "para": "Precision hiring of future-ready talent",
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747461155/industry2_ftxw9s.png"
     },
     {
         "para": "Simplified, smart recruitment process",
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747306169/Frame_1707480623_wdm1t4.png"
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747458674/industry3_orul2e.png"
     },
 ]
