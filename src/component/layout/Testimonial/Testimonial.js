@@ -7,55 +7,53 @@ import "slick-carousel/slick/slick-theme.css";
 
 const testimonials = [
   {
-    name: "Aryan Gupta",
+    name: "Sushma",
     role: "Junior SDE, Zomato",
-    text: `MindMatrix gave me the skills and certifications I needed to stand out in interviews. 
-    The courses were practical, industry-focused, and easy to fit into my college schedule. 
-    Thanks to MindMatrix, I landed my dream job right after graduation!`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student1_bfmg0w.png",
+    text: `I’m Sushma from Sri Siddhartha Institute of Technology, Tumkur. I just completed the Generative AI in Biomedical Field course. It was very useful for the upcoming generation in the biomedical field. The session was interactive, and I really enjoyed it. The instructors were friendly and taught us many important things about using Generative AI in our domain. Thank you!`,
+    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747467851/WhatsApp_Image_2025-05-17_at_13.01.18_5d108613_yl3dn3.jpg",
   },
   {
     name: "Priya Sharma",
     role: "Data Analyst, TCS",
-    text: `The real-world projects at MindMatrix gave me hands-on experience. I felt confident applying for jobs right after completing my course.`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527071/Student2_w7ds8z.png",
+    text: `Session on Generative AI by the MindMatrix team was really useful for us in Biomedical Engineering. We discovered many tools we weren’t aware of earlier and learned how to interact with AI. It was exciting to explore ways to match tools with our own creativity. My friends and I had a lot of fun — it was a great session. Thank you, MindMatrix!`,
+    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747467851/WhatsApp_Image_2025-05-17_at_12.56.32_9d1daf0e_giuw9p.jpg",
   },
   {
-    name: "Rahul Mehta",
+    name: "Varun Patel",
     role: "Frontend Developer, Paytm",
-    text: `The course content was super relevant and updated. The instructors were amazing and always ready to help.`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student3_psapoe.png",
+    text: `MindMatrix’s GenAI session opened up new possibilities for me in the biomedical field. It was insightful, interactive, and gave me tools I had never used before.`,
+    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747467850/WhatsApp_Image_2025-05-17_at_13.07.31_116f31ef_rfvrnk.jpg",
   },
   {
-    name: "Sneha Kapoor",
+    name: "Pujita",
     role: "Software Engineer Intern, Google",
-    text: `MindMatrix made it easy to learn even with a busy college schedule. Highly recommend it!`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student4_mrqmh6.png",
+    text: `I attended the GenAI Tools in Biomedical workshop by MindMatrix—it was a very interactive session. I felt happy, curious, and gained a lot of knowledge through the activities and quizzes.`,
+    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747467850/WhatsApp_Image_2025-05-17_at_13.12.05_ca5cae13_rid0di.jpg",
   },
   {
-    name: "Aman Verma",
+    name: "Pranith Nandan",
     role: "Backend Developer, Swiggy",
-    text: `Every topic was explained with clarity. The placement assistance was a huge bonus.`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png",
+    text: `The Build with AI Gemini Flash 2.5 AI session by MindMatrix at BMS College was one of the most informative experiences I’ve had. The workshop, along with the inspiring talk by the AI officer, truly sparked our curiosity and learning.`,
+    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747473318/WhatsApp_Image_2025-05-17_at_13.23.24_cdf81d6a_guzjjv.jpg",
   },
   {
-    name: "Aman Verma",
+    name: "Shweta",
     role: "Backend Developer, Swiggy",
-    text: `Every topic was explained with clarity. The placement assistance was a huge bonus.`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png",
+    text: `I’m Shweta from SSIT, Biomedical Engineering. The 3-day workshop on Generative AI in Biomedical Engineering was excellent—we learned many useful applications and new technologies that will help us in our field`,
+    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747473318/WhatsApp_Image_2025-05-17_at_13.27.13_e28a5d0a_jpgmht.jpg",
   },
-  {
-    name: "Aman Verma",
-    role: "Backend Developer, Swiggy",
-    text: `Every topic was explained with clarity. The placement assistance was a huge bonus.`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png",
-  },
-  {
-    name: "Aman Verma",
-    role: "Backend Developer, Swiggy",
-    text: `Every topic was explained with clarity. The placement assistance was a huge bonus.`,
-    image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png",
-  },
+  // {
+  //   name: "Aman Verma",
+  //   role: "Backend Developer, Swiggy",
+  //   text: `Every topic was explained with clarity. The placement assistance was a huge bonus.`,
+  //   image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png",
+  // },
+  // {
+  //   name: "Aman Verma",
+  //   role: "Backend Developer, Swiggy",
+  //   text: `Every topic was explained with clarity. The placement assistance was a huge bonus.`,
+  //   image: "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png",
+  // },
 ];
 
 const Testimonial = () => {
@@ -106,7 +104,7 @@ const Testimonial = () => {
                 <div className="testimonial-content">
                   <p className="testimonial-text">“{student.text}”</p>
                   <p className="testimonial-name">{student.name}</p>
-                  <p className="testimonial-role">{student.role}</p>
+                  {/* <p className="testimonial-role">{student.role}</p> */}
                 </div>
               </div>
             </div>

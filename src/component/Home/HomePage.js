@@ -9,6 +9,7 @@ import Testimonial from '../layout/Testimonial/Testimonial';
 import Hero from '../layout/Hero/Hero';
 import LearningPathway from '../layout/LearningPathway/LearningPathway';
 import Navbar from '../layout/Navbar/Navbar';
+import HeroSlider from '../layout/HeroSlider/HeroSlider';
 
 const HomePage = () => {
     const controls = useAnimation();
@@ -60,14 +61,13 @@ const HomePage = () => {
                 </div>
                 {/* Hero */}
                 <div className='hero_section'>
-                    <div>
-                        <div className='heroImg1'></div>
-                        <div className='heroImg2'></div>
-                        <div className='heroImg3'></div>
-                        <div className='heroImg4'></div>
+                    <div className='heroLeft'>
                         <h1><span className='headingColor'>Your career companion</span> from day one to your dream job</h1>
                         <p>Unlocking the Potentials for Tomorrow</p>
                         <Link className='heroBtn' to='https://staging.mindmatrix.io/register'>Start today</Link>
+                    </div>
+                    <div className='heroRight'>
+                        <HeroSlider />
                     </div>
                 </div>
                 <div className='hero_carousel'>
@@ -89,8 +89,8 @@ const HomePage = () => {
 
                 {/* Learning Pathway */}
                 <div className='learning_pathway_section'>
-                    <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that fit into your college schedule</h1>
-                    <p>Explore our most popular courses <span class="arrow ">→</span></p>
+                    <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that align with your career <span style={{fontStyle: "italic"}}>aspirations</span></h1>
+                    <p>Explore our most popular programs <span class="arrow ">→</span></p>
 
                     <div className='learning_pathway_card_container'>
                         {LearningPathwayData.map((elm) => {
@@ -187,7 +187,7 @@ const HomePage = () => {
                     <div className='curriculum_section_data'>
                         <div>
                             <h1>6K+</h1>
-                            <h2>Studnets</h2>
+                            <h2>Studenets</h2>
                         </div>
 
                         <div className='curriculum_section_data_line'></div>
@@ -460,7 +460,7 @@ export const LearningPathwayData = [
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
         "courseCode": "Programming",
         "heading": "GenAI Integrator – Year 3",
-        "para": "Apply GenAI to real-world domains—Logistics, Retail, Healthcare, and App Development."
+        "para": "that align with your career aspirations ; Name of the program card a little small"
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
