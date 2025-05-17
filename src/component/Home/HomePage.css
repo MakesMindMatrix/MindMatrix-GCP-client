@@ -266,15 +266,18 @@
     text-align: left;
 }
 
-.quick_quiz_section_one_left>button,
-.quick_quiz_section_two_left>button {
+.quick_quiz_section_one_left>a,
+.quick_quiz_section_two_left>a {
     background-color: transparent;
+    font-size: 1.3rem;
+    width: 10rem;
     padding: 1rem 1.6rem;
     border-radius: 100px;
     border: 1px solid white;
     color: white;
     display: block;
     margin: 1.5rem 0;
+    text-decoration: none;
 }
 
 .quick_quiz_section_one_left,
@@ -886,11 +889,11 @@
     .learning_section_card {
         height: 18rem;
         margin: 0.5rem;
-        padding: 2rem;
     }
 
     .learning_section_card:nth-child(1) {
         width: 42%;
+        padding: 2rem;
     }
 
     .learning_section_card:nth-child(2) {
