@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import './CourseLandingPage.css'
 import Navbar from '../layout/Navbar/Navbar'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { FaCheckCircle } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
-import { coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
+import { courseDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
 import CurriculumSection from './CurriculumSection';
 import { IoIosCloseCircle } from 'react-icons/io';
 
 const CourseLandingPage = () => {
 
-  const location = useLocation();
-  const courseData = location.state.data;
-  const external_batch_id = courseData.external_batch_id;
+  const slugify = (str) =>
+    str
+        .toLowerCase()
+        .replace(/ /g, '-')
+        .replace(/[^\w-]+/g, '');
+  const {courseName : course_slug} = useParams();
   const dispatch = useDispatch();
 
-
-  // const {courseName} = useParams();
   const { loading: userLoading, isAuthenticated, user} = useSelector((state) => state.user);
   const { loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
-  const { loading: courseLoading, enroll_course} = useSelector((state) => state.myCourse)
+  const { loading: courseLoading, enroll_course , rec_course} = useSelector((state) => state.myCourse)
   const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
   const { sso } = useSelector((state) => state.SSO);
-  
+
+  const courseData = rec_course ? rec_course.find(course => slugify(course.course_name) === course_slug) : null;
+  const external_batch_id = courseData ? courseData.external_batch_id : null;
   
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
@@ -35,17 +38,21 @@ const CourseLandingPage = () => {
     description: ""
   });
   const [enrollCourseData, setEnrollCourseData] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name || "",
+    email: user?.email || "",
     batch_id: ''
   });
   
-  // const userEmail = user.email
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getCourseInfoByBatchId(external_batch_id));
+      dispatch(courseDataAction(user.email));
+      if (external_batch_id) {
+        dispatch(getCourseInfoByBatchId(external_batch_id));
+      }
     }
-
+  }, [dispatch, isAuthenticated, user, external_batch_id]);
+  // const userEmail = user.email
+  useEffect(() => {
     if (coursePayment) {
       const tokenUrl = coursePayment?.response.redirectUrl;
       console.log(tokenUrl);
@@ -63,19 +70,19 @@ const CourseLandingPage = () => {
         },
       });
     };
+  }, [coursePayment, dispatch, enrollCourseData]);
 
+  useEffect(() => {
     if (enroll_course) {
       console.log(`${sso}&external_batch_id=${external_batch_id}`);
       window.location.href = `${sso}&external_batch_id=${external_batch_id}` 
     }
-  }, [external_batch_id, dispatch, sso, isAuthenticated, enroll_course, coursePayment, enrollCourseData]);
+  }, [enroll_course, sso, external_batch_id]);
 
   // Load until all data is fetched
-  if (loading || userLoading || !courseLandingPageData ) {
+  if (loading || userLoading || courseLoading || !courseLandingPageData ) {
     return <Loader />;
   };
-
-
 
   // Get course from store
   const course = courseLandingPageData;
@@ -114,11 +121,6 @@ const CourseLandingPage = () => {
       batchId: paymentCourseData.batch_id
     }))
   };
-
-  // Show loader during course loading
-  if (courseLoading) {
-    return <Loader />;
-  }
   
   console.log(coursePaymentStatus);
   return (
@@ -133,7 +135,7 @@ const CourseLandingPage = () => {
             <button className='confirmModal_button' onClick={() => setConfirmModal(false)}>No</button>
           </div>
         </div>
-        
+
         {/* Payment modal */}
         <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
           <div className='pymentModal_container'>
