@@ -6,9 +6,9 @@ import { HiLightBulb } from "react-icons/hi";
 import { FaMedal } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import Testimonial from '../layout/Testimonial/Testimonial';
-import Hero from '../layout/Hero/Hero';
+// import Hero from '../layout/Hero/Hero';
 import LearningPathway from '../layout/LearningPathway/LearningPathway';
-import Navbar from '../layout/Navbar/Navbar';
+// import Navbar from '../layout/Navbar/Navbar';
 import HeroSlider from '../layout/HeroSlider/HeroSlider';
 
 const HomePage = () => {
@@ -71,9 +71,9 @@ const HomePage = () => {
                         <HeroSlider />
                     </div>
                 </div>
-                <div className='hero_carousel'>
+                {/* <div className='hero_carousel'>
                     <Hero />
-                </div>
+                </div> */}
 
                 {/* Learning */}
                 <div className='learning_section'>
@@ -91,7 +91,7 @@ const HomePage = () => {
                 {/* Learning Pathway */}
                 <div className='learning_pathway_section'>
                     <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that align with your career <span style={{ fontStyle: "italic" }}>aspirations</span></h1>
-                    <Link>Explore our most popular programs <span class="arrow ">→</span></Link>
+                    <Link to='/register'>Explore our most popular programs <span class="arrow ">→</span></Link>
 
                     <div className='learning_pathway_card_container'>
                         {LearningPathwayData.map((elm) => {
@@ -133,7 +133,7 @@ const HomePage = () => {
                         >
                             <div className='quick_quiz_section_one_left'>
                                 <h1>For Learners</h1>
-                                <button>Register</button>
+                                <Link to='/register'>Register</Link>
                             </div>
                             <div className='quick_quiz_section_one_right'>
                                 {LearningData.map((elm) => {

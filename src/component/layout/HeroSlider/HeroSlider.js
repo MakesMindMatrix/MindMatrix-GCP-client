@@ -24,6 +24,12 @@ const HeroSlider = () => {
         {
             "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747484508/Copy_of_IMG_4556_mrrjtm.jpg"
         },
+        {
+            "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747489422/20250411_142435_1_oosuix.jpg"
+        },
+        {
+            "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747489419/WhatsApp_Image_2025-04-18_at_4.59.38_PM_3_1_.jpeg_enuc3i.jpg"
+        },
     ]
 
     const settings = {
