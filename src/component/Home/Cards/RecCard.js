@@ -35,7 +35,7 @@ const RecCard = ({ data}) => {
     const handleViewMore = () => {
         const courseSlug = slugify(data.course_name);
         console.log("Course URL: /courses/", courseSlug);
-        navigate(`/courses/${courseSlug}`, {state: {data}});
+        navigate(`/courses/${courseSlug}`);
     }
 
     const startDate = new Date(data.batch_start_date).toLocaleDateString('en-US', {
