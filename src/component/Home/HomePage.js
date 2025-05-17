@@ -76,7 +76,7 @@ const HomePage = () => {
 
                 {/* Learning */}
                 <div className='learning_section'>
-                    <h1>Our learning philosophy for <span style={{ fontStyle: "italic", fontWeight: 'normal' }}>holistic</span> developement</h1>
+                    <h1>Our learning philosophy for <span style={{ fontStyle: "italic", fontWeight: '300' }}>holistic</span> developement</h1>
                     <div className='learning_section_card_container'>
                         {LearningPhilosophyData.map((elm) => {
                             return <div className='learning_section_card' >
