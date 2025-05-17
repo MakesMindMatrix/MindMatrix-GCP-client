@@ -188,7 +188,7 @@ const HomePage = () => {
                     <div className='curriculum_section_data'>
                         <div>
                             <h1>6K+</h1>
-                            <h2>Studenets</h2>
+                            <h2>Students</h2>
                         </div>
 
                         <div className='curriculum_section_data_line'></div>
