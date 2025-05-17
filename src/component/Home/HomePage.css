@@ -1,0 +1,1200 @@
+.homePage_container {
+    max-width: 100vw;
+    background-color: white;
+}
+
+/* Hero Section */
+.headingColor {
+    color: #13828F;
+}
+
+.hero_section {
+    height: 100vh;
+    max-width: 100vw;
+    /* padding: 14rem 8rem 5rem 8rem; */
+    padding: 11rem 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.heroLeft{
+    width: 30vw;
+    height: 60vh;
+}
+.heroRight{
+    width: 50vw;
+    height: 50vh;
+    /* background-color: #111324; */
+}
+
+.hero_section div h1 {
+    font-size: 5.5rem;
+    font-weight: 600;
+    /* width: 38%; */
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    /* margin: 0 auto; */
+}
+
+.hero_section div p {
+    color: #416266;
+    font-size: 1.8rem;
+    /* text-align: center; */
+    margin: 4rem 0;
+}
+
+.hero_section div .heroBtn {
+    padding: 1.2rem 1.8rem;
+    border: none;
+    color: white;
+    background-image: linear-gradient(90deg, #13828F, #6EAEB8);
+    border-radius: 100px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+
+.hero_section div div {
+    /* position: absolute; */
+    border-radius: 10px;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+}
+
+/* .heroImg1 {
+    width: 50vw;
+    height: 12rem !important;
+    top: 30%;
+    right: 30%;
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1747466672/_11A0013_xv2pre.jpg');
+}
+
+.heroImg2 {
+    width: 25rem;
+    top: 14rem;
+    right: 8rem;
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1747466671/_11A0049_u4yuer.jpg');
+}
+
+.heroImg3 {
+    width: 15rem;
+    height: 10rem !important;
+    bottom: 18%;
+    right: 34%;
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1747466669/_11A0019_qcmygk.jpg');
+}
+
+.heroImg4 {
+    width: 20em;
+    height: 12rem !important;
+    bottom: 15rem;
+    right: 13rem;
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1747466666/_11A0034_bo6sea.jpg');
+} */
+
+.hero_carousel {
+    display: none;
+}
+
+/* Learning Section */
+.learning_section {
+    /* background-image: linear-gradient(90deg, #053237bb, #2f7984be); */
+    padding: 6rem 4rem;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 25px;
+}
+
+.learning_section>h1 {
+    color: black;
+    font-size: 4.8rem;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 4rem;
+    font-weight: 600;
+}
+
+.learning_section_card_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.learning_section_card {
+    border-radius: 20px;
+    height: 22rem;
+    margin: 1rem;
+}
+
+.learning_section_card h1 {
+    text-align: left;
+    font-size: 2.8rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.learning_section_card p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    width: 80%;
+}
+
+.learning_section_card:nth-child(1) h1,
+.learning_section_card:nth-child(1) p {
+    color: black;
+}
+
+.learning_section_card p {
+    color: white;
+}
+
+.learning_section_card:nth-child(1) {
+    background-color: white;
+    width: 45%;
+    padding: 3rem;
+    border: 1px solid black;
+}
+
+.learning_section_card:nth-child(2) {
+    background-color: #E95A4D;
+    width: 35%;
+}
+
+.learning_section_card:nth-child(3) {
+    background-color: #1B2479;
+    width: 35%;
+}
+
+.learning_section_card:nth-child(4) {
+    background-color: rgb(255, 255, 255);
+    width: 45%;
+    padding: 0;
+}
+
+/* Learning Pathway Section */
+.learning_pathway_section {
+    background-color: white;
+    padding: 8rem 6rem;
+}
+
+.learning_pathway_section>h1 {
+    font-size: 3.8rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    margin: 0 0 3rem 0;
+}
+
+.learning_pathway_section> a {
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 1.4rem;
+    text-decoration: none;
+
+}
+
+.learning_pathway_section>a>span {
+    margin-left: 1rem;
+    color: #E95A4D;
+    text-decoration: none;
+}
+
+.learning_pathway_card_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.learningPathway_carousel {
+    display: none;
+}
+
+/* Quick quiz Section */
+.quick_quiz_section {
+    /* background-image: linear-gradient(90deg, #053237bb, #2f7984be); */
+    /* padding: 8rem 6rem; */
+    width: 90%;
+    margin: 0 auto;
+    /* border-radius: 25px; */
+}
+
+/* .quick_quiz_section>h1 {
+    font-size: 3.8rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    color: white;
+    text-align: left;
+    margin-left: 1rem;
+} */
+
+/* .quick_quiz_section>button {
+    padding: 1.2rem 1.8rem;
+    border: none;
+    border-radius: 100px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    margin: 3rem 1rem 2rem 1rem;
+} */
+
+/* .quick_quiz_section>div {
+    display: flex;
+} */
+
+.quick_quiz_section_one,
+.quick_quiz_section_two {
+    background-image: linear-gradient(90deg, #053237, #2F7884);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 25px;
+    padding: 4vh 6vw;
+}
+
+.quick_quiz_section_one_left>h1,
+.quick_quiz_section_two_left>h1 {
+    font-weight: 500;
+    font-size: 4.8rem;
+    font-family: "Inter", sans-serif;
+    color: white;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.quick_quiz_section_one_left>button,
+.quick_quiz_section_two_left>button {
+    background-color: transparent;
+    padding: 1rem 1.6rem;
+    border-radius: 100px;
+    border: 1px solid white;
+    color: white;
+    display: block;
+    margin: 1.5rem 0;
+}
+
+.quick_quiz_section_one_left,
+.quick_quiz_section_two_left {
+    width: 30%;
+}
+
+.quick_quiz_section_one_right,
+.quick_quiz_section_two_right {
+    width: 65%;
+}
+
+/* Curriculum Section */
+.curriculum_section {
+    padding: 10rem 10rem;
+}
+
+.curriculum_section>h1 {
+    font-size: 3.8rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+}
+
+.curriculum_section>div {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.curriculum_section_data {
+    padding: 0 8rem;
+    /* margin: 4rem 0; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.curriculum_section_data_line {
+    /* height: 100%; */
+    width: 1px;
+    background-color: #0000007e;
+}
+
+/* .curriculum_section_data div:nth-child(1) {} */
+
+.curriculum_section_data div h1 {
+    font-weight: 600;
+    font-size: 4rem;
+    font-family: "Inter", sans-serif;
+}
+
+.curriculum_section_data div h2 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+}
+
+/* Career companion Section */
+.career_companion_section {
+    background-color: #111324;
+}
+
+.career_companion_section>h1 {
+    font-family: "Inter", sans-serif;
+    color: white;
+    padding: 8rem 0 5rem 0;
+    font-size: 3.8rem;
+    font-weight: 600;
+    line-height: 5.5rem;
+}
+
+/* #6dadb0 */
+.career_companion_section>h1>span {
+    font-size: 4.6rem;
+    color: #87e2e7;
+}
+
+.career_companion_card_box {
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.career_companion_card_one {
+    width: 100%;
+    height: 30rem;
+    background-color: white;
+    border-radius: 20px;
+    margin: 0.5rem 0.25%;
+    display: flex;
+    align-items: center;
+    padding: 0 5rem 0 2rem;
+}
+
+.companion_card_one_left>h1 {
+    text-align: left;
+    margin-bottom: 1.6rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 2.8rem;
+}
+
+.companion_card_one_left>p {
+    margin-bottom: 15%;
+    width: 75%;
+    font-size: 1.4rem;
+}
+
+.companion_card_one_left>button {
+    padding: 1.2rem 1.5rem;
+    border-radius: 100px;
+    border: 1px solid #6EAEB8;
+    background-color: transparent;
+}
+
+.companion_card_one_right {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774458/Frame_1707480596_svowvu.png');
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 72%;
+    height: 80%;
+    border-radius: 10px;
+}
+
+.career_companion_card_two {
+    background-color: #F6EDFA;
+    width: 49%;
+    height: 28rem;
+    border-radius: 20px;
+    margin: 0.5rem 0.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.companion_card_two_top {
+    padding: 2rem;
+}
+
+.companion_card_two_top>h1 {
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 2.8rem;
+}
+
+.companion_card_two_top>p {
+    margin-top: 1rem;
+    width: 75%;
+    font-size: 1.4rem;
+}
+
+.companion_card_two_bottom {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774459/calendar_kxpj0r.png');
+    background-size: 100%;
+    background-position: center;
+    width: 40%;
+    height: 80%;
+}
+
+.career_companion_card_three {
+    background-color: #3E4EE2;
+    width: 49%;
+    height: 22rem;
+    border-radius: 20px;
+    margin: 0.5rem 0.5%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.companion_card_three_top>h1 {
+    color: white;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 2.8rem;
+}
+
+.companion_card_three_top>p {
+    color: white;
+    margin-top: 1rem;
+    width: 60%;
+    font-size: 1.4rem;
+}
+
+.companion_card_three_bottom {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774459/Rectangle_ooaqay.png');
+    background-size: 100%;
+    background-position: center;
+    width: 50%;
+    height: 90%;
+}
+
+.career_companion_card_four {
+    background-color: #FFD5D1;
+    width: 49%;
+    height: 22rem;
+    border-radius: 20px;
+    margin: 0.5rem 0.5%;
+    padding: 2rem;
+}
+
+.companion_card_four_top {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774571/860b67f5df5a4c77008208029e7716efa3ac6680_h6qgek.png');
+    background-size: cover;
+    background-position: center;
+    width: 35%;
+    height: 45%;
+}
+
+.companion_card_four_bottom>h1 {
+    text-align: left;
+    margin: 1.6rem 0 1rem 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 2.8rem;
+}
+
+.companion_card_four_bottom>p {
+    width: 80%;
+    font-size: 1.4rem;
+}
+
+.career_companion_card_five {
+    background-color: #1B2479;
+    width: 49%;
+    height: 28rem;
+    border-radius: 20px;
+    margin: 0.5rem 0.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    position: absolute;
+    right: 0;
+    bottom: 0rem;
+}
+
+.companion_card_five_top>h1 {
+    color: white;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 2.8rem;
+}
+
+.companion_card_five_top>p {
+    color: white;
+    margin: 1.6rem 0;
+    font-size: 1.4rem;
+    width: 80%;
+}
+
+.companion_card_five_bottom {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746774457/check_plvwmy.png');
+    background-size: 100%;
+    background-position: center;
+    width: 40%;
+    height: 50%;
+}
+
+/* Students Section */
+.students_section {
+    background-color: #111324;
+    /* height: 60vh; */
+}
+
+.students_section>h1 {
+    font-size: 3.8rem;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    color: white;
+    padding: 12rem 0 4rem 0;
+}
+
+.students_content_image_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.students_content_image_box .students_content_image {
+    background-size: cover;
+    background-position: center;
+    height: 15rem;
+    width: 12rem;
+    border-radius: 10px;
+    margin: 2.5rem;
+}
+
+.students_content_image_box .students_content_image:nth-child(1) {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student1_bfmg0w.png');
+}
+
+.students_content_image_box .students_content_image:nth-child(2) {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527071/Student2_w7ds8z.png');
+}
+
+.students_content_image_box .students_content_image:nth-child(3) {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student3_psapoe.png');
+    height: 22rem;
+    width: 15rem;
+    border: 1px solid white;
+}
+
+.students_content_image_box .students_content_image:nth-child(4) {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527070/Student4_mrqmh6.png');
+}
+
+.students_content_image_box .students_content_image:nth-child(5) {
+    background-image: url('https://res.cloudinary.com/djsg8kbaz/image/upload/v1746527069/Student5_sxbomk.png');
+}
+
+.students_content_para,
+.students_content_Name,
+.students_content_designation {
+    color: white;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.students_content_para {
+    font-size: 1.4rem;
+    width: 35%;
+    margin: 0 auto;
+    color: #ffffffb7;
+    line-height: 2rem;
+}
+
+.students_content_Name {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.students_content_designation {
+    font-size: 1.6rem;
+}
+
+
+/* Start journey Section */
+.start_journey_section {
+    background-color: #111324;
+    padding: 10rem 0;
+}
+
+.start_journey_box {
+    background-color: white;
+    width: 80%;
+    height: 40vh;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.start_journey_box>h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 3rem;
+}
+
+.start_journey_box>div>a {
+    border-radius: 100px;
+    font-size: 1.4rem;
+    padding: 1.2rem 1.5rem;
+    margin: 2.5rem 1.5rem;
+    text-decoration: none;
+    background-image: linear-gradient(90deg, #13828F, #6EAEB8);
+}
+
+.start_journey_box div a:nth-child(1) {
+    color: white;
+    border: none;
+    background-image: linear-gradient(90deg, #13828F, #6EAEB8);
+}
+
+.start_journey_box div a:nth-child(2) {
+    border: 1px solid #6EAEB8;
+    background-color: white;
+}
+
+
+/* Footer Section */
+.footer_section {
+    display: flex;
+    justify-content: space-between;
+    background-color: #111324;
+    color: white;
+    padding: 4rem 10rem;
+}
+
+.footer_section h1 {
+    text-align: left;
+    margin: 1rem 0;
+}
+
+.footer_section p {
+    /* text-align: left; */
+    color: white;
+    font-size: 1.2rem;
+    width: 75%;
+    margin: 1rem 0;
+}
+
+.footer_section ul {
+    list-style-type: none;
+}
+
+.footer_section ul li {
+    margin: 1rem 0;
+}
+
+.footer_section ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+/* All Card Styling */
+.learningPathwayCard_container {
+    width: 26rem;
+    padding: 2rem 1.6rem;
+    margin: 1rem;
+    border: 1px solid gray;
+    border-radius: 20px;
+}
+
+.learningPathwayCard_container>h1 {
+    text-align: left;
+    font-size: 1.8rem;
+    margin: 2rem 0;
+}
+
+.learningPathwayCard_container>p {
+    font-size: 1.2rem;
+}
+
+.learning_philosophy_card_container {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.learning_philosophy_card_icon {
+    background-position: center;
+    background-size: cover;
+    /* background-color: #13828F; */
+    height: 10rem;
+    width: 15rem;
+}
+
+.quickQuizCard_container {
+    margin: 1.5rem;
+}
+
+.quickQuizCard_number,
+.quickQuizCard_heading {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+    height: 3.5rem;
+}
+
+.quickQuizCard_heading {
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+.quickQuizCard_subHeading {
+    font-size: 1.4rem;
+    color: #000000b4;
+    font-weight: 400;
+    line-height: 2rem;
+}
+
+.quickQuizCard_container div {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2.5rem;
+    height: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.quickQuizCard_container div svg {
+    color: #13828F;
+    font-size: 4rem;
+}
+
+.quick_quiz_section .quickQuizCard_container:nth-child(2) div svg {
+    font-size: 5.5rem;
+}
+
+.quickQuizCard_container div:nth-child(2) {
+    font-size: 5rem;
+    color: #111324;
+}
+
+.industryCard_container,
+.LearnerCard_container {
+    display: flex;
+    align-items: center;
+    margin: 1rem
+}
+
+.industryCard_container>h1,
+.LearnerCard_container>h1 {
+    font-size: 1.8rem;
+    margin-left: 1rem;
+    color: white;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Inter", sans-serif;
+    text-align: left;
+}
+
+.learningCard_container_image,
+.industryCard_container_image {
+    height: 24vh;
+    min-width: 15vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Certified Card */
+.Certified_card_container {
+    /* background-color: #416266; */
+    margin: 2rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Certified_card_container img {
+    height: 8rem;
+    width: 12rem;
+    /* margin: 0 auto; */
+}
+
+.Certified_card_container>h1 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+/*  */
+
+.learningPathwayCard_container div {
+    width: 22rem;
+    height: 15rem;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 1150px) {
+    .learning_pathway_card_container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .learningPathwayCard_container {
+        margin: 2rem;
+    }
+}
+
+/* Desktop responsiveness */
+@media (max-width: 998px) {
+    .hero_section {
+        padding: 8rem 6rem;
+    }
+
+    .hero_section div h1 {
+        font-size: 4.5rem;
+    }
+
+    .heroImg1 {
+        right: 32%;
+    }
+
+    .heroImg2 {
+        right: 2rem;
+    }
+
+    .heroImg3 {
+        right: 37%;
+    }
+
+    .heroImg4 {
+        right: 8rem;
+    }
+
+
+    /* Learning Section */
+    .learning_section_card {
+        height: 18rem;
+        margin: 0.5rem;
+        padding: 2rem;
+    }
+
+    .learning_section_card:nth-child(1) {
+        width: 42%;
+    }
+
+    .learning_section_card:nth-child(2) {
+        width: 38%;
+    }
+
+    .learning_section_card:nth-child(3) {
+        width: 38%;
+    }
+
+    .learning_section_card:nth-child(4) {
+        width: 42%;
+    }
+
+    .learning_section_card p {
+        font-size: 2.5rem;
+    }
+
+    .learning_section_card p {
+        width: 85%;
+        font-size: 1.6rem;
+    }
+
+    .learning_philosophy_card_icon {
+        height: 9rem;
+        width: 16rem;
+    }
+
+    .learning_pathway_section {
+        padding: 8rem 10rem;
+    }
+
+    .curriculum_section>div:nth-child(1) {
+        width: auto;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .hero_section {
+        height: auto;
+    }
+
+    .hero_section div h1 {
+        width: 100%;
+    }
+
+    .heroImg1 {
+        display: none;
+    }
+
+    .heroImg2 {
+        display: none;
+    }
+
+    .heroImg3 {
+        display: none;
+    }
+
+    .heroImg4 {
+        display: none;
+    }
+
+    .hero_carousel {
+        display: initial;
+    }
+
+    .learning_section>h1 {
+        font-weight: 500;
+    }
+
+    .learning_section_card p {
+        width: 90%;
+    }
+
+    .learning_philosophy_card_icon {
+        height: 8rem;
+        width: 18rem;
+    }
+
+    .learning_pathway_section {
+        padding: 8rem 4rem;
+    }
+
+    .quick_quiz_section_one,
+    .quick_quiz_section_two {
+        flex-direction: column;
+    }
+
+    .quick_quiz_section_one_right,
+    .quick_quiz_section_two_right,
+    .quick_quiz_section_one_left,
+    .quick_quiz_section_two_left {
+        width: 100%;
+    }
+
+    .learningCard_container_image,
+    .industryCard_container_image {
+        min-width: 26vw;
+        height: 20vh;
+    }
+
+    .industryCard_container>h1,
+    .LearnerCard_container>h1 {
+        font-size: 1.8rem;
+        margin-left: 2rem;
+    }
+
+    .quick_quiz_section>div {
+        display: block;
+    }
+
+    .quickQuizCard_container {
+        background-color: white;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+
+    .quickQuizCard_container h1 {
+        color: black;
+        font-weight: 500;
+    }
+
+    .quickQuizCard_container div {
+        display: none;
+    }
+
+    .curriculum_section>div:nth-child(2) {
+        width: 90%;
+    }
+
+    .career_companion_card_box {
+        width: 80%;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .learning_section {
+        height: auto;
+        padding: 2rem 2rem;
+    }
+
+    .learning_section>h1 {
+        font-size: 4rem;
+    }
+
+    .learning_section_card {
+        height: 7rem;
+        background-color: #111324;
+    }
+
+    .learning_section_card p {
+        display: none;
+    }
+
+    .learning_philosophy_card_icon {
+        height: 3.5rem;
+        width: 4rem;
+    }
+
+    .learning_section_card_container {
+        display: inline-block;
+    }
+
+    .learning_section_card:nth-child(1) {
+        width: 65%;
+        float: right;
+    }
+
+    .learning_section_card:nth-child(2) {
+        width: 65%;
+        float: left;
+    }
+
+    .learning_section_card:nth-child(3) {
+        width: 65%;
+        float: right;
+    }
+
+    .learning_section_card:nth-child(4) {
+        width: 65%;
+        float: left;
+    }
+
+    .learning_pathway_card_container {
+        display: none;
+    }
+
+    .learningPathway_carousel {
+        display: block;
+        width: 100%;
+    }
+
+    .learningCard_container_image,
+    .industryCard_container_image {
+        min-width: 37vw;
+        height: 18vh;
+    }
+
+    .curriculum_section {
+        padding: 8rem 6rem;
+    }
+
+    .curriculum_section>div {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .curriculum_section>div:nth-child(2) {
+        width: 100%;
+    }
+
+    .Certified_card_container {
+        width: 40%;
+        margin: 1.5rem;
+    }
+
+    .career_companion_card_two,
+    .career_companion_card_three,
+    .career_companion_card_four,
+    .career_companion_card_five {
+        height: 30rem;
+    }
+
+    .companion_card_two_bottom {
+        background-size: 37%;
+        background-repeat: no-repeat;
+    }
+
+    .companion_card_three_bottom {
+        background-size: 45%;
+        background-repeat: no-repeat;
+    }
+
+    .companion_card_four_top {
+        height: 60%;
+        background-size: 40%;
+        background-repeat: no-repeat;
+    }
+
+    .companion_card_five_bottom {
+        height: 55%;
+        background-size: 34%;
+        background-repeat: no-repeat;
+    }
+
+    .career_companion_card_three {
+        flex-direction: row;
+    }
+
+    .career_companion_card_five {
+        position: static;
+    }
+
+    .career_companion_card_box div:nth-child(2),
+    .career_companion_card_box div:nth-child(3) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .career_companion_card_box div:nth-child(2) div,
+    .career_companion_card_box div:nth-child(3) div {
+        width: 100%;
+    }
+
+    .footer_section {
+        padding: 4rem 12rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer_child {
+        margin: 0 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .industryCard_container,
+    .LearnerCard_container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .learningCard_container_image,
+    .industryCard_container_image {
+        min-width: 35vw;
+        height: 16vh;
+    }
+
+    .industryCard_container>h1,
+    .LearnerCard_container>h1 {
+        margin: 0;
+    }
+
+    .curriculum_section_data {
+        padding: 0 4rem;
+    }
+
+    .footer_section {
+        padding: 4rem 12rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

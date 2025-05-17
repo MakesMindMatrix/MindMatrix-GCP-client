@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.kanitFont{
+
+.kanitFont {
     font-family: "Kanit", sans-serif;
 }
-.martelFont{
+
+.martelFont {
     font-family: "Martel Sans", sans-serif;
 }
-.landingPage_container{
+
+.landingPage_container {
     padding: 0 10rem;
 }
-.landingPageHeading{
+
+.landingPageHeading {
     font-size: 4.5rem;
     font-family: "Kanit", sans-serif;
     font-weight: 300;
@@ -17,70 +21,79 @@
     text-align: left;
     margin-bottom: 1rem;
 }
-.cardHeading{
+
+.cardHeading {
     font-size: 2.25rem;
     color: #2C3249;
     font-family: "Kanit", sans-serif;
     text-align: left;
     font-weight: 300;
 }
-.cardPara{
+
+.cardPara {
     font-size: 1.8rem;
     color: #2C3249;
     font-family: "Martel Sans", sans-serif;
     font-weight: 400;
     text-align: left;
 }
-.btnOne{
-    padding: 1.3rem 2.2rem;
+
+.btnOne {
+    padding: 1rem 2.2rem;
     color: white;
-    background-color: #4C8074;
-    border: 2px solid #4C8074;
-    border-radius: 5px;
+    background-image: linear-gradient(90deg, #13828F, #6EAEB8);
+    /* border: 2px solid #4C8074; */
+    border-radius: 100px;
     font-family: "Kanit", sans-serif;
     font-size: 1.8rem;
     font-weight: 300;
     text-decoration: none;
 }
-.btnTwo{
-    padding: 1.3rem 2.2rem;
-    color: #4C8074;
-    border: 3px solid #4C8074;
+
+.btnTwo {
+    padding: 1rem 2.2rem;
+    color: #13828F;
+    border: 1px solid #13828F;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 100px;
     font-family: "Kanit", sans-serif;
-    margin-left: 2rem;
+    margin-right: 2rem;
     font-size: 1.8rem;
     font-weight: 300;
     text-decoration: none;
 }
-.auth_btn{
+
+.auth_btn {
     padding: 0.7rem 2rem;
 }
 
 /* Hero section */
-.landingPage_hero{
+.landingPage_hero {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-.landingPage_hero_left{
+
+.landingPage_hero_left {
     width: 51rem;
     margin-right: 5rem;
 }
-.landingPage_hero_heading{
+
+.landingPage_hero_heading {
     font-size: 6.2rem;
     line-height: 8rem;
 }
-.landingPage_hero_para{
+
+.landingPage_hero_para {
     font-size: 1.8rem;
     font-family: "Martel Sans", sans-serif;
     font-weight: 400;
     color: #2C3249;
     /* background-color: #0f8693; */
 }
-.landingPage_hero_right{
+
+.landingPage_hero_right {
     width: 41rem;
     height: 90%;
     background-image: url('./images/HeroImage.jpg');
@@ -90,7 +103,7 @@
 }
 
 /* Career Section */
-.changeCareer{
+.changeCareer {
     height: 100vh;
     width: 95rem;
     display: flex;
@@ -98,7 +111,8 @@
     align-items: center;
     margin: 4rem auto;
 }
-.changeCareer_left{
+
+.changeCareer_left {
     height: 90%;
     width: 30rem;
     background-image: url('./images/CareerImage.jpg');
@@ -107,26 +121,29 @@
     border-radius: 10px;
     margin-right: 5rem;
 }
-.changeCareer_right{
+
+.changeCareer_right {
     width: 60rem;
     /* background-color: #272D45; */
 }
 
 /* VTU Details Section */
-.vtuDetails{
+.vtuDetails {
     min-height: 70vh;
     width: 78rem;
     margin: 0 auto;
 }
-.VtuDetailsCards{
+
+.VtuDetailsCards {
     display: flex;
 }
-.vtuDetailsCard_container{
+
+.vtuDetailsCard_container {
     width: 26rem;
 }
 
 /* Flagship Course Section */
-.flagship_course{
+.flagship_course {
     height: 140vh;
     width: 90rem;
     display: flex;
@@ -134,10 +151,12 @@
     margin: 0 auto;
     cursor: pointer;
 }
-.flagship_course_left{
+
+.flagship_course_left {
     width: 70rem;
 }
-.flagship_course_right{
+
+.flagship_course_right {
     height: 90%;
     width: 25rem;
     background-image: url('./images/FlagshipCourseImage.jpg');
@@ -148,17 +167,19 @@
 }
 
 /* Indutry training section */
-.industry_section{
+.industry_section {
     height: 100vh;
     width: 90rem;
     display: flex;
     align-items: center;
     margin: 1rem auto;
 }
-.industry_section_left{
+
+.industry_section_left {
     width: 70rem;
 }
-.industry_section_right{
+
+.industry_section_right {
     height: 90%;
     width: 25rem;
     background-image: url('./images/IndustryImage.jpg');
@@ -169,16 +190,18 @@
 }
 
 /* Partner section */
-.partner{
+.partner {
     /* height: 60vh; */
     width: 90rem;
     margin: 7rem auto;
 }
-.partnerCard_container{
+
+.partnerCard_container {
     /* width: 35%; */
     margin: 0 2rem;
 }
-.partnerLogo{
+
+.partnerLogo {
     background-size: cover;
     background-position: center;
     height: 4rem;
@@ -186,15 +209,16 @@
 }
 
 /* Landing Page Footer Section */
-.landingPageFooter{
+.landingPageFooter {
     width: 90rem;
     /* background-color: #272d453f; */
     margin: 0 auto;
 }
+
 /* .landingPageHeading{
     margin-left: 2rem;
 } */
-.landingPageFooterBox{
+.landingPageFooterBox {
     clip-path: polygon(75% 0%, 81% 54%, 75% 100%, 0% 100%, 6% 50%, 0% 0%);
     background-color: #DFECE9;
     height: 8rem;
@@ -203,17 +227,19 @@
     justify-content: center;
     align-items: center;
 }
-.landingPageFooterSubHeading{
+
+.landingPageFooterSubHeading {
     text-align: left;
     margin: 1.2rem 2.2rem;
 }
-.landingPageFooterPara{
+
+.landingPageFooterPara {
     text-align: left;
     margin: 0.6rem 2.2rem;
 }
 
 /* Cards Section */
-.landingPageCourseCard_container{
+.landingPageCourseCard_container {
     background-color: #DFECE9;
     margin: 1rem;
     padding: 1.8rem;
@@ -222,12 +248,15 @@
     border: 1px solid #c5d2cf;
     text-decoration: none;
 }
-.changeCareerCard_container{
+
+.changeCareerCard_container {
     display: flex;
     width: 25rem;
     margin: 1rem;
 }
-.changeCareerCard_left_box, .IndustryTrainingCard_left_box{
+
+.changeCareerCard_left_box,
+.IndustryTrainingCard_left_box {
     background-color: #DFECE9;
     height: 4rem;
     width: 4rem;
@@ -237,11 +266,13 @@
     align-items: center;
     justify-content: center;
 }
-.IndustryTrainingCard_container{
+
+.IndustryTrainingCard_container {
     display: flex;
     margin: 2rem 0;
 }
-.IndustryTrainingCard_left_box::before{
+
+.IndustryTrainingCard_left_box::before {
     content: '';
     position: absolute;
     z-index: -1;
@@ -251,7 +282,8 @@
     margin-top: 6rem;
     border-radius: 10px;
 }
-.IndustryTrainingCard_left_box::after{
+
+.IndustryTrainingCard_left_box::after {
     content: '';
     position: absolute;
     z-index: -1;
@@ -261,183 +293,235 @@
     margin-left: 5rem;
     border-radius: 10px;
 }
-.IndustryTrainingCard_right{
+
+.IndustryTrainingCard_right {
     margin-left: 8rem;
 }
-.changeCareerCard_right{
+
+.changeCareerCard_right {
     margin-left: 1rem;
 }
 
 @media (max-width: 1150px) {
-    .landingPage_container{
+    .landingPage_container {
         padding: 0 7rem;
     }
-} 
+}
+
 @media (max-width: 1050px) {
-    .landingPage_container{
+    .landingPage_container {
         padding: 0 5rem;
     }
 }
+
 @media (max-width: 998px) {
-    html{
-      font-size: 55%;
+    html {
+        font-size: 55%;
     }
-    .landingPage_container{
+
+    .landingPage_container {
         padding: 0 2rem;
     }
-    .vtuDetails{
+
+    .vtuDetails {
         min-height: 60vh;
     }
-  }
+}
+
 @media (max-width: 850px) {
-    .industry_section, .flagship_course, .changeCareer, .partner{
+
+    .industry_section,
+    .flagship_course,
+    .changeCareer,
+    .partner {
         width: 85rem;
     }
-}  
+}
+
 @media (max-width: 700px) {
-    .industry_section, .flagship_course, .changeCareer, .partner, .vtuDetails{
+
+    .industry_section,
+    .flagship_course,
+    .changeCareer,
+    .partner,
+    .vtuDetails {
         width: 65rem;
     }
 }
+
 @media (max-width: 768px) {
-    html{
-      font-size: 50%;
+    html {
+        font-size: 50%;
     }
-  }
+}
+
 @media (max-width: 550px) {
-    .landingPage_container{
+    .landingPage_container {
         width: 100vw;
         padding: 0;
     }
+
     /* Hero section */
-    .landingPage_hero{
+    .landingPage_hero {
         flex-direction: column-reverse;
     }
-    .landingPage_hero_left{
+
+    .landingPage_hero_left {
         width: 100%;
         padding: 0 3rem;
     }
-    .landingPage_hero_right{
+
+    .landingPage_hero_right {
         width: 100vw;
         height: 60vh;
         border-radius: 0;
     }
 
     /* Career Section */
-    .changeCareer{
+    .changeCareer {
         flex-direction: column;
         width: 100vw;
         min-height: 125vh;
     }
-    .changeCareer_left{
+
+    .changeCareer_left {
         width: 100vw;
         /* height: 60vh; */
         border-radius: 0;
         margin: 0;
     }
-    .changeCareer_right{
+
+    .changeCareer_right {
         width: 100%;
         padding: 0 3rem;
         height: 65vh;
     }
-    .changeCareerCards{
+
+    .changeCareerCards {
         flex-direction: column;
     }
-    .changeCareerCard_container{
+
+    .changeCareerCard_container {
         flex-grow: 1;
         width: 100%;
     }
 
     /* Vtu Details Section */
-    .vtuDetails{
+    .vtuDetails {
         width: 100%;
         padding: 0 3rem;
     }
-    .VtuDetailsCards{
+
+    .VtuDetailsCards {
         flex-direction: column;
     }
-    .vtuDetailsCard_container{
+
+    .vtuDetailsCard_container {
         width: 100%;
     }
 
     /* Flagship courses section */
-    .flagship_course{
+    .flagship_course {
         flex-direction: column-reverse;
         width: 100%;
     }
-    .flagship_course_left{
+
+    .flagship_course_left {
         width: 100%;
         padding: 0 3rem;
     }
-    .flagship_course_right{
+
+    .flagship_course_right {
         width: 100%;
     }
-    .landingPageCourseCard_container{
+
+    .landingPageCourseCard_container {
         width: 100%;
     }
 
     /* Industry section */
-    .industry_section{
+    .industry_section {
         flex-direction: column-reverse;
         width: 100%;
     }
-    .industry_section_left{
+
+    .industry_section_left {
         width: 100%;
         padding: 0 3rem;
     }
-    .industry_section_right{
+
+    .industry_section_right {
         width: 100%;
         margin-left: 0;
     }
 
     /* Partner Section */
-    .partner{
+    .partner {
         width: 100%;
         padding: 0 3rem;
     }
-}  
+}
+
 @media (max-width: 450px) {
-    html{
-      font-size: 45%;
+    html {
+        font-size: 45%;
     }
-    .IndustryTrainingCard_left_box::before{
+
+    .IndustryTrainingCard_left_box::before {
         height: 16rem;
         width: 4px;
     }
-  }
+}
 
-  
 
-  .hamburger, .closeMenu{
+
+.hamburger,
+.closeMenu {
     display: none;
-  }
-  .navbar, .responsiveNavbar{
+}
+
+.navbar,
+.responsiveNavbar {
     height: 8rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  .responsiveNavbar, .responsiveNavbarOpen{
+    position: fixed;
+    z-index: 999;
+    border-radius: 100px;
+    left: 5vw;
+    top: 2vh;
+    width: 90vw;
+    background-color: #DFF0F3;
+    padding: 1rem 5rem;
+}
+
+.responsiveNavbar,
+.responsiveNavbarOpen {
     display: none;
-  }
-  .logo{
+}
+
+.logo {
     background-image: url("./images/logo.png");
     background-position: center;
+    background-repeat: no-repeat;
     background-size: 100%;
     margin-right: auto;
-    height: 7.5rem;
-    width: 17rem;
+    height: 5rem;
+    width: 10rem;
     border-radius: 1rem;
-  }
-  .contact_btn {
+}
+
+.contact_btn {
     cursor: pointer;
     background-color: transparent;
     color: #161e2b;
     font-size: 1.4rem;
     text-decoration: none;
-  }
-  .login_button {
+}
+
+.login_button {
     text-decoration: none;
     background-color: #ebedf4;
     border-radius: 0.5rem;
@@ -446,12 +530,14 @@
     font-size: 1.3rem;
     margin-left: 3.5rem;
     box-shadow: 0 3px #0f86933d;
-  }
-  .brochure_button:active {
+}
+
+.brochure_button:active {
     box-shadow: 0 1px #0f86933d;
     transform: translateY(2px);
-  }
-  .register_button {
+}
+
+.register_button {
     text-decoration: none;
     background-color: #0f8693;
     border-radius: 0.5rem;
@@ -460,13 +546,15 @@
     font-size: 1.3rem;
     margin-left: 3.5rem;
     box-shadow: 0 3px #0f86933d;
-  }
-  .brochure_button:active {
+}
+
+.brochure_button:active {
     box-shadow: 0 1px #0f86933d;
     transform: translateY(2px);
-  }
-  .stroke {
+}
+
+.stroke {
     height: 1px;
     width: 100%;
     background-color: #ebedf4;
-  }
+}

@@ -1,0 +1,16 @@
+/* .heroImage{
+    height: 100%;
+    width: 40vw;
+} */
+
+.heroImage div {
+    height: 100%;
+    width: 50vw;
+}
+
+@media (max-width: 998px) {
+    .heroImage div {
+        /* height: 100%; */
+        width: 60vw;
+    }
+}

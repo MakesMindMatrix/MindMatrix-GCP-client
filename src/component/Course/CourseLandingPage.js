@@ -1,49 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import './CourseLandingPage.css'
 import Navbar from '../layout/Navbar/Navbar'
-import { useLocation } from 'react-router-dom'
-
-// import { FaUniversity } from "react-icons/fa";
-// import { FaClock } from "react-icons/fa";
-// import { FaBook } from "react-icons/fa6";
-// import { IoNotificationsSharp } from "react-icons/io5";
-// import { IoSettings } from "react-icons/io5";
+import { useParams } from 'react-router-dom'
 import { FaCheckCircle } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
-import { coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
+import { courseDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
 import CurriculumSection from './CurriculumSection';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-// const whatYouGetPoints = [
-//   "Access to all course materials",
-//   "Hands-on projects and assignments",
-//   "Certificate on completion",
-//   "24/7 discussion forums",
-//   "Expert instructor support",
-//   "Downloadable resources",
-//   "Lifetime access",
-//   "Regular updates"
-// ];
-
 const CourseLandingPage = () => {
 
-  const location = useLocation();
-  const courseData = location.state.data;
+  const slugify = (str) =>
+    str
+        .toLowerCase()
+        .replace(/ /g, '-')
+        .replace(/[^\w-]+/g, '');
+  const {courseName : course_slug} = useParams();
   const dispatch = useDispatch();
 
-
-  // const {courseName} = useParams();
   const { loading: userLoading, isAuthenticated, user} = useSelector((state) => state.user);
   const { loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
-  const { loading: courseLoading, enroll_course} = useSelector((state) => state.myCourse)
+  const { loading: courseLoading, enroll_course , rec_course} = useSelector((state) => state.myCourse)
   const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
   const { sso } = useSelector((state) => state.SSO);
-  
+
+  const courseData = rec_course ? rec_course.find(course => slugify(course.course_name) === course_slug) : null;
+  const external_batch_id = courseData ? courseData.external_batch_id : null;
   
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
-  const [enrolling, setEnrolling] = useState(false);
   
   const [paymentCourseData, setPaymentCourseData] = useState({
     batch_id: "",
@@ -52,36 +38,51 @@ const CourseLandingPage = () => {
     description: ""
   });
   const [enrollCourseData, setEnrollCourseData] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name || "",
+    email: user?.email || "",
     batch_id: ''
   });
   
-  // const userEmail = user.email
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch(getCourseInfoByBatchId(courseData.external_batch_id))
+      dispatch(courseDataAction(user.email));
+      if (external_batch_id) {
+        dispatch(getCourseInfoByBatchId(external_batch_id));
+      }
     }
+  }, [dispatch, isAuthenticated, user, external_batch_id]);
+  // const userEmail = user.email
+  useEffect(() => {
+    if (coursePayment) {
+      const tokenUrl = coursePayment?.response.redirectUrl;
+      console.log(tokenUrl);
+      window.PhonePeCheckout.transact({
+        tokenUrl,
+        type: "IFRAME",
+        callback: (response) => {
+          if (response === "USER_CANCEL") {
+            console.log("Transaction Cancelled");
+          } else if (response === "CONCLUDED") {
+            dispatch(coursePaymentStatusAction(coursePayment.merchantOrderId))
+            dispatch(enrollCourse(enrollCourseData))
+            console.log("Transaction Completed");
+          }
+        },
+      });
+    };
+  }, [coursePayment, dispatch, enrollCourseData]);
 
-    if (enroll_course && enrolling) {
-      setEnrolling(true);
-
-      setTimeout(() => {
-        window.location.href = `${sso}&external_batch_id=${courseData.external_batch_id}`  
-      },500);
+  useEffect(() => {
+    if (enroll_course) {
+      console.log(`${sso}&external_batch_id=${external_batch_id}`);
+      window.location.href = `${sso}&external_batch_id=${external_batch_id}` 
     }
-    // dispatch(allCourse())
-  }, [courseData.external_batch_id, dispatch, enroll_course, enrolling, isAuthenticated, sso]);
+  }, [enroll_course, sso, external_batch_id]);
 
   // Load until all data is fetched
-  if (loading || userLoading || !courseLandingPageData ) {
+  if (loading || userLoading || courseLoading || !courseLandingPageData ) {
     return <Loader />;
   };
-
-  // Show loader when enrolling or during course loading
-  if (enrolling || courseLoading) {
-    return <Loader />;
-  }
 
   // Get course from store
   const course = courseLandingPageData;
@@ -95,7 +96,6 @@ const CourseLandingPage = () => {
   
   const handleEnrollConfirmation = () => {
     setConfirmModal(false);
-    setEnrolling(true);
     dispatch(enrollCourse(enrollCourseData));
   };
   const handleEnroll = () => {
@@ -106,9 +106,8 @@ const CourseLandingPage = () => {
             batch_price: courseData.batch_price,
             description: courseData.course_description
         })
-        setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
         setPaymentModal(true)
-        // navigate(`/payment/${data.external_batch_id}/${data.course_name}/${data.batch_price}`)
+        setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
     } else {
         setConfirmModal(true)
         setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
@@ -116,44 +115,18 @@ const CourseLandingPage = () => {
   };
 
   const handlePayment = () => {
-    setEnrolling(true);
     dispatch(coursePaymentAction({
       courseName: paymentCourseData.course_name,
       coursePrice: paymentCourseData.batch_price,
       batchId: paymentCourseData.batch_id
     }))
   };
-
-  const tokenUrl = coursePayment?.response.redirectUrl;
-  if (coursePayment) {
-    console.log(tokenUrl);
-    // Reset enrolling state when payment modal appears
-    setEnrolling(false);
-    window.PhonePeCheckout.transact({
-      tokenUrl,
-      type: "IFRAME",
-      callback: (response) => {
-        if (response === "USER_CANCEL") {
-          console.log("Transaction Cancelled");
-        } else if (response === "CONCLUDED") {
-          setEnrolling(true);
-          dispatch(coursePaymentStatusAction(coursePayment.merchantOrderId))
-          dispatch(enrollCourse(enrollCourseData))
-          console.log("Transaction Completed");
-        }
-      },
-    });
-  };
   
   console.log(coursePaymentStatus);
   return (
-    <>
-      {loading && userLoading ? <Loader /> : (
-    <>
       <div className='CourseLandingPage_container'>
         <Navbar />
 
-        
         {/* Confirm modal */}
         <div className='confirmModal_container' style={confirmModal ? { display: 'flex' } : { display: 'none' }}>
           <h1 className='confirmModal_heading'>Do you want to enroll in this course</h1>
@@ -162,6 +135,7 @@ const CourseLandingPage = () => {
             <button className='confirmModal_button' onClick={() => setConfirmModal(false)}>No</button>
           </div>
         </div>
+
         {/* Payment modal */}
         <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
           <div className='pymentModal_container'>
@@ -209,14 +183,6 @@ const CourseLandingPage = () => {
             ) : (
               <h1>No points available.</h1>
             )}
-            {/* <ul className="what-you-get-list">
-              {whatYouGetPoints.map((point, i) => (
-                <li className="what-you-get-item" key={i}>
-                  <FaCheckCircle className="tick-icon" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul> */}
           </section>
           <aside className="instructor-section">
             <h2 className="instructor-title">Your Course Instructor</h2>
@@ -236,61 +202,6 @@ const CourseLandingPage = () => {
             </div>
           </aside>
         </div>
-        {/* heroImage */}
-        {/* <div className='course_hero' style={{ backgroundImage: `url(${heroImage})` }}>
-          <div className='course_hero_overlay'>
-            <h1 className='course_hero_heading'>{course.hero_section?.hero_title || "Default Hero Title"}</h1>
-            <p className='course_hero_para'>{course.hero_section?.hero_description || "Default Hero Description"}</p>
-            <Link className='course_hero_btn'>{course.hero_section?.hero_button_content || "Default Hero Button"}</Link>
-          </div>
-        </div> */}
-
-        {/* About course section */}
-        {/* <div className='course_about'>
-          <div className='course_about_left'>
-            
-            <h1 className='course_about_left_heading'>{course.about_section?.title || "Default About Title"}</h1> 
-            
-            <h2 className='course_about_left_para'>{course.about_section?.description || "Default About Description"}</h2>
-            
-          </div> */}
-
-          {/* <div className='course_about_right'> */}
-            {/* {course.about_section.about_details && course.about_section.about_details.length > 0 ? ( */}
-              {/* course.about_section.about_details.map((title, idx) => (
-                <div className='about_details_box' key={idx}>
-                  <h1>{title}</h1>
-                </div>
-              ))
-            ) : (
-              <h1>No Titles available.</h1> */}
-            {/* )} */}
-            {/* <div className='about_details_box'>
-              <FaUniversity className='details_icon'/>
-              <h1>VTU approved 1-credit course</h1>
-            </div>
-
-            <div className='about_details_box'>
-              <FaClock className='details_icon'/>
-              <h1>Duration: 1 semester, 14 weeks</h1>
-            </div>
-
-            <div className='about_details_box'>
-              <FaBook className='details_icon'/>
-              <h1>No. of sessions: 14</h1>
-            </div>
-
-            <div className='about_details_box'>
-              <IoNotificationsSharp className='details_icon'/>
-              <h1>Weekly commitment: 1 hour/week</h1>
-            </div>
-
-            <div className='about_details_box'>
-              <IoSettings className='details_icon'/>
-              <h1>Tailored for 3rd-semester Electronics and Communication students</h1>
-            </div>*/}
-          {/* </div> 
-        </div> */}
 
         {/* Pre-requisites section */}
         {/* <div className='course_PreRequisite'>
@@ -309,73 +220,17 @@ const CourseLandingPage = () => {
           </div>
         </div> */}
 
-        {/* Course outcomes section */}
-        {/* <div className='course_outcomes'>
-          <div>
-            <h1><span>Understand IoT Basics and Components:</span> Gain foundational knowledge of IoT technologies, including sensors, communication protocols, and data processing.</h1>
-          </div>
-
-          <div>
-            <h1><span>Apply IoT in Smart Infrastructure:</span> Learn how IoT is integrated into smart infrastructure projects such as smart cities, buildings, and transportation systems.</h1>
-          </div>
-
-          <div>
-            <h1><span>Analyze and Evaluate IoT Systems:</span>Develop skills to assess the effectiveness of IoT solutions in infrastructure, considering factors like efficiency, sustainability, and scalability.</h1>
-          </div>
-
-          <div>
-            <h1><span>Anticipate Future Trends:</span>Explore emerging technologies and future developments in IoT, including 5G integration and advancements in AI and machine learning.</h1>
-          </div>
-
-          <div>
-            <h1><span>Enhance Problem-Solving Skills:</span>Develop the ability to tackle complex challenges in IoT implementation, including addressing interoperability issues and optimizing system</h1>
-          </div>
-
-          <div>
-            <h1><span>Promote Sustainable Practices:</span>Understand the role of IoT in promoting sustainable infrastructure practices, including energy efficiency and environmental monitoring.</h1>
-          </div>
-        </div> */}
-
-        {/* Course instructor section */}
-        {/* <div className='course_instructor'>
-          <h1 className='course_instructor_heading'>Course Instructor</h1>
-          <div className='course_instructor_box'>
-            <div className='course_instructor_box_left'>
-              <div className='course_instructor_img' style={{ backgroundImage: `url(${instructorImage})` }}></div>
-            </div>
-            <div className='course_instructor_box_right'>
-              <h3 className='course_instructor_designation'>{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</h3>
-              <h1 className='instructor_name'>{course.instructor_section?.instructor_name || "Default Instructor Name"}</h1>
-              <p className='instructor_description'>{course.instructor_section?.instructor_description || "Default Instructor Description"}</p>
-            </div>
-          </div>
-        </div> */}
-
         {/* Course curriculum section */}
         <div className='course_curriculum'>
           <div className='course_curriculum_left'>
             <h1 className='course_curriculum_heading'>Program Details</h1>
             <CurriculumSection modules={course.curriculum_section.modules} />
-            {/* <h1 className='course_curriculum_heading'>Course Curriculum</h1>
-            {course.curriculum_section.modules && course.curriculum_section.modules.length > 0 ? (
-              course.curriculum_section.modules.map((module, idx) => (
-                <div className='module_box' key={idx}>
-                  <h1 className='course_module_heading'>{module.title}</h1>
-                  <p className='course_module_para'>{module.description}</p>
-                </div>
-              ))
-            ) : (
-              <h1>No modules available.</h1>
-            )} */}
           </div>
           <div className='course_curriculum_right'>
             <div className='course_curriculum_img' style={{ backgroundImage: `url(${curriculumImage})` }}></div>
           </div>
         </div>
       </div>
-    </>
-          )}
-    </>
   )
 }
 
