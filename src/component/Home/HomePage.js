@@ -463,7 +463,7 @@ export const LearningPathwayData = [
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
         "courseCode": "Programming",
         "heading": "GenAI Integrator – Year 3",
-        "para": "that align with your career aspirations ; Name of the program card a little small"
+        "para": "Apply GenAI to real-world domains—Logistics, Retail, Healthcare, and App Development."
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
