@@ -935,6 +935,7 @@
 @media (max-width: 768px) {
     .hero_section {
         height: auto;
+        flex-direction: column-reverse;
     }
 
     .hero_section div h1 {

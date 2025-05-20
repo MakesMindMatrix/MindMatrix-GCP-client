@@ -2,19 +2,13 @@
   display: flex;
   /* align-items: center; */
   padding: 2rem;
+  /* max-width: 100vw; */
 }
 
 .login_left {
-  /* background-color: #4C8074; */
   border-radius: 5px;
-  background-image: url('../../images/Learning_Icon_new.png');
-  background-position: center;
-  background-size: cover;
   height: 94vh;
-  width: 55%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 55vw;
 }
 
 .login_left_image {

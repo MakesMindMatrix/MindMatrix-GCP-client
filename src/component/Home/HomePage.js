@@ -369,22 +369,22 @@ const LearningPathwayCard = ({ data }) => {
     )
 }
 
-const QuickQuizCard = ({ data, index }) => {
-    const { heading, subHeading, icon } = data
-    return (
-        <>
-            <div className='quickQuizCard_container'>
-                <h1 className='quickQuizCard_number'>0{index + 1}</h1>
-                <h1 className='quickQuizCard_heading'>{heading}</h1>
+// const QuickQuizCard = ({ data, index }) => {
+//     const { heading, subHeading, icon } = data
+//     return (
+//         <>
+//             <div className='quickQuizCard_container'>
+//                 <h1 className='quickQuizCard_number'>0{index + 1}</h1>
+//                 <h1 className='quickQuizCard_heading'>{heading}</h1>
 
-                <div>
-                    <p className='quickQuizCard_subHeading'>{subHeading}</p>
-                    {icon}
-                </div>
-            </div>
-        </>
-    )
-}
+//                 <div>
+//                     <p className='quickQuizCard_subHeading'>{subHeading}</p>
+//                     {icon}
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
 
 const IndustryCard = ({ data }) => {
     const { para, image } = data

@@ -9,6 +9,7 @@ import { clearErrors, register } from '../../actions/userAction';
 import Loader from '../layout/Loader/Loader';
 import { toast } from "react-toastify";
 import GoogleButton from 'react-google-button';
+import AuthLeft from './AuthLeft/AuthLeft';
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -102,7 +103,9 @@ const Register = () => {
             {loading ? <Loader /> : (
                 <>
                     <div className='login_container'>
-                        <div className='login_left'></div>
+                        <div className='login_left'>
+                            <AuthLeft />
+                        </div>
                         <div className='login_right'>
                             <form
                                 className='signUpForm'

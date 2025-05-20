@@ -14,6 +14,7 @@ import { getBranch, getCollege, getUniversity } from '../../actions/academicData
 import Loader from '../layout/Loader/Loader'
 import { toast } from "react-toastify";
 import EmailVerification from './EmailVerification';
+import AuthLeft from './AuthLeft/AuthLeft';
 
 const Onboarding = () => {
     const navigate = useNavigate()
@@ -159,7 +160,9 @@ const Onboarding = () => {
                             setShowModal={setShowModal}
                             user={user}
                         />
-                        <div className='onboarding_left'></div>
+                        <div className='onboarding_left'>
+                            <AuthLeft />
+                        </div>
                         <div className='onboarding_right'>
                             <form
                                 className='signUpForm'
