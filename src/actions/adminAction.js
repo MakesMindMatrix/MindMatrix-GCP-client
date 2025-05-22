@@ -39,10 +39,10 @@ export const enrolledListAction = (batch_id) => async (dispatch) => {
         console.log("called")
         dispatch({ type: ENROLLED_STUDENT_REQUEST })
 
-        const config = { headers: { "Content-Type": "application/json" }}
+        const config = { headers: { "Content-Type": "application/json"}, withCredentials: true}
 
         const { data } = await axios.post(`${BASE_URL}/api/v1/enrolled-student`, batch_id, config)
-        console.log(data)
+
         dispatch({ type: ENROLLED_STUDENT_SUCCESS, payload: data})
     } catch (error) {
         dispatch({ type: ENROLLED_STUDENT_FAIL, payload: error.response.data })

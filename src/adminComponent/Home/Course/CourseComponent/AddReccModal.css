@@ -1,0 +1,30 @@
+.reccModal_container input {
+    margin: 1rem 0.5rem;
+    display: block;
+    padding: 1vmax 2vmax;
+    padding-right: 1vmax;
+    /* width: 100%; */
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 0.9vmax cursive;
+    outline: none;
+}
+.reccModal_container h3{
+    text-align: left;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.reccModal_basicInfo_parent{
+    display: flex;
+}
+.reccModal_heroSection_parent{
+    display: flex;
+}
+.reccModal_Instructor_parent{
+    display: flex;
+}
+.reccModal_curriculum_parent{
+    display: flex;
+}

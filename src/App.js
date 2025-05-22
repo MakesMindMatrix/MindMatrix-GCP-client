@@ -39,6 +39,7 @@ import PaymentFailure from './component/User/PaymentFailure.js';
 import CoursePayment from './component/Course/CoursePayment.js'
 import DashboardTest from './component/Home/DashboardTest.js';
 import HomePage from './component/Home/HomePage.js';
+import IndustryRegister from './component/User/IndustryRegister.js';
 // import Footer from './component/layout/Footer/Footer.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
@@ -73,6 +74,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/sendMail" element={<SendMail />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/industry-register" element={<IndustryRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify" element={<EmailVerification />} />
         <Route path="/onboarding" element={<Onboarding />} />

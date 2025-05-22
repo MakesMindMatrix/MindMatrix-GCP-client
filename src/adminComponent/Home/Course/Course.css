@@ -1,3 +1,18 @@
-.course_container{
+.course_container {
     display: flex;
+}
+
+.main-content {
+    position: relative;
+}
+
+.reccModal_container {
+    background-color: #c7c7c7;
+    padding: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #acacac8a;
+    width: 100%;
 }

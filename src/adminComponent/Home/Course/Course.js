@@ -5,13 +5,14 @@ import { enrolledListAction, getBatchList } from '../../../actions/adminAction'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import EnrollModal from '../../Shared/EnrollModal/EnrollModal'
+import AddReccModal from './CourseComponent/AddReccModal'
 
 const Course = () => {
   // const [showModal, setShowModal] = useState(false)
 
   const dispatch = useDispatch()
-  const { all_batch, enrolled_students } = useSelector((state) => state.batch)
-  console.log(all_batch)
+  const { loading: academicDataLoading, all_batch, enrolled_students } = useSelector((state) => state.batch)
+  // console.log(all_batch)
   const handleBatch = (e) => {
     dispatch(enrolledListAction({ "batch_id": e.target.value }))
   }
@@ -30,6 +31,9 @@ const Course = () => {
         <AdminNavbar />
 
         <div className='main-content'>
+          <div className='reccModal_container'>
+            {/* <AddReccModal /> */}
+          </div>
           <h1>Course</h1>
           {/* Dropdown for selecting batch */}
           <select onChange={handleBatch}>
@@ -38,8 +42,9 @@ const Course = () => {
               return <option key={elm._id}>{elm.batch_id}</option>
             })}
           </select>
-
           <button>Enroll</button>
+
+          <button>Add Recommendation</button>
 
           <div className='users-table-parent'>
             <table className="users-table">
@@ -51,7 +56,7 @@ const Course = () => {
                 </tr>
               </thead>
               <tbody>
-                {enrolled_students && enrolled_students.data.map((user) => (
+                {enrolled_students && enrolled_students.data?.map((user) => (
                   <tr key={user.id}>
                     <td>{user.StudentName}</td>
                     <td>{user.StudentEmailId}</td>
