@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import './AddReccModal.css'
 import { getBranch, getCollegeList, getUniversity } from "../../../../actions/academicDataAction";
+import { addReccDataAction } from "../../../../actions/adminAction";
 
-const CourseForm = () => {
+const CourseForm = ({setAddReccModal}) => {
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         batch_id: "",
         course_name: "",
         course_banner_image: "",
         course_card_image: "",
-        course_university: [""],
-        course_college: [""],
-        course_branch: [""],
-        course_semester: [""],
+        course_university: [],
+        course_college: [],
+        course_branch: [],
+        course_semester: [],
         hero_section: {
             hero_title: "",
             hero_image: "",
@@ -50,7 +51,7 @@ const CourseForm = () => {
         },
     });
     const { loading, collegeListData, universityData, branchData } = useSelector((state) => state.academicData);
-
+    // console.log(formData)
     const handleChange = (e, path) => {
         const keys = path.split(".");
         setFormData((prev) => {
@@ -90,6 +91,21 @@ const CourseForm = () => {
         });
     };
 
+    const removeToArray = (index, path) => {
+        console.log(index)
+        const keys = path.split(".");
+        setFormData((prev) => {
+            const copy = { ...prev }
+            let nested = copy;
+            for (let i = 0; i < keys.length - 1; i++) {
+                nested = nested[keys[i]];
+            }
+            // console.log(nested[keys.at(-1)])
+            nested[keys.at(-1)].splice(index, 1)
+            return {...copy}
+        })
+    }
+
     const addModule = () => {
         setFormData((prev) => ({
             ...prev,
@@ -118,6 +134,7 @@ const CourseForm = () => {
         e.preventDefault();
         console.log("Submitting formData:", formData);
         // send to backend using axios or fetch
+        dispatch(addReccDataAction(formData))
     };
 
     useEffect(() => {
@@ -129,6 +146,7 @@ const CourseForm = () => {
     return (
         <div className="reccModal_container">
             <form onSubmit={handleSubmit}>
+                <button onClick={() => {setAddReccModal(false)}}>Close</button>
                 <h2>Basic Info</h2>
                 <div className="reccModal_basicInfo_parent">
                     <input placeholder="Batch ID" value={formData.batch_id} onChange={(e) => handleChange(e, "batch_id")} />
@@ -153,18 +171,22 @@ const CourseForm = () => {
                 <button type="button" onClick={() => addToArray("course_university")}>+ Add University</button>
 
                 <h3>Course College</h3>
-                {formData.course_college.map((item, idx) => (
-                    <select
-                        key={idx}
-                        value={item}
-                        onChange={(e) => handleArrayChange(e.target.value, "course_college", idx)}
-                    >
-                        <option value="">Select College</option>
-                        {collegeListData?.map((college) => (
-                            <option key={college._id} value={college._id}>{college.name}</option>
-                        ))}
-                    </select>
-                ))}
+                {formData.course_college.map((item, idx) => {
+                    return <div>
+                        <select
+                            key={idx}
+                            value={item}
+                            onChange={(e) => handleArrayChange(e.target.value, "course_college", idx)}
+                        >
+                            <option value="">Select College</option>
+                            {collegeListData?.map((college) => (
+                                <option key={college._id} value={college._id}>{college.name}</option>
+                            ))}
+                        </select>
+
+                        <button type="button" onClick={() => removeToArray(idx, "course_college")}>- Remove College</button>
+                    </div>
+                })}
                 <button type="button" onClick={() => addToArray("course_college")}>+ Add College</button>
 
                 <h3>Course Branch</h3>

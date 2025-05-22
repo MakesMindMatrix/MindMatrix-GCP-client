@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Course.css'
 import AdminNavbar from '../../Layout/AdminNavbar/AdminNavbar'
 import { enrolledListAction, getBatchList } from '../../../actions/adminAction'
@@ -6,13 +6,16 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import EnrollModal from '../../Shared/EnrollModal/EnrollModal'
 import AddReccModal from './CourseComponent/AddReccModal'
+import AllRecommendation from './CourseComponent/AllRecommendation'
 
 const Course = () => {
   // const [showModal, setShowModal] = useState(false)
 
   const dispatch = useDispatch()
   const { loading: academicDataLoading, all_batch, enrolled_students } = useSelector((state) => state.batch)
-  // console.log(all_batch)
+
+  const [showAddreccModal, setAddReccModal] = useState(false)
+  const [showreccDataModal, setShowReccDataModal] = useState(false)
   const handleBatch = (e) => {
     dispatch(enrolledListAction({ "batch_id": e.target.value }))
   }
@@ -20,7 +23,7 @@ const Course = () => {
   const handleUnEnroll = (user) => {
     console.log(user)
   }
-  console.log(enrolled_students)
+  // console.log(enrolled_students)
   useEffect(() => {
     dispatch(getBatchList())
   }, [dispatch])
@@ -31,8 +34,12 @@ const Course = () => {
         <AdminNavbar />
 
         <div className='main-content'>
-          <div className='reccModal_container'>
-            {/* <AddReccModal /> */}
+          <div className='reccModal_container' style={showAddreccModal ? {display: "initial"} : {display: 'none'}}>
+            <AddReccModal setAddReccModal={setAddReccModal}/>
+          </div>
+
+          <div className='reccModal_container' style={showreccDataModal ? {display: "initial"} : {display: 'none'}}>
+            <AllRecommendation setShowReccDataModal={setShowReccDataModal}/>
           </div>
           <h1>Course</h1>
           {/* Dropdown for selecting batch */}
@@ -44,9 +51,10 @@ const Course = () => {
           </select>
           <button>Enroll</button>
 
-          <button>Add Recommendation</button>
+          <button onClick={() => setAddReccModal(true)}>Add Recommendation</button>
+          <button onClick={() => setShowReccDataModal(true)}>View Recommendation</button>
 
-          <div className='users-table-parent'>
+          {/* <div className='users-table-parent'>
             <table className="users-table">
               <thead>
                 <tr>
@@ -68,7 +76,7 @@ const Course = () => {
                 ))}
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

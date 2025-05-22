@@ -15,4 +15,7 @@
     border-radius: 5px;
     box-shadow: 2px 2px 5px #acacac8a;
     width: 100%;
+    z-index: 9;
+    overflow: scroll;
+    height: 100vh;
 }
