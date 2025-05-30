@@ -66,6 +66,7 @@ const HomePage = () => {
                         <h1><span className='headingColor'>Your career companion</span> from day one to your dream job</h1>
                         <p>Unlocking the Potentials for Tomorrow</p>
                         <Link className='heroBtn' to='https://staging.mindmatrix.io/register'>Start today</Link>
+                        <Link className='heroBtn' to='/user-interest'>Show Your Interest</Link>
                     </div>
                     <div className='heroRight'>
                         <HeroSlider />

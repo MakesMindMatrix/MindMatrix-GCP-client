@@ -40,6 +40,7 @@ import CoursePayment from './component/Course/CoursePayment.js'
 import DashboardTest from './component/Home/DashboardTest.js';
 import HomePage from './component/Home/HomePage.js';
 import IndustryRegister from './component/User/IndustryRegister.js';
+import UserInterest from './component/Home/UserInterest.js';
 // import Footer from './component/layout/Footer/Footer.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
@@ -67,6 +68,7 @@ const App = () => {
       <Routes>
         <Route path="/test" element={<LandingPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/user-interest" element={<UserInterest />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/terms-conditions" element={<Terms />} />
