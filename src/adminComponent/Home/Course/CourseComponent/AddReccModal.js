@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import './AddReccModal.css'
 import { getBranch, getCollegeList, getUniversity } from "../../../../actions/academicDataAction";
 import { addReccDataAction } from "../../../../actions/adminAction";
+import { toast } from "react-toastify";
 
-const CourseForm = ({setAddReccModal}) => {
+const CourseForm = ({ setAddReccModal, initialData }) => {
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         batch_id: "",
@@ -51,7 +52,7 @@ const CourseForm = ({setAddReccModal}) => {
         },
     });
     const { loading, collegeListData, universityData, branchData } = useSelector((state) => state.academicData);
-    // console.log(formData)
+    console.log(formData)
     const handleChange = (e, path) => {
         const keys = path.split(".");
         setFormData((prev) => {
@@ -102,7 +103,7 @@ const CourseForm = ({setAddReccModal}) => {
             }
             // console.log(nested[keys.at(-1)])
             nested[keys.at(-1)].splice(index, 1)
-            return {...copy}
+            return { ...copy }
         })
     }
 
@@ -132,21 +133,27 @@ const CourseForm = ({setAddReccModal}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitting formData:", formData);
+        if (formData.batch_id === "") {
+            return toast.error("Please enter the batch id")
+        }
         // send to backend using axios or fetch
-        dispatch(addReccDataAction(formData))
+        // dispatch(addReccDataAction(formData))
     };
 
     useEffect(() => {
+        if (initialData) {
+            setFormData(initialData);
+        }
+
         dispatch(getUniversity())
         dispatch(getBranch())
         dispatch(getCollegeList())
-    }, [dispatch])
+    }, [dispatch, initialData])
 
     return (
         <div className="reccModal_container">
+            <button onClick={() => { setAddReccModal(false) }}>Close</button>
             <form onSubmit={handleSubmit}>
-                <button onClick={() => {setAddReccModal(false)}}>Close</button>
                 <h2>Basic Info</h2>
                 <div className="reccModal_basicInfo_parent">
                     <input placeholder="Batch ID" value={formData.batch_id} onChange={(e) => handleChange(e, "batch_id")} />
@@ -162,7 +169,7 @@ const CourseForm = ({setAddReccModal}) => {
                         value={item}
                         onChange={(e) => handleArrayChange(e.target.value, "course_university", idx)}
                     >
-                        <option value="">Select University</option>
+                        {/* <option value="">Select University</option> */}
                         {universityData?.data?.map((uni) => (
                             <option key={uni._id} value={uni._id}>{uni.name}</option>
                         ))}
@@ -178,7 +185,7 @@ const CourseForm = ({setAddReccModal}) => {
                             value={item}
                             onChange={(e) => handleArrayChange(e.target.value, "course_college", idx)}
                         >
-                            <option value="">Select College</option>
+                            {/* <option value="">Select College</option> */}
                             {collegeListData?.map((college) => (
                                 <option key={college._id} value={college._id}>{college.name}</option>
                             ))}
@@ -196,7 +203,7 @@ const CourseForm = ({setAddReccModal}) => {
                         value={item}
                         onChange={(e) => handleArrayChange(e.target.value, "course_branch", idx)}
                     >
-                        <option value="">Select Branch</option>
+                        {/* <option value="">Select Branch</option> */}
                         {branchData?.data?.map((branch) => (
                             <option key={branch._id} value={branch._id}>{branch.name}</option>
                         ))}

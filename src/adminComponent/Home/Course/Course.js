@@ -9,6 +9,7 @@ import AllRecommendation from './CourseComponent/AllRecommendation'
 
 const Course = () => {
   // const [showModal, setShowModal] = useState(false)
+  const [selectedCourse, setSelectedCourse] = useState(null)
 
   const dispatch = useDispatch()
   const { loading: academicDataLoading, all_batch, enrolled_students } = useSelector((state) => state.batch)
@@ -29,14 +30,14 @@ const Course = () => {
 
         <div className='main-content'>
           <div className='reccModal_container' style={showAddreccModal ? { display: "initial" } : { display: 'none' }}>
-            <AddReccModal setAddReccModal={setAddReccModal} />
+            <AddReccModal setAddReccModal={setAddReccModal} initialData={selectedCourse}/>
           </div>
 
           <h1>Course</h1>
 
           <button onClick={() => setAddReccModal(true)}>Add Recommendation</button>
           {all_reccData?.CourseInfo.map((elm, index) => {
-            return <ReccDataCard data={elm} key={index} setAddReccModal={setAddReccModal} />
+            return <ReccDataCard data={elm} key={index} setAddReccModal={setAddReccModal} setSelectedCourse={setSelectedCourse}/>
           })}
         </div>
       </div>
@@ -46,7 +47,8 @@ const Course = () => {
 
 export default Course
 
-const ReccDataCard = ({ data, setAddReccModal }) => {
+const ReccDataCard = ({ data, setAddReccModal, setSelectedCourse }) => {
+  
   const dispatch = useDispatch()
   const { batch_id, course_name, course_university, course_college, course_branch } = data
   // console.log(course_university, course_college, course_branch)
@@ -55,7 +57,8 @@ const ReccDataCard = ({ data, setAddReccModal }) => {
     dispatch(deleteReccDataAction(batch_id))
   }
 
-  const handleUpdate = (batch_id) => {
+  const handleUpdate = (course_data) => {
+    setSelectedCourse(course_data)
     setAddReccModal(true)
   }
 
@@ -64,7 +67,7 @@ const ReccDataCard = ({ data, setAddReccModal }) => {
       <div className='academicData_parent' style={{ margin: "2rem", padding: "2rem", backgroundColor: "white", display: "flex" }}>
         <div>
           <button onClick={() => handleDelete(batch_id)}>Delete</button>
-          <button onClick={() => handleUpdate(batch_id)}>Update</button>
+          <button onClick={() => handleUpdate(data)}>Update</button>
           {/* <button onClick={() => handleUpdate(batch_id)}>Enrolled Student</button> */}
         </div>
         <div>
