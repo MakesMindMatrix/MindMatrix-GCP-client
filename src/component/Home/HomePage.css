@@ -1194,6 +1194,13 @@
 }
 
 @media (max-width: 500px) {
+    .hero_section{
+        padding: 0 2rem;
+    }
+    .hero_section div div {
+        /* position: absolute; */
+        height: 45vh;
+    }
 
     .industryCard_container,
     .LearnerCard_container {
