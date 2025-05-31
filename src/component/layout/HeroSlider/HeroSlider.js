@@ -41,7 +41,7 @@ const HeroSlider = () => {
         speed: 500,
         // autoplaySpeed: 500,
         cssEase: "linear",
-        arrows: true,
+        // arrows: true,
         autoplay: true,
         focusOnSelect: true,
         responsive: [

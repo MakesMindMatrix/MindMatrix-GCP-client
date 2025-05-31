@@ -6,11 +6,20 @@
 .heroImage div {
     height: 100%;
     width: 50vw;
+    
 }
 
 @media (max-width: 998px) {
     .heroImage div {
         /* height: 100%; */
         width: 60vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroImage div {
+        /* height: 100%; */
+        width: 100%;
+        background-color: aqua;
     }
 }

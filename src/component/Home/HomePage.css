@@ -953,6 +953,12 @@
         /* background-color: #111324; */
     }
 
+    .hero_section div div {
+        /* position: absolute; */
+        height: 80vh;
+    }
+
+
     .hero_section div h1 {
         width: 100%;
     }
