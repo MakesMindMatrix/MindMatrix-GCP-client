@@ -1,0 +1,35 @@
+.interest_container {
+    display: flex;
+    height: 100vh;
+    max-width: 100vw;
+}
+
+.interest_container_left {
+    width: 25vw;
+}
+
+.interest_container_right {
+    /* flex: 1; */
+    overflow: auto;
+    width: auto;
+    padding: 1rem;
+}
+
+.interest_container_right table thead tr th {
+    white-space: nowrap;
+    text-align: left;
+    background-color: rgba(128, 128, 128, 0.329);
+    box-shadow: 2px 2px 5px #00000075;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.interest_container_right table tbody tr td {
+    white-space: nowrap;
+    background-color: rgba(128, 128, 128, 0.103);
+    box-shadow: 1px 1px 5px #0000003d;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}

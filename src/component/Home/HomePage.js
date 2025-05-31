@@ -80,8 +80,8 @@ const HomePage = () => {
                 <div className='learning_section'>
                     <h1>Our learning philosophy for <br /><span style={{ fontStyle: "italic", fontWeight: '400', color: "#13828F" }}>holistic developement</span></h1>
                     <div className='learning_section_card_container'>
-                        {LearningPhilosophyData.map((elm) => {
-                            return <div className='learning_section_card' >
+                        {LearningPhilosophyData.map((elm, index) => {
+                            return <div className='learning_section_card' key={index}>
                                 <LearningPhilosophyCard data={elm} />
                             </div>
                         })}
@@ -95,8 +95,8 @@ const HomePage = () => {
                     <Link to='/register'>Explore our most popular programs <span class="arrow ">→</span></Link>
 
                     <div className='learning_pathway_card_container'>
-                        {LearningPathwayData.map((elm) => {
-                            return <LearningPathwayCard data={elm} />
+                        {LearningPathwayData.map((elm, index) => {
+                            return <LearningPathwayCard data={elm} key={index}/>
                         })}
                     </div>
                 </div>
@@ -137,8 +137,8 @@ const HomePage = () => {
                                 <Link to='/register'>Register</Link>
                             </div>
                             <div className='quick_quiz_section_one_right'>
-                                {LearningData.map((elm) => {
-                                    return <LearnerCard data={elm} />
+                                {LearningData.map((elm, index) => {
+                                    return <LearnerCard data={elm} key={index}/>
                                 })}
                             </div>
                         </motion.div>
@@ -168,8 +168,8 @@ const HomePage = () => {
                                 {/* <button>Explore</button> */}
                             </div>
                             <div className='quick_quiz_section_two_right'>
-                                {IndustryData.map((elm) => {
-                                    return <IndustryCard data={elm} />
+                                {IndustryData.map((elm, index) => {
+                                    return <IndustryCard data={elm} key={index}/>
                                 })}
                             </div>
                         </motion.div>
@@ -181,8 +181,8 @@ const HomePage = () => {
                 <div className='curriculum_section'>
                     <h1 style={{ fontSize: '4.8rem' }}><span className='headingColor'>Certified & Curriculum</span> aligned</h1>
                     <div>
-                        {CertifiedData.map((elm) => {
-                            return <CertifiedCard data={elm} />
+                        {CertifiedData.map((elm, index) => {
+                            return <CertifiedCard data={elm} key={index}/>
                         })}
                     </div>
 

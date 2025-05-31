@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_FAIL, LOGIN_SUCCESS, REGISTER_USER_REQUEST, REGISTER_USER_FAIL, REGISTER_USER_SUCCESS, CLEAR_ERRORS, LOAD_USER_FAIL, LOAD_USER_SUCCESS, LOAD_USER_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL, UPDATE_USER_FAIL, UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, VERIFICATION_CODE_REQUEST, VERIFICATION_CODE_SUCCESS, VERIFICATION_CODE_FAIL, VERIFY_CODE_REQUEST, VERIFY_CODE_SUCCESS, VERIFY_CODE_FAIL, USER_INTEREST_CREATE_FAIL, USER_INTEREST_CREATE_REQUEST, USER_INTEREST_CREATE_SUCCESS } from "../constants/userConstant"
+import { LOGIN_REQUEST, LOGIN_FAIL, LOGIN_SUCCESS, REGISTER_USER_REQUEST, REGISTER_USER_FAIL, REGISTER_USER_SUCCESS, CLEAR_ERRORS, LOAD_USER_FAIL, LOAD_USER_SUCCESS, LOAD_USER_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAIL, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAIL, UPDATE_USER_FAIL, UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, VERIFICATION_CODE_REQUEST, VERIFICATION_CODE_SUCCESS, VERIFICATION_CODE_FAIL, VERIFY_CODE_REQUEST, VERIFY_CODE_SUCCESS, VERIFY_CODE_FAIL, USER_INTEREST_CREATE_FAIL, USER_INTEREST_CREATE_REQUEST, USER_INTEREST_CREATE_SUCCESS, GET_ALL_USER_INTEREST_FAIL, GET_ALL_USER_INTEREST_REQUEST, GET_ALL_USER_INTEREST_SUCCESS } from "../constants/userConstant"
 import axios from "axios"
 
 const BASE_URL=process.env.REACT_APP_BACKEND_URL
@@ -160,7 +160,7 @@ export const verifyCode = (verificationData) => async (dispatch) => {
     }
 };
 
-// Create User Inetrest form data
+// Create User Interest form data
 export const createUserInterestAction = (userData) => async (dispatch) => {
     try {
         dispatch({type: USER_INTEREST_CREATE_REQUEST})
@@ -172,6 +172,21 @@ export const createUserInterestAction = (userData) => async (dispatch) => {
         dispatch({ type: USER_INTEREST_CREATE_SUCCESS, payload: data })
     } catch (error) {
         dispatch({type: USER_INTEREST_CREATE_FAIL, payload: error.response.data.message})
+    }
+}
+// Get all user interest Data
+export const getAllUserInterestAction = () => async (dispatch) => {
+    try {
+        dispatch({type: GET_ALL_USER_INTEREST_REQUEST})
+
+        const config = { headers: { "Content-Type": "application/json", withCredentials: true } }
+
+        const { data } = await axios.get(`${BASE_URL}/api/v1/user-interest`, config)
+        
+        dispatch({ type: GET_ALL_USER_INTEREST_SUCCESS, payload: data })
+
+    } catch (error) {
+        dispatch({type: GET_ALL_USER_INTEREST_FAIL, payload: error.response.data.message })
     }
 }
 

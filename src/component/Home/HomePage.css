@@ -17,11 +17,13 @@
     justify-content: space-between;
     align-items: center;
 }
-.heroLeft{
+
+.heroLeft {
     width: 30vw;
     height: 60vh;
 }
-.heroRight{
+
+.heroRight {
     width: 50vw;
     height: 50vh;
     /* background-color: #111324; */
@@ -190,7 +192,7 @@
     margin: 0 0 3rem 0;
 }
 
-.learning_pathway_section> a {
+.learning_pathway_section>a {
     margin: 3rem 0;
     display: flex;
     align-items: center;
@@ -697,7 +699,7 @@
     margin: 1rem 0;
 }
 
-.footer_section ul li a{
+.footer_section ul li a {
     text-decoration: none;
     color: white;
 }
@@ -937,6 +939,18 @@
     .hero_section {
         height: auto;
         flex-direction: column-reverse;
+        padding: 0 4rem;
+    }
+
+    .heroLeft {
+        width: 100%;
+        height: auto;
+    }
+
+    .heroRight {
+        width: 100%;
+        height: auto;
+        /* background-color: #111324; */
     }
 
     .hero_section div h1 {

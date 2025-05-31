@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 const UserInterest = () => {
     const dispatch = useDispatch()
     const { collegeData, universityData, branchData } = useSelector((state) => state.academicData)
-    console.log(universityData)
     const [isStudent, setIsStudent] = useState(true)
+    // console.log(isStudent)
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -23,7 +23,7 @@ const UserInterest = () => {
         admissionYear: "",
         isStudent
     })
-
+    console.log(formData.isStudent)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -117,14 +117,20 @@ const UserInterest = () => {
                                 <button
                                     type="button"
                                     className={`toggle-btn ${isStudent ? 'active-btn' : ''}`}
-                                    onClick={() => setIsStudent(true)}
+                                    onClick={() => {
+                                        setIsStudent(true)
+                                        setFormData({...formData, isStudent: true})
+                                    }}
                                 >
                                     Student
                                 </button>
                                 <button
                                     type="button"
                                     className={`toggle-btn ${!isStudent ? 'active-btn' : ''}`}
-                                    onClick={() => setIsStudent(false)}
+                                    onClick={() => {
+                                        setIsStudent(false)
+                                        setFormData({...formData, isStudent: false})
+                                    }}
                                 >
                                     College
                                 </button>

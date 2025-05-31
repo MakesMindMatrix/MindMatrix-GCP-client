@@ -41,6 +41,7 @@ import DashboardTest from './component/Home/DashboardTest.js';
 import HomePage from './component/Home/HomePage.js';
 import IndustryRegister from './component/User/IndustryRegister.js';
 import UserInterest from './component/Home/UserInterest.js';
+import Interest from './adminComponent/Home/Interest/Interest.js';
 // import Footer from './component/layout/Footer/Footer.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
@@ -109,6 +110,7 @@ const App = () => {
           <Route path="/admin-dashboard/academic" element={<Academic />} />
           <Route path="/admin-dashboard/course" element={<Course />} />
           <Route path="/admin-dashboard/payment" element={<AdminPayment />} />
+          <Route path="/admin-dashboard/user-interest" element={<Interest />} />
         </Route>
       </Routes>
       <ToastContainer />
