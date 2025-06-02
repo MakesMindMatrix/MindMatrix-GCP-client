@@ -52,6 +52,31 @@
   color: #fff;
 }
 
+.userInterest_submit_modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 30rem;
+  height: 12rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.479);
+}
+
+.userInterest_submit_modal .icon{
+  position: absolute;
+  cursor: pointer;
+  font-size: 2rem;
+  right: 1rem;
+  top: 1rem;
+}
+
+.userInterest_submit_modal h1{
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
 /* =======================
    Left Section (Image)
 ========================== */

@@ -59,7 +59,7 @@ export const loadUser = () => async (dispatch) => {
         const { data } = await axios.get(`${BASE_URL}/api/v1/me`, {
             withCredentials: true
           })
-        console.log(data?.message)
+
         dispatch({ type: LOAD_USER_SUCCESS, payload: data.user })
     } catch (error) {
         console.log(error.response.data?.message || "Failed to load user");

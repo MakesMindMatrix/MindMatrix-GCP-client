@@ -5,13 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBranch, getCollege, getUniversity } from '../../actions/academicDataAction'
 import { createUserInterestAction } from '../../actions/userAction'
 import { toast } from "react-toastify";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const UserInterest = () => {
     const dispatch = useDispatch()
     const { collegeData, universityData, branchData } = useSelector((state) => state.academicData)
     const [isStudent, setIsStudent] = useState(true)
+    const [showModal, setShowModal] = useState(false)
     // console.log(isStudent)
-    const [formData, setFormData] = useState({
+    const initialFormData = (isStudentValue) => ({
         name: "",
         email: "",
         phone: "",
@@ -21,9 +23,10 @@ const UserInterest = () => {
         branch: "",
         specialization: "",
         admissionYear: "",
-        isStudent
+        isStudent: isStudentValue
     })
-    console.log(formData.isStudent)
+    const [formData, setFormData] = useState(initialFormData(true))
+    console.log(formData)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -71,6 +74,7 @@ const UserInterest = () => {
         }
         console.log("Form Submitted")
         dispatch(createUserInterestAction(formData))
+        setShowModal(true)
     }
 
     useEffect(() => {
@@ -107,7 +111,10 @@ const UserInterest = () => {
                         </Link>
                     </div>
                 </div>
-
+                <div className='userInterest_submit_modal' style={showModal ? {display: "initial"} : {display: "none"}}>
+                    <IoMdCloseCircleOutline className='icon' onClick={() => {setShowModal(false)}}/>
+                    <h1>Thank You for showing interest. We will get back to you shortly</h1>
+                </div>
                 {/* User Interest Form */}
                 <div className='userInterest_body'>
                     <div className='userInterest_body_left'></div>
@@ -120,7 +127,7 @@ const UserInterest = () => {
                                     className={`toggle-btn ${isStudent ? 'active-btn' : ''}`}
                                     onClick={() => {
                                         setIsStudent(true)
-                                        setFormData({...formData, isStudent: true})
+                                        setFormData(initialFormData(true))
                                     }}
                                 >
                                     Student
@@ -130,7 +137,7 @@ const UserInterest = () => {
                                     className={`toggle-btn ${!isStudent ? 'active-btn' : ''}`}
                                     onClick={() => {
                                         setIsStudent(false)
-                                        setFormData({...formData, isStudent: false})
+                                        setFormData(initialFormData(false))
                                     }}
                                 >
                                     College
