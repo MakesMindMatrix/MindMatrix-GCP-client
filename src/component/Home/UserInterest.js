@@ -110,7 +110,8 @@ const UserInterest = () => {
 
                 {/* User Interest Form */}
                 <div className='userInterest_body'>
-                    <div className='userInterest_body_left' style={isStudent ? { height: "100vh" } : { height: "80vh" }}></div>
+                    <div className='userInterest_body_left'></div>
+                    {/* style={isStudent ? { height: "100vh" } : { height: "80vh" }} */}
                     <div className='userInterest_body_right'>
                         <form onSubmit={handleSubmit}>
                             <div className="toggle-switch">
