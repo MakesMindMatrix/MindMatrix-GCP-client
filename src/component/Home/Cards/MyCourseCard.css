@@ -39,6 +39,8 @@
 
 .courseContent_box {
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .reportData_box {

@@ -56,20 +56,23 @@ const RecCard = ({ data}) => {
                 <div className='courseContent_box'>
                     <h1 className="course_name">{data?.course_name}</h1>
                     <p className='course_description'>{data?.course_description}</p>
+
+                </div>
+                <div className='courseDateprice_box'>
                     <div className='courseDate_box'>
                         <FaRegCalendarMinus />
                         <h2>Starts on <span style={{color: '#4CBB90'}}>{startDate}</span></h2>
                     </div>
-
                     <div className='coursePrice_box'>
                         <h2>₹ {data?.batch_price}</h2>
                         {/* {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null} */}
                     </div>
+                    {/* <h1 className="course_name">{data?.course_name}</h1> */}
+                    <button className='view_button' onClick={handleViewMore}>
+                        View more
+                    </button>
                 </div>
-                <h1 className="course_name">{data?.course_name}</h1>
-                <button className='view_button' onClick={handleViewMore}>
-                    View more
-                </button>
+
                 {/* {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null} */}
             </div>
         </>

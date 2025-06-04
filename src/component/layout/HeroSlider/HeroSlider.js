@@ -38,10 +38,10 @@ const HeroSlider = () => {
         // centerMode: true,
         centerPadding: '60px',
         slidesToShow: 1,
-        speed: 500,
+        speed: 1000,
         // autoplaySpeed: 500,
         cssEase: "linear",
-        // arrows: true,
+        arrows: false,
         autoplay: true,
         focusOnSelect: true,
         responsive: [
