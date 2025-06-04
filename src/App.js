@@ -39,6 +39,9 @@ import PaymentFailure from './component/User/PaymentFailure.js';
 import CoursePayment from './component/Course/CoursePayment.js'
 import DashboardTest from './component/Home/DashboardTest.js';
 import HomePage from './component/Home/HomePage.js';
+import IndustryRegister from './component/User/IndustryRegister.js';
+import UserInterest from './component/Home/UserInterest.js';
+import Interest from './adminComponent/Home/Interest/Interest.js';
 // import Footer from './component/layout/Footer/Footer.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
@@ -66,6 +69,7 @@ const App = () => {
       <Routes>
         <Route path="/test" element={<LandingPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/user-interest" element={<UserInterest />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/terms-conditions" element={<Terms />} />
@@ -73,6 +77,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/sendMail" element={<SendMail />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/industry-register" element={<IndustryRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/verify" element={<EmailVerification />} />
         <Route path="/onboarding" element={<Onboarding />} />
@@ -80,6 +85,8 @@ const App = () => {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/dashboard-test" element={<DashboardTest />} />
+
+        <Route path="/courses/:courseName" element={<CourseLandingPage />} />
 
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />
@@ -91,7 +98,6 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/courses/:courseName" element={<CourseLandingPage />} />
           <Route path="/payment/:batchId/:courseName/:coursePrice" element={<CoursePayment />} />
 
           {/* College routes */}
@@ -105,6 +111,7 @@ const App = () => {
           <Route path="/admin-dashboard/academic" element={<Academic />} />
           <Route path="/admin-dashboard/course" element={<Course />} />
           <Route path="/admin-dashboard/payment" element={<AdminPayment />} />
+          <Route path="/admin-dashboard/user-interest" element={<Interest />} />
         </Route>
       </Routes>
       <ToastContainer />

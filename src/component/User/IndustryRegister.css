@@ -1,0 +1,33 @@
+/* .industryRegister_container{
+
+} */
+.industryRegister_container_left{
+    width: 70vw;
+    height: 200vh;
+    background-color: antiquewhite;
+}
+
+.industryRegister_container_right{
+    width: 30vw;
+    height: 90vh;
+    background-color: aqua;
+    position: fixed;
+    right: 0;
+    top: 10vh;
+}
+.industryRegister_container_left div{
+    height: 50vh;
+    width: 50vw;
+}
+/* .industryRegister_container_left div:nth-child(1){
+    background-color: aquamarine;
+}
+.industryRegister_container_left div:nth-child(2){
+    background-color: rgb(153, 255, 127);
+}
+.industryRegister_container_left div:nth-child(3){
+    background-color: rgb(127, 140, 255);
+}
+.industryRegister_container_left div:nth-child(4){
+    background-color: rgb(174, 255, 127);
+} */

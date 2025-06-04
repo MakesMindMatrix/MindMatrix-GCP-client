@@ -1,18 +1,19 @@
-.curriculum_section {
+.course_curriculum_section {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    font-family: 'Inter', Arial, sans-serif;
 }
   
-.curriculum_module {
+.course_curriculum_module {
     background: #fff;
     border-radius: 1.2rem;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     overflow: hidden;
 }
   
-.curriculum_module_header {
+.course_curriculum_module_header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -29,45 +30,45 @@
     border-radius: 0;
 }
   
-.curriculum_module_header:focus,
-.curriculum_module_header:focus-visible {
+.course_curriculum_module_header:focus,
+.course_curriculum_module_header:focus-visible {
   outline: none;
   box-shadow: none;
 }
 
 /* On hover and active */
-.curriculum_module_header:hover,
-.curriculum_module_header.active {
+.course_curriculum_module_header:hover,
+.course_curriculum_module_header.active {
   background: #ebf2fa;
 }
 
   
-.arrow {
+.curriculum_module_arrow {
     font-size: 2.4rem;
     transition: transform 0.3s ease;
 }
   
-.arrow.active {
+.curriculum_module_arrow.active {
     transform: rotate(180deg);
     color: #148492;
     background-color: #ebf2fa;
 }
   
-.curriculum_module_body {
+.course_curriculum_module_body {
     padding: 0 2rem;
     background: #f9fafb;
     overflow: hidden;
     transition: max-height 0.4s ease;
 }
   
-.curriculum_module_description {
+.course_curriculum_module_description {
     font-size: 1.3rem;
     color: #333;
     margin: 1.5rem 0;
     line-height: 1.6;
 }
 
-.curriculum_module.active {
+.course_curriculum_module.active {
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
   }
   

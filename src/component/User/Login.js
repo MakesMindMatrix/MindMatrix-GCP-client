@@ -9,6 +9,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleButton from 'react-google-button'
+import AuthLeft from './AuthLeft/AuthLeft';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -108,11 +109,14 @@ const Login = () => {
                 <>
                     <div className='login_container'>
                         <div className='login_left'>
-                            <div className='login_left_image'></div>
+                            {/* <div className='login_left_image'></div> */}
+                            <AuthLeft />
                         </div>
                         <div className='login_right'>
                             <form className='loginForm' onSubmit={loginSubmit} noValidate>
-                                <div className='login_logo'></div>
+                                <Link to="/">
+                                     <div className='login_logo'></div>
+                                </Link>
                                 <div className='loginEmail'>
                                     <MdOutlineMail />
                                     <input

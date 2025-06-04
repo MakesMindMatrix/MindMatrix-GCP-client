@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Onboarding.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineMail } from "react-icons/md";
 import { FiSmartphone } from "react-icons/fi";
 import { LiaUniversitySolid } from "react-icons/lia";
@@ -14,6 +14,7 @@ import { getBranch, getCollege, getUniversity } from '../../actions/academicData
 import Loader from '../layout/Loader/Loader'
 import { toast } from "react-toastify";
 import EmailVerification from './EmailVerification';
+import AuthLeft from './AuthLeft/AuthLeft';
 
 const Onboarding = () => {
     const navigate = useNavigate()
@@ -159,7 +160,9 @@ const Onboarding = () => {
                             setShowModal={setShowModal}
                             user={user}
                         />
-                        <div className='onboarding_left'></div>
+                        <div className='onboarding_left'>
+                            <AuthLeft />
+                        </div>
                         <div className='onboarding_right'>
                             <form
                                 className='signUpForm'
@@ -167,7 +170,9 @@ const Onboarding = () => {
                                 onSubmit={onboardingSubmit}
                                 noValidate
                             >
-                                <div className='register_logo'></div>
+                                <Link to="/">
+                                    <div className='register_logo'></div>
+                                </Link>
                                 <div className='signUpEmail verify_parent'>
                                     <MdOutlineMail />
                                     <input

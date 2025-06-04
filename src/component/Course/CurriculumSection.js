@@ -10,26 +10,26 @@ const CurriculumSection = ({ modules }) => {
   };
 
   return (
-    <div className="curriculum_section">
+    <div className="course_curriculum_section">
       {modules && modules.length > 0 ? (
         modules.map((module, idx) => (
-          <div className="curriculum_module" key={idx}>
+          <div className="course_curriculum_module" key={idx}>
             <button
-              className={`curriculum_module_header${openIndex === idx ? ' active' : ''}`}
+              className={`course_curriculum_module_header${openIndex === idx ? ' active' : ''}`}
               onClick={() => handleToggle(idx)}
             >
               <span>{`${module.title}`}</span>
-              <RiArrowDropDownLine className={`arrow${openIndex === idx ? ' active' : ''}`} />
+              <RiArrowDropDownLine className={`curriculum_module_arrow${openIndex === idx ? ' active' : ''}`} />
             </button>
             <div
-              className="curriculum_module_body"
+              className="course_curriculum_module_body"
               style={{
                 maxHeight: openIndex === idx ? '500px' : '0',
                 overflow: 'hidden',
                 transition: 'max-height 0.4s ease'
               }}
             >
-              <p className="curriculum_module_description">{module.description}</p>
+              <p className="course_curriculum_module_description">{module.description}</p>
             </div>
           </div>
         ))

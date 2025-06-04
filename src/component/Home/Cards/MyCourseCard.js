@@ -10,7 +10,7 @@ const MyCourseCard = ({ data }) => {
  
   const [courseInfo,setCourseInfo] = useState(null);
   const course_progress = report_data && report_data.filter((elm) => elm.courseName === data.course_name)
-  console.log(course_progress)
+  // console.log(course_progress)
 
   let percentage;
   let taskSubmitted;

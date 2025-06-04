@@ -12,16 +12,19 @@
     height: 100vh;
     max-width: 100vw;
     /* padding: 14rem 8rem 5rem 8rem; */
-    padding: 11rem 8rem;
+    background-color: #DFF0F3;
+    padding: 0rem 8rem 11rem 8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.heroLeft{
+
+.heroLeft {
     width: 30vw;
     height: 60vh;
 }
-.heroRight{
+
+.heroRight {
     width: 50vw;
     height: 50vh;
     /* background-color: #111324; */
@@ -54,6 +57,7 @@
     font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 1.6rem;
+    margin: 0.5rem;
 }
 
 .hero_section div div {
@@ -102,7 +106,7 @@
 /* Learning Section */
 .learning_section {
     /* background-image: linear-gradient(90deg, #053237bb, #2f7984be); */
-    padding: 6rem 4rem;
+    padding: 4rem 4rem 8rem 4rem;
     width: 90%;
     margin: 0 auto;
     border-radius: 25px;
@@ -189,7 +193,7 @@
     margin: 0 0 3rem 0;
 }
 
-.learning_pathway_section> a {
+.learning_pathway_section>a {
     margin: 3rem 0;
     display: flex;
     align-items: center;
@@ -487,7 +491,7 @@
     background-size: cover;
     background-position: center;
     width: 35%;
-    height: 45%;
+    height: 50%;
 }
 
 .companion_card_four_bottom>h1 {
@@ -539,7 +543,7 @@
     background-size: 100%;
     background-position: center;
     width: 40%;
-    height: 50%;
+    height: 60%;
 }
 
 /* Students Section */
@@ -696,7 +700,7 @@
     margin: 1rem 0;
 }
 
-.footer_section ul li a{
+.footer_section ul li a {
     text-decoration: none;
     color: white;
 }
@@ -721,6 +725,13 @@
 
 .learningPathwayCard_container>p {
     font-size: 1.2rem;
+}
+.homeProgramBtn{
+    border: none;
+    width: 100%;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    cursor: pointer;
 }
 
 .learning_philosophy_card_container {
@@ -935,7 +946,26 @@
 @media (max-width: 768px) {
     .hero_section {
         height: auto;
+        flex-direction: column-reverse;
+        padding: 0 4rem;
     }
+
+    .heroLeft {
+        width: 100%;
+        height: auto;
+    }
+
+    .heroRight {
+        width: 100%;
+        height: auto;
+        /* background-color: #111324; */
+    }
+
+    .hero_section div div {
+        /* position: absolute; */
+        height: 80vh;
+    }
+
 
     .hero_section div h1 {
         width: 100%;
@@ -1172,6 +1202,13 @@
 }
 
 @media (max-width: 500px) {
+    .hero_section{
+        padding: 0 2rem;
+    }
+    .hero_section div div {
+        /* position: absolute; */
+        height: 45vh;
+    }
 
     .industryCard_container,
     .LearnerCard_container {

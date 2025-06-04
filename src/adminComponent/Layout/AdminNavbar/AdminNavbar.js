@@ -26,6 +26,7 @@ const AdminNavbar = () => {
                     <Link className='adminNavbar_link' to='/admin-dashboard/academic'>Academic</Link>
                     <Link className='adminNavbar_link' to='/admin-dashboard/course'>Course</Link>
                     <Link className='adminNavbar_link' to='/admin-dashboard/payment'>Payment</Link>
+                    <Link className='adminNavbar_link' to='/admin-dashboard/user-interest'>Interest</Link>
                     <button className='adminNavbar_link' onClick={handleLogout}>Logout</button>
                 </div>
             </div>

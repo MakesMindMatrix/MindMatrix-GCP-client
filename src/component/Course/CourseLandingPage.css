@@ -54,14 +54,14 @@
 /* Hero Section */
 .hero-section {
     background: #fff;
-    border-radius: 2rem;
-    margin: 2rem auto 2rem auto;
+    margin: 2% auto 2rem auto;
     max-width: 1300px;
     box-shadow: 0 6px 32px rgba(0,0,0,0.08);
     padding: 0;
     display: flex;
     align-items: center;
     min-height: 380px;
+    border-radius: 2rem;
 }
 
 .hero-content {
@@ -69,6 +69,7 @@
     width: 100%;
     padding: 2.5rem 2.5rem 2.5rem 4rem;
     gap: 2rem;
+   
 }
 
 .hero-left {
@@ -137,11 +138,16 @@
     background: #fff;
     border-radius: 2rem;
     /* margin: 2.5rem auto 2rem auto; */
-    max-width: 800px;
+    width: 50%;
+    /* max-width: 800px; */
     box-shadow: 0 6px 32px rgba(0,0,0,0.06);
-    padding: 1rem 2.5rem 2rem 2.5rem;
-    flex: 1 1 0;
+    padding: 1rem 2% 1rem 2%;
+    display: flex;
     min-width: 0;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
 }
   
 .what-you-get-title {
@@ -150,14 +156,15 @@
     color: #148492;
     margin-bottom: 2rem;
     text-align: center;
+    display: flex;
 }
 
 .what-you-get-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem 2rem;
+    gap: 2rem 2.5rem;
     list-style: none;
-    padding: 0;
+    padding-bottom: 10%;    
     margin: 0;
 }
 
@@ -171,40 +178,22 @@
 .tick-icon {
     color: #148492;
     margin-right: 0.8rem;
-    font-size: 1.5rem;
+    flex-shrink: 0;      /* Prevent shrinking */
+    width: 1.5em;        /* Set a consistent width */
+    height: 1.5em;       /* Set a consistent height */
+    vertical-align: middle;
+    /* font-size: 1.5rem; */
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-.hero-content {
-    flex-direction: column;
-    padding: 2rem 1.2rem;
-}
-.hero-right {
-    justify-content: center;
-    margin-top: 2rem;
-}
-.hero-image {
-    margin-left: 0;
-    max-width: 90vw;
-}
-.what-you-get-section,
-.hero-section {
-    max-width: 98vw;
-    padding: 1.2rem;
-}
-.what-you-get-list {
-    grid-template-columns: 1fr;
-}
-}
+
 
 .course-details-wrapper {
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: stretch;
     gap: 2.5rem;
     max-width: 1300px;
-    margin: 2.5rem auto 2rem auto;
+    margin: 2.5rem auto;
 }
 
 
@@ -213,12 +202,15 @@
     background: #fff;
     border-radius: 2rem;
     box-shadow: 0 6px 32px rgba(0,0,0,0.06);
-    width: 450px;
+    width: 50%;
     min-width: 320px;
     padding: 2rem 2rem 2.5rem 2rem;
-    flex: 0 0 500px;
     display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
     flex-direction: column;
+    align-items: center;
     /* align-items: flex-start; */
 }
 
@@ -236,11 +228,12 @@
 }
 
 .instructor-photo {
-    width: 130px;
-    height: 130px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 2px 8px rgba(20,132,146,0.12);
+    margin-right: 5%;
 }
 
 .instructor-info {
@@ -274,20 +267,7 @@
     text-justify: distribute-all-lines;
 }
 
-/* Responsive: stack vertically on small screens */
-@media (max-width: 800px) {
-    .course-details-wrapper {
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 98vw;
-    }
-    .instructor-section {
-      width: 100%;
-      min-width: 0;
-      margin: 0 auto;
-    }
-  }
-  
+
 /* About Course */
 .course_about {
     display: flex;
@@ -403,12 +383,11 @@
 
 /* Course curriculum */
 .course_curriculum {
-    height: 100vh;
+    /* height: 80vh; */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80vh;
-    margin: 5rem auto;
+    margin: 2rem auto;
     max-width: 1300px;
     gap: 3rem;
 }
@@ -425,12 +404,12 @@
     width: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .course_curriculum_img {
     width: 90%;
-    height: 70vh;
+    height: 50vh;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -461,3 +440,142 @@
     line-height: 3rem;
     width: 80%;
 } */
+
+/* Responsive Design */
+@media (max-width: 900px) {
+.hero-section{
+    margin-top: 10rem;
+}
+.hero-content {
+    flex-direction: column;
+    padding: 2rem 1.2rem;
+}
+.hero-right {
+    justify-content: center;
+    margin-top: 2rem;
+}
+.hero-image {
+    margin-left: 0;
+    max-width: 90vw;
+}
+.what-you-get-section,
+.hero-section {
+    max-width: 98vw;
+    padding: 1.2rem;
+}
+.what-you-get-list {
+    grid-template-columns: 1fr;
+    padding: 5% 20%;
+    gap: 2em;
+}
+
+.course_curriculum{
+    margin: 0rem auto;
+    height: 60vh;
+}
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 800px) {
+    .course-details-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      max-width: 98vw;
+    }
+
+    .instructor-section {
+      width: 50%;
+      min-width: 0;
+      margin: 0 auto;
+    }
+
+    .course_curriculum {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: flex-start;
+    }
+    .course_curriculum_left{
+        width : 80%;
+    }
+    .course_curriculum_right{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+  }
+  
+  @media (max-width: 750px) {
+    .course-details-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 98vw;
+    }
+
+    
+    .what-you-get-section{
+        width: 80%;
+    }
+
+    .what-you-get-list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0 0 15% 0;
+        gap: 20% 20%;    
+        margin: 0;
+    }
+    .tick-icon{
+        margin-right: 1rem;
+    }
+    .instructor-section{
+        width:80%;   
+    }
+  }
+
+  @media (max-width: 550px) {
+    .course-details-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* gap: 10rem; */
+      /* max-width: 98vw; */
+    }
+
+    
+    .what-you-get-section{
+        width: 100%;
+
+    }
+
+    .what-you-get-list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0 5% 15% 5%;
+        gap: 20% 10%;    
+        margin: 0;
+    }
+    .tick-icon{
+        margin-right: 1rem;
+    }
+    .instructor-section{
+        width:100%;   
+    }
+
+    .course_curriculum_left{
+        width : 100%;
+    }
+    .course_curriculum_right{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .course_curriculum_heading {
+        text-align: center; 
+    }
+
+  }

@@ -57,7 +57,7 @@
     background-color: white;
     border-radius: 100px;
     font-family: "Kanit", sans-serif;
-    margin-right: 2rem;
+    margin-right: 1rem;
     font-size: 1.8rem;
     font-weight: 300;
     text-decoration: none;
@@ -482,18 +482,19 @@
 
 .navbar,
 .responsiveNavbar {
-    height: 8rem;
+    height: 7rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
-    z-index: 999;
-    border-radius: 100px;
-    left: 5vw;
-    top: 2vh;
-    width: 90vw;
-    background-color: #DFF0F3;
+    /* position: fixed; */
+    /* z-index: 999; */
+    /* border-radius: 10px; */
+    /* left: 2.5vw; */
+    /* top: 2vh; */
+    /* width: 95vw; */
+    margin: 0rem auto;
+    background-color: white;
     padding: 1rem 5rem;
 }
 

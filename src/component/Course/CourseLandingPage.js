@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import './CourseLandingPage.css'
 import Navbar from '../layout/Navbar/Navbar'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { FaCheckCircle } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
-import { courseDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
+import { courseDataAction, courseLandingPageDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
 import CurriculumSection from './CurriculumSection';
 import { IoIosCloseCircle } from 'react-icons/io';
 
 const CourseLandingPage = () => {
+  const navigate = useNavigate()
 
   const slugify = (str) =>
     str
-        .toLowerCase()
-        .replace(/ /g, '-')
-        .replace(/[^\w-]+/g, '');
-  const {courseName : course_slug} = useParams();
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
+  const { courseName: course_slug } = useParams();
   const dispatch = useDispatch();
 
-  const { loading: userLoading, isAuthenticated, user} = useSelector((state) => state.user);
-  const { loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
-  const { loading: courseLoading, enroll_course , rec_course} = useSelector((state) => state.myCourse)
+  const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user);
+  const { loading, courseLandingPageData } = useSelector((state) => state.courseLandingPage);
+  const { loading: courseLoading, enroll_course, rec_course } = useSelector((state) => state.myCourse)
   const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
   const { sso } = useSelector((state) => state.SSO);
 
-  const courseData = rec_course ? rec_course.find(course => slugify(course.course_name) === course_slug) : null;
+  const courseData = courseLandingPageData ? courseLandingPageData.CourseInfo.find((course) => {
+    return slugify(course.course_name) === course_slug
+  }) : null;
+  // console.log(course.course_name)
   const external_batch_id = courseData ? courseData.external_batch_id : null;
-  
+  // console.log(courseLandingPageData.CourseInfo)
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
-  
+
   const [paymentCourseData, setPaymentCourseData] = useState({
     batch_id: "",
     course_name: "",
@@ -42,7 +46,7 @@ const CourseLandingPage = () => {
     email: user?.email || "",
     batch_id: ''
   });
-  
+
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(courseDataAction(user.email));
@@ -50,6 +54,7 @@ const CourseLandingPage = () => {
         dispatch(getCourseInfoByBatchId(external_batch_id));
       }
     }
+    dispatch(courseLandingPageDataAction())
   }, [dispatch, isAuthenticated, user, external_batch_id]);
   // const userEmail = user.email
   useEffect(() => {
@@ -75,42 +80,46 @@ const CourseLandingPage = () => {
   useEffect(() => {
     if (enroll_course) {
       console.log(`${sso}&external_batch_id=${external_batch_id}`);
-      window.location.href = `${sso}&external_batch_id=${external_batch_id}` 
+      window.location.href = `${sso}&external_batch_id=${external_batch_id}`
     }
   }, [enroll_course, sso, external_batch_id]);
 
   // Load until all data is fetched
-  if (loading || userLoading || courseLoading || !courseLandingPageData ) {
+  if (loading || userLoading || courseLoading || !courseLandingPageData) {
     return <Loader />;
   };
 
   // Get course from store
-  const course = courseLandingPageData;
-  console.log("Fetched course:", course);
+  const course = courseData;
+  // console.log("Fetched course:", course);
 
   // Links for Images
   const heroImage = course.hero_section?.hero_image || '/iot-landing-page.jpg';
   const instructorImage = course.instructor_section?.instructor_image || '/instructor.png';
   const curriculumImage = course.curriculum_section?.curriculum_image || '/iot-image.jpg';
   const paymentImage = "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
-  
+
   const handleEnrollConfirmation = () => {
     setConfirmModal(false);
     dispatch(enrollCourse(enrollCourseData));
   };
   const handleEnroll = () => {
+    if(!isAuthenticated){
+      return navigate('/login')
+    }
+
     if (courseData.batch_price > 0) {
-        setPaymentCourseData({
-            batch_id: courseData.external_batch_id,
-            course_name: courseData.course_name,
-            batch_price: courseData.batch_price,
-            description: courseData.course_description
-        })
-        setPaymentModal(true)
-        setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+      setPaymentCourseData({
+        batch_id: courseData.external_batch_id,
+        course_name: courseData.course_name,
+        batch_price: courseData.batch_price,
+        description: courseData.course_description
+      })
+      setPaymentModal(true)
+      setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
     } else {
-        setConfirmModal(true)
-        setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+      setConfirmModal(true)
+      setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
     }
   };
 
@@ -121,90 +130,110 @@ const CourseLandingPage = () => {
       batchId: paymentCourseData.batch_id
     }))
   };
-  
-  console.log(coursePaymentStatus);
+
+  // console.log(coursePaymentStatus);
   return (
-      <div className='CourseLandingPage_container'>
-        <Navbar />
+    <div className='CourseLandingPage_container'>
+      {isAuthenticated ? <Navbar /> : <div className="navbar">
+        <Link to="/">
+          <div className="logo"></div>
+        </Link>
+        <div className="nav_right">
 
-        {/* Confirm modal */}
-        <div className='confirmModal_container' style={confirmModal ? { display: 'flex' } : { display: 'none' }}>
-          <h1 className='confirmModal_heading'>Do you want to enroll in this course</h1>
-          <div className='confirmModal_button_parent'>
-            <button className='confirmModal_button' onClick={handleEnrollConfirmation}>Yes</button>
-            <button className='confirmModal_button' onClick={() => setConfirmModal(false)}>No</button>
+          <Link
+            to="/register"
+            className="btnTwo auth_btn"
+          >
+            Sign Up
+          </Link>
+
+          <Link
+            to="/login"
+            className="btnOne auth_btn"
+          >
+            Login
+          </Link>
+        </div>
+      </div>}
+
+      {/* Confirm modal */}
+      <div className='confirmModal_container' style={confirmModal ? { display: 'flex' } : { display: 'none' }}>
+        <h1 className='confirmModal_heading'>Do you want to enroll in this course</h1>
+        <div className='confirmModal_button_parent'>
+          <button className='confirmModal_button' onClick={handleEnrollConfirmation}>Yes</button>
+          <button className='confirmModal_button' onClick={() => setConfirmModal(false)}>No</button>
+        </div>
+      </div>
+
+      {/* Payment modal */}
+      <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
+        <div className='pymentModal_container'>
+          <IoIosCloseCircle className='payment_close_btn' onClick={() => setPaymentModal(false)} />
+          <div className='paymentModal_image' style={{ backgroundImage: `url(${paymentImage})`, }}></div>
+          <h1 className='paymentModal_heading'>{paymentCourseData.course_name}</h1>
+          <h1 className='paymentModal_price'>Course price - ₹{paymentCourseData.batch_price}</h1>
+          <p className='paymentModal_description'>{paymentCourseData.description}</p>
+          <button className='paymentModal_btn' onClick={handlePayment}>Pay Now</button>
+        </div>
+      </div>
+
+      {/* Hero section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <div className="hero-left">
+            <h1 className="hero-title">{course.hero_section?.hero_title || "Default Hero Title"}</h1>
+            <p className="hero-description">
+              {course.hero_section?.hero_description || "Default About Description"}
+            </p>
+            <button className="hero-enroll-btn" onClick={handleEnroll}>{course.hero_section?.hero_button_content || "Default Hero Button"}</button>
+          </div>
+          <div className="hero-right">
+            <img
+              className="hero-image"
+              src={heroImage}
+              alt="Course Hero"
+            />
           </div>
         </div>
+      </section>
 
-        {/* Payment modal */}
-        <div className='pymentModal_container_parent' style={paymentModal ? { display: 'flex' } : { display: 'none' }}>
-          <div className='pymentModal_container'>
-            <IoIosCloseCircle className='payment_close_btn' onClick={() => setPaymentModal(false)} />
-            <div className='paymentModal_image' style={{ backgroundImage: `url(${paymentImage})`, }}></div>
-            <h1 className='paymentModal_heading'>{paymentCourseData.course_name}</h1>
-            <h1 className='paymentModal_price'>Course price - ₹{paymentCourseData.batch_price}</h1>
-            <p className='paymentModal_description'>{paymentCourseData.description}</p>
-            <button className='paymentModal_btn' onClick={handlePayment}>Pay Now</button>
-          </div>
-        </div>
-
-        {/* Hero section */}
-        <section className="hero-section">
-          <div className="hero-content">
-            <div className="hero-left">
-              <h1 className="hero-title">{course.hero_section?.hero_title || "Default Hero Title"}</h1>
-              <p className="hero-description">
-                {course.hero_section?.hero_description || "Default About Description"}
-              </p>
-              <button className="hero-enroll-btn" onClick={handleEnroll}>{course.hero_section?.hero_button_content || "Default Hero Button"}</button>
-            </div>
-            <div className="hero-right">
-              <img
-                className="hero-image"
-                src= {heroImage}
-                alt="Course Hero"
-              />
-            </div>
-          </div>
+      <div className="course-details-wrapper">
+        <section className="what-you-get-section">
+          <h2 className="what-you-get-title">What you get?</h2>
+          {course.what_you_get_section.points && course.what_you_get_section.points.length > 0 ? (
+            <ul className="what-you-get-list">
+              {course.what_you_get_section.points.map((point, i) => (
+                <li className="what-you-get-item" key={i}>
+                  <FaCheckCircle className="tick-icon" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <h1>No points available.</h1>
+          )}
         </section>
-
-        <div className="course-details-wrapper">
-          <section className="what-you-get-section">
-            <h2 className="what-you-get-title">What you get?</h2>
-            {course.what_you_get_section.points && course.what_you_get_section.points.length > 0 ? (
-                <ul className="what-you-get-list">
-                {course.what_you_get_section.points.map((point, i) => (
-                  <li className="what-you-get-item" key={i}>
-                    <FaCheckCircle className="tick-icon" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <h1>No points available.</h1>
-            )}
-          </section>
-          <aside className="instructor-section">
-            <h2 className="instructor-title">Your Course Instructor</h2>
-            <div className="instructor-profile">
-              <img
-                className="instructor-photo"
-                src= {instructorImage}
-                alt="Instructor"
-              />
-              <div className="instructor-info">
-                <div className="instructor-name">{course.instructor_section?.instructor_name || "Default Instructor Name"}</div>
-                <div className="instructor-designation">{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</div>
-                <div className="instructor-description">
-                  {course.instructor_section?.instructor_description || "Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description"}
-                </div>
+        <aside className="instructor-section">
+          <h2 className="instructor-title">Your Course Instructor</h2>
+          <div className="instructor-profile">
+            <img
+              className="instructor-photo"
+              src={instructorImage}
+              alt="Instructor"
+            />
+            <div className="instructor-info">
+              <div className="instructor-name">{course.instructor_section?.instructor_name || "Default Instructor Name"}</div>
+              <div className="instructor-designation">{course.instructor_section?.instructor_designation || "Default Instructor Designation"}</div>
+              <div className="instructor-description">
+                {course.instructor_section?.instructor_description || "Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description, Default Instructor Description"}
               </div>
             </div>
-          </aside>
-        </div>
+          </div>
+        </aside>
+      </div>
 
-        {/* Pre-requisites section */}
-        {/* <div className='course_PreRequisite'>
+      {/* Pre-requisites section */}
+      {/* <div className='course_PreRequisite'>
           <h1>Pre-requisites</h1>
 
           <div>
@@ -220,17 +249,17 @@ const CourseLandingPage = () => {
           </div>
         </div> */}
 
-        {/* Course curriculum section */}
-        <div className='course_curriculum'>
-          <div className='course_curriculum_left'>
-            <h1 className='course_curriculum_heading'>Program Details</h1>
-            <CurriculumSection modules={course.curriculum_section.modules} />
-          </div>
-          <div className='course_curriculum_right'>
-            <div className='course_curriculum_img' style={{ backgroundImage: `url(${curriculumImage})` }}></div>
-          </div>
+      {/* Course curriculum section */}
+      <div className='course_curriculum'>
+        <div className='course_curriculum_left'>
+          <h1 className='course_curriculum_heading'>Program Details</h1>
+          <CurriculumSection modules={course.curriculum_section.modules} />
+        </div>
+        <div className='course_curriculum_right'>
+          <div className='course_curriculum_img' style={{ backgroundImage: `url(${curriculumImage})` }}></div>
         </div>
       </div>
+    </div>
   )
 }
 

@@ -1,0 +1,9 @@
+.academicData_parent div h1, .academicData_parent div h2{
+    font-size: 1.3rem;
+    margin: 0.8rem;
+    text-align: left;
+}
+
+.academicData_parent>button{
+    float: right;
+}

@@ -4,7 +4,7 @@ import './HomePage.css'
 import { FaQuestion } from "react-icons/fa";
 import { HiLightBulb } from "react-icons/hi";
 import { FaMedal } from "react-icons/fa6";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Testimonial from '../layout/Testimonial/Testimonial';
 // import Hero from '../layout/Hero/Hero';
 import LearningPathway from '../layout/LearningPathway/LearningPathway';
@@ -42,7 +42,9 @@ const HomePage = () => {
             <div className='homePage_container'>
                 {/* Navbar */}
                 <div className="navbar">
-                    <div className="logo"></div>
+                    <Link to="/">
+                        <div className="logo"></div>
+                    </Link>
                     <div className="nav_right">
 
                         <Link
@@ -66,6 +68,7 @@ const HomePage = () => {
                         <h1><span className='headingColor'>Your career companion</span> from day one to your dream job</h1>
                         <p>Unlocking the Potentials for Tomorrow</p>
                         <Link className='heroBtn' to='https://staging.mindmatrix.io/register'>Start today</Link>
+                        <Link className='heroBtn' to='/user-interest'>Show Your Interest</Link>
                     </div>
                     <div className='heroRight'>
                         <HeroSlider />
@@ -75,32 +78,32 @@ const HomePage = () => {
                     <Hero />
                 </div> */}
 
-                {/* Learning */}
-                <div className='learning_section'>
-                    <h1>Our learning philosophy for <br /><span style={{ fontStyle: "italic", fontWeight: '400', color: "#13828F" }}>holistic developement</span></h1>
-                    <div className='learning_section_card_container'>
-                        {LearningPhilosophyData.map((elm) => {
-                            return <div className='learning_section_card' >
-                                <LearningPhilosophyCard data={elm} />
-                            </div>
-                        })}
-                    </div>
-                    <div></div>
-                </div>
-
                 {/* Learning Pathway */}
                 <div className='learning_pathway_section'>
                     <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that align with your career <span style={{ fontStyle: "italic" }}>aspirations</span></h1>
                     <Link to='/register'>Explore our most popular programs <span class="arrow ">→</span></Link>
 
                     <div className='learning_pathway_card_container'>
-                        {LearningPathwayData.map((elm) => {
-                            return <LearningPathwayCard data={elm} />
+                        {LearningPathwayData.map((elm, index) => {
+                            return <LearningPathwayCard data={elm} key={index} />
                         })}
                     </div>
                 </div>
                 <div className='learningPathway_carousel'>
                     <LearningPathway />
+                </div>
+
+                {/* Learning */}
+                <div className='learning_section'>
+                    <h1>Our learning philosophy for <br /><span style={{ fontStyle: "italic", fontWeight: '400', color: "#13828F" }}>holistic developement</span></h1>
+                    <div className='learning_section_card_container'>
+                        {LearningPhilosophyData.map((elm, index) => {
+                            return <div className='learning_section_card' key={index}>
+                                <LearningPhilosophyCard data={elm} />
+                            </div>
+                        })}
+                    </div>
+                    <div></div>
                 </div>
 
                 {/* Quick quiz */}
@@ -136,8 +139,8 @@ const HomePage = () => {
                                 <Link to='/register'>Register</Link>
                             </div>
                             <div className='quick_quiz_section_one_right'>
-                                {LearningData.map((elm) => {
-                                    return <LearnerCard data={elm} />
+                                {LearningData.map((elm, index) => {
+                                    return <LearnerCard data={elm} key={index} />
                                 })}
                             </div>
                         </motion.div>
@@ -167,8 +170,8 @@ const HomePage = () => {
                                 {/* <button>Explore</button> */}
                             </div>
                             <div className='quick_quiz_section_two_right'>
-                                {IndustryData.map((elm) => {
-                                    return <IndustryCard data={elm} />
+                                {IndustryData.map((elm, index) => {
+                                    return <IndustryCard data={elm} key={index} />
                                 })}
                             </div>
                         </motion.div>
@@ -180,8 +183,8 @@ const HomePage = () => {
                 <div className='curriculum_section'>
                     <h1 style={{ fontSize: '4.8rem' }}><span className='headingColor'>Certified & Curriculum</span> aligned</h1>
                     <div>
-                        {CertifiedData.map((elm) => {
-                            return <CertifiedCard data={elm} />
+                        {CertifiedData.map((elm, index) => {
+                            return <CertifiedCard data={elm} key={index} />
                         })}
                     </div>
 
@@ -358,33 +361,47 @@ const LearningPhilosophyCard = ({ data }) => {
 
 const LearningPathwayCard = ({ data }) => {
     const { image, heading, para } = data
+    const navigate = useNavigate()
+
+    const slugify = (str) =>
+        str
+            .toLowerCase()
+            .replace(/ /g, '-')
+            .replace(/[^\w-]+/g, '');
+
+    const handleViewProgram = () => {
+        const courseSlug = slugify(data.course_slug_name);
+        console.log("Course URL: /courses/", courseSlug);
+        navigate(`/courses/${courseSlug}`);
+    }
     return (
         <>
             <div className='learningPathwayCard_container'>
                 <div style={{ backgroundImage: `url('${image}')` }}></div>
                 <h1>{heading}</h1>
                 <p>{para}</p>
+                <button onClick={() => {handleViewProgram()}} className='btnOne homeProgramBtn'>Explore this Program</button>
             </div>
         </>
     )
 }
 
-const QuickQuizCard = ({ data, index }) => {
-    const { heading, subHeading, icon } = data
-    return (
-        <>
-            <div className='quickQuizCard_container'>
-                <h1 className='quickQuizCard_number'>0{index + 1}</h1>
-                <h1 className='quickQuizCard_heading'>{heading}</h1>
+// const QuickQuizCard = ({ data, index }) => {
+//     const { heading, subHeading, icon } = data
+//     return (
+//         <>
+//             <div className='quickQuizCard_container'>
+//                 <h1 className='quickQuizCard_number'>0{index + 1}</h1>
+//                 <h1 className='quickQuizCard_heading'>{heading}</h1>
 
-                <div>
-                    <p className='quickQuizCard_subHeading'>{subHeading}</p>
-                    {icon}
-                </div>
-            </div>
-        </>
-    )
-}
+//                 <div>
+//                     <p className='quickQuizCard_subHeading'>{subHeading}</p>
+//                     {icon}
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
 
 const IndustryCard = ({ data }) => {
     const { para, image } = data
@@ -451,25 +468,29 @@ export const LearningPathwayData = [
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
         "courseCode": "Gen AI",
         "heading": "GenAI Explorer – Year 1",
-        "para": "Discover the fundamentals of Generative AI and learn how to communicate with LLMs through prompt engineering."
+        "para": "Discover the fundamentals of Generative AI and learn how to communicate with LLMs through prompt engineering.",
+        course_slug_name: "Gen AI Explorer"
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway2_yf0now.png",
         "courseCode": "IoT",
         "heading": "GenAI Developer – Year 2",
-        "para": "Dive deeper into Gemini, Vertex AI, and Google Cloud to start building smart, scalable AI solutions."
+        "para": "Dive deeper into Gemini, Vertex AI, and Google Cloud to start building smart, scalable AI solutions.",
+        course_slug_name: "Gen AI Developer"
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
         "courseCode": "Programming",
         "heading": "GenAI Integrator – Year 3",
-        "para": "Apply GenAI to real-world domains—Logistics, Retail, Healthcare, and App Development."
+        "para": "Apply GenAI to real-world domains—Logistics, Retail, Healthcare, and App Development.",
+        course_slug_name: "Gen AI Integrator"
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
         "courseCode": "Programming",
         "heading": "GenAI Builder – Year 4",
-        "para": "Combine domain mastery with full-stack AI project development. Build solutions that solve real problems."
+        "para": "Combine domain mastery with full-stack AI project development. Build solutions that solve real problems.",
+        course_slug_name: "Gen AI Integrator"
     },
 ]
 
