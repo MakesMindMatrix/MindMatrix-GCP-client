@@ -7,6 +7,7 @@ import AdminNavbar from '../../Layout/AdminNavbar/AdminNavbar'
 const Interest = () => {
     const dispatch = useDispatch()
     const { getAllUserInterest } = useSelector((state) => state.userInterest)
+    console.log(getAllUserInterest)
     // const { all_payment } = useSelector((state) => state.adminPayment)
     // console.log("User interest data", getAllUserInterest)
 

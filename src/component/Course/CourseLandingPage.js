@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import { FaCheckCircle } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
-import { courseDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
+import { courseDataAction, courseLandingPageDataAction, coursePaymentAction, coursePaymentStatusAction, enrollCourse, getCourseInfoByBatchId } from '../../actions/courseAction';
 import CurriculumSection from './CurriculumSection';
 import { IoIosCloseCircle } from 'react-icons/io';
 
@@ -18,16 +18,19 @@ const CourseLandingPage = () => {
         .replace(/[^\w-]+/g, '');
   const {courseName : course_slug} = useParams();
   const dispatch = useDispatch();
-
+  
   const { loading: userLoading, isAuthenticated, user} = useSelector((state) => state.user);
   const { loading, courseLandingPageData} = useSelector((state) => state.courseLandingPage);
   const { loading: courseLoading, enroll_course , rec_course} = useSelector((state) => state.myCourse)
   const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
   const { sso } = useSelector((state) => state.SSO);
 
-  const courseData = rec_course ? rec_course.find(course => slugify(course.course_name) === course_slug) : null;
+  const courseData = courseLandingPageData ? courseLandingPageData.CourseInfo.find((course) => {
+    return  slugify(course.course_name) === course_slug
+  }) : null;
+  // console.log(course.course_name)
   const external_batch_id = courseData ? courseData.external_batch_id : null;
-  
+  // console.log(courseLandingPageData.CourseInfo)
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
   
@@ -50,6 +53,7 @@ const CourseLandingPage = () => {
         dispatch(getCourseInfoByBatchId(external_batch_id));
       }
     }
+    dispatch(courseLandingPageDataAction())
   }, [dispatch, isAuthenticated, user, external_batch_id]);
   // const userEmail = user.email
   useEffect(() => {
@@ -85,8 +89,8 @@ const CourseLandingPage = () => {
   };
 
   // Get course from store
-  const course = courseLandingPageData;
-  console.log("Fetched course:", course);
+  const course = courseData;
+  // console.log("Fetched course:", course);
 
   // Links for Images
   const heroImage = course.hero_section?.hero_image || '/iot-landing-page.jpg';
@@ -99,6 +103,7 @@ const CourseLandingPage = () => {
     dispatch(enrollCourse(enrollCourseData));
   };
   const handleEnroll = () => {
+    console.log(isAuthenticated)
     if (courseData.batch_price > 0) {
         setPaymentCourseData({
             batch_id: courseData.external_batch_id,
@@ -122,7 +127,7 @@ const CourseLandingPage = () => {
     }))
   };
   
-  console.log(coursePaymentStatus);
+  // console.log(coursePaymentStatus);
   return (
       <div className='CourseLandingPage_container'>
         <Navbar />

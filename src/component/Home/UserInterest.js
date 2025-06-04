@@ -114,6 +114,9 @@ const UserInterest = () => {
                 <div className='userInterest_submit_modal' style={showModal ? {display: "initial"} : {display: "none"}}>
                     <IoMdCloseCircleOutline className='icon' onClick={() => {setShowModal(false)}}/>
                     <h1>Thank You for showing interest. We will get back to you shortly</h1>
+                    <button onClick={() => {
+                        setFormData(initialFormData(formData.isStudent))
+                    }}>Ok</button>
                 </div>
                 {/* User Interest Form */}
                 <div className='userInterest_body'>

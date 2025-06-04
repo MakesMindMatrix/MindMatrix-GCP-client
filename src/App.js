@@ -86,6 +86,8 @@ const App = () => {
         <Route path="/password/reset/:token" element={<ResetPassword />} />
         <Route path="/dashboard-test" element={<DashboardTest />} />
 
+        <Route path="/courses/:courseName" element={<CourseLandingPage />} />
+
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
@@ -96,7 +98,6 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/courses/:courseName" element={<CourseLandingPage />} />
           <Route path="/payment/:batchId/:courseName/:coursePrice" element={<CoursePayment />} />
 
           {/* College routes */}

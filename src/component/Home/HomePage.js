@@ -361,11 +361,11 @@ const LearningPathwayCard = ({ data }) => {
     const { image, heading, para } = data
     return (
         <>
-            <div className='learningPathwayCard_container'>
+            <Link to='' className='learningPathwayCard_container'>
                 <div style={{ backgroundImage: `url('${image}')` }}></div>
                 <h1>{heading}</h1>
                 <p>{para}</p>
-            </div>
+            </Link>
         </>
     )
 }
