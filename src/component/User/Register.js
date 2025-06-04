@@ -113,7 +113,9 @@ const Register = () => {
                                 onSubmit={registerSubmit}
                                 noValidate
                             >
-                                <div className='register_logo'></div>
+                                <Link to="/">
+                                    <div className='register_logo'></div>
+                                </Link>
                                 <div className='signUpName'>
                                     <FaRegUser />
                                     <input

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Onboarding.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlineMail } from "react-icons/md";
 import { FiSmartphone } from "react-icons/fi";
 import { LiaUniversitySolid } from "react-icons/lia";
@@ -170,7 +170,9 @@ const Onboarding = () => {
                                 onSubmit={onboardingSubmit}
                                 noValidate
                             >
-                                <div className='register_logo'></div>
+                                <Link to="/">
+                                    <div className='register_logo'></div>
+                                </Link>
                                 <div className='signUpEmail verify_parent'>
                                     <MdOutlineMail />
                                     <input

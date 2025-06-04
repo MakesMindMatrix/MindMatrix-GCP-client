@@ -93,7 +93,9 @@ const UserInterest = () => {
             <div className='userInterest_container'>
                 {/* Navbar */}
                 <div className="navbar">
-                    <div className="logo"></div>
+                    <Link to="/">
+                        <div className="logo"></div>
+                    </Link>
                     <div className="nav_right">
 
                         <Link

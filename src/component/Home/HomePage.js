@@ -42,7 +42,9 @@ const HomePage = () => {
             <div className='homePage_container'>
                 {/* Navbar */}
                 <div className="navbar">
-                    <div className="logo"></div>
+                    <Link to="/">
+                        <div className="logo"></div>
+                    </Link>
                     <div className="nav_right">
 
                         <Link
@@ -76,19 +78,6 @@ const HomePage = () => {
                     <Hero />
                 </div> */}
 
-                {/* Learning */}
-                <div className='learning_section'>
-                    <h1>Our learning philosophy for <br /><span style={{ fontStyle: "italic", fontWeight: '400', color: "#13828F" }}>holistic developement</span></h1>
-                    <div className='learning_section_card_container'>
-                        {LearningPhilosophyData.map((elm, index) => {
-                            return <div className='learning_section_card' key={index}>
-                                <LearningPhilosophyCard data={elm} />
-                            </div>
-                        })}
-                    </div>
-                    <div></div>
-                </div>
-
                 {/* Learning Pathway */}
                 <div className='learning_pathway_section'>
                     <h1><span className='headingColor'>Industry driven Learning Pathways</span><br /> that align with your career <span style={{ fontStyle: "italic" }}>aspirations</span></h1>
@@ -102,6 +91,19 @@ const HomePage = () => {
                 </div>
                 <div className='learningPathway_carousel'>
                     <LearningPathway />
+                </div>
+
+                {/* Learning */}
+                <div className='learning_section'>
+                    <h1>Our learning philosophy for <br /><span style={{ fontStyle: "italic", fontWeight: '400', color: "#13828F" }}>holistic developement</span></h1>
+                    <div className='learning_section_card_container'>
+                        {LearningPhilosophyData.map((elm, index) => {
+                            return <div className='learning_section_card' key={index}>
+                                <LearningPhilosophyCard data={elm} />
+                            </div>
+                        })}
+                    </div>
+                    <div></div>
                 </div>
 
                 {/* Quick quiz */}
