@@ -1,7 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../actions/userAction';
 import { ToastContainer, toast } from "react-toastify";
 // import { IoHomeOutline } from "react-icons/io5";
@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
     const dispatch = useDispatch()
+    const { isAuthenticated } = useSelector((state) => state.user);
+    console.log(isAuthenticated)
 
     const handleLogOut = () => {
         dispatch(logout())

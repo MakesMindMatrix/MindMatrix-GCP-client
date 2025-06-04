@@ -726,6 +726,13 @@
 .learningPathwayCard_container>p {
     font-size: 1.2rem;
 }
+.homeProgramBtn{
+    border: none;
+    width: 100%;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
 
 .learning_philosophy_card_container {
     background-position: center;
