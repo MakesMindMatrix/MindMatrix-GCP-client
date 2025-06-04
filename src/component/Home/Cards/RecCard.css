@@ -1,12 +1,19 @@
+.courseDateprice_box{
+    margin-top: auto;
+}
+
 .coursePrice_box{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 1rem;
+    margin: 1rem 0;
 }
 .courseDate_box{
     display: flex;
     align-items: center;
     margin: 1rem 0;
+    padding-left: 1rem;
     /* justify-content: center; */
 }
 .courseDate_box h2{
@@ -24,7 +31,7 @@
 
 /* .enroll_button { */
 .view_button {
-    /* margin: 1rem; */
+    /* margin-top: auto; */
     border: none;
     background-color: #4C8070;
     color: white;

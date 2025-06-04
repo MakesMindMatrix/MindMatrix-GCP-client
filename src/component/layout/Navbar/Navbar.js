@@ -19,27 +19,18 @@ const Navbar = () => {
     return (
         <>
             <div className='dashboardNav_container'>
-                <Link to='/'><div className='nav_logo'></div></Link>
-                {/* <div className='user_icon'></div> */}
+                <Link to='/'><div className='logo'></div></Link>
+
                 <div className="nav_right">
-                    <Link className='nav_link_parent' to='/dashboard'>
-                        {/* <IoHomeOutline className='nav_link_icon' /> */}
-                        <span className='nav_link_text'>Home</span>
+                    <Link className='btnOne auth_btn' to='/dashboard'>
+                        Dashboard
                     </Link>
 
-                    {/* <Link className='nav_link_parent' to='/all-courses'>
-                        <LiaBookSolid className='nav_link_icon' />
-                        <span className='nav_link_text'>All Courses</span>
-                    </Link> */}
-
-                    {/* <Link className='nav_link_parent' to='/profile'> */}
-                        {/* <HiOutlineUserCircle className='nav_link_icon'/> */}
-                        {/* <span className='nav_link_text'>Profile</span> */}
-                    {/* </Link> */}
-
-                    <Link className='nav_link_parent' onClick={handleLogOut}>
-                        {/* <IoLogOutOutline className='nav_link_icon' /> */}
-                        <span className='nav_link_text'>Log Out</span>
+                    <Link
+                        className="btnTwo auth_btn"
+                        onClick={handleLogOut}
+                    >
+                        Log Out
                     </Link>
                 </div>
             </div>

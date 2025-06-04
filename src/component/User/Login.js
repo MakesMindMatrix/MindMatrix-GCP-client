@@ -114,7 +114,9 @@ const Login = () => {
                         </div>
                         <div className='login_right'>
                             <form className='loginForm' onSubmit={loginSubmit} noValidate>
-                                <div className='login_logo'></div>
+                                <Link to="/">
+                                     <div className='login_logo'></div>
+                                </Link>
                                 <div className='loginEmail'>
                                     <MdOutlineMail />
                                     <input

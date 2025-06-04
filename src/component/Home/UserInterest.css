@@ -37,12 +37,12 @@
 
 .nav_right .auth_btn {
   margin-left: 1rem;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-weight: 400;
   text-decoration: none;
   /* color: #13828F; */
-  border: 1px solid #13828F;
+  /* border: 1px solid #13828F; */
   background-color: transparent;
   transition: all 0.3s ease;
 }

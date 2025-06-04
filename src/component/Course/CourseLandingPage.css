@@ -54,13 +54,14 @@
 /* Hero Section */
 .hero-section {
     background: #fff;
-    margin: 5% auto 2rem auto;
+    margin: 2% auto 2rem auto;
     max-width: 1300px;
     box-shadow: 0 6px 32px rgba(0,0,0,0.08);
     padding: 0;
     display: flex;
     align-items: center;
     min-height: 380px;
+    border-radius: 2rem;
 }
 
 .hero-content {
@@ -68,6 +69,7 @@
     width: 100%;
     padding: 2.5rem 2.5rem 2.5rem 4rem;
     gap: 2rem;
+   
 }
 
 .hero-left {
