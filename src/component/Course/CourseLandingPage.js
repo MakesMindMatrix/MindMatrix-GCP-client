@@ -30,7 +30,7 @@ const CourseLandingPage = () => {
     return slugify(course.course_name) === course_slug
   }) : null;
   // console.log(course.course_name)
-  const external_batch_id = courseData ? courseData.external_batch_id : null;
+  const external_batch_id = courseData ? courseData.batch_id : null;
   // console.log(courseLandingPageData.CourseInfo)
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
@@ -89,6 +89,7 @@ const CourseLandingPage = () => {
     return <Loader />;
   };
 
+  console.log(courseData);
   // Get course from store
   const course = courseData;
   // console.log("Fetched course:", course);
