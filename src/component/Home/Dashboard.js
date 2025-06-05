@@ -19,6 +19,7 @@ const Dashboard = () => {
   const { loading: myCourseLoading, my_course, rec_course } = useSelector((state) => state.myCourse)
 
   const userEmail = user.email
+  const user_name = user.name
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -40,7 +41,7 @@ const Dashboard = () => {
             <Navbar />
             <div className="userName">
               <div className="hello">
-                <h3>Welcome Back, {user?.name}</h3>
+                <h3>Welcome Back, {user_name}</h3>
               </div>
             </div>
 
@@ -58,7 +59,7 @@ const Dashboard = () => {
 
 
                 {/* Recommended section */}
-                {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Our recommended programs</h1>}
+                {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Our Recommended Programs</h1>}
                 <div className='dash_rec_container'>
                   {rec_course && rec_course.map((elm, index) => {
                     return <RecCard data={elm} key={index}/>
