@@ -3,50 +3,37 @@ import './LearningPathway.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from 'react-router-dom';
 
 
 const LearningData = [
     {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
         "courseCode": "Gen AI",
-        "heading": "Generative AI Learning Program",
-        "para": "Learn AI concepts, algorithms, and models like GANs and transformers. Hands-on experience in building AI-driven applications across industries."
+        "heading": "GenAI Explorer – Year 1",
+        "para": "Discover the fundamentals of Generative AI and learn how to communicate with LLMs through prompt engineering.",
+        course_slug_name: "Gen AI Explorer"
     },
     {
         "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway2_yf0now.png",
         "courseCode": "IoT",
-        "heading": "IoT for Smart Infrastructure",
-        "para": "Explore IoT applications in smart infrastructure, including devices, communication protocols, and real-world use cases like smart cities and energy management."
+        "heading": "GenAI Developer – Year 2",
+        "para": "Dive deeper into Gemini, Vertex AI, and Google Cloud to start building smart, scalable AI solutions.",
+        course_slug_name: "Gen AI Developer"
     },
     {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway1_dck8hd.png",
         "courseCode": "Programming",
-        "heading": "User Experience Management in Android Development",
-        "para": "Learn UX principles for Android apps, focusing on usability, accessibility, and user-centered design to enhance engagement."
+        "heading": "GenAI Integrator – Year 3",
+        "para": "Apply GenAI to real-world domains—Logistics, Retail, Healthcare, and App Development.",
+        course_slug_name: "Gen AI Integrator"
     },
     {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
+        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
         "courseCode": "Programming",
-        "heading": "User Experience Management in Android Development",
-        "para": "Learn UX principles for Android apps, focusing on usability, accessibility, and user-centered design to enhance engagement."
-    },
-    {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
-        "courseCode": "Programming",
-        "heading": "User Experience Management in Android Development",
-        "para": "Learn UX principles for Android apps, focusing on usability, accessibility, and user-centered design to enhance engagement."
-    },
-    {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
-        "courseCode": "Programming",
-        "heading": "User Experience Management in Android Development",
-        "para": "Learn UX principles for Android apps, focusing on usability, accessibility, and user-centered design to enhance engagement."
-    },
-    {
-        "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1746525803/learningPathway3_czwbkj.png",
-        "courseCode": "Programming",
-        "heading": "User Experience Management in Android Development",
-        "para": "Learn UX principles for Android apps, focusing on usability, accessibility, and user-centered design to enhance engagement."
+        "heading": "GenAI Builder – Year 4",
+        "para": "Combine domain mastery with full-stack AI project development. Build solutions that solve real problems.",
+        course_slug_name: "Gen AI Integrator"
     },
 ]
 
@@ -79,6 +66,20 @@ const LearningPathway = () => {
             },
         ]
     };
+
+    const navigate = useNavigate()
+
+    const slugify = (str) =>
+        str
+            .toLowerCase()
+            .replace(/ /g, '-')
+            .replace(/[^\w-]+/g, '');
+
+    const handleViewProgram = (data) => {
+        const courseSlug = slugify(data.course_slug_name);
+        console.log("Course URL: /courses/", courseSlug);
+        navigate(`/courses/${courseSlug}`);
+    }
     return (
         <div>
             <Slider {...settings} className="carousel-slider">
@@ -88,6 +89,7 @@ const LearningPathway = () => {
                             <div style={{ backgroundImage: `url('${student.image}')` }}></div>
                             <h1>{student.heading}</h1>
                             <p>{student.para}</p>
+                            <button onClick={() => {handleViewProgram(student)}} className='btnOne homeProgramBtn'>Explore this Program</button>
                         </div>
                     </div>
                 ))}
