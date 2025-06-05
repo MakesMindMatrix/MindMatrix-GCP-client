@@ -30,7 +30,7 @@ const CourseLandingPage = () => {
     return slugify(course.course_name) === course_slug
   }) : null;
   // console.log(course.course_name)
-  const external_batch_id = courseData ? courseData.external_batch_id : null;
+  const external_batch_id = courseData ? courseData.batch_id : null;
   // console.log(courseLandingPageData.CourseInfo)
   const [confirmModal, setConfirmModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(false);
@@ -89,6 +89,7 @@ const CourseLandingPage = () => {
     return <Loader />;
   };
 
+  console.log(courseData);
   // Get course from store
   const course = courseData;
   // console.log("Fetched course:", course);
@@ -110,16 +111,16 @@ const CourseLandingPage = () => {
 
     if (courseData.batch_price > 0) {
       setPaymentCourseData({
-        batch_id: courseData.external_batch_id,
+        batch_id: external_batch_id,
         course_name: courseData.course_name,
         batch_price: courseData.batch_price,
-        description: courseData.course_description
+        description: course.hero_section?.hero_description
       })
       setPaymentModal(true)
-      setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+      setEnrollCourseData({ ...enrollCourseData, batch_id: external_batch_id })
     } else {
       setConfirmModal(true)
-      setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+      setEnrollCourseData({ ...enrollCourseData, batch_id: external_batch_id })
     }
   };
 

@@ -8,6 +8,7 @@ import { clearErrors, forgotPassword } from "../../actions/userAction";
 // import { useAlert } from "react-alert";
 // import Loader from '../layout/Loader/Loader';
 import { toast } from "react-toastify";
+import AuthLeft from './AuthLeft/AuthLeft';
 
 const ForgotPassword = () => {
     const dispatch = useDispatch();
@@ -61,7 +62,7 @@ const ForgotPassword = () => {
         <>
             <div className='login_container'>
                 <div className='login_left'>
-                    <div className='login_left_image'></div>
+                    <AuthLeft />
                 </div>
                 <div className='login_right'>
                     <form className='loginForm' onSubmit={forgotPasswordSubmit} noValidate>

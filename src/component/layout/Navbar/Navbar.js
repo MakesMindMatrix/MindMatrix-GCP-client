@@ -11,8 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
     const dispatch = useDispatch()
-    const { isAuthenticated } = useSelector((state) => state.user);
-    console.log(isAuthenticated)
+    // const { isAuthenticated } = useSelector((state) => state.user);
+    // console.log(isAuthenticated)
 
     const handleLogOut = () => {
         dispatch(logout())
