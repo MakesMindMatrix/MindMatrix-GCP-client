@@ -444,7 +444,7 @@
 /* Responsive Design */
 @media (max-width: 900px) {
 .hero-section{
-    margin-top: 10rem;
+    margin-top: 2%;
 }
 .hero-content {
     flex-direction: column;
@@ -471,7 +471,10 @@
 
 .course_curriculum{
     margin: 0rem auto;
-    height: 60vh;
+    height: 30vh;
+}
+.course_curriculum_img{
+    height: 30vh;
 }
 }
 
@@ -578,4 +581,12 @@
         text-align: center; 
     }
 
+  }
+
+  
+  @media (max-width: 400px) {
+    .what-you-get-section{
+        height: 120%;
+        padding-bottom: 10%;
+    }
   }
