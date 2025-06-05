@@ -6,14 +6,14 @@
 
 .onboarding_left {
     border-radius: 5px;
-    background-image: url('../../images/Learning_Icon_new.png');
-    background-position: center;
-    background-size: cover;
+    /* background-image: url('../../images/Learning_Icon_new.png'); */
+    /* background-position: center; */
+    /* background-size: cover; */
     height: 94vh;
     width: 55%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 .verify_parent{
     position: relative;

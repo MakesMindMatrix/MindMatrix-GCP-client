@@ -28,7 +28,7 @@ const AuthLeft = () => {
         speed: 1000,
         autoplaySpeed: 3000,
         cssEase: "linear",
-        arrows: true,
+        arrows: false,
         autoplay: true,
         focusOnSelect: true,
     };

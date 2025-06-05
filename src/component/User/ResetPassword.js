@@ -6,6 +6,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { Link, useNavigate, useParams } from "react-router-dom";
 // import Loader from '../layout/Loader/Loader';
 import { ToastContainer, toast } from "react-toastify";
+import AuthLeft from './AuthLeft/AuthLeft';
 
 // hello
 
@@ -46,7 +47,7 @@ const ResetPassword = () => {
         <>
           <div className='login_container'>
             <div className='login_left'>
-              <div className='login_left_image'></div>
+              <AuthLeft />
             </div>
             <div className='login_right'>
               <form className='loginForm' onSubmit={resetPasswordSubmit} noValidate>
