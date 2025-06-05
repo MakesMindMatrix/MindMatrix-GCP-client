@@ -111,16 +111,16 @@ const CourseLandingPage = () => {
 
     if (courseData.batch_price > 0) {
       setPaymentCourseData({
-        batch_id: courseData.external_batch_id,
+        batch_id: external_batch_id,
         course_name: courseData.course_name,
         batch_price: courseData.batch_price,
-        description: courseData.course_description
+        description: course.hero_section?.hero_description
       })
       setPaymentModal(true)
-      setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+      setEnrollCourseData({ ...enrollCourseData, batch_id: external_batch_id })
     } else {
       setConfirmModal(true)
-      setEnrollCourseData({ ...enrollCourseData, batch_id: courseData.external_batch_id })
+      setEnrollCourseData({ ...enrollCourseData, batch_id: external_batch_id })
     }
   };
 
