@@ -154,16 +154,16 @@ const Onboarding = () => {
         <>
             {loading && loadingProfile && lodingUser && loadingVerify ? <Loader /> : (
                 <>
-                    <div className='onboarding_container'>
+                    <div className='login_container'>
                         <EmailVerification
                             showModal={showModal}
                             setShowModal={setShowModal}
                             user={user}
                         />
-                        <div className='onboarding_left'>
+                        <div className='login_left'>
                             <AuthLeft />
                         </div>
-                        <div className='onboarding_right'>
+                        <div className='login_right'>
                             <form
                                 className='signUpForm'
                                 encType='multipart/form-data'

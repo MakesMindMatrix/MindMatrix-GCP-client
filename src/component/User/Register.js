@@ -25,11 +25,14 @@ const Register = () => {
     const [user, setUser] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        role: ""
     })
     const { name, email, password } = user;
     const [emailTouched, setEmailTouched] = useState(false)
     const [passwordTouched, setPasswordTouched] = useState(false)
+    console.log(user)
+
 
     useEffect(() => {
         if (error?.message) {
@@ -45,10 +48,10 @@ const Register = () => {
             navigate(from, { replace: true });
         }
 
-        if(msg === "user_not_found"){
+        if (msg === "user_not_found") {
             toast.error("User not found, please signup to continue");
         }
-    }, [dispatch, error, isAuthenticated, navigate, from,msg])
+    }, [dispatch, error, isAuthenticated, navigate, from, msg])
 
     const registerSubmit = (e) => {
         e.preventDefault()
@@ -86,10 +89,10 @@ const Register = () => {
     }
 
     const registerDataChange = (e) => {
-        if(e.target.name === "email"){
+        if (e.target.name === "email") {
             setEmailTouched(true);
         }
-        if(e.target.name === "password"){
+        if (e.target.name === "password") {
             setPasswordTouched(true);
         }
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -113,9 +116,26 @@ const Register = () => {
                                 onSubmit={registerSubmit}
                                 noValidate
                             >
-                                <Link to="/">
-                                    <div className='register_logo'></div>
-                                </Link>
+                                <h1>Get Started with MindMatrix</h1>
+                                <h2>Choose your profile type to begin and create your acount</h2>
+                                <div>
+                                    <div className='student' onClick={() => setUser({ ...user, role: 'user' })}>
+                                        <h1>I'm a student</h1>
+                                        <h2>Access programs, tasks & personalized career growth</h2>
+                                    </div>
+                                    <div className='college' onClick={() => setUser({ ...user, role: 'college' })}>
+                                        <h1>I'm a college</h1>
+                                        <h2>Manage programs, track students, partner with industry</h2>
+                                    </div>
+                                </div>
+
+
+                                <div className='googleAuthBtn'>
+                                    <GoogleButton
+                                        label="Sign up with Google"
+                                        onClick={registerGoogleAuth}
+                                    />
+                                </div>
                                 <div className='signUpName'>
                                     <FaRegUser />
                                     <input
@@ -155,19 +175,9 @@ const Register = () => {
                                     <p className='PasswordNote'>Note: Your password must be at least 8 characters long</p>
                                 </div>
                                 <input type='submit' value="Register" className='signUpBtn' />
-                                <div className='googleAuthBtn'>
-                                    <GoogleButton
-                                        label="Sign up with Google"
-                                        onClick={registerGoogleAuth}
-                                    />
-                                </div>
+
                                 <h2 className='redirect_text'>Already have an account? <Link to='/login'>Sign In</Link></h2>
                             </form>
-{/* 
-                            <button className="googleAuthBtn" onClick={registerGoogleAuth}>
-                                <FcGoogle className="googleAuthIcon" />
-                                <span style={{ marginLeft: "1rem" }}>SignUp with Google</span>
-                            </button> */}
                         </div>
                     </div>
                 </>
