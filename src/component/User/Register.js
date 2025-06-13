@@ -113,6 +113,8 @@ const Register = () => {
           return toast.warning("Please fill all college registration fields");
         }
       }
+
+      navigate("/collegePlan");
     }
 
     dispatch(register(user));
@@ -272,7 +274,7 @@ const Register = () => {
   //   );
   // };
   return (
-    <>
+    <div className="register-div">
       {loading ? (
         <Loader />
       ) : (
@@ -490,7 +492,7 @@ const Register = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 export default Register;
