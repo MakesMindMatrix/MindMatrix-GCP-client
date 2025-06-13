@@ -15,14 +15,8 @@ const CollegePlan = () => {
           </Link>
 
           <div className="auth-buttons">
-            <button
-              className="outline-btn"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
-            <button className="filled-btn" onClick={() => navigate("/login")}>
-              Login
+            <button className="filled-btn" onClick={() => navigate("/")}>
+              Logout
             </button>
           </div>
         </div>
