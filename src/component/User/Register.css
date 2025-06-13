@@ -1,43 +1,32 @@
 .register_logo {
-    background-image: url('../../images/logo.png');
-    background-position: center;
-    background-size: cover;
-    height: 10rem;
-    width: 23rem !important;
+  background-image: url("../../images/logo.png");
+  background-position: center;
+  background-size: cover;
+  height: 10rem;
+  width: 23rem !important;
 }
 
 .signUpForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
-    height: 100%;
-    /* padding: 1vmax; */
-    width: 35vw;
-    transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+  /* padding: 1vmax; */
+  width: 35vw;
+  transition: all 0.5s;
 }
 
-.signUpForm>div {
-    display: flex;
-    width: 100%;
-    align-items: center;
+.signUpForm > div {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1vmax;
 }
 
-.signUpForm>div>input, .signUpForm>div>select {
-    padding: 1vmax 4vmax;
-    padding-right: 1vmax;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.267);
-    border-radius: 4px;
-    font: 300 0.9vmax cursive;
-    outline: none;
-}
-
-.signUpForm>div>div>input, .signUpForm>div>div>select {
-  padding: 1vmax 4vmax;
-  padding-right: 1vmax;
+.signUpForm > div > input,
+.signUpForm > div > select {
+  padding: 1vmax 1vmax 1vmax 3.5vmax; /* extra left padding for icon space */
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
@@ -46,20 +35,27 @@
   outline: none;
 }
 
-.signUpForm>div>svg {
-  position: absolute;
-  transform: translateX(1vmax);
-  font-size: 1.6vmax;
-  color: rgba(0, 0, 0, 0.623);
+.signUpForm > div > div > input,
+.signUpForm > div > div > select {
+  padding: 1vmax 1vmax 1vmax 3.5vmax; /* keep same left padding for icon */
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
 }
 
-.signUpForm>div>div>svg {
+.signUpForm > div > svg,
+.signUpForm > div > div > svg {
   position: absolute;
-  transform: translateX(1vmax);
+  left: 1vmax;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
+  pointer-events: none; /* ensures icon doesn't block input clicks */
 }
-
 
 .signUpPassword {
   width: 100%;
@@ -72,7 +68,7 @@
     width: 3vmax;
     border-radius: 100%;
   } */
-  /* #registerImage > input {
+/* #registerImage > input {
     display: flex;
     padding: 0%;
   }
@@ -95,35 +91,38 @@
     background-color: rgb(235, 235, 235);
   } */
 
-  /* Only highlight fields red when they have content and are invalid */
-  .signUpEmail input,
-  .signUpPassword input {
-    border: 1.5px solid #bfc7ce;
-  }
+.login_right {
+  height: 70vh;
+  overflow-y: auto;
+}
+/* Only highlight fields red when they have content and are invalid */
+.signUpEmail input,
+.signUpPassword input {
+  border: 1.5px solid #bfc7ce;
+}
 
-  .signUpEmail input:focus,
-  .signUpPassword input:focus {
-    border-color: #4C8070;
-    box-shadow: 0 0 0 2px rgba(76, 128, 112, 0.1);
-  }
+.signUpEmail input:focus,
+.signUpPassword input:focus {
+  border-color: #4c8070;
+  box-shadow: 0 0 0 2px rgba(76, 128, 112, 0.1);
+}
 
-  .signUpEmail input.input-error,
-  .signUpPassword input.input-error {
-    border-color: #ff4444;
-    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.08);
-  }
+.signUpEmail input.input-error,
+.signUpPassword input.input-error {
+  border-color: #ff4444;
+  box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.08);
+}
 
 .signUpBtn {
   border: none;
-  background-color: #4C8070;
+  background-color: #4c8070;
   color: white;
-  font: 300 0.9vmax "Roboto";
-  font-size: 1.8rem;
+  font: 600 1.2rem "Roboto";
   width: 100%;
-  padding: 0.8vmax;
+  padding: 1.2rem;
   cursor: pointer;
   transition: all 0.5s;
-  border-radius: 4px;
+  border-radius: 6px;
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
   margin-bottom: 1rem;
@@ -132,11 +131,80 @@
 .signUpBtn:hover {
   background-color: #79b09f;
 }
-.redirect_text{
+.redirect_text {
   margin-top: 1rem;
   font: 500 1.2vmax "Montserrat";
-
 }
+
+/* ========== ROLE OPTIONS SECTION FOR STUDENT AND COLLEGE  ========== */
+.role-selection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: nowrap;
+  margin-left: 2.5rem;
+}
+
+.student,
+.college {
+  flex: 0 0 auto;
+  width: 220px;
+  padding: 1.2rem 1.4rem;
+  border: 2px solid #007a76;
+  border-radius: 6px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* text-align: left; */
+  color: #007a76;
+}
+
+.student h1,
+.college h1 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.student h2,
+.college h2 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: inherit;
+  text-align: left;
+}
+
+/* === ACTIVE ROLE STYLE === */
+.student.active-role,
+.college.active-role {
+  background-color: #007a76;
+  color: #ffffff;
+  border-color: #007a76;
+}
+
+.student.active-role h1,
+.college.active-role h1,
+.student.active-role h2,
+.college.active-role h2 {
+  color: #ffffff;
+}
+
+/* Responsive */
+@media screen and (max-width: 650px) {
+  .role-selection {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* ___________ */
 
 @media screen and (max-width: 650px) {
   .login_left {
@@ -144,34 +212,38 @@
   }
 
   .login_right {
-    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+    max-height: 80vh;
+    overflow: auto;
   }
 
   .signUpForm {
     width: 60vw;
     padding: 0;
   }
-  .signUpForm>div>input {
+  .signUpForm > div > input {
     font: 300 2.5vmax normal;
     padding: 1vmax 5vmax;
   }
-  .signUpForm>div>div>input {
+  .signUpForm > div > div > input {
     font: 300 2.5vmax normal;
     padding: 1vmax 5vmax;
   }
-  .signUpForm>div>svg {
+  .signUpForm > div > svg {
     font-size: 2.6vmax;
   }
-  .signUpForm>div>div>svg {
+  .signUpForm > div > div > svg {
     font-size: 2.6vmax;
   }
-  .signUpForm>a {
+  .signUpForm > a {
     font: 500 2.2vmax "Gill Sans";
   }
-  .signUpBtn{
+  .signUpBtn {
     font: 300 2.4vmax "Roboto";
   }
-  .signUpForm>h2 {
+  .signUpForm > h2 {
     font-size: 2.2vmax;
   }
 }
@@ -180,27 +252,196 @@
   .signUpForm {
     width: 80vw;
   }
-  .signUpForm>div>input {
+  .signUpForm > div > input {
     font: 300 2.8vmax normal;
     padding: 1vmax 5vmax;
   }
-  .signUpForm>div>div>input {
+  .signUpForm > div > div > input {
     font: 300 2.8vmax normal;
     padding: 1vmax 5vmax;
   }
-  .signUpForm>div>svg {
+  .signUpForm > div > svg {
     font-size: 2.8vmax;
   }
-  .signUpForm>div>div>svg {
+  .signUpForm > div > div > svg {
     font-size: 2.8vmax;
   }
-  .signUpForm>a {
+  .signUpForm > a {
     font: 500 2.4vmax "Gill Sans";
   }
-  .signUpBtn{
+  .signUpBtn {
     font: 300 2.4vmax "Roboto";
   }
-  .signUpForm>h2 {
+  .signUpForm > h2 {
     font-size: 2.4vmax;
   }
+}
+/* This is for Heading Text*/
+.register-heading {
+  margin-bottom: 2rem;
+  padding-left: 0.5rem;
+}
+
+.register-heading h1 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  margin-left: 1.5rem;
+}
+
+.register-heading p {
+  text-align: left;
+  margin-left: 1.5rem;
+}
+.register-subheading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  text-align: left;
+}
+
+/* ___________ */
+.divider-with-text {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  color: #777;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.divider-with-text hr {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+}
+
+.divider-with-text span {
+  padding: 0 1rem;
+  white-space: nowrap;
+  color: #999;
+  font-weight: 500;
+}
+
+/* -------------College SignUpForm -------*/
+
+.collegeSignUpForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.collegeSignUpForm input,
+.collegeSignUpForm select {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-weight: bold;
+  width: 100%;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.collegeSignUpForm input:focus,
+.collegeSignUpForm select:focus {
+  border-color: #007a76;
+}
+
+.collegeSignUpForm .row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 1rem 0;
+}
+.collegeSignUpForm.signUpBtn {
+  border: none;
+  background-color: #4c8070;
+  color: white;
+  font: 600 1.2rem "Roboto";
+  width: 100%;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  margin-bottom: 1rem;
+}
+
+/* HEADER STYLING */
+.register-header {
+  width: 100%;
+  padding: 16px 32px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container img.logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* BUTTON STYLING */
+.auth-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.outline-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #007b8f;
+  background-color: white;
+  color: #007b8f;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.outline-btn:hover {
+  background-color: #e6f7fa;
+}
+
+.filled-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  border: none;
+  background-color: #007b8f;
+  color: white;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filled-btn:hover {
+  background-color: #005f6e;
+}
+
+.register-div {
+  overflow: hidden !important;
+  max-height: 100vh !important;
 }
