@@ -1,0 +1,50 @@
+.noticeboard-card {
+  border: 2px solid #c4ecff;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 380px;
+  background: #fff;
+  font-family: sans-serif;
+}
+
+.noticeboard-course-type {
+  color: goldenrod;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.noticeboard-course-name {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.noticeboard-section {
+  margin-bottom: 12px;
+}
+
+.noticeboard-attachment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.noticeboard-view-btn {
+  background: #f4f4f4;
+  border: 1px solid #aaa;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-right: 6px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.noticeboard-download-btn {
+  background: #a960f1;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+}
