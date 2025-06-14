@@ -58,7 +58,7 @@ const Register = () => {
     if (isAuthenticated && (userData && userData.role === "user")) {
       navigate(from, { replace: true });
     } else if (isAuthenticated && (userData && userData.role === "college")) {
-      navigate("/college", { replace: true });
+      navigate("/college-dashboard", { replace: true });
     }
 
     if (msg === "user_not_found") {
@@ -276,6 +276,22 @@ const Register = () => {
                       onChange={registerDataChange}
                     />
                   </div>
+
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                    name="password"
+                    value={password}
+                    onChange={registerDataChange}
+                    className={passwordHasError ? "input-error" : ""}
+                  />
+                  {/* <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={registerDataChange}
+                  /> */}
 
                   <select
                     name="university"

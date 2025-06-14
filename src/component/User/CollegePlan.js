@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./CollegePlan.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CollegePlan = () => {
+  // const { loading: loadingProfile, isUpdated, error } = useSelector((state) => state.profile)
+  const { loading, user} = useSelector((state) => state.user)
+  console.log(user)
   const [selectedPlan, setSelectedPlan] = useState("1-year");
   const navigate = useNavigate();
 
@@ -29,7 +33,7 @@ const CollegePlan = () => {
       </header>
 
       <div className="main-content">
-        <h1 className="welcome-text">Hello Divyam from GEC Bidar,</h1>
+        <h1 className="welcome-text">Hello {user.name} from {user.collegeName},</h1>
         <p className="subtitle">Select the Right Plan for Your College</p>
 
         <div className="plan-toggle">
