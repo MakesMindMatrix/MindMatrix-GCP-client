@@ -205,7 +205,6 @@ export const allNoticeBoards = () => async (dispatch) => {
             },
             withCredentials: true
           });
-          console.log(data)
 
         dispatch({ type: ALL_NOTICEBOARDS_SUCCESS, payload: data.NoticeBoard });
     } catch (error) {

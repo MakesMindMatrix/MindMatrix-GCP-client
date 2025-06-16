@@ -40,7 +40,6 @@ export const myCourseReducer = (state = {}, action) => {
                 report_data: action.payload.report_data
             }
         case ALL_NOTICEBOARDS_SUCCESS:
-            console.log(action.payload)
             return {
                 ...state,
                 loading: false,

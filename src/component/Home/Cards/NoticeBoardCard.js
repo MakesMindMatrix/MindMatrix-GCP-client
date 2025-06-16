@@ -7,7 +7,24 @@ import eligibiltyBullet from '../images/eligibility_bullets_icon.svg'
 import view from '../images/view_icon.svg'
 import download from '../images/download.svg'
 
-const NoticeBoardCard = ({ data }) => {
+const NoticeBoardCard = ({ data }) => { 
+  
+
+  const handleView = (fileId) => {
+    const viewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+    window.open(viewUrl, '_blank');
+  };
+
+  const handleDownload = (fileId) => {
+    const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    console.log(downloadUrl)
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = 'document.pdf'; // optional: set a default file name
+    link.click();
+  };
+
+  // console.log(data)
   return (
     <div className="noticeboard-card">
       <p className="noticeboard-course-type"><img src={certificateProgram} alt="certificate-Program" /> {data.course_type === "certification" ? "Certificate Program" : data.course_type}</p>
@@ -25,13 +42,14 @@ const NoticeBoardCard = ({ data }) => {
       </div>
 
       <div className="noticeboard-section notice-doc">
-        <p>Attachments :</p>
+        {data.attachments && data.attachments.length > 0 && <p>Attachments:</p>}
+
         {data.attachments.map((att, idx) => (
           <div className="noticeboard-attachment-row" key={idx}>
             <span><img src={attachmentBullet} alt="attachment-bullet" /> {att.title}</span>
             <div>
-              <Link to={att.url} target="_blank" className="noticeboard-view-btn">View<img src={view} alt="View" /></Link>
-              <Link to={att.url} download className="noticeboard-download-btn">Download<img src={download} alt="Download" /></Link>
+              <Link onClick={() => handleView(att.url)} target="_blank" className="noticeboard-view-btn">View<img src={view} alt="View" /></Link>
+              <Link onClick={() => handleDownload(att.url)} download target="_blank" className="noticeboard-download-btn">Download<img src={download} alt="Download" /></Link>
             </div>
           </div>
         ))}

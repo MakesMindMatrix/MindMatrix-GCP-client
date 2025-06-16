@@ -18,10 +18,10 @@ const Dashboard = () => {
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user)
   const { loading: ssoLoading} = useSelector((state) => state.SSO)
   const { loading: myCourseLoading, my_course, rec_course, allNoticeboards } = useSelector((state) => state.myCourse)
-  console.log(user)
+  // console.log(user)
   const userEmail = user.email
   const user_name = user.name
-  console.log(allNoticeboards)
+  // console.log(allNoticeboards)
 
   useEffect(() => {
     if (isAuthenticated) {
