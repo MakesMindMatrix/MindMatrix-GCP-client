@@ -32,7 +32,7 @@ const ResetPassword = () => {
 
     dispatch(resetPassword(params.token, myForm)); 
   };
-
+  console.log("Forgot Password")
   useEffect(() => {
     if (error) {
       toast.error(error);

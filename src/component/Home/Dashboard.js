@@ -4,27 +4,30 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Navbar from '../layout/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
-import { courseDataAction, SSOLogin } from '../../actions/courseAction';
+import { allNoticeBoards, courseDataAction, SSOLogin } from '../../actions/courseAction';
 import courseData from '../Data/courseData'
 import Loader from '../layout/Loader/Loader'
 import RecCard from './Cards/RecCard';
 import MyCourseCard from './Cards/MyCourseCard';
 import UpcomingCard from './Cards/UpcomingCard';
-import certificateProgramData from '../Data/certificateProgramData';
+// import certificateProgramData from '../Data/certificateProgramData';
+import NoticeBoardCard from './Cards/NoticeBoardCard';
 const Dashboard = () => {
   const dispatch = useDispatch()
 
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user)
   const { loading: ssoLoading} = useSelector((state) => state.SSO)
-  const { loading: myCourseLoading, my_course, rec_course } = useSelector((state) => state.myCourse)
-
+  const { loading: myCourseLoading, my_course, rec_course, allNoticeboards } = useSelector((state) => state.myCourse)
+  // console.log(user)
   const userEmail = user.email
   const user_name = user.name
+  // console.log(allNoticeboards)
 
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(courseDataAction(userEmail))
       dispatch(SSOLogin(userEmail))
+      dispatch(allNoticeBoards())
     }
 
     // if (enroll_course) {
@@ -41,7 +44,7 @@ const Dashboard = () => {
             <Navbar />
             <div className="userName">
               <div className="hello">
-                <h3>Welcome Back, {user_name}</h3>
+                <h3>Hello <span>{user_name}</span>, <br /> <span>from {user.college.name}</span></h3>
               </div>
             </div>
 
@@ -59,7 +62,7 @@ const Dashboard = () => {
 
 
                 {/* Recommended section */}
-                {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Our Recommended Programs</h1>}
+                {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Recommended Programs</h1>}
                 <div className='dash_rec_container'>
                   {rec_course && rec_course.map((elm, index) => {
                     return <RecCard data={elm} key={index}/>
@@ -75,16 +78,22 @@ const Dashboard = () => {
                 </div>
 
                 {/* Certificate program */}
-                <h1 className='main_heading'>Our Certified programs</h1>
+                {/* <h1 className='main_heading'>Our Certified programs</h1>
                 <div className='dash_up_container'>
                   {certificateProgramData?.map((elm, index) => (
                     <UpcomingCard data={elm} key={index} />
                   ))}
-                </div>
+                </div> */}
               </div>
 
               {/* Dashboard Right section */}
               <div className='das_body_right'>
+                <h3 className='notice_heading'>My Notice Board</h3>
+                <div className="noticeboard_container">
+                  {allNoticeboards && allNoticeboards.map((elm, index) => (
+                    <NoticeBoardCard data={elm} key={index} />
+                  ))}
+                </div>
               </div>
             </div>
 

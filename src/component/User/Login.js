@@ -53,8 +53,8 @@ const Login = () => {
                 'https://www.googleapis.com/auth/userinfo.email',
                 'https://www.googleapis.com/auth/userinfo.profile'
             ].join(' '),
-            access_type: 'offline',
-            prompt: 'consent'
+            // access_type: 'offline',
+            // prompt: 'consent'
         });
 
         window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
@@ -74,7 +74,8 @@ const Login = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            if (user?.role === "College") {
+            if (user?.role === "college") {
+                console.log('college')
                 navigate("/college-dashboard");
             } else if (!user?.phone) {
                 // navigate("/onboarding");
