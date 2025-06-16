@@ -1,32 +1,93 @@
 .noticeboard-card {
-  border: 2px solid #c4ecff;
+  border: 2px solid #33cfee;
   border-radius: 10px;
   padding: 16px;
   max-width: 380px;
   background: #fff;
   font-family: sans-serif;
+  margin: 1rem;
+}
+
+img{
+  margin-right: 1rem;
 }
 
 .noticeboard-course-type {
   color: goldenrod;
   font-weight: bold;
-  margin-bottom: 5px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
 }
 
 .noticeboard-course-name {
+  text-align: left;
   font-size: 20px;
-  margin-bottom: 16px;
+  margin: 1rem 0;
 }
 
 .noticeboard-section {
   margin-bottom: 12px;
 }
 
+.notice-dates p span {
+  font-weight: 900;
+  color: #000000e1;
+  line-height: 2rem;
+}
+
+.notice-dates p {
+  color: #000000ce;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.notice-dates-line {
+  background-color: black;
+  height: 1px;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+.notice-doc > p, .notice-academic > p, .noticeboard-attachment-row>span{
+  color: black;
+  font-weight: 900;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+.notice-academic > p:nth-child(1){
+  font-weight: 900;
+}
+
+.notice-academic > p, .notice-doc span{
+  font-weight: 400;
+}
+
+.notice-academic > p{
+  margin: 1rem 0;
+}
+
 .noticeboard-attachment-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 6px 0;
+  margin: 1.5rem 0;
+}
+
+.noticeboard-attachment-row div{
+  display: flex;
+}
+
+.noticeboard-attachment-row div a{
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 100px;
+  color: black;
+}
+
+.noticeboard-attachment-row div a img{
+  margin-left: 1rem;
 }
 
 .noticeboard-view-btn {
@@ -47,4 +108,6 @@
   border-radius: 4px;
   text-decoration: none;
   font-size: 14px;
+  /* display: flex; */
+  /* align-items: center; */
 }
