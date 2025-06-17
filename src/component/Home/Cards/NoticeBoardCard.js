@@ -5,7 +5,7 @@ import certificateProgram from '../images/certificate_program_icon.svg'
 import attachmentBullet from '../images/Attachment_bullets_icon.svg'
 import eligibiltyBullet from '../images/eligibility_bullets_icon.svg'
 import view from '../images/view_icon.svg'
-import download from '../images/download.svg'
+// import download from '../images/download.svg'
 
 const NoticeBoardCard = ({ data }) => {
 
