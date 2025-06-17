@@ -32,13 +32,17 @@ const CollegePlan = () => {
           >
             Sign Up
           </Link>
-
+          <div className="auth-buttons">
+            <button className="filled-btn" onClick={() => navigate("/")}>
+              Logout
+            </button>
+          </div>
           <Link
             to="/login"
             className="btnOne auth_btn"
           >
             Login
-          </Link>
+          </Link
         </div>
       </div>}
 
