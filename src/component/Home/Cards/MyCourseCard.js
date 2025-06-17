@@ -79,7 +79,7 @@ const MyCourseCard = ({ data }) => {
         <div
           style={{
             backgroundImage: `url(${image})`,
-            height: "10rem",
+            height: "15rem",
           }}
           className="course_card_img"
         >

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./CollegePlan.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allPlanAction } from "../../actions/collegeAction";
 import Navbar from "../layout/Navbar/Navbar";
 
 const CollegePlan = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   // const { loading: loadingProfile, isUpdated, error } = useSelector((state) => state.profile)
   const { loading: userLoading, user, isAuthenticated } = useSelector((state) => state.user)
@@ -42,7 +43,7 @@ const CollegePlan = () => {
             className="btnOne auth_btn"
           >
             Login
-          </Link
+          </Link>
         </div>
       </div>}
 

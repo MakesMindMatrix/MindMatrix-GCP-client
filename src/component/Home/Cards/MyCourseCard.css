@@ -1,5 +1,5 @@
 .course_card {
-  width: 25rem;
+  width: 30rem;
   /* height: 32rem; */
   background: #f8f8f8;
   border-radius: 1rem;
@@ -142,7 +142,7 @@ progress::-webkit-progress-value {
   /* margin: 1rem; */
   width: 100%;
   max-width: 26rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   padding: 0.9rem 1.5rem;
   margin: 0 auto;
@@ -195,8 +195,8 @@ progress::-webkit-progress-value {
 
 /* Progress % */
 .circular-chart {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
 }
 
 .circle-bg {
@@ -222,8 +222,8 @@ progress::-webkit-progress-value {
 }
 
 .circular-progress-new {
-  width: 70px; /* reduced */
-  height: 70px;
+  width: 90px; /* reduced */
+  height: 90px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -233,7 +233,7 @@ progress::-webkit-progress-value {
 }
 
 .progress-label {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: 500;
   text-align: center;
   margin-top: 0.3rem;
@@ -242,7 +242,7 @@ progress::-webkit-progress-value {
 .course_progress_report {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 1rem;
   margin: 0.5rem 0;
 }
@@ -261,23 +261,27 @@ progress::-webkit-progress-value {
 }
 
 .reportData_item h1 {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   margin: 0;
   flex: 1;
   white-space: nowrap;
+  text-align: left;
+  font-weight: 800;
+  
 }
 .reportData_item h2 {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   white-space: nowrap;
   gap: 0.3rem;
+  margin-left: 0.5rem;
 }
 
 .reportData_item span {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
   padding: 0.2rem 0.5rem;
 }
 

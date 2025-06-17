@@ -47,6 +47,7 @@
 .courseDate_box {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 1rem 0;
   padding-left: 1rem;
   /* justify-content: center; */
@@ -70,7 +71,7 @@
   background-color: #128891;
   color: white;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 0.9rem 1.5rem;
   width: 100%;
   border: none;
