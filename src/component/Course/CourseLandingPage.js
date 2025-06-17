@@ -22,8 +22,8 @@ const CourseLandingPage = () => {
 
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user);
   const { loading, courseLandingPageData } = useSelector((state) => state.courseLandingPage);
-  const { loading: courseLoading, enroll_course, rec_course } = useSelector((state) => state.myCourse)
-  const { coursePayment, coursePaymentStatus } = useSelector((state) => state.payment);
+  const { loading: courseLoading, enroll_course } = useSelector((state) => state.myCourse)
+  const { coursePayment } = useSelector((state) => state.payment);
   const { sso } = useSelector((state) => state.SSO);
 
   const courseData = courseLandingPageData ? courseLandingPageData.CourseInfo.find((course) => {

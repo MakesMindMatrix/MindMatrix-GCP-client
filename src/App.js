@@ -33,7 +33,7 @@ import CourseLandingPage from './component/Course/CourseLandingPage.js'
 import AdminPayment from './adminComponent/Home/AdminPayment/AdminPayment.js'
 import Loader from './component/layout/Loader/Loader.js'
 import PaymentVerification from './component/User/PaymentVerification.js'
-import CollegeDashboard from './collegeComponent/CollegeDashboard/CollegeDashboard.js'
+// import CollegeDashboard from './collegeComponent/CollegeDashboard/CollegeDashboard.js'
 import PaymentSuccess from './component/User/PaymentSuccess.js';
 import PaymentFailure from './component/User/PaymentFailure.js';
 import CoursePayment from './component/Course/CoursePayment.js'
@@ -42,6 +42,7 @@ import HomePage from './component/Home/HomePage.js';
 import IndustryRegister from './component/User/IndustryRegister.js';
 import UserInterest from './component/Home/UserInterest.js';
 import Interest from './adminComponent/Home/Interest/Interest.js';
+import CollegePlan from './component/User/CollegePlan.js';
 // import Footer from './component/layout/Footer/Footer.js'
 // import AllCourses from './component/Home/AllCourses.js'
 
@@ -55,7 +56,7 @@ const App = () => {
         families: ["Roboto Flex", "Montserrat"]
       }
     });
-    
+
     store.dispatch(loadUser());
   }, []);
 
@@ -101,7 +102,7 @@ const App = () => {
           <Route path="/payment/:batchId/:courseName/:coursePrice" element={<CoursePayment />} />
 
           {/* College routes */}
-          <Route path="/college-dashboard" element={<CollegeDashboard />} />
+          <Route path="/college-dashboard" element={<CollegePlan />} />
         </Route>
 
         {/* Admin Routes */}
@@ -125,7 +126,7 @@ export default App;
 const Link = () => {
   return (
     <>
-      <div style={{height: '100vh', width: '100vw'}}>
+      <div style={{ height: '100vh', width: '100vw' }}>
         <iframe src="https://trygcp.dev/e/build-with-ai-avk-college-for-women" allow="identity-credentials-get" title='test' height={'100%'} width={'100%'} />
       </div>
     </>
