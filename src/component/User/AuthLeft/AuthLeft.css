@@ -1,22 +1,22 @@
 .carousel-slide-auth {
-    height: 100%;
-    /* background-color: aqua; */
+  height: 100%;
+  /* background-color: aqua; */
 }
 
 .slide-wrapper-auth {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 /* .authLeft_image_container {
 } */
 
 .authLeft_image_container div {
-    width: 40vw;
-    height: 90vh;
-    border-radius: 10px;
-    background-position: center;
-    background-size: cover;
+  width: 35vw;
+  height: 80vh;
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
 }

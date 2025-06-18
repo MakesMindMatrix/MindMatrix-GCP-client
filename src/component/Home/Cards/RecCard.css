@@ -96,9 +96,9 @@
 }
 
 .badge-tag {
-  position: absolute;
+  position: relative;
   top: 1.2rem;
-  right: 1rem;
+  /* right: 1rem; */
   background-color: #fff8eb;
   color: #d4af37;
   padding: 0.4rem 1.4rem;
@@ -109,7 +109,7 @@
   align-items: center;
   gap: 0.3rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  /* z-index: 2; */
   right: -1rem;
   border: 1px solid #d4af37;
 }
