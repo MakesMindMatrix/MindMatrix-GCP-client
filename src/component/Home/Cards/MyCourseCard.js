@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./MyCourseCard.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+// import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import CertificateIcon from "./certificate_program_icon.svg";
 
