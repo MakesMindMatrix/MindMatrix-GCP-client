@@ -1,46 +1,232 @@
-.courseDateprice_box{
-    margin-top: auto;
+.courseDateprice_box {
+  margin-top: auto;
+  padding: 0 1rem;
 }
 
-.coursePrice_box{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 1rem;
-    margin: 1rem 0;
+.coursePrice_box {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1.1rem;
+  margin: 1rem 0;
 }
-.courseDate_box{
-    display: flex;
-    align-items: center;
-    margin: 1rem 0;
-    padding-left: 1rem;
-    /* justify-content: center; */
+.price-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
 }
-.courseDate_box h2{
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
+.original-price {
+  color: white;
+  text-decoration: line-through;
+  font-size: 1.8rem !important;
+  color: #333333 !important;
+  font-weight: bold;
 }
-.course_description{
-    font-size: 1rem;
-    color: black;
-    margin-top: 0.5rem;
-    font-weight: 500;
-    line-height: 1.3rem;
-    padding: 0.5rem 0;
+
+.discount-tag {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.discounted-price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333333;
+  padding-left: 0.1rem;
+}
+.badge-icon-img {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.2rem;
+  vertical-align: text-bottom;
+}
+
+.courseDate_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  /* justify-content: center; */
+}
+.courseDate_box h2 {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+.course_description {
+  font-size: 1rem;
+  color: black;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  line-height: 1.3rem;
+  padding: 0.5rem 0;
 }
 
 /* .enroll_button { */
 .view_button {
-    /* margin-top: auto; */
-    border: none;
-    background-color: #4C8070;
-    color: white;
-    font: 300 0.9vmax "Roboto";
-    width: 100%;
-    padding: 0.8vmax;
-    cursor: pointer;
-    transition: all 0.5s;
-    border-radius: 4px;
-    outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  /* margin-top: auto; */
+  background-color: #128891;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0.9rem 1.5rem;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.course_card_img {
+  width: 100%;
+  height: 20rem;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  position: relative;
+}
+
+.courseCard_container {
+  overflow: hidden;
+}
+
+.badge-tag {
+  position: absolute;
+  top: 1.2rem;
+  right: 1rem;
+  background-color: #fff8eb;
+  color: #d4af37;
+  padding: 0.4rem 1.4rem;
+  font-size: 0.85rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  right: -1rem;
+  border: 1px solid #d4af37;
+}
+/* __________ */
+
+.courseContent_box {
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+
+.course_title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #000000;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.section-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0.2rem 0 0.6rem 0;
+  margin-top: -1.75 rem;
+}
+
+.title-divider {
+  margin: 0.8rem 0;
+  border: none;
+  border-top: 2px dashed #ccc;
+}
+
+.course_outline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: left;
+}
+.outline-icon-img {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+.course_outline p {
+  color: #000000;
+}
+
+.outline-icon {
+  margin-right: 0.4rem;
+  color: #000000;
+}
+
+.outline-divider {
+  margin-top: 1rem;
+  border: none;
+  border-top: 2px dashed #ccc;
+  margin-bottom: 0rem;
+}
+.course_outline,
+.section-heading,
+.course_outline p {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+/* Mentor section */
+
+.mentor_card {
+  margin: -0.55rem 1rem 0;
+}
+/* .mentor_card h2.section-heading {
+  margin-top: 0.3rem;
+} */
+
+.mentor_info_box {
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 0.6rem;
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.mentor_photo {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0;
+  object-fit: cover;
+  border: 2px solid #ffffff55;
+}
+
+.mentor_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mentor_name {
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 0;
+  color: white;
+}
+
+.mentor_position {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0.2rem 0 0;
+}
+.mentor_company_logo {
+  height: 1.2rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
 }

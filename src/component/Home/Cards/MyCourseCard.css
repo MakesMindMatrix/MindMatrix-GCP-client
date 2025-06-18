@@ -1,147 +1,304 @@
 .course_card {
-    width: 25rem;
-    /* height: 32rem; */
-    background: #f8f8f8;
-    border-radius: 1rem;
-    border: 0.1rem solid #EBEDF4;
-    /* padding: 1.5rem; */
-    margin: 1.5rem 1rem;
-    transition: transform 150ms ease-in-out;
-    box-shadow: 1px 1px 10px 0px #cfcfcf;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
+  width: 30rem;
+  /* height: 32rem; */
+  background: #f8f8f8;
+  border-radius: 1rem;
+  border: 2px solid #a7d1f7;
+  padding: 1.5rem;
+  margin: 1.5rem 1rem;
+  transition: transform 150ms ease-in-out;
+  box-shadow: 1px 1px 10px 0px #cfcfcf;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 
 .course_card:hover {
-    transform: translateY(-15px);
-    background: #ffffffef;
-    box-shadow: 2px 2px 20px 5px #cfcfcf;
+  transform: translateY(-15px);
+  background: #ffffffef;
+  box-shadow: 2px 2px 20px 5px #cfcfcf;
 }
 
 .course_card_img {
-    background-size: cover;
-    background-position: center;
-    /* height: 16rem; */
-    border-radius: 1rem 1rem 0 0;
-    /* padding: 1rem; */
+  background-size: cover;
+  background-position: center;
+  /* height: 16rem; */
+  border-radius: 1rem 1rem 0 0;
+  /* padding: 1rem; */
+  position: relative;
+}
+.badge-icon-img {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.2rem;
+  vertical-align: middle;
 }
 
 .courseProgress_box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .courseContent_box progress {
-    width: 75%;
+  width: 75%;
 }
 
 .courseContent_box {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .reportData_box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .reportData_box h1 {
-    font-size: 1.2rem;
-    margin: 0.8rem 0;
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
 }
 
 .reportData_box span {
-    background-color: antiquewhite;
-    border: 1px solid black;
-    padding: 0.3rem;
-    margin: 0 0.3rem;
-    border-radius: 3px;
-    font-size: 1.2rem;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  padding: 0.3rem;
+  margin: 0 0.3rem;
+  border-radius: 3px;
+  font-size: 1.2rem;
 }
 
 .course_name {
-    font-size: 1.5rem;
-    /* margin-top: 1rem; */
-    text-align: left;
-    font-weight: 700;
-    color: black;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    margin: 1rem 0;
-    /* padding: 0.5rem 0; */
+  font-size: 1.5rem;
+  /* margin-top: 1rem; */
+  text-align: left;
+  font-weight: 700;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  max-width: 100%;
+  margin: 1rem 0;
+  /* padding: 0.5rem 0; */
+  text-wrap: auto;
 }
 
 .course_percentage {
-    font-size: 1.1rem;
-    text-align: left;
-    font-weight: 500;
-    color: white;
-    padding: 0.25rem 0.7rem;
-    background-color: #4a7b71;
-    border-radius: 100px;
+  font-size: 1.1rem;
+  text-align: left;
+  font-weight: 500;
+  color: white;
+  padding: 0.25rem 0.7rem;
+  background-color: #4a7b71;
+  border-radius: 100px;
 }
 
 progress {
-    -webkit-appearance: none;
-    appearance: none;
-    /* width: 200px; */
-    height: 15px;
-    border: none;
-    border-radius: 10px;
-    background-color: #eceff1;
-    overflow: hidden;
-    margin: 1rem 0;
+  -webkit-appearance: none;
+  appearance: none;
+  /* width: 200px; */
+  height: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #eceff1;
+  overflow: hidden;
+  margin: 1rem 0;
 }
 
 progress::-webkit-progress-bar {
-    background-color: #eceff1;
-    border-radius: 10px;
+  background-color: #eceff1;
+  border-radius: 10px;
 }
 
 progress::-webkit-progress-value {
-    background-color: #4a7b71;
-    border-radius: 10px 0 0 10px;
-    position: relative;
+  background-color: #4a7b71;
+  border-radius: 10px 0 0 10px;
+  position: relative;
 }
 
 /* Optional: add a white circle (thumb) manually */
 .progress-wrapper {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .progress-thumb {
-    width: 18px;
-    height: 18px;
-    background-color: white;
-    border: 2px solid #4a7b71;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    /* Move based on progress value */
-    left: calc(30% - 9px);
-    /* 30% progress minus half thumb size */
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border: 2px solid #4a7b71;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Move based on progress value */
+  left: calc(30% - 9px);
+  /* 30% progress minus half thumb size */
 }
 
 .enroll_button {
-    /* margin: 1rem; */
-    border: none;
-    background-color: #000000;
-    color: white;
-    font: 300 0.9vmax "Roboto";
-    /* width: 100%; */
-    padding: 0.6vmax 0.8vmax;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: all 0.5s;
-    border-radius: 100px;
-    outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+  /* margin: 1rem; */
+  width: 100%;
+  max-width: 26rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+}
+.enroll_button_wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.badge-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #fff6e6;
+  color: #6b4000;
+  border: 2px solid #d4af37;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  right: -2.5rem;
+}
+
+.badge-icon {
+  font-size: 1.2rem;
+}
+.course-divider {
+  border: none;
+  border-top: 2px dashed #ccc;
+  margin: 0.1rem 0;
+}
+
+/* Progress % */
+.circular-chart {
+  width: 80px;
+  height: 80px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 4.5;
+}
+
+.circle {
+  fill: none;
+  stroke: #00acc1;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.percentage-text {
+  fill: #00acc1;
+  font-size: 0.9rem;
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-weight: bold;
+}
+
+.circular-progress-new {
+  width: 90px; /* reduced */
+  height: 90px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+
+.progress-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+.course_progress_report {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.reportData_group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.reportData_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between !important;
+  width: 100%;
+  margin: 0.7rem 0;
+}
+
+.reportData_item h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+  text-align: left;
+  font-weight: 800;
+  
+}
+.reportData_item h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+.reportData_item span {
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+}
+
+span.green {
+  background-color: #e3ffeb;
+  border-color: #78c58e;
+  color: #2e7d32;
+}
+
+span.blue {
+  background-color: #e2f5ff;
+  border-color: #7ecef8;
+  color: #0277bd;
+}
+
+span.orange {
+  background-color: #ffeedb;
+  border-color: #e09749;
+  color: #e65100;
 }
