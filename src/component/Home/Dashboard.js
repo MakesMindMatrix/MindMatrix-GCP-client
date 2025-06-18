@@ -18,10 +18,10 @@ const Dashboard = () => {
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user)
   const { loading: ssoLoading } = useSelector((state) => state.SSO)
   const { loading: myCourseLoading, my_course, rec_course, allNoticeboards } = useSelector((state) => state.myCourse)
-  // console.log(rec_course)
+  console.log(rec_course)
   const userEmail = user.email
   const user_name = user.name
-  console.log(my_course)
+  // console.log(my_course)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -62,7 +62,9 @@ const Dashboard = () => {
 
 
           {/* Recommended section */}
-          {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Recommended Programs</h1>}
+          {rec_course?.some(elm => elm.publishStatus === 'recommended') && (
+            <h1 className='main_heading'>Recommended Programs</h1>
+          )}
           <div className='dash_rec_container'>
             {rec_course && rec_course.map((elm, index) => (
               elm.publishStatus === 'recommended' ? <RecCard data={elm} key={index} /> : null
@@ -70,7 +72,9 @@ const Dashboard = () => {
           </div>
 
           {/* Upcoming courses */}
-          {rec_course && rec_course.length > 0 && <h1 className='main_heading'>Upcoming Programs</h1>}
+          {rec_course?.some(elm => elm.publishStatus === 'upcoming') && (
+            <h1 className='main_heading'>Recommended Programs</h1>
+          )}
           <div className='dash_rec_container'>
             {rec_course && rec_course.map((elm, index) => (
               elm.publishStatus === 'upcoming' ? <RecCard data={elm} key={index} /> : null
