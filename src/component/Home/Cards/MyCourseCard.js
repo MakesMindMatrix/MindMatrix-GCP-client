@@ -54,11 +54,11 @@ const MyCourseCard = ({ data }) => {
     fetchCourseInfo();
   }, [data.external_batch_id]);
 
-  console.log(
-    "Fetched course :",
-    data.external_batch_id,
-    courseInfo?.course_card_image
-  );
+  // console.log(
+  //   "Fetched course :",
+  //   data.external_batch_id,
+  //   courseInfo?.course_card_image
+  // );
   const image =
     courseInfo?.course_card_image ||
     "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
@@ -103,7 +103,7 @@ const MyCourseCard = ({ data }) => {
               {percentage}%
             </progress>
           </div> */}
-          {console.log("data Unenrolled", data)}
+          {/* {console.log("data Unenrolled", data)} */}
           <div className="course_progress_report">
             <div className="circular-progress-new">
               <svg viewBox="0 0 36 36" className="circular-chart">
