@@ -111,7 +111,7 @@ const App = () => {
           />
 
           {/* College routes */}
-          <Route path="/college-dashboard" element={<CollegeDashboard />} />
+          <Route path="/college-dashboard" element={<CollegePlan />} />
         </Route>
 
         {/* Admin Routes */}

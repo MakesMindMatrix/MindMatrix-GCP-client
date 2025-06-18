@@ -74,7 +74,8 @@ const Login = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            if (user?.role === "College") {
+            if (user?.role === "college") {
+                console.log('college')
                 navigate("/college-dashboard");
             } else if (!user?.phone) {
                 // navigate("/onboarding");
