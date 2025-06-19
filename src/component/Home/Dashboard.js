@@ -73,7 +73,7 @@ const Dashboard = () => {
 
           {/* Upcoming courses */}
           {rec_course?.some(elm => elm.publishStatus === 'upcoming') && (
-            <h1 className='main_heading'>Recommended Programs</h1>
+            <h1 className='main_heading'>Upcoming Programs</h1>
           )}
           <div className='dash_rec_container'>
             {rec_course && rec_course.map((elm, index) => (
