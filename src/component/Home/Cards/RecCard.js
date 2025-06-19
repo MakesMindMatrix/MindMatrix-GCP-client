@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./RecCard.css";
 // import Gai from '../images/GAI.jpg'
 import { FaRegCalendarMinus } from "react-icons/fa";
-import CertificateIcon from "./certificate_program_icon.svg";
+// import CertificateIcon from "./certificate_program_icon.svg";
 import OutlineBulletIcon from "./Course-Outline-Bullet-Icon.svg";
 
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
@@ -88,7 +88,7 @@ const RecCard = ({ data }) => {
           </div>
           <hr className="outline-divider" />
         </div>
-        {console.log("cousre", data)}
+        {/* {console.log("cousre", data)} */}
 
         <div className="mentor_card">
           <h2 className="section-heading">Course Mentor</h2>

@@ -18,7 +18,7 @@ const Dashboard = () => {
   const { loading: userLoading, isAuthenticated, user } = useSelector((state) => state.user)
   const { loading: ssoLoading } = useSelector((state) => state.SSO)
   const { loading: myCourseLoading, my_course, rec_course, allNoticeboards } = useSelector((state) => state.myCourse)
-  console.log(rec_course)
+  // console.log(rec_course)
   const userEmail = user.email
   const user_name = user.name
   // console.log(my_course)
