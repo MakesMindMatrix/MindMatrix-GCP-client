@@ -20,8 +20,10 @@
 }
 .verify_btn {
     position: absolute;
-    right: 0.4rem;
-    padding: 0.4rem 1.2rem;
+    right: 0.5rem;
+    top: 1rem;
+    bottom: 1rem;
+    padding: 0rem 1.2rem 0rem 1.2rem;
     background-color: #4C8070;
     border-radius: 0.5rem;
     border: none;
@@ -29,6 +31,8 @@
     cursor: pointer;
     box-shadow: 0 3px #4795e23d;
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
 @media screen and (max-width: 998px) {

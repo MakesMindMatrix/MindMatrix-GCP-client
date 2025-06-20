@@ -36,7 +36,7 @@ const Dashboard = () => {
     // dispatch(allCourse())
   }, [dispatch, isAuthenticated, userEmail])
 
-  if (myCourseLoading || userLoading || ssoLoading) {
+  if (myCourseLoading || userLoading || ssoLoading || !user) {
     return <Loader />
   }
   return (
