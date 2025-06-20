@@ -95,6 +95,9 @@ const Register = () => {
       return;
     }
 
+    if (user.university === "") {
+      delete user.university;
+    }
     dispatch(register(user));
   };
 
@@ -157,13 +160,19 @@ const Register = () => {
             <div className="login_right">
               <div className="register-heading">
                 {user.role === "college" ? (
-                  <p className="register-subheading">
-                    Choose your profile type to begin and create your account
-                  </p>
+                  // <p className="register-subheading">
+                  //   Choose your profile type to begin and create your account
+                  // </p>
+                  <>
+                    <h1> Get Started with MindMatrix </h1>
+                    <p className="register-subheading">
+                      Choose your profile type to begin and create your account
+                    </p>
+                  </>
                 ) : (
                   <>
                     <h1>Get Started with MindMatrix</h1>
-                    <p>
+                    <p className="register-subheading">
                       Choose your profile type to begin and create your account
                     </p>
                   </>
