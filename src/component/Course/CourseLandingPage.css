@@ -129,22 +129,35 @@
 }
 
 .hero-enroll-btn {
-  margin-top: 1.4rem;
-  padding: 1rem 2.2rem;
-  background: #148492;
-  color: #fff;
-  border: none;
-  border-radius: 1.5rem;
-  font-size: 2rem;
-  font-weight: 300;
-  align-self: flex-start;
-  cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 2px 8px rgba(20, 132, 146, 0.12);
+    margin-top: 2.5rem;
+    padding: 1rem 2.2rem;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    font-weight: 300;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(20,132,146,0.12);
 }
 
-.hero-enroll-btn:hover {
-  background: #0f6a74;
+.enroll-btn-live{
+    background: #148492;
+    color: #fff;
+}
+
+.enroll-btn-live:hover {
+    background: #0f6a74;
+}
+
+.enroll-btn-upcoming{
+    background: #fff;
+    color: #0f6a74;
+    border: 1px solid #148492;
+}
+
+.enroll-btn-upcoming:hover {
+    background: #fff;
 }
 
 .hero-right {

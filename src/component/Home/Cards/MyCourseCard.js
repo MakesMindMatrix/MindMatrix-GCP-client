@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./MyCourseCard.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+// import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import CertificateIcon from "./certificate_program_icon.svg";
+// import CertificateIcon from "./certificate_program_icon.svg";
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -16,7 +16,7 @@ const MyCourseCard = ({ data }) => {
   const course_progress =
     report_data &&
     report_data.filter((elm) => elm.courseName === data.course_name);
-  // console.log(course_progress)
+  // console.log(data)
 
   let percentage;
   let taskSubmitted;
@@ -54,11 +54,11 @@ const MyCourseCard = ({ data }) => {
     fetchCourseInfo();
   }, [data.external_batch_id]);
 
-  console.log(
-    "Fetched course :",
-    data.external_batch_id,
-    courseInfo?.course_card_image
-  );
+  // console.log(
+  // "Fetched course :",
+  // data.external_batch_id,
+  // courseInfo
+  // );
   const image =
     courseInfo?.course_card_image ||
     "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
@@ -79,20 +79,20 @@ const MyCourseCard = ({ data }) => {
         <div
           style={{
             backgroundImage: `url(${image})`,
-            height: "10rem",
+            height: "15rem",
           }}
           className="course_card_img"
         >
-          <div className="badge-tag">
-            <span className="badge-icon">
+          {courseInfo?.courseType && <div className="badge-tag">
+            {/* <span className="badge-icon">
               <img
                 src={CertificateIcon}
                 alt="Certificate Icon"
                 className="badge-icon-img"
               />
-            </span>
-            Certificate Program
-          </div>
+            </span> */}
+            {courseInfo?.courseType}
+          </div>}
         </div>
         <div className="courseContent_box">
           <h1 className="course_name">{data?.course_name}</h1>
@@ -103,7 +103,7 @@ const MyCourseCard = ({ data }) => {
               {percentage}%
             </progress>
           </div> */}
-          {console.log("data Unenrolled", data)}
+          {/* {console.log("data Unenrolled", data)} */}
           <div className="course_progress_report">
             <div className="circular-progress-new">
               <svg viewBox="0 0 36 36" className="circular-chart">

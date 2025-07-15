@@ -15,6 +15,7 @@ import {
 } from "../../actions/courseAction";
 import CurriculumSection from "./CurriculumSection";
 import { IoIosCloseCircle } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const CourseLandingPage = () => {
   const navigate = useNavigate();
@@ -110,7 +111,7 @@ const CourseLandingPage = () => {
     return <Loader />;
   }
 
-  console.log(courseData);
+  // console.log(courseData);
   // Get course from store
   const course = courseData;
   // console.log("Fetched course:", course);
@@ -123,6 +124,12 @@ const CourseLandingPage = () => {
     course.curriculum_section?.curriculum_image || "/iot-image.jpg";
   const paymentImage =
     "https://res.cloudinary.com/djsg8kbaz/image/upload/v1745835437/payment_modal_rekmbb.jpg";
+  const enroll_button =
+    course.hero_section?.hero_button_content === "Enroll Now";
+  const enroll_btn_class = enroll_button
+    ? "hero-enroll-btn enroll-btn-live"
+    : "hero-enroll-btn enroll-btn-upcoming";
+  // console.log(enroll_button_content)
 
   const handleEnrollConfirmation = () => {
     setConfirmModal(false);
@@ -131,6 +138,12 @@ const CourseLandingPage = () => {
   const handleEnroll = () => {
     if (!isAuthenticated) {
       return navigate("/login");
+    }
+
+    if (course.hero_section?.hero_button_content === "Launching Soon") {
+      return toast.warning(
+        "Thanks for showing interest, You will be notified soon once the course become live."
+      );
     }
 
     if (courseData.batch_price > 0) {
@@ -245,17 +258,6 @@ const CourseLandingPage = () => {
               {course.hero_section?.hero_description ||
                 "Default About Description"}
             </p>
-            <div className="hero-price-box">
-              <div className="price-top">
-                {/* {console.log("course", course)} */}
-                <span className="original-price">
-                  ₹{(course?.batch_price / 0.9).toFixed(0)}
-                </span>
-                <span className="discount-tag">10% off</span>
-                <span className="discounted-price">₹{course?.batch_price}</span>
-              </div>
-            </div>
-
             <button className="hero-enroll-btn" onClick={handleEnroll}>
               {course.hero_section?.hero_button_content ||
                 "Default Hero Button"}

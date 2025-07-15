@@ -9,7 +9,7 @@
 .signUpForm {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   margin: auto;
   height: 100%;
@@ -65,7 +65,7 @@
 }
 
 .login_right {
-  height: 70vh;
+  height: 90vh;
   width: 50%;
   overflow: auto;
 }
@@ -113,7 +113,7 @@
 /* ========== ROLE OPTIONS SECTION FOR STUDENT AND COLLEGE  ========== */
 .role-selection {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 2rem;
@@ -176,6 +176,7 @@
   .role-selection {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 }
 /* ___________ */

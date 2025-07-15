@@ -24,10 +24,12 @@ const Dashboard = () => {
     loading: myCourseLoading,
     my_course,
     rec_course,
+    allNoticeboards,
   } = useSelector((state) => state.myCourse);
-
+  console.log(rec_course);
   const userEmail = user.email;
   const user_name = user.name;
+  // console.log(allNoticeboards)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -69,22 +71,26 @@ const Dashboard = () => {
 
           {/* Recommended section */}
           {rec_course && rec_course.length > 0 && (
-            <h1 className="main_heading">Our Recommended Programs</h1>
+            <h1 className="main_heading">Recommended Programs</h1>
           )}
           <div className="dash_rec_container">
-            {console.log("recccc", rec_course)}
             {rec_course &&
-              rec_course.map((elm, index) => {
-                return <RecCard data={elm} key={index} />;
-              })}
+              rec_course.map((elm, index) =>
+                elm.publishStatus === "recommended" ? (
+                  <RecCard data={elm} key={index} />
+                ) : null
+              )}
           </div>
 
           {/* Upcoming courses */}
           <h1 className="main_heading">Upcoming Programs</h1>
-          <div className="dash_up_container">
-            {courseData?.map((elm, index) => (
-              <UpcomingCard data={elm} key={index} />
-            ))}
+          <div className="dash_rec_container">
+            {rec_course &&
+              rec_course.map((elm, index) =>
+                elm.publishStatus === "upcoming" ? (
+                  <RecCard data={elm} key={index} />
+                ) : null
+              )}
           </div>
 
           {/* Certificate program */}

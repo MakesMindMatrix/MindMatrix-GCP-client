@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./RecCard.css";
 // import Gai from '../images/GAI.jpg'
 import { FaRegCalendarMinus } from "react-icons/fa";
-import CertificateIcon from "./certificate_program_icon.svg";
+// import CertificateIcon from "./certificate_program_icon.svg";
 import OutlineBulletIcon from "./Course-Outline-Bullet-Icon.svg";
 
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
@@ -61,12 +61,12 @@ const RecCard = ({ data }) => {
           {" "}
           <span className="badge-tag">
             {" "}
-            <img
+            {/* <img
               src={CertificateIcon}
               alt="Certificate Icon"
               className="badge-icon-img"
-            />{" "}
-            Certificate Program
+            />{" "} */}
+            {data?.courseType}
           </span>
         </div>
         <div className="courseContent_box">
@@ -75,60 +75,38 @@ const RecCard = ({ data }) => {
           <hr className="title-divider" />
           <h2 className="section-heading">Course Outline</h2>
           <div className="course_outline">
-            <p>
-              <img
-                src={OutlineBulletIcon}
-                alt="bullet icon"
-                className="outline-icon-img"
-              />{" "}
-              GenAI Fundamentals
-            </p>
-            <p>
-              <img
-                src={OutlineBulletIcon}
-                alt="bullet icon"
-                className="outline-icon-img"
-              />{" "}
-              GenAI Fundamentals
-            </p>
-            <p>
-              <img
-                src={OutlineBulletIcon}
-                alt="bullet icon"
-                className="outline-icon-img"
-              />{" "}
-              GenAI Fundamentals
-            </p>
-            <p>
-              <img
-                src={OutlineBulletIcon}
-                alt="bullet icon"
-                className="outline-icon-img"
-              />{" "}
-              GenAI Fundamentals
-            </p>
+            {data.courseOutline.map((elm) => {
+              return <p>
+                <img
+                  src={OutlineBulletIcon}
+                  alt="bullet icon"
+                  className="outline-icon-img"
+                />{" "}
+                {elm}
+              </p>
+            })}
           </div>
           <hr className="outline-divider" />
         </div>
-        {console.log("cousre", data)}
+        {/* {console.log("cousre", data)} */}
 
         <div className="mentor_card">
           <h2 className="section-heading">Course Mentor</h2>
           <div className="mentor_info_box">
             <img
               className="mentor_photo"
-              src={data?.mentor_image}
+              src={data?.instructor_section?.instructor_image}
               alt="Mentor"
             />
             <div className="mentor_details">
-              <p className="mentor_name">Aniket Kumar</p>
+              <p className="mentor_name">{data?.instructor_section?.instructor_name}</p>
               <p className="mentor_position">
-                Program Coordinator at{" "}
-                <img
+                {data?.instructor_section?.instructor_designation}{" "}
+                {/* <img
                   src={data?.mentor_company_logo}
                   alt="Logo"
                   className="mentor_company_logo"
-                />
+                /> */}
               </p>
             </div>
           </div>
