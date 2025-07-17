@@ -1,0 +1,123 @@
+/* Main container */
+.build-profile {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: sans-serif;
+}
+
+/* Title styling */
+.profile-title {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Grid layout */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Shared card styles */
+.card {
+  background-color: #eafffa;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0%;
+  padding: 0%;
+}
+
+/* Tall vertical card on the left */
+.tall-card {
+  grid-row: span 2;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tall-card img {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tall-card .card-text {
+  height: 50%;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  background-color: #c2ecf3c1;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+/* Horizontal cards on the right */
+.small-card_ {
+  display: flex;
+  flex-direction: row;
+  height: 180px;
+  align-items: stretch;
+}
+
+/* Image for horizontal cards */
+.small-card_ img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.build-profile .small-card_ img {
+  margin-right: 0 !important;
+}
+
+/* Text for horizontal cards */
+.small-card_ .card-text {
+  width: 50%;
+  height: 100%;
+  background-color: #c2ecf3c1;
+  display: flex;
+  padding-left: 10px;
+  padding-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.card-text:hover {
+  color: #0056b3;
+}
+
+/* Responsive behavior */
+@media (max-width: 600px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .tall-card {
+    grid-row: auto;
+    height: auto;
+  }
+
+  .small-card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .small-card img,
+  .small-card .card-text {
+    width: 100%;
+    height: 150px;
+  }
+}
