@@ -46,6 +46,7 @@ import Interest from "./adminComponent/Home/Interest/Interest.js";
 // import AllCourses from './component/Home/AllCourses.js'
 import CollegePlan from "./component/User/CollegePlan.js";
 import Catalog from "./component/Home/Catalog.js";
+import ExploreMembership from "./component/Home/ExploreMembership.js";
 
 const App = () => {
   const { loading } = useSelector((state) => state.user);
@@ -75,6 +76,7 @@ const App = () => {
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/terms-conditions" element={<Terms />} />
+
         <Route
           path="/cancellations-return-policy"
           element={<CancellationPolicy />}
@@ -94,6 +96,7 @@ const App = () => {
         <Route path="/dashboard-test" element={<DashboardTest />} />
 
         <Route path="/courses/:courseName" element={<CourseLandingPage />} />
+        <Route path="/explore-memberships" element={<ExploreMembership />} />
 
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />
