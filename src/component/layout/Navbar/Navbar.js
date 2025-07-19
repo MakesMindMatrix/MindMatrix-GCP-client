@@ -52,9 +52,9 @@ const Navbar = () => {
         {/* Middle tab section */}
         <div className="nav-buttons">
           <Link
-            to="/"
+            to="/DashboardMindmatrix"
             className={`auth_btn_ btnOne_ ${
-              location.pathname === "/" ? "active_tab" : ""
+              location.pathname === "/DashboardMindmatrix" ? "active_tab" : ""
             }`}
           >
             Dashboard

@@ -47,6 +47,7 @@ import Interest from "./adminComponent/Home/Interest/Interest.js";
 import CollegePlan from "./component/User/CollegePlan.js";
 import Catalog from "./component/Home/Catalog.js";
 import ExploreMembership from "./component/Home/ExploreMembership.js";
+import DashboardMindmatrix from "./component/Home/DashboardMindmatrix.js";
 
 const App = () => {
   const { loading } = useSelector((state) => state.user);
@@ -97,6 +98,7 @@ const App = () => {
 
         <Route path="/courses/:courseName" element={<CourseLandingPage />} />
         <Route path="/explore-memberships" element={<ExploreMembership />} />
+        <Route path="/DashboardMindmatrix" element={<DashboardMindmatrix />} />
 
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />
