@@ -1,0 +1,378 @@
+.dashboard-body {
+  padding: 20px 50px;
+  background-color: #e6f6f8;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* Layout structure */
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 30px;
+  width: 100%;
+  background-color: #e6f6f8;
+}
+
+/* Card styles */
+.card {
+  background-color: #7dd2e1da;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+}
+
+/* Progress Card */
+.progress-card {
+  max-height: 460px;
+}
+.progress-card h3 {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  color: black;
+  text-align: left;
+  margin-bottom: 35px;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  gap: 20px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: black !important;
+  font-weight: 600;
+}
+.value {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.progress-item img {
+  width: clamp(30px, 5vw, 40px);
+  height: clamp(30px, 5vw, 40px);
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Course Card */
+.course-card {
+  max-height: 300px;
+}
+.course-card h3 {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  color: black;
+  text-align: left;
+}
+
+.course-card p {
+  font-size: clamp(1rem, 2.5vw, 1.7rem);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: black;
+  text-align: left;
+}
+
+.progress-label {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 700;
+  color: black;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+}
+
+.progress-bar_ {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  background-color: #e6f7f9;
+  border: 1.5px solid #007b8f;
+  border-radius: 999px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.progress-text {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+.progress-fill {
+  background-color: #007b8f;
+  height: 100%;
+  border-radius: 999px 0 0 999px;
+  transition: width 0.3s ease-in-out;
+}
+
+.continue-btn {
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  font-weight: 600;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.zuno-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 460px;
+}
+
+.zuno-card {
+  background-color: #03585f;
+  color: white;
+  border-radius: 16px;
+  padding: 0;
+  width: 100%;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  min-height: 600px;
+  height: auto;
+}
+
+.zuno-header {
+  background-color: #d8f4f7;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  min-height: 60px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.zuno-header h3 {
+  margin: 0;
+  color: #000000;
+  font-weight: bold;
+}
+
+.zuno-icon {
+  width: clamp(30px, 5vw, 40px);
+  height: clamp(30px, 5vw, 40px);
+  flex-shrink: 0;
+}
+
+.zuno-msg {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 20px;
+  font-size: 1rem;
+}
+.zuno-msg p {
+  text-align: left;
+  max-width: 350px;
+}
+.zuno-avatar {
+  width: clamp(30px, 5vw, 40px);
+  height: clamp(30px, 5vw, 40px);
+  flex-shrink: 0;
+}
+
+.zuno-msg p {
+  margin: 0;
+  color: white;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.faq-title {
+  margin-top: clamp(100px, 20vw, 200px);
+  margin-bottom: 8px;
+  text-align: center;
+  color: #ccc;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+.faq {
+  padding: 0 20px 10px;
+}
+
+.faq button {
+  background-color: white;
+  color: #004c54;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  width: 100%;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.chatbox-bar {
+  background-color: #99e8e3;
+  padding: 10px 12px;
+  border-radius: 16px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.chatbox-bar input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  background-color: #99e8e3;
+  font-size: clamp(1rem, 2.5vw, 1.9rem);
+}
+
+.send-btn {
+  background-color: #004c54;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Greeting Text */
+.greeting {
+  text-align: left;
+  margin-top: 20px;
+  font-size: clamp(1rem, 3vw, 20px);
+  color: black;
+}
+.greeting p {
+  color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-body {
+    padding: 15px 20px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .progress-item {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .progress-item img {
+    margin-right: 8px;
+  }
+
+  .zuno-container {
+    max-width: 100%;
+  }
+
+  .zuno-header {
+    padding: 8px 15px;
+    gap: 8px;
+  }
+
+  .zuno-msg {
+    padding: 15px;
+  }
+
+  .faq {
+    padding: 0 15px 10px;
+  }
+
+  .chatbox-bar {
+    padding: 8px 10px;
+  }
+
+  .chatbox-bar input {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-body {
+    padding: 10px 15px;
+  }
+
+  .main-content {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .progress-item {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .continue-btn {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .zuno-header {
+    padding: 6px 12px;
+    min-height: 50px;
+  }
+
+  .zuno-msg {
+    padding: 12px;
+  }
+
+  .faq {
+    padding: 0 12px 8px;
+  }
+
+  .faq button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .chatbox-bar {
+    padding: 6px 8px;
+  }
+
+  .send-btn {
+    min-width: 35px;
+    height: 35px;
+    padding: 8px;
+  }
+}
