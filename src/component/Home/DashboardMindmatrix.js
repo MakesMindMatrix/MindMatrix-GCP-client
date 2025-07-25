@@ -5,17 +5,33 @@ import Navbar from "../layout/Navbar/Navbar";
 import positionIcon from "./images/position-icon.svg";
 import taskIcon from "./images/total_task_icon.svg";
 import submittedIcon from "./images/task_submitted_icon.svg";
+import { createChatAction } from "../../actions/courseAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const DashboardMindmatrix = () => {
+  const { createChatData } = useSelector((state) => state.chatBot);
   const [data, setData] = useState(null);
   const [inputValue, setInputValue] = useState("");
+  const [showChat, setShowChat] = useState(false);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    axios
-      .get("http://your-backend-api.com/dashboard-data")
-      .then((res) => setData(res.data))
-      .catch((err) => console.error("Error fetching dashboard data:", err));
-  }, []);
+  console.log(createChatData)
+
+  const handleChatSend = () => {
+    console.log("called")
+    if (inputValue.trim() === "") return;
+    console.log("send")
+
+    dispatch(createChatAction(inputValue));
+    setInputValue("");
+  }
+
+  // useEffect(() => {
+  //   axios
+  //     .get("http://your-backend-api.com/dashboard-data")
+  //     .then((res) => setData(res.data))
+  //     .catch((err) => console.error("Error fetching dashboard data:", err));
+  // }, []);
   useEffect(() => {
     // Dummy data instead of real API call
     const dummyData = {
@@ -62,8 +78,28 @@ const DashboardMindmatrix = () => {
         </div>
 
         <div className="main-content">
+
+          {/* Course Info */}
+          <div className="card course-card">
+            <h3>{course.title}</h3>
+            <p>{course.description}</p>
+
+            <label className="progress-label">Progress</label>
+
+            <div className="progress-bar_">
+              <div
+                className="progress-fill"
+                style={{
+                  width: `${progress.progressPercent}%`,
+                }}
+              ></div>
+              <span className="progress-text">25%</span>
+            </div>
+
+            <button className="continue-btn">Continue Learning</button>
+          </div>
           {/* Progress Stats */}
-          <div className="card progress-card">
+          {/* <div className="card progress-card">
             <h3>
               Progress Statistics
               <br />
@@ -93,27 +129,7 @@ const DashboardMindmatrix = () => {
                 <p className="value">{progress.tasksSubmitted}</p>
               </div>
             </div>
-          </div>
-
-          {/* Course Info */}
-          <div className="card course-card">
-            <h3>{course.title}</h3>
-            <p>{course.description}</p>
-
-            <label className="progress-label">Progress</label>
-
-            <div className="progress-bar_">
-              <div
-                className="progress-fill"
-                style={{
-                  width: `${progress.progressPercent}%`,
-                }}
-              ></div>
-              <span className="progress-text">25%</span>
-            </div>
-
-            <button className="continue-btn">Continue Learning</button>
-          </div>
+          </div> */}
 
           <div className="zuno-container">
             {/* Zuno Card */}
@@ -123,7 +139,22 @@ const DashboardMindmatrix = () => {
                 <h3>Zuno</h3>
               </div>
 
-              <div className="zuno-msg">
+              <div className="chat-history">
+                {createChatData?.data.map((chat, index) => (
+                  <div key={chat._id || index}>
+                    <div className="chat-bubble user">
+                      <strong>You:</strong> {chat.userMessage}
+                    </div>
+                    <div className="chat-bubble bot">
+                      <strong>Zuno:</strong> {chat.botResponse}
+                    </div>
+                  </div>
+                ))}
+
+                {/* {loading && <div className="chat-bubble bot">Zuno is typing...</div>} */}
+                {/* {error && <div className="chat-error">Something went wrong: {error}</div>} */}
+              </div>
+              {/* <div className="zuno-msg">
                 <img src={submittedIcon} alt="Zuno" className="zuno-avatar" />
                 <p>
                   Hi <strong>{user.name}</strong>, I am Zuno.
@@ -157,7 +188,7 @@ const DashboardMindmatrix = () => {
                 >
                   I want to know about new technologies.
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/*  Chatbox  */}
@@ -169,7 +200,7 @@ const DashboardMindmatrix = () => {
                 onChange={(e) => setInputValue(e.target.value)}
               />
               <button className="send-btn">
-                <img src={positionIcon} alt="Send" className="send-icon" />
+                <img src={positionIcon} alt="Send" className="send-icon" onClick={handleChatSend} />
               </button>
             </div>
           </div>
