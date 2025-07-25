@@ -1,8 +1,8 @@
 import { GET_BATCH_FAIL } from '../constants/adminConstant';
-import { ALL_NOTICEBOARDS_FAIL, ALL_NOTICEBOARDS_SUCCESS, ALL_NOTICEBOARDS_REQUEST, ALL_COURSES_FAIL, ALL_COURSES_REQUEST, ALL_COURSES_SUCCESS, MY_COURSES_FAIL, MY_COURSES_REQUEST, MY_COURSES_SUCCESS, CLEAR_ERRORS, ENROLL_COURSE_REQUEST, ENROLL_COURSE_SUCCESS, ENROLL_COURSE_FAIL, SSO_LOGIN_REQUEST, SSO_LOGIN_SUCCESS, SSO_LOGIN_FAIL, USER_REPORT_REQUEST, USER_REPORT_SUCCESS, USER_REPORT_FAIL, COURSE_DATA_REQUEST, COURSE_DATA_SUCCESS, COURSE_DATA_FAIL, COURSE_LANDING_PAGE_DATA_REQUEST, COURSE_LANDING_PAGE_DATA_SUCCESS, COURSE_LANDING_PAGE_DATA_FAIL, PAYMENT_DATA_FAIL, PAYMENT_DATA_REQUEST, PAYMENT_DATA_SUCCESS, GET_PAYMENT_DATA_REQUEST, GET_PAYMENT_DATA_SUCCESS, COURSE_PAYMENT_REQUEST, COURSE_PAYMENT_SUCCESS, COURSE_PAYMENT_FAIL, COURSE_PAYMENT_STATUS_FAIL, COURSE_PAYMENT_STATUS_REQUEST, COURSE_PAYMENT_STATUS_SUCCESS, ALL_COURSE_LANDING_PAGE_DATA_REQUEST, ALL_COURSE_LANDING_PAGE_DATA_SUCCESS, ALL_COURSE_LANDING_PAGE_DATA_FAIL } from '../constants/courseConstant'
+import { ALL_NOTICEBOARDS_FAIL, ALL_NOTICEBOARDS_SUCCESS, ALL_NOTICEBOARDS_REQUEST, ALL_COURSES_FAIL, ALL_COURSES_REQUEST, ALL_COURSES_SUCCESS, MY_COURSES_FAIL, MY_COURSES_REQUEST, MY_COURSES_SUCCESS, CLEAR_ERRORS, ENROLL_COURSE_REQUEST, ENROLL_COURSE_SUCCESS, ENROLL_COURSE_FAIL, SSO_LOGIN_REQUEST, SSO_LOGIN_SUCCESS, SSO_LOGIN_FAIL, USER_REPORT_REQUEST, USER_REPORT_SUCCESS, USER_REPORT_FAIL, COURSE_DATA_REQUEST, COURSE_DATA_SUCCESS, COURSE_DATA_FAIL, COURSE_LANDING_PAGE_DATA_REQUEST, COURSE_LANDING_PAGE_DATA_SUCCESS, COURSE_LANDING_PAGE_DATA_FAIL, PAYMENT_DATA_FAIL, PAYMENT_DATA_REQUEST, PAYMENT_DATA_SUCCESS, GET_PAYMENT_DATA_REQUEST, GET_PAYMENT_DATA_SUCCESS, COURSE_PAYMENT_REQUEST, COURSE_PAYMENT_SUCCESS, COURSE_PAYMENT_FAIL, COURSE_PAYMENT_STATUS_FAIL, COURSE_PAYMENT_STATUS_REQUEST, COURSE_PAYMENT_STATUS_SUCCESS, ALL_COURSE_LANDING_PAGE_DATA_REQUEST, ALL_COURSE_LANDING_PAGE_DATA_SUCCESS, ALL_COURSE_LANDING_PAGE_DATA_FAIL, GET_ALL_BUILD_PROFILE_REQUEST, GET_ALL_BUILD_PROFILE_SUCCESS, GET_ALL_BUILD_PROFILE_FAIL, GET_ALL_CAREER_SHAPING_REQUEST, GET_ALL_CAREER_SHAPING_SUCCESS, GET_ALL_CAREER_SHAPING_FAIL, GET_ALL_CONNECT_MENTOR_REQUEST, GET_ALL_CONNECT_MENTOR_SUCCESS, GET_ALL_CONNECT_MENTOR_FAIL } from '../constants/courseConstant'
 import axios from "axios"
 
-const BASE_URL=process.env.REACT_APP_BACKEND_URL
+const BASE_URL = process.env.REACT_APP_BACKEND_URL
 // Action for get my course
 export const myCourseAction = (email) => async (dispatch) => {
     try {
@@ -10,10 +10,10 @@ export const myCourseAction = (email) => async (dispatch) => {
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/student_InterlibCourses/${email}`, {
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             withCredentials: true
-          });
+        });
         console.log(data)
 
         dispatch({ type: MY_COURSES_SUCCESS, payload: data.data });
@@ -29,10 +29,10 @@ export const allCourse = () => async (dispatch) => {
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/all_InterlibCourses`, {
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             withCredentials: true
-          });
+        });
 
         dispatch({ type: ALL_COURSES_SUCCESS, payload: data.data });
     } catch (error) {
@@ -93,10 +93,10 @@ export const courseDataAction = (email) => async (dispatch) => {
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/my-course/${email}`, {
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             withCredentials: true
-          });
+        });
 
         dispatch({ type: COURSE_DATA_SUCCESS, payload: data })
     } catch (error) {
@@ -201,13 +201,92 @@ export const allNoticeBoards = () => async (dispatch) => {
 
         const { data } = await axios.get(`${BASE_URL}/api/v1/noticeboard`, {
             headers: {
-              "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             withCredentials: true
-          });
+        });
 
         dispatch({ type: ALL_NOTICEBOARDS_SUCCESS, payload: data.NoticeBoard });
     } catch (error) {
         dispatch({ type: ALL_NOTICEBOARDS_FAIL, payload: error.response.data.message })
+    }
+}
+
+// Action to get all build profile
+export const getAllBuildProfile = () => async (dispatch) => {
+    try {
+        dispatch({ type: GET_ALL_BUILD_PROFILE_REQUEST });
+
+        const { data } = await axios.get(`${BASE_URL}/api/v1/build-profile-activity`, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            withCredentials: true
+        });
+
+        dispatch({ type: GET_ALL_BUILD_PROFILE_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({ type: GET_ALL_BUILD_PROFILE_FAIL, payload: error.response.data.message });
+    }
+}
+
+// Action to get all career shaping
+export const getAllCareerShaping = () => async (dispatch) => {
+    try {
+        dispatch({ type: GET_ALL_CAREER_SHAPING_REQUEST });
+
+        const { data } = await axios.get(`${BASE_URL}/api/v1/career-shaping-activity`, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            withCredentials: true
+        });
+
+        dispatch({ type: GET_ALL_CAREER_SHAPING_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({ type: GET_ALL_CAREER_SHAPING_FAIL, payload: error.response.data.message });
+    }
+}
+
+// Action to get all connect mentors
+export const getAllConnectMentor = () => async (dispatch) => {
+    try {
+        dispatch({ type: GET_ALL_CONNECT_MENTOR_REQUEST });
+
+        const { data } = await axios.get(`${BASE_URL}/api/v1/mentor-activity`, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            withCredentials: true
+        });
+
+        dispatch({ type: GET_ALL_CONNECT_MENTOR_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({ type: GET_ALL_CONNECT_MENTOR_FAIL, payload: error.response.data.message });
+    }
+}
+
+// Action for chat interaction
+export const createChatAction = (chatData) => async (dispatch) => {
+    // console.log(chatData);
+    const chatMessage = {
+        userMessage: chatData,
+        sessionId: "mindmatrix-session-1"
+    };
+    try {
+        dispatch({ type: 'CREATE_CHAT_REQUEST' });
+
+        const config = {
+            headers: { "Content-Type": "application/json" },
+            // Correct placement
+            withCredentials: true
+        };
+
+        const { data } = await axios.post(`${BASE_URL}/api/v1/create-chat`, chatMessage, config);
+        console.log(data);
+
+        dispatch({ type: 'CREATE_CHAT_SUCCESS', payload: data });
+    } catch (error) {
+        dispatch({ type: 'CREATE_CHAT_FAIL', payload: error.response?.data?.message || error.message });
     }
 }
