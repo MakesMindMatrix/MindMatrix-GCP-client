@@ -290,3 +290,21 @@ export const createChatAction = (chatData) => async (dispatch) => {
         dispatch({ type: 'CREATE_CHAT_FAIL', payload: error.response?.data?.message || error.message });
     }
 }
+
+export const getChatBySessionId = (sessionId) => async (dispatch) => {
+    try {
+        dispatch({ type: 'GET_CHAT_REQUEST_BY_SESSION_ID' });
+
+        const config = {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true
+        };
+
+        const { data } = await axios.get(`${BASE_URL}/api/v1/get-chat/${sessionId}`, config);
+        console.log(data);
+
+        dispatch({ type: 'GET_CHAT_SUCCESS_BY_SESSION_ID', payload: data });
+    } catch (error) {
+        dispatch({ type: 'GET_CHAT_FAIL_BY_SESSION_ID', payload: error.response?.data?.message || error.message });
+    }
+}

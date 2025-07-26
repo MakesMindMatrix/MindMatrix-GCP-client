@@ -5,17 +5,17 @@ import Navbar from "../layout/Navbar/Navbar";
 import positionIcon from "./images/position-icon.svg";
 import taskIcon from "./images/total_task_icon.svg";
 import submittedIcon from "./images/task_submitted_icon.svg";
-import { createChatAction } from "../../actions/courseAction";
+import { createChatAction, getChatBySessionId } from "../../actions/courseAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const DashboardMindmatrix = () => {
-  const { createChatData } = useSelector((state) => state.chatBot);
+  const { createChatData, chatData } = useSelector((state) => state.chatBot);
   const [data, setData] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [showChat, setShowChat] = useState(false);
   const dispatch = useDispatch();
 
-  console.log(createChatData)
+  console.log(chatData)
 
   const handleChatSend = () => {
     console.log("called")
@@ -26,12 +26,13 @@ const DashboardMindmatrix = () => {
     setInputValue("");
   }
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://your-backend-api.com/dashboard-data")
-  //     .then((res) => setData(res.data))
-  //     .catch((err) => console.error("Error fetching dashboard data:", err));
-  // }, []);
+  useEffect(() => {
+    // axios
+    //   .get("http://your-backend-api.com/dashboard-data")
+    //   .then((res) => setData(res.data))
+    //   .catch((err) => console.error("Error fetching dashboard data:", err));
+    dispatch(getChatBySessionId("mindmatrix-session-1"))
+  }, []);
   useEffect(() => {
     // Dummy data instead of real API call
     const dummyData = {
@@ -140,7 +141,7 @@ const DashboardMindmatrix = () => {
               </div>
 
               <div className="chat-history">
-                {createChatData?.data.map((chat, index) => (
+                {chatData?.data.map((chat, index) => (
                   <div key={chat._id || index}>
                     <div className="chat-bubble user">
                       <strong>You:</strong> {chat.userMessage}
