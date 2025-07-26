@@ -32,7 +32,7 @@ const DashboardMindmatrix = () => {
     //   .then((res) => setData(res.data))
     //   .catch((err) => console.error("Error fetching dashboard data:", err));
     dispatch(getChatBySessionId("mindmatrix-session-1"))
-  }, []);
+  }, [createChatData, dispatch]);
   useEffect(() => {
     // Dummy data instead of real API call
     const dummyData = {
