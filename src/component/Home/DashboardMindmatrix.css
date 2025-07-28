@@ -65,6 +65,7 @@
 /* Course Card */
 .course-card {
   max-height: 300px;
+  margin-bottom: 10px;
 }
 .course-card h3 {
   font-weight: 600;
@@ -420,6 +421,6 @@
   padding: 10px;
 }
 
-.chatbox-bar button {
+/* .chatbox-bar button {
   padding: 10px 20px;
-}
+} */
