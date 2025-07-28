@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./DashboardMindmatrix.css";
 import axios from "axios";
 import Navbar from "../layout/Navbar/Navbar";
@@ -7,33 +7,55 @@ import taskIcon from "./images/total_task_icon.svg";
 import submittedIcon from "./images/task_submitted_icon.svg";
 import { createChatAction, getChatBySessionId } from "../../actions/courseAction";
 import { useDispatch, useSelector } from "react-redux";
+import { IoIosSend } from "react-icons/io";
 
 const DashboardMindmatrix = () => {
   const { createChatData, chatData } = useSelector((state) => state.chatBot);
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   // const {  } = useSelector((state) => state.user);
   const [data, setData] = useState(null);
   const [inputValue, setInputValue] = useState("");
+  const [typing, setTyping] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [chatBoxData, setChatBoxData] = useState([]);
   const dispatch = useDispatch();
-
+  const chatRef = useRef(null);
   console.log(chatData)
 
   const handleChatSend = () => {
-    console.log("called")
+    // alert("called")
     if (inputValue.trim() === "") return;
     console.log("send")
 
     dispatch(createChatAction(inputValue));
     setInputValue("");
+    setTyping(true);
   }
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      // alert("Enter pressed")
+      handleChatSend();
+    }
+  };
 
   useEffect(() => {
     // axios
     //   .get("http://your-backend-api.com/dashboard-data")
     //   .then((res) => setData(res.data))
     //   .catch((err) => console.error("Error fetching dashboard data:", err));
-    dispatch(getChatBySessionId("mindmatrix-session-1"))
+    const fetchChatData = async () => {
+      try {
+        const resp = await dispatch(getChatBySessionId("mindmatrix-session-1")).unwrap();
+        if (resp.success) {
+          setTyping(false);
+        }
+      } catch (error) {
+        console.error("Failed to fetch chat session:", error);
+      }
+    };
+
+    fetchChatData();
   }, [createChatData, dispatch]);
   useEffect(() => {
     // Dummy data instead of real API call
@@ -49,7 +71,7 @@ const DashboardMindmatrix = () => {
         progressPercent: 25,
       },
       course: {
-        title: "Mastering React.js",
+        title: "Tea with Tirumal",
         description:
           "A complete guide to learn React.js from basics to advanced.",
       },
@@ -147,7 +169,7 @@ const DashboardMindmatrix = () => {
                   <h3>Zuno</h3>
                 </div>
 
-                <div className="chat-history">
+                <div className="chat-history" ref={chatRef} style={{ overflowY: 'auto', maxHeight: '400px' }}>
                   {chatData?.data.map((chat, index) => (
                     <div key={chat._id || index}>
                       <div className="chat-bubble user">
@@ -159,7 +181,7 @@ const DashboardMindmatrix = () => {
                     </div>
                   ))}
 
-                  {/* {loading && <div className="chat-bubble bot">Zuno is typing...</div>} */}
+                  {typing && <div className="chat-bubble bot">Zuno is typing...</div>}
                   {/* {error && <div className="chat-error">Something went wrong: {error}</div>} */}
                 </div>
                 {/* <div className="zuno-msg">
@@ -206,9 +228,11 @@ const DashboardMindmatrix = () => {
                   placeholder="Ask Zuno Anything...."
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
-                <button className="send-btn">
-                  <img src={positionIcon} alt="Send" className="send-icon" onClick={handleChatSend} />
+                <button className="send-btn" onClick={handleChatSend}>
+                  {/* <img src={positionIcon} alt="Send" className="send-icon" onClick={handleChatSend} onKeyDown={handleKeyDown} /> */}
+                  <IoIosSend />
                 </button>
               </div>
             </div>

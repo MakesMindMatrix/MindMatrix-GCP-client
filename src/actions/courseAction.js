@@ -304,6 +304,8 @@ export const getChatBySessionId = (sessionId) => async (dispatch) => {
         console.log(data);
 
         dispatch({ type: 'GET_CHAT_SUCCESS_BY_SESSION_ID', payload: data });
+
+        return data; // Return the data for further use if needed
     } catch (error) {
         dispatch({ type: 'GET_CHAT_FAIL_BY_SESSION_ID', payload: error.response?.data?.message || error.message });
     }
