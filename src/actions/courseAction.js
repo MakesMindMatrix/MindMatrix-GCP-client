@@ -195,7 +195,7 @@ export const clearErrors = () => async (dispatch) => {
 }
 
 //get All noticeboards
-export const allNoticeBoards = () => async (dispatch) => {
+export const allNoticeBoardsAction = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_NOTICEBOARDS_REQUEST })
 
