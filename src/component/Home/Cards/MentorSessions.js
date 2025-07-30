@@ -17,6 +17,8 @@ const MentorSessions = () => {
     },
   ]);
 
+  console.log("MentorSessions component rendered");
+
   return (
     <div className="mentor-container">
       <h2>Connect with Mentor</h2>

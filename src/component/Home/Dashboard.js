@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +7,7 @@ import BuildYourProfile from "./Cards/BuildYourProfile";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
-  allNoticeBoards,
+  allNoticeBoardsAction,
   courseDataAction,
   SSOLogin,
 } from "../../actions/courseAction";
@@ -26,9 +26,9 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const noticeSliderRef = useRef(null);
-  const [activeNoticeDot, setActiveNoticeDot] = useState(1);
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  // const noticeSliderRef = useRef(null);
+  // const [activeNoticeDot, setActiveNoticeDot] = useState(1);
 
   const noticeSettings = {
     dots: false,
@@ -41,7 +41,7 @@ const Dashboard = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
-    afterChange: (index) => setCurrentSlide(index),
+    // afterChange: (index) => setCurrentSlide(index),
   };
 
   const {
@@ -56,33 +56,19 @@ const Dashboard = () => {
     rec_course,
     allNoticeboards,
   } = useSelector((state) => state.myCourse);
-  // console.log(rec_course)
+  
   const userEmail = user.email;
   const user_name = user.name;
-  // console.log(my_course)
+  console.log("Dashboard component rendered");
 
   //  Duplicate notice boards
-  const duplicatedNoticeboards = allNoticeboards
-    ? [
-        ...allNoticeboards,
-        ...allNoticeboards.map((notice, index) => ({
-          ...notice,
-          id: notice.id + `_duplicate_${index}`,
-          title: notice.title + " (Copy)",
-        })),
-        ...allNoticeboards.map((notice, index) => ({
-          ...notice,
-          id: notice.id + `_duplicate2_${index}`,
-          title: notice.title + " (Copy 2)",
-        })),
-      ]
-    : [];
+  console.log(allNoticeboards);
 
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(courseDataAction(userEmail));
       dispatch(SSOLogin(userEmail));
-      dispatch(allNoticeBoards());
+      dispatch(allNoticeBoardsAction());
     }
 
     // if (enroll_course) {
@@ -90,10 +76,7 @@ const Dashboard = () => {
     // }
     // dispatch(allCourse())
   }, [dispatch, isAuthenticated, userEmail]);
-  useEffect(() => {
-    setActiveNoticeDot(1);
-  }, []);
-
+  
   if (myCourseLoading || userLoading || ssoLoading || !user) {
     return <Loader />;
   }
@@ -104,7 +87,7 @@ const Dashboard = () => {
 
       {/* Current course progress leaderboard */}
       <div className="dash_body">
-        <div className="das_body_left">
+        {/* <div className="das_body_left">
           <div className="das_body_left_">
             <div className="userName">
               <div className="hello">
@@ -115,7 +98,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* My courses section */}
+            My courses section
             {my_course && my_course.length > 0 && (
               <h1 className="main_heading">My Programs</h1>
             )}
@@ -126,7 +109,7 @@ const Dashboard = () => {
                 })}
             </div>
 
-            {/* Recommended section */}
+            Recommended section
             {rec_course?.some((elm) => elm.publishStatus === "recommended") && (
               <h1 className="main_heading">Recommended Programs</h1>
             )}
@@ -139,7 +122,7 @@ const Dashboard = () => {
                 )}
             </div>
 
-            {/* Upcoming courses */}
+            Upcoming courses
             {rec_course?.some((elm) => elm.publishStatus === "upcoming") && (
               <h1 className="main_heading">Upcoming Programs</h1>
             )}
@@ -151,35 +134,39 @@ const Dashboard = () => {
                   ) : null
                 )}
             </div>
-            {/* <div className='dash_up_container'>
+            <div className='dash_up_container'>
                   {courseData?.map((elm, index) => (
                     <UpcomingCard data={elm} key={index} />
                   ))}
-                </div> */}
+                </div>
 
-            {/* Certificate program */}
-            {/* <h1 className='main_heading'>Our Certified programs</h1>
+            Certificate program
+            <h1 className='main_heading'>Our Certified programs</h1>
                 <div className='dash_up_container'>
                   {certificateProgramData?.map((elm, index) => (
                     <UpcomingCard data={elm} key={index} />
                   ))}
-                </div> */}
+                </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Dashboard Right section */}
         <div className="das_body_right">
           <h3 className="notice_heading">My Notice Board</h3>
           <div className="noticeboard_slider_wrapper">
-            <Slider {...noticeSettings} ref={noticeSliderRef}>
-              {duplicatedNoticeboards.map((elm, index) => (
-                <div key={`${elm.id}_${index}`}>
-                  <NoticeBoardCard data={elm} />
-                </div>
-              ))}
-            </Slider>
+            {allNoticeboards && allNoticeboards.length > 1 ? (
+              <Slider {...noticeSettings}>
+                {allNoticeboards.map((notice, idx) => (
+                  <NoticeBoardCard data={notice} key={idx} />
+                ))}
+              </Slider>
+            ) : (
+              allNoticeboards && allNoticeboards.length === 1 && (
+                <NoticeBoardCard data={allNoticeboards[0]} />
+              )
+            )}
 
-            <div className="custom-nav-wrapper">
+            {/* <div className="custom-nav-wrapper">
               <div
                 className="arrow_"
                 onClick={() => {
@@ -210,11 +197,11 @@ const Dashboard = () => {
               >
                 &#9654;
               </div>
-            </div>
+            </div> */}
           </div>
-          <CareerShapingActivities />
-          <BuildYourProfile />
-          <MentorSessions />
+          {/* <CareerShapingActivities /> */}
+          {/* <BuildYourProfile /> */}
+          {/* <MentorSessions /> */}
         </div>
       </div>
       {/* MindMatrix Exclusive Offerings */}

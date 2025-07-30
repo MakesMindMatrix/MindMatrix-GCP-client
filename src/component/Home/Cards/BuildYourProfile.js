@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const BuildYourProfile = () => {
   const navigate = useNavigate();
+
+  console.log("BuildYourProfile component rendered");
   return (
     <div className="build-profile">
       <h2 className="profile-title">Build Your Profile</h2>
