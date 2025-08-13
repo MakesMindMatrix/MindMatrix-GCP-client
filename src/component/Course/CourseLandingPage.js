@@ -48,6 +48,8 @@ const CourseLandingPage = () => {
 
   const courseData = courseLandingPageData
     ? courseLandingPageData.CourseInfo.find((course) => {
+      console.log(course_slug)
+      console.log(slugify(course.course_name))
         return slugify(course.course_name) === course_slug;
       })
     : null;

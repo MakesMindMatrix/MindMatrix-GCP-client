@@ -15,7 +15,7 @@ import {
 import Loader from "../layout/Loader/Loader";
 import RecCard from "./Cards/RecCard";
 import MyCourseCard from "./Cards/MyCourseCard";
-// import UpcomingCard from './Cards/UpcomingCard';
+import UpcomingCard from './Cards/UpcomingCard';
 // import certificateProgramData from '../Data/certificateProgramData';
 import NoticeBoardCard from "./Cards/NoticeBoardCard";
 import { useNavigate } from "react-router-dom";
@@ -56,10 +56,10 @@ const Dashboard = () => {
     rec_course,
     allNoticeboards,
   } = useSelector((state) => state.myCourse);
-  
+
   const userEmail = user.email;
   const user_name = user.name;
-  console.log("Dashboard component rendered");
+  console.log(my_course);
 
   //  Duplicate notice boards
   console.log(allNoticeboards);
@@ -76,7 +76,7 @@ const Dashboard = () => {
     // }
     // dispatch(allCourse())
   }, [dispatch, isAuthenticated, userEmail]);
-  
+
   if (myCourseLoading || userLoading || ssoLoading || !user) {
     return <Loader />;
   }
@@ -87,7 +87,7 @@ const Dashboard = () => {
 
       {/* Current course progress leaderboard */}
       <div className="dash_body">
-        {/* <div className="das_body_left">
+        <div className="das_body_left">
           <div className="das_body_left_">
             <div className="userName">
               <div className="hello">
@@ -98,7 +98,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            My courses section
+            {/* My courses section */}
             {my_course && my_course.length > 0 && (
               <h1 className="main_heading">My Programs</h1>
             )}
@@ -109,7 +109,7 @@ const Dashboard = () => {
                 })}
             </div>
 
-            Recommended section
+            {/* Recommended section */}
             {rec_course?.some((elm) => elm.publishStatus === "recommended") && (
               <h1 className="main_heading">Recommended Programs</h1>
             )}
@@ -122,7 +122,7 @@ const Dashboard = () => {
                 )}
             </div>
 
-            Upcoming courses
+            {/* Upcoming courses */}
             {rec_course?.some((elm) => elm.publishStatus === "upcoming") && (
               <h1 className="main_heading">Upcoming Programs</h1>
             )}
@@ -134,21 +134,21 @@ const Dashboard = () => {
                   ) : null
                 )}
             </div>
-            <div className='dash_up_container'>
+            {/* <div className='dash_up_container'>
                   {courseData?.map((elm, index) => (
                     <UpcomingCard data={elm} key={index} />
                   ))}
-                </div>
+                </div> */}
 
-            Certificate program
-            <h1 className='main_heading'>Our Certified programs</h1>
-                <div className='dash_up_container'>
-                  {certificateProgramData?.map((elm, index) => (
-                    <UpcomingCard data={elm} key={index} />
-                  ))}
-                </div>
+            {/* Certificate program */}
+            {/* <h1 className='main_heading'>Our Certified programs</h1>
+            <div className='dash_up_container'>
+              {certificateProgramData?.map((elm, index) => (
+                <UpcomingCard data={elm} key={index} />
+              ))}
+            </div> */}
           </div>
-        </div> */}
+        </div>
 
         {/* Dashboard Right section */}
         <div className="das_body_right">
@@ -199,9 +199,9 @@ const Dashboard = () => {
               </div>
             </div> */}
           </div>
-          {/* <CareerShapingActivities /> */}
-          {/* <BuildYourProfile /> */}
-          {/* <MentorSessions /> */}
+          <CareerShapingActivities rec_course={rec_course} />
+          <BuildYourProfile />
+          <MentorSessions />
         </div>
       </div>
       {/* MindMatrix Exclusive Offerings */}
