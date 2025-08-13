@@ -8,7 +8,7 @@ import OutlineBulletIcon from "./Course-Outline-Bullet-Icon.svg";
 
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
 const RecCard = ({ data }) => {
-  // console.log(data)
+  console.log(data)
   // const handleEnroll = () => {
   //     if (data.batch_price > 0) {
   //         setPaymentCourseData({
@@ -35,7 +35,7 @@ const RecCard = ({ data }) => {
 
   const handleViewMore = () => {
     const courseSlug = slugify(data.course_name);
-    console.log("Course URL: /courses/", courseSlug);
+    console.log("Course URL: /courses/", courseSlug, data.course_name);
     navigate(`/courses/${courseSlug}`);
   };
 
@@ -75,8 +75,8 @@ const RecCard = ({ data }) => {
           <hr className="title-divider" />
           <h2 className="section-heading">Course Outline</h2>
           <div className="course_outline">
-            {data.courseOutline.map((elm) => {
-              return <p>
+            {data.courseOutline.map((elm, index) => {
+              return <p key={index}>
                 <img
                   src={OutlineBulletIcon}
                   alt="bullet icon"

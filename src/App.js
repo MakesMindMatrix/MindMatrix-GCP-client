@@ -48,6 +48,7 @@ import CollegePlan from "./component/User/CollegePlan.js";
 import Catalog from "./component/Home/Catalog.js";
 import ExploreMembership from "./component/Home/ExploreMembership.js";
 import DashboardMindmatrix from "./component/Home/DashboardMindmatrix.js";
+import Hackathon from "./component/Home/Hackathon.js";
 
 const App = () => {
   const { loading } = useSelector((state) => state.user);
@@ -99,12 +100,14 @@ const App = () => {
         <Route path="/courses/:courseName" element={<CourseLandingPage />} />
         <Route path="/explore-memberships" element={<ExploreMembership />} />
         <Route path="/DashboardMindmatrix" element={<DashboardMindmatrix />} />
+        <Route path="/hackathone-2025" element={<Hackathon />} />
 
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
         <Route path="/payment" element={<CoursePayment />} />
         <Route path="/link" element={<Link />} />
+        
 
         {/* Normal User Routes */}
         <Route element={<ProtectedRoute />}>

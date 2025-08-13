@@ -53,29 +53,34 @@ const Navbar = () => {
         <div className="nav-buttons">
           <Link
             to="/DashboardMindmatrix"
-            className={`auth_btn_ btnOne_ ${
-              location.pathname === "/DashboardMindmatrix" ? "active_tab" : ""
-            }`}
+            className={`auth_btn_ btnOne_ ${location.pathname === "/DashboardMindmatrix" ? "active_tab" : ""
+              }`}
           >
             Dashboard
           </Link>
 
           <Link
             to="/dashboard"
-            className={`auth_btn_ btnOne_ ${
-              location.pathname === "/dashboard" ? "active_tab" : ""
-            }`}
+            className={`auth_btn_ btnOne_ ${location.pathname === "/dashboard" ? "active_tab" : ""
+              }`}
           >
             My Programs
           </Link>
 
           <Link
             to="/explore-memberships"
-            className={`auth_btn_ btnOne_ ${
-              location.pathname === "/explore-memberships" ? "active_tab" : ""
-            }`}
+            className={`auth_btn_ btnOne_ ${location.pathname === "/explore-memberships" ? "active_tab" : ""
+              }`}
           >
             My Subscription
+          </Link>
+
+          <Link
+            to="/hackathone-2025"
+            className={`auth_btn_ btnOne_ ${location.pathname === "/hackathone-2025" ? "active_tab" : ""
+              }`}
+          >
+            Hackathone
           </Link>
         </div>
         {/* Profile Icon + Dropdown */}

@@ -97,7 +97,6 @@ export const courseDataAction = (email) => async (dispatch) => {
             },
             withCredentials: true
         });
-
         dispatch({ type: COURSE_DATA_SUCCESS, payload: data })
     } catch (error) {
         dispatch({ type: COURSE_DATA_FAIL, payload: error.response.data.message })
