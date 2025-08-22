@@ -32,13 +32,19 @@
     width: 100%;
     height: 80vh;
 }
-.hackathon_content>h1{
-    font-size: 32px;
-}
-.hackathon_content>h1{
-    font-size: 32px;
-}
 
+.hackathon-hero-heading {
+    font-size: 2.25rem;   /* 36px */
+    line-height: 2.5rem;  /* 40px */
+    font-weight: 700;
+    line-height: 1.25;
+}  
+@media (min-width: 768px) {
+    .hackathon-hero-heading {
+        font-size: 3.75rem; /* 60px */
+        line-height: 1;
+    }
+}
 .hackathon_image_container{
     background: linear-gradient(135deg, #dff2ff, #e7e3ff);
     width: 55vw;
@@ -49,7 +55,7 @@
     background-image: url('./images/hackathon-hero.jpg');
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
+    border-radius: 10px; 
 }
 
 .hackathon_overview>div{

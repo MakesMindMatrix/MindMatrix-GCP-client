@@ -1,6 +1,7 @@
 import React from 'react'
-import './Hackathon.css'
+import './Hackathon_new.css'
 import Navbar from '../layout/Navbar/Navbar'
+import heroImage from './images/hackathon-hero.jpg';
 // import hackathonImage from './images/hackathon-hero.jpg'
 
 
@@ -8,71 +9,80 @@ const Hackathon = () => {
     return (
         <>
             <Navbar />
-            <div className='hackathon_container'>
-                <div className='hackathon_container_hero'>
-                    <div className='hackathon_content'>
-                        <h1>Campus Hackathon 2025</h1>
-                        <p>Build bold ideas with your crew. Code, design, and ship in 24 hours. Prizes, mentors, and serious vibes.</p>
-                        {/* <div> */}
-                        <button>Register Now</button>
-                        <button>Explore Problem Statements</button>
-                        {/* </div> */}
-                    </div>
-                    <div className='hackathon_image_container'>
-                        <div className='hackathon_image'></div>
-                    </div>
-                </div>
-
-                {/* Overview section */}
-                <div className='hackathon_overview'>
-                    <h1 className='heading'>Overview</h1>
-                    <p className='subheading'>Build impactful solutions in 24 hours with mentors, workshops, and a buzzing community. Choose a problem statement, form a team, and ship something you’re proud of.</p>
-
-                    <div>
-                        <div>
-                            <h1>Why participate?</h1>
-                            <ul>
-                                <li>Learn fast with mentor guidance and hands‑on building.</li>
-                                <li>Showcase your work to judges and industry guests.</li>
-                                <li>Win prizes and boost your portfolio or resume.</li>
-                                <li>Collaborate with new teammates across domains.</li>
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h1>What you get</h1>
-                            <ul>
-                                <li>Access to resources and starter kits.</li>
-                                <li>Swag for finalists and winners.</li>
-                                <li>Networking with peers, mentors, and recruiters.</li>
-                            </ul>
+            <header class="hackathon-hero-header">
+                <div class="hackathon-hero-container">
+                    <div class="hackathon-hero-text">
+                        <h1 class="hackathon-hero-title">Campus Hackathon 2025</h1>
+                        <p class="hackathon-hero-subtitle">
+                            Build bold ideas with your crew. Code, design, and ship in 24 hours. Prizes, mentors, and serious vibes.
+                        </p>
+                        <div class="hackathon-hero-buttons">
+                            {/* <a href="#register" class="hackathon-btn hackathon-btn-hero hackathon-hover-scale">Register Now</a> */}
+                            <a href="#problems" class="hackathon-btn hackathon-btn-outline hackathon-hover-scale">Explore Problem Statements</a>
                         </div>
                     </div>
+                    <div class="hackathon-hero-image-container">
+                        <img
+                            src={heroImage}
+                            alt="Vibrant Gen-Z hackathon abstract with gradient blobs and neon lines"
+                            loading="lazy"
+                            class="hackathon-hero-image hackathon-hover-scale"
+                        />
+                        <div class="hackathon-hero-gradient"></div>
+                    </div>
                 </div>
+            </header>
 
-                {/* Participate section */}
-                {/* <h1>Who can participate</h1>
-                <p className='subheading'>Open to students from all disciplines and recent graduates. Teams of up to 5 members are allowed; solo participation is welcome too.</p> */}
+            <section id="overview" class="hackathon-section">
+                <div class="hackathon-overview">
+                    <h2 class="hackathon-heading">Overview</h2>
+                    <p class="hackathon-subtitle">
+                    Build impactful solutions in 24 hours with mentors, workshops, and a buzzing community. 
+                    Choose a problem statement, form a team, and ship something you’re proud of.
+                    </p>
+                </div>
+            </section>
 
-                {/* Journeny Section */}
-                {/* <h1 className='heading'>Hackathon journey</h1>
+            <section id="why-participate" class="hackathon-section">
+                <div class="hackathon-container">
+                    <article class="hackathon-article">
+                        <h2 class="hackathon-heading">Why participate?</h2>
+                        <ul class="hackathon-list">
+                            <li>Learn fast with mentor guidance and hands-on building.</li>
+                            <li>Showcase your work to judges and industry guests.</li>
+                            <li>Win prizes and boost your portfolio or resume.</li>
+                            <li>Collaborate with new teammates across domains.</li>
+                        </ul>
+                    </article>
+                    <article class="hackathon-article">
+                        <h3 class="hackathon-subheading">What you get</h3>
+                        <ul class="hackathon-list">
+                            <li>Access to resources and starter kits.</li>
+                            <li>Swag for finalists and winners.</li>
+                            <li>Networking with peers, mentors, and recruiters.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
 
-                <button className='register_button'>Register Now</button>
+            <section id="who-can-participate" class="hackathon-section">
+                <div class="hackathon-container">
+                    <h2 class="hackathon-subheading">Who can participate</h2>
+                    <p class="hackathon-subtitle">
+                    Open to students from all disciplines and recent graduates. 
+                    Teams of up to 5 members are allowed; solo participation is welcome too.
+                    </p>
+                </div>
+            </section>
 
-                <h1>Timeline</h1>
-
-                <h1 className='heading'>Journey in this Hackathon</h1>
-                <p className='subheading'>From registration to the live event, here’s how it flows.</p>
-
-
-                <h1 className='heading'>Problem Statements</h1>
-                <p className='subheading'>Pick exactly one to focus your build. You can change before submitting.</p>
-
-                <h1 className='heading'>Register Your Team</h1>
-                <p className='subheading'>Pre-filled details where possible. You can edit anytime before submission.</p>
-
-                <button className='register_button'>Save Registration</button> */}
-            </div>
+            <section id="hackathon-journey" class="hackathon-journey-section">
+                <div className='hackathon-journey-container'>
+                    <h2 className='hackathon-journey-title'>Hackathon Journey</h2>
+                    <ol className='hackathon-journey-list-container'>
+                        <li className='hackathon-journey-list-item'></li>
+                    </ol>
+                </div>
+            </section>
         </>
     )
 }

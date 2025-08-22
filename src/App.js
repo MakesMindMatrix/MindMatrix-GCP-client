@@ -100,7 +100,7 @@ const App = () => {
         <Route path="/courses/:courseName" element={<CourseLandingPage />} />
         <Route path="/explore-memberships" element={<ExploreMembership />} />
         <Route path="/DashboardMindmatrix" element={<DashboardMindmatrix />} />
-        <Route path="/hackathone-2025" element={<Hackathon />} />
+        <Route path="/hackathon-2025" element={<Hackathon />} />
 
         {/* Payment gateway routes */}
         <Route path="/payment-success" element={<PaymentSuccess />} />

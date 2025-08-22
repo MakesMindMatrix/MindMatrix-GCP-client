@@ -76,11 +76,11 @@ const Navbar = () => {
           </Link>
 
           <Link
-            to="/hackathone-2025"
-            className={`auth_btn_ btnOne_ ${location.pathname === "/hackathone-2025" ? "active_tab" : ""
+            to="/hackathon-2025"
+            className={`auth_btn_ btnOne_ ${location.pathname === "/hackathon-2025" ? "active_tab" : ""
               }`}
           >
-            Hackathone
+            Hackathon
           </Link>
         </div>
         {/* Profile Icon + Dropdown */}
