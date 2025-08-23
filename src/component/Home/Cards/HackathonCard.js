@@ -1,14 +1,19 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import "./HackathonCard.css";
 // import Gai from '../images/GAI.jpg'
-import { FaRegCalendarMinus } from "react-icons/fa";
+// import { FaRegCalendarMinus } from "react-icons/fa";
 // import CertificateIcon from "./certificate_program_icon.svg";
 import OutlineBulletIcon from "./Course-Outline-Bullet-Icon.svg";
+import RegistrationForm from "../RegistrationForm";
 
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
 const HackathonCard = ({ data }) => {
   console.log(data)
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
   // const navigate = useNavigate();
   // const slugify = (str) =>
   //   str
@@ -18,20 +23,21 @@ const HackathonCard = ({ data }) => {
 
   const handleProblemSelect = () => {
     //Open registration form
+    handleOpen();
     // Send data.course_name , data.course_description for pre-fill
 
     //After registration -> save data into DB , Send email to all members & navigate to course landing page
-    
+
   };
 
-  const startDate = new Date(data.batch_start_date).toLocaleDateString(
-    "en-US",
-    {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }
-  );
+  // const startDate = new Date(data.batch_start_date).toLocaleDateString(
+  //   "en-US",
+  //   {
+  //     month: "long",
+  //     day: "numeric",
+  //     year: "numeric",
+  //   }
+  // );
   //   console.log(startDate)
   return (
     <>
@@ -125,6 +131,8 @@ const HackathonCard = ({ data }) => {
 
         {/* {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null} */}
       </div>
+
+      {isOpen && <RegistrationForm onClose={handleClose} />}
     </>
   );
 };

@@ -204,6 +204,39 @@
 .hackathon-list li {
     margin-bottom: 0.8rem; /* space-y-2 */
 }
+.hackathon_problem_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 2rem;
+  /* margin: 2rem 0; */
+}
+
+.problem-header {
+    margin-bottom: 32px;      /* mb-8 = 2rem ≈ 32px */
+    text-align: center;       /* text-center */
+    max-width: 672px;         /* max-w-2xl = 42rem ≈ 672px */
+    margin-left: auto;        /* mx-auto */
+    margin-right: auto;
+  }
+  
+  .problem-title {
+    font-size: 30px;          /* text-3xl ≈ 1.875rem ≈ 30px */
+    font-weight: bold;        /* font-bold */
+    margin-bottom: 8px;       /* mb-2 = 0.5rem ≈ 8px */
+  }
+  
+  @media (min-width: 768px) {
+    .problem-title {
+      font-size: 36px;        /* md:text-4xl ≈ 2.25rem ≈ 36px */
+    }
+  }
+  
+  .problem-subtitle {
+    color: #6b7280;    
+    font-size: 16px;       /* text-muted-foreground (approx from Tailwind gray-500/600) */
+  }
+  
 
 /* ___________MyWork_____________________ */
 /* Section Wrapper */

@@ -261,10 +261,14 @@ const Hackathon = () => {
         </div>
       </section>
 
+      <section id="problems">
         {rec_course?.some((elm) => elm.publishStatus === "recommended") && (
-        <h1 className="main_heading">Problem Statements</h1>
+          <div class="problem-header">
+            <h2 class="problem-title">Problem Statements</h2>
+            <p class="problem-subtitle">Pick exactly one to focus your build. You can change before submitting.</p>
+          </div>
         )}
-        <div className="dash_rec_container">
+        <div className="hackathon_problem_container">
             {rec_course &&
             rec_course.map((elm, index) =>
                 elm.publishStatus === "recommended" ? (
@@ -272,7 +276,7 @@ const Hackathon = () => {
                 ) : null
             )}
         </div>
-      <RegistrationButton/>
+      </section>
 
       {/* --- FAQs Section --- */}
       <section id="faqs" className="faqs-section">
