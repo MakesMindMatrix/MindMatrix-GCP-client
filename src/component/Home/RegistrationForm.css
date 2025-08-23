@@ -1,0 +1,144 @@
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Modal container */
+  .modal-container {
+    background: #fff;
+    width: 75%;
+    max-width: 1000px;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Close button */
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: #000;
+  }
+  
+  /* Titles */
+  .modal-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .modal-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  /* Form */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .input-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.2s;
+  }
+  
+  .input-box:focus {
+    border-color: #7c3aed;
+  }
+  
+  /* Team Members */
+  .team-members {
+    margin-top: 15px;
+  }
+  
+  .team-member-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .add-btn {
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .add-btn:hover {
+    background: #eee;
+  }
+  
+  .remove-btn {
+    background: none;
+    border: none;
+    color: #e11d48;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .remove-btn:hover {
+    text-decoration: underline;
+  }
+  
+  /* Submit */
+  .submit-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #7c3aed, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    opacity: 0.9;
+  }
+  

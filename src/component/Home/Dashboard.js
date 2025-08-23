@@ -57,8 +57,8 @@ const Dashboard = () => {
     allNoticeboards,
   } = useSelector((state) => state.myCourse);
 
-  const userEmail = user.email;
-  const user_name = user.name;
+  const userEmail = user?.email;
+  const user_name = user?.name;
   console.log(my_course);
 
   //  Duplicate notice boards
