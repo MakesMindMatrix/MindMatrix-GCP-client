@@ -99,7 +99,6 @@ const App = () => {
 
         <Route path="/courses/:courseName" element={<CourseLandingPage />} />
         <Route path="/explore-memberships" element={<ExploreMembership />} />
-        <Route path="/DashboardMindmatrix" element={<DashboardMindmatrix />} />
         <Route path="/hackathon-2025" element={<Hackathon />} />
 
         {/* Payment gateway routes */}
@@ -111,6 +110,7 @@ const App = () => {
 
         {/* Normal User Routes */}
         <Route element={<ProtectedRoute />}>
+          <Route path="/DashboardMindmatrix" element={<DashboardMindmatrix />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route

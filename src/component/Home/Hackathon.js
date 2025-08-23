@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Hackathon_new.css'
 import Navbar from '../layout/Navbar/Navbar'
 import heroImage from './images/hackathon-hero.jpg';
+import HackathonCard from './Cards/HackathonCard';
 
 const faqsData = [
   {
@@ -19,6 +20,112 @@ const faqsData = [
       "Any stack is fine as long as you can demo it in the browser or via a recorded video and share the source.",
   },
 ];
+
+const rec_course = [{
+    "course_name": "Gen AI Builder - Xpress",
+    "course_description": "Master real-world AI application development using Vertex AI and Gemini through hands-on tasks, enabling you to build intelligent solutions in your chosen domain track.",
+    "created_at": "2025-05-17T13:14:29.489218+00:00",
+    "course_style": "COHORT_BASED",
+    "difficulty_level": "BEGINNER",
+    "batch_name": "Xpress - Builder",
+    "batch_start_date": "2025-07-01T18:30:00+00:00",
+    "batch_end_date": "2025-09-30T08:40:55.431+00:00",
+    "external_batch_id": "MMVTUCTGA04BDX",
+    "batch_price": 11999,
+    "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
+    "publishStatus": "recommended",
+    "courseOutline": [
+        "Intro to AI & GenAI",
+        "Understanding LLMs & Prompts",
+        "Practical Prompting Techniques",
+        "Ethics & AI Future Trends"
+    ],
+    "courseType": "Certificate Program",
+    "instructor_section": {
+        "instructor_name": "Tirumal Desai",
+        "instructor_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1745560141/Tirumal-nobg_hv5pjw.png",
+        "instructor_designation": "Instructor, Mind Matrix",
+        "instructor_description": "Tirumal Desai is a Growth Lead at MindMatrix, specializing in e-learning and student engagement. With an engineering background, he focuses on instructional design, course development, and managing learning platforms. He has mentored students and contributed to industry-aligned learning solutions."
+    }
+}, {
+    "course_name": "Gen AI Builder - Xpress",
+    "course_description": "Master real-world AI application development using Vertex AI and Gemini through hands-on tasks, enabling you to build intelligent solutions in your chosen domain track.",
+    "created_at": "2025-05-17T13:14:29.489218+00:00",
+    "course_style": "COHORT_BASED",
+    "difficulty_level": "BEGINNER",
+    "batch_name": "Xpress - Builder",
+    "batch_start_date": "2025-07-01T18:30:00+00:00",
+    "batch_end_date": "2025-09-30T08:40:55.431+00:00",
+    "external_batch_id": "MMVTUCTGA04BDX",
+    "batch_price": 11999,
+    "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
+    "publishStatus": "recommended",
+    "courseOutline": [
+        "Intro to AI & GenAI",
+        "Understanding LLMs & Prompts",
+        "Practical Prompting Techniques",
+        "Ethics & AI Future Trends"
+    ],
+    "courseType": "Certificate Program",
+    "instructor_section": {
+        "instructor_name": "Tirumal Desai",
+        "instructor_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1745560141/Tirumal-nobg_hv5pjw.png",
+        "instructor_designation": "Instructor, Mind Matrix",
+        "instructor_description": "Tirumal Desai is a Growth Lead at MindMatrix, specializing in e-learning and student engagement. With an engineering background, he focuses on instructional design, course development, and managing learning platforms. He has mentored students and contributed to industry-aligned learning solutions."
+    }
+}, {
+    "course_name": "Gen AI Builder - Xpress",
+    "course_description": "Master real-world AI application development using Vertex AI and Gemini through hands-on tasks, enabling you to build intelligent solutions in your chosen domain track.",
+    "created_at": "2025-05-17T13:14:29.489218+00:00",
+    "course_style": "COHORT_BASED",
+    "difficulty_level": "BEGINNER",
+    "batch_name": "Xpress - Builder",
+    "batch_start_date": "2025-07-01T18:30:00+00:00",
+    "batch_end_date": "2025-09-30T08:40:55.431+00:00",
+    "external_batch_id": "MMVTUCTGA04BDX",
+    "batch_price": 11999,
+    "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
+    "publishStatus": "recommended",
+    "courseOutline": [
+        "Intro to AI & GenAI",
+        "Understanding LLMs & Prompts",
+        "Practical Prompting Techniques",
+        "Ethics & AI Future Trends"
+    ],
+    "courseType": "Certificate Program",
+    "instructor_section": {
+        "instructor_name": "Tirumal Desai",
+        "instructor_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1745560141/Tirumal-nobg_hv5pjw.png",
+        "instructor_designation": "Instructor, Mind Matrix",
+        "instructor_description": "Tirumal Desai is a Growth Lead at MindMatrix, specializing in e-learning and student engagement. With an engineering background, he focuses on instructional design, course development, and managing learning platforms. He has mentored students and contributed to industry-aligned learning solutions."
+    }
+}, {
+    "course_name": "Gen AI Builder - Xpress",
+    "course_description": "Master real-world AI application development using Vertex AI and Gemini through hands-on tasks, enabling you to build intelligent solutions in your chosen domain track.",
+    "created_at": "2025-05-17T13:14:29.489218+00:00",
+    "course_style": "COHORT_BASED",
+    "difficulty_level": "BEGINNER",
+    "batch_name": "Xpress - Builder",
+    "batch_start_date": "2025-07-01T18:30:00+00:00",
+    "batch_end_date": "2025-09-30T08:40:55.431+00:00",
+    "external_batch_id": "MMVTUCTGA04BDX",
+    "batch_price": 11999,
+    "image": "https://res.cloudinary.com/djsg8kbaz/image/upload/v1747486476/startup-employee-looking-business-charts-using-ai-software_qcqars.jpg",
+    "publishStatus": "recommended",
+    "courseOutline": [
+        "Intro to AI & GenAI",
+        "Understanding LLMs & Prompts",
+        "Practical Prompting Techniques",
+        "Ethics & AI Future Trends"
+    ],
+    "courseType": "Certificate Program",
+    "instructor_section": {
+        "instructor_name": "Tirumal Desai",
+        "instructor_image": "https://res.cloudinary.com/djsg8kbaz/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1745560141/Tirumal-nobg_hv5pjw.png",
+        "instructor_designation": "Instructor, Mind Matrix",
+        "instructor_description": "Tirumal Desai is a Growth Lead at MindMatrix, specializing in e-learning and student engagement. With an engineering background, he focuses on instructional design, course development, and managing learning platforms. He has mentored students and contributed to industry-aligned learning solutions."
+    }
+}]
 
 const Hackathon = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -152,6 +259,18 @@ const Hackathon = () => {
           </ol>
         </div>
       </section>
+
+        {rec_course?.some((elm) => elm.publishStatus === "recommended") && (
+        <h1 className="main_heading">Problem Statements</h1>
+        )}
+        <div className="dash_rec_container">
+            {rec_course &&
+            rec_course.map((elm, index) =>
+                elm.publishStatus === "recommended" ? (
+                <HackathonCard data={elm} key={index} />
+                ) : null
+            )}
+        </div>
 
       {/* --- FAQs Section --- */}
       <section id="faqs" className="faqs-section">

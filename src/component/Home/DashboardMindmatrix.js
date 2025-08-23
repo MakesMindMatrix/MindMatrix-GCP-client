@@ -97,9 +97,9 @@ const DashboardMindmatrix = () => {
       <div className="dashboard-body">
         <div className="greeting">
           <p>
-            Hello <strong>{user.name}</strong>,
+            Hello <strong>{user?.name}</strong>,
           </p>
-          <span className="subtext">from {user.college.name}</span>
+          <span className="subtext">from {user?.college?.name}</span>
         </div>
 
         <div className="main-content">
