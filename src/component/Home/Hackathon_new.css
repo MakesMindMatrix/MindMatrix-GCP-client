@@ -204,3 +204,143 @@
 .hackathon-list li {
     margin-bottom: 0.8rem; /* space-y-2 */
 }
+
+/* ___________MyWork_____________________ */
+/* Section Wrapper */
+.hackathon-journey-section {
+    padding: 60px 20px;
+    /* background: #fff; */
+  }
+  
+  /* Container */
+  .hackathon-journey-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* Title */
+  .hackathon-journey-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #111;
+  }
+  
+  /* List Grid */
+  .hackathon-journey-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+  }
+  
+  /* Each Step */
+  .hackathon-journey-list-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .hackathon-journey-list-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  
+  /* Step Header */
+  .hackathon-journey-step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  
+  /* Step Number Circle */
+  .hackathon-journey-step-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a5acd, #00bfff);
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  /* Step Title */
+  .hackathon-journey-step-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #111;
+  }
+  
+  /* Step Description */
+  .hackathon-journey-step-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+  
+  /* === FAQs Section === */
+.faqs-section {
+    padding: 60px 20px;
+  }
+  
+  .faqs-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .faqs-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #111;
+  }
+  
+  .faqs-list {
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .faqs-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .faqs-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px 0;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faqs-question.active {
+    color: #000;
+  }
+  
+  .faqs-icon {
+    font-size: 14px;
+    color: #111;
+  }
+  
+  .faqs-answer {
+    padding: 0 0 16px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+  }
+  
