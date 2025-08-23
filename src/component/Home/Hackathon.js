@@ -3,6 +3,7 @@ import './Hackathon_new.css'
 import Navbar from '../layout/Navbar/Navbar'
 import heroImage from './images/hackathon-hero.jpg';
 import HackathonCard from './Cards/HackathonCard';
+import RegistrationButton from './Registration';
 
 const faqsData = [
   {
@@ -271,6 +272,7 @@ const Hackathon = () => {
                 ) : null
             )}
         </div>
+      <RegistrationButton/>
 
       {/* --- FAQs Section --- */}
       <section id="faqs" className="faqs-section">
@@ -297,6 +299,7 @@ const Hackathon = () => {
           </div>
         </div>
       </section>
+
     </>
   );
 };
