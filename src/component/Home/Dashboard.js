@@ -162,7 +162,7 @@ const Dashboard = () => {
               </Slider>
             ) : (
               allNoticeboards && allNoticeboards.length === 1 && (
-                <NoticeBoardCard data={allNoticeboards[0]} />
+                <NoticeBoardCard data={allNoticeboards[0]} key="1" />
               )
             )}
 

@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { forgotPasswordReducer, profileReducer, userInterestReducer, userReducer, verificationReducer } from './reducers/userReducer'
-import { allCourseReducer, chatbotReducer, courseLandingPadeDataReducer, myCourseReducer, paymentReducer, ssoLoginReducer } from './reducers/courseReducer';
+import { allCourseReducer, chatbotReducer, courseLandingPadeDataReducer, hackathonReducer, myCourseReducer, paymentReducer, ssoLoginReducer } from './reducers/courseReducer';
 import { academicDataReducer } from './reducers/academicDataReducer';
 import { adminBatchReducer, adminPaymentReducer, adminReccDataReducer, getAllUsersReducer } from './reducers/adminReducer';
 import { slotReducer } from './reducers/collegeReducer';
@@ -23,7 +23,8 @@ const store = configureStore({
         slots: slotReducer,
         adminReccData: adminReccDataReducer,
         userInterest: userInterestReducer,
-        chatBot: chatbotReducer
+        chatBot: chatbotReducer,
+        hackathon: hackathonReducer
     }
 })
 export default store;

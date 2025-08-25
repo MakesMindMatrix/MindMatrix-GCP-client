@@ -10,8 +10,8 @@ import RegistrationForm from "../RegistrationForm";
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
 const HackathonCard = ({ data }) => {
   console.log(data)
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [ isOpen, setIsOpen] = useState(false);
+  const [ selectedProblem, setSelectedProblem ] = useState(null);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   // const navigate = useNavigate();
@@ -21,7 +21,9 @@ const HackathonCard = ({ data }) => {
   //     .replace(/ /g, "-")
   //     .replace(/[^\w-]+/g, "");
 
-  const handleProblemSelect = () => {
+  const handleProblemSelect = (data) => {
+
+    setSelectedProblem(data);
     //Open registration form
     handleOpen();
     // Send data.course_name , data.course_description for pre-fill
@@ -125,14 +127,19 @@ const HackathonCard = ({ data }) => {
             Explore this Course
           </button> */}
         {/* </div> */}
-          <button className="problem_select_button" onClick={handleProblemSelect}>
+          <button className="problem_select_button" onClick={() => handleProblemSelect(data)}>
             Select
           </button>
 
         {/* {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null} */}
       </div>
 
-      {isOpen && <RegistrationForm onClose={handleClose} />}
+      {isOpen && (
+        <RegistrationForm 
+          onClose = {handleClose} 
+          problem = {selectedProblem} 
+        />
+      )}
     </>
   );
 };

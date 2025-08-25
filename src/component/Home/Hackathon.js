@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Hackathon_new.css'
 import Navbar from '../layout/Navbar/Navbar'
 import heroImage from './images/hackathon-hero.jpg';
 import HackathonCard from './Cards/HackathonCard';
-import RegistrationButton from './Registration';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const faqsData = [
   {
@@ -130,10 +131,36 @@ const rec_course = [{
 
 const Hackathon = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-
+  const { teamRegistration } = useSelector( (state) => state.hackathon);
+  console.log("Found existing team registration",teamRegistration);
   const toggleFaq = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+  const slugify = (str) =>
+    str
+        .toLowerCase()
+        .replace(/ /g, "-")
+        .replace(/[^\w-]+/g, "");
+
+  // ✅ Watch for registration success
+  useEffect(() => {
+    if (teamRegistration) {
+      // 1. Send emails (if backend doesn’t already handle it)
+      if (teamRegistration.participants_emails) {
+          console.log("Send emails to:", teamRegistration.participants_emails);
+          // optionally trigger another action like dispatch(sendEmails(teamRegistration.participant_emails))
+      }
+
+      // 2. Redirect to course landing page
+      if (teamRegistration.problemStatement) {
+          const coure_slug = slugify(teamRegistration.problemStatement?.title || "")
+          console.log("Navigate to\n",`/courses/${coure_slug}`)
+      }
+
+      toast.success("Team Registered Successfully")
+    }
+  }, [teamRegistration]);
 
   return (
     <>
