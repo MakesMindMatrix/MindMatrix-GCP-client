@@ -9,6 +9,8 @@
     justify-content: center;
     z-index: 1000;
     animation: fadeIn 0.4s ease-in-out;
+    overflow-y: auto; /* Allow scrolling if modal is taller than screen */
+    padding: 20px; /* Prevent modal from sticking to edges */
   }
   
 
@@ -17,8 +19,10 @@
     backdrop-filter: blur(15px);
     width: 75%;
     max-width: 1100px;
+    max-height: 90vh; /* Prevent overflow */
+    overflow-y: auto; /* Scroll inside modal if content too tall */
     border-radius: 18px;
-    padding: 35px;
+    padding: 25px;
     position: relative;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
     animation: slideUp 0.5s ease;
@@ -83,7 +87,7 @@
   .form-container {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 10px;
   }
   
   .form-grid {

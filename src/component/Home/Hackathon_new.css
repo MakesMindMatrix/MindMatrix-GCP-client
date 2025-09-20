@@ -89,9 +89,13 @@
     background: transparent;
 }
 
+.hackathon-hover-scale {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
 .hackathon-hover-scale:hover {
-    transform: scale(1.05);
-    background-color: #e0f7fa;
+  transform: scale(1.05);
+  background-color: #e0f7fa;
 }
 
 /* Image container */

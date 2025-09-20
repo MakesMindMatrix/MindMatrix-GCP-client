@@ -242,42 +242,42 @@ const Hackathon = () => {
         <div className="hackathon-journey-container">
           <h2 className="hackathon-journey-title">Hackathon Journey</h2>
           <ol className="hackathon-journey-list-container">
-            <li className="hackathon-journey-list-item">
+            <li className="hackathon-journey-list-item  hackathon-hover-scale">
               <div className="hackathon-journey-step-header">
                 <span className="hackathon-journey-step-number">1</span>
                 <span className="hackathon-journey-step-title">Registration</span>
               </div>
               <p className="hackathon-journey-step-desc">Create your team and sign up.</p>
             </li>
-            <li className="hackathon-journey-list-item">
+            <li className="hackathon-journey-list-item hackathon-hover-scale">
               <div className="hackathon-journey-step-header">
                 <span className="hackathon-journey-step-number">2</span>
                 <span className="hackathon-journey-step-title">Problem statement selection</span>
               </div>
               <p className="hackathon-journey-step-desc">Select one statement that inspires you.</p>
             </li>
-            <li className="hackathon-journey-list-item">
+            <li className="hackathon-journey-list-item hackathon-hover-scale">
               <div className="hackathon-journey-step-header">
                 <span className="hackathon-journey-step-number">3</span>
                 <span className="hackathon-journey-step-title">Idea submission</span>
               </div>
               <p className="hackathon-journey-step-desc">Share your concept and approach.</p>
             </li>
-            <li className="hackathon-journey-list-item">
+            <li className="hackathon-journey-list-item hackathon-hover-scale">
               <div className="hackathon-journey-step-header">
                 <span className="hackathon-journey-step-number">4</span>
                 <span className="hackathon-journey-step-title">Milestones & mentoring</span>
               </div>
               <p className="hackathon-journey-step-desc">Build iteratively and get feedback.</p>
             </li>
-            <li className="hackathon-journey-list-item">
+            <li className="hackathon-journey-list-item hackathon-hover-scale">
               <div className="hackathon-journey-step-header">
                 <span className="hackathon-journey-step-number">5</span>
                 <span className="hackathon-journey-step-title">Shortlisting</span>
               </div>
               <p className="hackathon-journey-step-desc">Top teams invited to the on-site event.</p>
             </li>
-            <li className="hackathon-journey-list-item">
+            <li className="hackathon-journey-list-item hackathon-hover-scale">
               <div className="hackathon-journey-step-header">
                 <span className="hackathon-journey-step-number">6</span>
                 <span className="hackathon-journey-step-title">Live Hackathon Event</span>

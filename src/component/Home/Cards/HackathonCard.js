@@ -9,7 +9,7 @@ import RegistrationForm from "../RegistrationForm";
 
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
 const HackathonCard = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   const [ isOpen, setIsOpen] = useState(false);
   const [ selectedProblem, setSelectedProblem ] = useState(null);
   const handleOpen = () => setIsOpen(true);
