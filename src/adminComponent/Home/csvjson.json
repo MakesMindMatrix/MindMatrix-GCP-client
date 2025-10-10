@@ -18,6 +18,25 @@
     }
   },
   {
+    "student_name": "Tirumal Desai",
+    "student_email": "tirumaldesai@gmail.com",
+    "topic_name": "Mind-to-Matrix Challenges: The 5W1H Approach",
+    "task_title": "How can curiosity help identify hidden challenges in biomedical waste management?",
+    "task_question": "How can curiosity help identify hidden challenges in biomedical waste management?",
+    "task_type": "MCQ",
+    "submission_content": {
+      "task": {
+        "task_type": "MCQ",
+        "task_answer": {
+          "option": {
+            "text": "Investigate why segregation errors occur at source",
+            "correct": true
+          }
+        }
+      }
+    }
+  },
+  {
     "student_name": "Srinidhi Salunke",
     "student_email": "srinidhisalunke09@gmail.com",
     "topic_name": "Exploring Teachable Machine for Image Recognition",

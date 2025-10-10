@@ -56,13 +56,20 @@ const HomePage = () => {
             <div className="logo"></div>
           </Link>
           <div className="nav_right">
-            <Link to="/register" className="btnTwo auth_btn">
+            <Link to="https://lms.mindmatrix.io/signup" className="btnTwo auth_btn">
+              Sign Up
+            </Link>
+
+            <Link to="https://lms.mindmatrix.io/login" className="btnOne auth_btn">
+              Login
+            </Link>
+            {/* <Link to="/register" className="btnTwo auth_btn">
               Sign Up
             </Link>
 
             <Link to="/login" className="btnOne auth_btn">
               Login
-            </Link>
+            </Link> */}
           </div>
         </div>
         {/* Hero */}
@@ -73,15 +80,21 @@ const HomePage = () => {
               day one to your dream job
             </h1>
             <p>Unlocking the Potentials for Tomorrow</p>
-            <Link
+            <Link to="https://lms.mindmatrix.io/signup" className="heroBtn">
+              Start Today
+            </Link>
+            {/* <Link
               className="heroBtn"
               to="https://staging.mindmatrix.io/register"
             >
               Start today
-            </Link>
-            <Link className="heroBtn" to="/user-interest">
+            </Link> */}
+            <Link to="https://lms.mindmatrix.io/" className="heroBtn">
               Show Your Interest
             </Link>
+            {/* <Link className="heroBtn" to="/user-interest">
+              Show Your Interest
+            </Link> */}
           </div>
           <div className="heroRight">
             <HeroSlider />
@@ -100,7 +113,7 @@ const HomePage = () => {
             <br /> that align with your career{" "}
             <span style={{ fontStyle: "italic" }}>aspirations</span>
           </h1>
-          <Link to="/catalog">
+          <Link to="https://lms.mindmatrix.io/program-catalog">
             Explore our most popular programs <span class="arrow ">→</span>
           </Link>
 
@@ -176,7 +189,10 @@ const HomePage = () => {
             >
               <div className="quick_quiz_section_one_left">
                 <h1>For Learners</h1>
-                <Link to="/register">Register</Link>
+                <Link to="https://lms.mindmatrix.io/signup">
+                  Register
+                </Link>
+                {/* <Link to="/register">Register</Link> */}
               </div>
               <div className="quick_quiz_section_one_right">
                 {LearningData.map((elm, index) => {
@@ -351,7 +367,8 @@ const HomePage = () => {
             </h1>
             <div>
               {/* <button>Take the Quiz</button> */}
-              <Link to="register">Explore Programs</Link>
+              <Link to="https://lms.mindmatrix.io/program-catalog">Explore Programs</Link>
+              {/* <Link to="register">Explore Programs</Link> */}
             </div>
           </div>
         </div>
