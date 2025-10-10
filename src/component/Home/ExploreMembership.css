@@ -1,0 +1,238 @@
+.exclusive-container {
+  padding: 2rem;
+
+  background-color: #e9f9fd;
+  font-family: Arial, sans-serif;
+}
+
+.exclusive-heading {
+  text-align: center;
+  font-size: 4.7rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.exclusive-subtext {
+  text-align: center;
+  margin-bottom: 3.4rem;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.membership-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+.membership-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.preference-label-placeholder {
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  visibility: hidden;
+}
+.preference-label {
+  font-size: 1rem;
+  color: red;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
+}
+
+.btn .icon {
+  margin-right: 0.6rem;
+  font-size: 1.9rem;
+  vertical-align: middle;
+}
+
+.membership-buttons .btn {
+  padding: 1.5rem 5rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #d2d2d2;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+/* .membership-buttons .btn:hover {
+  background-color: #aa5b00;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+} */
+
+/* .active-btn {
+  background-color: #ffd700;
+  color: black;
+  font-weight: bold;
+} */
+
+/* Individual membership highlights */
+.trailblazer-highlight .btn.active-btn {
+  background: linear-gradient(to right, #f0cb37, #433502);
+}
+
+.achiever-highlight .btn.active-btn {
+  background: linear-gradient(to right, #5807ef, #360375);
+}
+
+.explorer-highlight .btn.active-btn {
+  background: linear-gradient(to right, #4fd645, #2e7d32);
+}
+
+.membership-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.membership-info h2 {
+  font-size: 3rem;
+  margin-bottom: 2.5rem;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.membership-info p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: black;
+  margin-left: 20px;
+}
+
+.price-box {
+  margin-top: 15rem;
+  margin-bottom: 2.5rem;
+  margin-left: 20px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  margin-right: 1rem;
+  color: gray !important;
+  font-size: 1.2rem !important;
+}
+
+.discount {
+  color: red;
+  margin-right: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.final-price {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.buy-now {
+  padding: 0.7rem 2.4rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.membership-image img {
+  width: 650px;
+  border-radius: 12px;
+}
+
+.benefits-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.benefits-section .what-you-get {
+  background-color: white;
+  width: 75%;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.what-you-get ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem 5rem;
+  list-style-position: inside;
+  padding-left: 2rem;
+  margin-bottom: 2rem;
+}
+.what-you-get li {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.benefits-section .membership-features {
+  background-color: white;
+  width: 25%;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+}
+
+.benefits-section h3 {
+  font-size: 2rem;
+  margin-top: 0.6rem;
+  margin-left: 0.6rem;
+  margin-bottom: 1.9rem;
+  text-align: left;
+  font-weight: bold;
+  font-weight: bold !important;
+}
+
+.benefits-section ul {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  color: #333;
+}
+
+.membership-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.membership-features li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+
+.feature-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.course-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.gold-membership-title {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  text-align: left;
+  margin-left: 1.8rem;
+  font-weight: bold;
+}

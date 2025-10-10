@@ -24,9 +24,9 @@ export const getCollege = (id) => async (dispatch) => {
 
         const config = { headers: { "Content-Type": "application/json" } };
 
-        const { data } = await axios.get(`${BASE_URL}/api/v1/getCollege-byStudents/${id}`, config);
+        const { data } = await axios.get(`${BASE_URL}/api/v1/getCollegeByUniversity/${id}`, config);
         console.log(data)
-        dispatch({ type: GET_COLLEGE_SUCCESS, payload: data.data });
+        dispatch({ type: GET_COLLEGE_SUCCESS, payload: data.collegeList });
     } catch (error) {
         dispatch({ type: GET_COLLEGE_FAIL, payload: error.response.data.message })
     }

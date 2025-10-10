@@ -1,32 +1,32 @@
 .dashboardNav_container {
-    display: flex;
-    padding: 1rem 2rem;
-    /* left: 5vw;
+  display: flex;
+  padding: 1rem 2rem;
+  /* left: 5vw;
     top: 2vh; */
-    align-items: center;
-    /* width: 95vw; */
-    justify-content: space-between;
-    background-color: white;
-    /* position: fixed; */
-    height: 7rem;
-    margin: 0rem auto;
-    z-index: 999;
-    /* border-radius: 10px; */
-    border-bottom: 1px solid #ddd;
+  align-items: center;
+  /* width: 95vw; */
+  justify-content: space-between;
+  background-color: white;
+  /* position: fixed; */
+  height: 7rem;
+  margin: 0rem auto;
+  z-index: 999;
+  /* border-radius: 10px; */
+  border-bottom: 1px solid #ddd;
 }
 
 .nav_logo {
-    background-image: url('../../Home/images/logo.png');
-    background-position: center;
-    background-size: cover;
-    height: 4rem;
-    width: 9rem;
-    /* margin: 1rem; */
+  background-image: url("../../Home/images/logo.png");
+  background-position: center;
+  background-size: cover;
+  height: 4rem;
+  width: 9rem;
+  /* margin: 1rem; */
 }
 
 .nav_right {
-    display: flex;
-    /* width: 30%; */
+  display: flex;
+  /* width: 30%; */
 }
 
 /* .user_icon{
@@ -38,25 +38,107 @@
     margin-top: 3rem;
 } */
 .nav_link_parent {
-    text-decoration: none;
-    /* display: flex; */
-    /* align-items: center; */
-    /* text-align: left; */
-    /* width: 85%; */
-    color: black;
-    margin: 1rem;
+  text-decoration: none;
+  /* display: flex; */
+  /* align-items: center; */
+  /* text-align: left; */
+  /* width: 85%; */
+  color: black;
+  margin: 1rem;
 }
 
 /* .nav_link_icon{
     font-size: 2.2rem;
 } */
 .nav_link_text {
-    margin-left: 1.5rem;
-    font-size: 1.6rem;
+  margin-left: 1.5rem;
+  font-size: 1.6rem;
+}
+
+/* Middle button section styled like tab */
+.nav-buttons {
+  display: flex;
+  gap: 1.5rem;
+  background-color: #f1f1f1;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  margin-top: 2px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Reusing your existing auth_btn class */
+.auth_btn_ {
+  text-decoration: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 1.5rem;
+  font-size: 1.6rem;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optional: differentiate variants */
+.btnOne_ {
+  background: none;
+  border: none;
+}
+
+/* Active tab (highlighted one) */
+.active_tab {
+  background-color: #e0f7fa;
+  color: #00838f;
+  font-weight: 600;
+}
+/* Profile dropdown container */
+.profile_dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Profile icon */
+.profile_icon {
+  background-image: url("user-icon.svg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+
+/* Logout button below profile */
+.logout_btn {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #0fdca6;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-width: 120px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.logout_btn:hover {
+  background-color: #00838f;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 500px) {
-    .dashboardNav_container {
-        padding: 2rem 3rem;
-    }
+  .dashboardNav_container {
+    padding: 2rem 3rem;
+  }
 }

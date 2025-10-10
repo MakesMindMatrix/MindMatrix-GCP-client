@@ -1,0 +1,383 @@
+/* Header container */
+.hackathon-hero-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.hackathon-hero-container {
+    position: relative;
+    display: grid;
+    gap: 4rem; /* gap-10 */
+    align-items: center;
+    padding-top: 6.4rem;   /* py-16 */
+    padding-bottom: 6.4rem;
+}
+
+@media (min-width: 768px) {
+    .hackathon-hero-container {
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+        padding-top: 9.6rem;   /* md:py-24 */
+        padding-bottom: 9.6rem;
+    }
+}
+
+/* Left text section */
+.hackathon-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem; /* space-y-6 */
+    animation: fade-in 1s ease-in-out;
+    align-items: center;
+}
+
+/* Title */
+.hackathon-hero-title {
+    font-size: 3.6rem; /* text-4xl */
+    line-height: 4rem;
+    font-weight: 700;
+    line-height: 1.25; /* leading-tight */
+}
+
+@media (min-width: 768px) {
+    .hackathon-hero-title {
+        font-size: 6rem; /* text-6xl */
+        line-height: 1;
+    }
+}
+
+/* Subtitle */
+.hackathon-hero-subtitle {
+    font-size: 1.8rem; /* text-lg */
+    line-height: 2.8rem; /* text-lg */
+    color: var(--muted-foreground, 215.4 16.3% 46.9%);
+    max-width: 65ch; /* max-w-prose */
+}
+
+@media (min-width: 768px) {
+.hackathon-hero-subtitle {
+    font-size: 2rem; /* text-xl */
+    line-height: 2.8rem; /* text-xl */
+}
+}
+
+/* Buttons */
+.hackathon-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem; /* gap-3 */
+}
+
+.hackathon-btn {
+    display: inline-block;
+    padding: 2rem;
+    font-size: 1.75rem;
+    border-radius: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    margin-top: 5%;
+}
+
+.hackathon-btn-hero {
+    background: #000;
+    color: #fff;
+}
+
+.hackathon-btn-outline {
+    border: 1px solid #000;
+    color: #000;
+    background: transparent;
+}
+
+.hackathon-hover-scale {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hackathon-hover-scale:hover {
+  transform: scale(1.05);
+  background-color: #e0f7fa;
+}
+
+/* Image container */
+.hackathon-hero-image-container {
+    position: relative;
+}
+
+.hackathon-hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 1.2rem; /* rounded-xl */
+    box-shadow: var(--shadow-elevated, 0 10px 30px rgba(0,0,0,0.2));
+}
+
+/* Gradient background behind image */
+.hackathon-hero-gradient {
+    pointer-events: none;
+    position: absolute;
+    inset: -4rem; /* -inset-10 */
+    border-radius: 9999px;
+    filter: blur(48px); /* blur-3xl */
+    opacity: 0.4;
+    background: linear-gradient(
+        to top right,
+        hsl(var(--hero-from, 210, 100%, 60%)),
+        hsl(var(--hero-to, 280, 100%, 65%))
+);
+}
+
+/* Simple fade-in animation */
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+    }
+
+/* ---------- Base Layout ---------- */
+.hackathon-section {
+    padding-top: 3rem;   /* py-12 */
+    padding-bottom: 3rem;
+}
+
+.hackathon-container {
+    margin-left: auto;   /* mx-auto */
+    margin-right: auto;
+    max-width: 65ch;     /* fallback for prose */
+}
+
+.hackathon-text-center {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    #why-participate .hackathon-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+        gap: 3.2rem; /* gap-8 */
+        max-width: 102.4rem; /* unsure: Tailwind `max-w-5xl` ~ 64rem, adjusted */
+    }
+    #who-can-participate .hackathon-container {
+        max-width: 89.6rem; /* unsure: Tailwind `max-w-4xl` */
+    }
+    #overview .hackathon-overview {
+        max-width: 76.8rem; /* unsure: Tailwind `max-w-3xl` */
+        margin-left: auto;   /* mx-auto */
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 1.6rem;
+    }
+}
+
+/* ---------- Typography ---------- */
+.hackathon-heading {
+    font-size: 3.75rem; 
+    line-height: 3.6rem;
+    font-weight: 700;
+}
+
+.hackathon-subheading {
+    font-size: 4rem;
+    line-height: 3.6rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.hackathon-subtitle {
+    font-size: 1.8rem;
+    color: hsl(var(--muted-foreground, 215.4 16.3% 46.9%)); /* unsure default */
+    margin-top: 1rem;
+}
+
+/* ---------- Article ---------- */
+.hackathon-article {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* space-y-3 */
+}
+
+/* ---------- Lists ---------- */
+.hackathon-list {
+    list-style-type: disc;  /* list-disc */
+    padding-left: 2.4rem;   /* pl-6 */
+    font-size: 1.6rem;
+    color: hsl(var(--muted-foreground, 215.4 16.3% 46.9%)); /* unsure default */
+    margin-top: 1rem;
+}
+
+.hackathon-list li {
+    margin-bottom: 0.8rem; /* space-y-2 */
+}
+.hackathon_problem_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 2rem;
+  /* margin: 2rem 0; */
+}
+
+.problem-header {
+    margin-bottom: 32px;      /* mb-8 = 2rem ≈ 32px */
+    text-align: center;       /* text-center */
+    max-width: 672px;         /* max-w-2xl = 42rem ≈ 672px */
+    margin-left: auto;        /* mx-auto */
+    margin-right: auto;
+  }
+  
+  .problem-title {
+    font-size: 30px;          /* text-3xl ≈ 1.875rem ≈ 30px */
+    font-weight: bold;        /* font-bold */
+    margin-bottom: 8px;       /* mb-2 = 0.5rem ≈ 8px */
+  }
+  
+  @media (min-width: 768px) {
+    .problem-title {
+      font-size: 36px;        /* md:text-4xl ≈ 2.25rem ≈ 36px */
+    }
+  }
+  
+  .problem-subtitle {
+    color: #6b7280;    
+    font-size: 16px;       /* text-muted-foreground (approx from Tailwind gray-500/600) */
+  }
+  
+
+/* ___________MyWork_____________________ */
+/* Section Wrapper */
+.hackathon-journey-section {
+    padding: 60px 20px;
+    /* background: #fff; */
+  }
+  
+  /* Container */
+  .hackathon-journey-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* Title */
+  .hackathon-journey-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #111;
+  }
+  
+  /* List Grid */
+  .hackathon-journey-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+  }
+  
+  /* Each Step */
+  .hackathon-journey-list-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .hackathon-journey-list-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  
+  /* Step Header */
+  .hackathon-journey-step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  
+  /* Step Number Circle */
+  .hackathon-journey-step-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a5acd, #00bfff);
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  /* Step Title */
+  .hackathon-journey-step-title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #111;
+  }
+  
+  /* Step Description */
+  .hackathon-journey-step-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+  
+  /* === FAQs Section === */
+.faqs-section {
+    padding: 60px 20px;
+  }
+  
+  .faqs-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .faqs-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #111;
+  }
+  
+  .faqs-list {
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .faqs-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .faqs-question {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px 0;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faqs-question.active {
+    color: #000;
+  }
+  
+  .faqs-icon {
+    font-size: 14px;
+    color: #111;
+  }
+  
+  .faqs-answer {
+    padding: 0 0 16px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+  }
+  

@@ -1,4 +1,4 @@
-import { ALL_COURSE_LANDING_PAGE_DATA_FAIL, ALL_COURSE_LANDING_PAGE_DATA_REQUEST, ALL_COURSE_LANDING_PAGE_DATA_SUCCESS, ALL_COURSES_FAIL, ALL_COURSES_REQUEST, ALL_COURSES_SUCCESS, ALL_NOTICEBOARDS_FAIL, ALL_NOTICEBOARDS_REQUEST, ALL_NOTICEBOARDS_SUCCESS, CLEAR_ERRORS, COURSE_DATA_FAIL, COURSE_DATA_REQUEST, COURSE_DATA_SUCCESS, COURSE_PAYMENT_FAIL, COURSE_PAYMENT_REQUEST, COURSE_PAYMENT_STATUS_FAIL, COURSE_PAYMENT_STATUS_REQUEST, COURSE_PAYMENT_STATUS_SUCCESS, COURSE_PAYMENT_SUCCESS, ENROLL_COURSE_FAIL, ENROLL_COURSE_REQUEST, ENROLL_COURSE_SUCCESS, GET_PAYMENT_DATA_FAIL, GET_PAYMENT_DATA_REQUEST, GET_PAYMENT_DATA_SUCCESS, MY_COURSES_FAIL, MY_COURSES_REQUEST, MY_COURSES_SUCCESS, PAYMENT_DATA_FAIL, PAYMENT_DATA_REQUEST, PAYMENT_DATA_SUCCESS, SSO_LOGIN_FAIL, SSO_LOGIN_REQUEST, SSO_LOGIN_SUCCESS, USER_REPORT_FAIL, USER_REPORT_REQUEST, USER_REPORT_SUCCESS } from '../constants/courseConstant'
+import { ALL_COURSE_LANDING_PAGE_DATA_FAIL, ALL_COURSE_LANDING_PAGE_DATA_REQUEST, ALL_COURSE_LANDING_PAGE_DATA_SUCCESS, ALL_COURSES_FAIL, ALL_COURSES_REQUEST, ALL_COURSES_SUCCESS, ALL_NOTICEBOARDS_FAIL, ALL_NOTICEBOARDS_REQUEST, ALL_NOTICEBOARDS_SUCCESS, CLEAR_ERRORS, COURSE_DATA_FAIL, COURSE_DATA_REQUEST, COURSE_DATA_SUCCESS, COURSE_PAYMENT_FAIL, COURSE_PAYMENT_REQUEST, COURSE_PAYMENT_STATUS_FAIL, COURSE_PAYMENT_STATUS_REQUEST, COURSE_PAYMENT_STATUS_SUCCESS, COURSE_PAYMENT_SUCCESS, CREATE_CHAT_FAIL, CREATE_CHAT_REQUEST, CREATE_CHAT_SUCCESS, ENROLL_COURSE_FAIL, ENROLL_COURSE_REQUEST, ENROLL_COURSE_SUCCESS, GET_CHAT_FAIL_BY_SESSION_ID, GET_CHAT_REQUEST_BY_SESSION_ID, GET_CHAT_SUCCESS_BY_SESSION_ID, GET_PAYMENT_DATA_FAIL, GET_PAYMENT_DATA_REQUEST, GET_PAYMENT_DATA_SUCCESS, MY_COURSES_FAIL, MY_COURSES_REQUEST, MY_COURSES_SUCCESS, PAYMENT_DATA_FAIL, PAYMENT_DATA_REQUEST, PAYMENT_DATA_SUCCESS, SSO_LOGIN_FAIL, SSO_LOGIN_REQUEST, SSO_LOGIN_SUCCESS, TEAM_REGISTER_FAIL, TEAM_REGISTER_REQUEST, TEAM_REGISTER_SUCCESS, USER_REPORT_FAIL, USER_REPORT_REQUEST, USER_REPORT_SUCCESS } from '../constants/courseConstant'
 
 // Reducer for my courses & enroll courses
 export const myCourseReducer = (state = {}, action) => {
@@ -49,7 +49,7 @@ export const myCourseReducer = (state = {}, action) => {
         case MY_COURSES_FAIL:
         case USER_REPORT_FAIL:
         case COURSE_DATA_FAIL:
-        case ALL_NOTICEBOARDS_FAIL: 
+        case ALL_NOTICEBOARDS_FAIL:
             return {
                 ...state,
                 loading: false,
@@ -203,7 +203,7 @@ export const paymentReducer = (state = {}, action) => {
         case PAYMENT_DATA_FAIL:
         case GET_PAYMENT_DATA_FAIL:
         case COURSE_PAYMENT_FAIL:
-        case COURSE_PAYMENT_STATUS_FAIL:   
+        case COURSE_PAYMENT_STATUS_FAIL:
             return {
                 ...state,
                 loading: false,
@@ -218,3 +218,75 @@ export const paymentReducer = (state = {}, action) => {
             return state;
     }
 }
+
+export const chatbotReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CREATE_CHAT_REQUEST:
+        case GET_CHAT_REQUEST_BY_SESSION_ID:
+            return {
+                ...state,
+                loading: true
+            }
+
+        case CREATE_CHAT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                createChatData: action.payload
+            }
+        case GET_CHAT_SUCCESS_BY_SESSION_ID:
+            return {
+                ...state,
+                loading: false,
+                chatData: action.payload
+            }
+        case CREATE_CHAT_FAIL:
+        case GET_CHAT_FAIL_BY_SESSION_ID:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+// Reducer for team registration
+export const hackathonReducer = (state = {}, action) => {
+    switch (action.type) {
+      case TEAM_REGISTER_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+  
+      case TEAM_REGISTER_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          teamRegistration: action.payload, // ✅ save registered team response
+        };
+  
+      case TEAM_REGISTER_FAIL:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+  
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
+  
+      default:
+        return state;
+    }
+  };

@@ -1,52 +1,45 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./RecCard.css";
+import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import "./HackathonCard.css";
 // import Gai from '../images/GAI.jpg'
-import { FaRegCalendarMinus } from "react-icons/fa";
+// import { FaRegCalendarMinus } from "react-icons/fa";
 // import CertificateIcon from "./certificate_program_icon.svg";
 import OutlineBulletIcon from "./Course-Outline-Bullet-Icon.svg";
+import RegistrationForm from "../RegistrationForm";
 
 // const RecCard = ({ data, setConfirmModal, setEnrollCourseData, enrollCourseData, setPaymentModal, setPaymentCourseData }) => {
-const RecCard = ({ data }) => {
-  console.log(data)
-  // const handleEnroll = () => {
-  //     if (data.batch_price > 0) {
-  //         setPaymentCourseData({
-  //             batch_id: data.external_batch_id,
-  //             course_name: data.course_name,
-  //             batch_price: data.batch_price,
-  //             description: data.course_description
-  //         })
-  //         setEnrollCourseData({ ...enrollCourseData, batch_id: data.external_batch_id })
-  //         setPaymentModal(true)
-  //         // navigate(`/payment/${data.external_batch_id}/${data.course_name}/${data.batch_price}`)
-  //     } else {
-  //         setConfirmModal(true)
-  //         setEnrollCourseData({ ...enrollCourseData, batch_id: data.external_batch_id })
-  //     }
-  // }
+const HackathonCard = ({ data }) => {
+  // console.log(data)
+  const [ isOpen, setIsOpen] = useState(false);
+  const [ selectedProblem, setSelectedProblem ] = useState(null);
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
+  // const navigate = useNavigate();
+  // const slugify = (str) =>
+  //   str
+  //     .toLowerCase()
+  //     .replace(/ /g, "-")
+  //     .replace(/[^\w-]+/g, "");
 
-  const navigate = useNavigate();
-  const slugify = (str) =>
-    str
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
+  const handleProblemSelect = (data) => {
 
-  const handleViewMore = () => {
-    const courseSlug = slugify(data.course_name);
-    console.log("Course URL: /courses/", courseSlug, data.course_name);
-    navigate(`/courses/${courseSlug}`);
+    setSelectedProblem(data);
+    //Open registration form
+    handleOpen();
+    // Send data.course_name , data.course_description for pre-fill
+
+    //After registration -> save data into DB , Send email to all members & navigate to course landing page
+
   };
 
-  const startDate = new Date(data.batch_start_date).toLocaleDateString(
-    "en-US",
-    {
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-    }
-  );
+  // const startDate = new Date(data.batch_start_date).toLocaleDateString(
+  //   "en-US",
+  //   {
+  //     month: "long",
+  //     day: "numeric",
+  //     year: "numeric",
+  //   }
+  // );
   //   console.log(startDate)
   return (
     <>
@@ -59,15 +52,15 @@ const RecCard = ({ data }) => {
           className="course_card_img"
         >
           {" "}
-          <span className="badge-tag">
+          {/* <span className="hackathon-badge-tag"> */}
             {" "}
             {/* <img
               src={CertificateIcon}
               alt="Certificate Icon"
               className="badge-icon-img"
             />{" "} */}
-            {data?.courseType}
-          </span>
+            {/* {data?.courseType}
+          </span> */}
         </div>
         <div className="courseContent_box">
           <h1 className="course_title">{data?.course_name}</h1>
@@ -112,7 +105,7 @@ const RecCard = ({ data }) => {
           </div>
         </div>
 
-        <div className="courseDateprice_box">
+        {/* <div className="courseDateprice_box"> */}
           {/* <div className="coursePrice_box">
             <div className="price-top">
               <span className="original-price">
@@ -123,23 +116,33 @@ const RecCard = ({ data }) => {
             <div className="discounted-price">₹{data?.batch_price}</div>
             {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null}
           </div> */}
-          <div className="courseDate_box">
+          {/* <div className="courseDate_box">
             <FaRegCalendarMinus />
             <h2>
               Starts on <span style={{ color: "#4CBB90" }}>{startDate}</span>
             </h2>
-          </div>
+          </div> */}
           {/* <h1 className="course_name">{data?.course_name}</h1> */}
-          <button className="view_button" onClick={handleViewMore}>
+          {/* <button className="view_button" onClick={handleViewMore}>
             Explore this Course
+          </button> */}
+        {/* </div> */}
+          <button className="problem_select_button" onClick={() => handleProblemSelect(data)}>
+            Select
           </button>
-        </div>
 
         {/* {data.external_batch_id ? <button className='enroll_button' onClick={handleEnroll}>Enroll now</button> : null} */}
       </div>
+
+      {isOpen && (
+        <RegistrationForm 
+          onClose = {handleClose} 
+          problem = {selectedProblem} 
+        />
+      )}
     </>
   );
 };
 // external_batch_id
 
-export default RecCard;
+export default HackathonCard;
